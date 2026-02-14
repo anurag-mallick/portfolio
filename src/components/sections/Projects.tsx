@@ -6,48 +6,59 @@ import { ArrowUpRight, Cpu, Database, Globe } from "lucide-react";
 
 const projects = [
     {
-        title: "AI-Powered Reconciliation Engine",
+        title: "AI-Powered Reconciliation System",
         category: "Fintech Automation",
         icon: <Cpu className="w-6 h-6 text-primary" />,
         metrics: [
             { label: "Accuracy", value: "99.8%" },
             { label: "Effort Reduction", value: "60%" }
         ],
-        description: "ML-based tool for payroll and financial data reconciliation. Integrated LLM for automated transaction details extraction from uploaded documents.",
+        description: "ML-based reconciliation tool for payroll and financial data. Integrated LLM for automated transaction details extraction from uploaded documents.",
         tech: ["Python", "Machine Learning", "LLM", "Data Processing"]
     },
     {
-        title: "Global EOR Platform",
-        category: "SaaS Infrastructure",
+        title: "EOR Platform Development",
+        category: "Global Payroll",
         icon: <Globe className="w-6 h-6 text-secondary" />,
         metrics: [
-            { label: "ARR", value: "€275k+" },
-            { label: "Clients", value: "500+" }
+            { label: "ARR", value: "€275,000+" },
+            { label: "Compliance Risk", value: "-40%" }
         ],
-        description: "No-code Employer of Record platform supporting US & EU markets. Reduced compliance risk by 40% and scaled onboarding efficiency.",
-        tech: ["SaaS", "Compliance", "Payroll", "No-Code"]
+        description: "Built a no-code Employer of Record (EOR) and global payroll platform supporting US & EU markets. Scaled to 500+ clients.",
+        tech: ["SaaS", "Compliance", "Global Payroll", "No-Code"]
     },
     {
-        title: "Hyperlocal Logistics Opt.",
-        category: "Logistics",
+        title: "Logistics Solutions Delivery",
+        category: "Supply Chain",
         icon: <Database className="w-6 h-6 text-accent" />,
         metrics: [
-            { label: "Cost Saving", value: "83%" },
-            { label: "Mismatches", value: "<0.5%" }
+            { label: "Serviceability", value: "95%" },
+            { label: "Order Mismatch", value: "<0.5%" }
         ],
-        description: "Optimized route planning and API usage for a fashion retailer, significantly cutting Google Maps API costs and improving delivery accuracy.",
-        tech: ["API Integration", "Route Optimization", "Analytics"]
+        description: "Owned product lifecycle for logistics solutions at Shiprocket, achieving significant serviceability improvement and cost savings.",
+        tech: ["Logistics", "API Integration", "Analytics", "Operations"]
+    },
+    {
+        title: "Hyperlocal Delivery Opt.",
+        category: "Logistics",
+        icon: <ArrowUpRight className="w-6 h-6 text-green-400" />,
+        metrics: [
+            { label: "Map API Costs", value: "-83%" },
+            { label: "Monthly Saving", value: "₹5 Lakhs" }
+        ],
+        description: "Optimized Google Maps API usage for a fashion retailer, significantly cutting operational costs while maintaining high service standards.",
+        tech: ["Cost Optimization", "Google Maps API", "Performance"]
     },
     {
         title: "Returns CRM Tool",
         category: "Customer Experience",
-        icon: <ArrowUpRight className="w-6 h-6 text-green-400" />,
+        icon: <ArrowUpRight className="w-6 h-6 text-blue-400" />,
         metrics: [
-            { label: "NPS Boost", value: "+35%" },
+            { label: "NPS", value: "+35%" },
             { label: "Bad Returns", value: "-30%" }
         ],
-        description: "Custom returns management tool with unboxing video integration to validate returns and improve customer trust.",
-        tech: ["CRM", "Video Integration", "UX Optimization"]
+        description: "Custom returns management tool with unboxing video integration to validate returns and improve customer trust scores.",
+        tech: ["CRM", "UX Optimization", "Video Integration"]
     }
 ];
 

@@ -9,25 +9,25 @@ const skillClusters = [
         id: "product",
         name: "Product & Strategy",
         x: 20, y: 30,
-        skills: ["Product Ownership", "Roadmapping", "Agile/Scrum", "User Research", "Data Analytics", "Requirement Gathering", "Stakeholder Alignment", "Design Thinking"]
+        skills: ["Product Ownership", "Program Management", "Agile", "UX", "Requirement Gathering", "User Research", "Data Analytics", "Design Thinking"]
     },
     {
         id: "tech",
         name: "Technical Tools",
         x: 80, y: 30,
-        skills: ["Jira", "Figma", "SQL", "Tableau", "PowerBI", "Balsamiq", "SPSS", "QlikSense", "Python (Basic)", "Linear", "Notion"]
+        skills: ["Jira", "Figma", "SQL", "Tableau", "PowerBI", "SPSS", "QlikSense", "Balsamiq"]
     },
     {
         id: "domain",
         name: "Domain Expertise",
         x: 50, y: 70,
-        skills: ["Payroll Systems", "Global EOR", "Tax Compliance", "Fintech Architecture", "AI Automation", "API Strategy", "SaaS Ecosystems"]
+        skills: ["India Payroll", "Global Payroll (EOR)", "Financial Compliance", "SaaS Solutions", "AI/ML Integration", "Workflow Automation", "API Strategy"]
     },
     {
         id: "core",
         name: "Core Competencies",
         x: 50, y: 40, // Central node
-        skills: ["Product Strategy", "Roadmapping", "Stakeholder Mgmt", "Agile Leadership", "System Design", "User Research", "Data Analytics"]
+        skills: ["Stakeholder Alignment", "Leadership", "Data Visualization", "Roadmapping", "Cloud Integration", "Process Improvement"]
     }
 ];
 
