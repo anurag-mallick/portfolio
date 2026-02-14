@@ -1,0 +1,142 @@
+"use client";
+
+import { motion, useScroll, useTransform } from "framer-motion";
+import { Button } from "@/components/ui/Button";
+import { ArrowRight, FileText, Linkedin } from "lucide-react";
+import React, { useRef, useState, useEffect } from "react";
+
+function Particle({ index }: { index: number }) {
+    const [style, setStyle] = useState({
+        width: 10,
+        height: 10,
+        top: "50%",
+        left: "50%",
+        duration: 5
+    });
+
+    useEffect(() => {
+        setStyle({
+            width: Math.random() * 10 + 5,
+            height: Math.random() * 10 + 5,
+            top: `${Math.random() * 100}%`,
+            left: `${Math.random() * 100}%`,
+            duration: Math.random() * 5 + 5
+        });
+    }, []);
+
+    return (
+        <motion.div
+            className="absolute bg-primary/30 rounded-full blur-md"
+            style={{
+                width: style.width,
+                height: style.height,
+                top: style.top,
+                left: style.left,
+            }}
+            animate={{
+                y: [0, -50, 0],
+                x: [0, 20, 0],
+                opacity: [0.3, 0.8, 0.3],
+            }}
+            transition={{
+                duration: style.duration,
+                repeat: Infinity,
+                ease: "easeInOut",
+            }}
+        />
+    );
+}
+
+export function Hero() {
+    const containerRef = useRef<HTMLDivElement>(null);
+    const { scrollY } = useScroll();
+    const y = useTransform(scrollY, [0, 500], [0, 200]);
+
+    return (
+        <section
+            ref={containerRef}
+            className="relative h-screen w-full overflow-hidden flex items-center justify-center bg-background"
+        >
+            {/* Background Elements */}
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
+
+            <div className="absolute inset-0 bg-primary/5 blur-[120px] rounded-full mix-blend-screen animate-pulse-slow pointer-events-none" />
+
+            {/* Floating Particles */}
+            {[...Array(10)].map((_, i) => (
+                <Particle key={i} index={i} />
+            ))}
+
+
+            <div className="container relative z-10 px-4 md:px-6">
+                <div className="flex flex-col items-center text-center space-y-8">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5 }}
+                        className="inline-flex items-center rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-sm font-medium text-primary backdrop-blur-sm"
+                    >
+                        <span className="flex h-2 w-2 rounded-full bg-primary mr-2 animate-pulse" />
+                        Open for Innovation
+                    </motion.div>
+
+                    <motion.h1
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: 0.2 }}
+                        className="text-4xl md:text-6xl lg:text-8xl font-bold tracking-tighter bg-clip-text text-transparent bg-gradient-to-b from-white to-white/60 leading-tight"
+                    >
+                        ANURAG MALLICK
+                    </motion.h1>
+
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: 0.4 }}
+                        className="h-auto md:h-12 overflow-hidden flex flex-col items-center"
+                    >
+                        <div className="animate-slide-up text-lg md:text-3xl font-light text-muted-foreground flex flex-col md:block items-center gap-1 md:gap-0">
+                            <span className="text-primary">Product Manager</span>
+                            <span className="hidden md:inline mx-2">•</span>
+                            <span className="text-secondary">Digital Initiatives</span>
+                        </div>
+                    </motion.div>
+
+                    <motion.p
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.5, delay: 0.6 }}
+                        className="max-w-[600px] text-muted-foreground md:text-xl"
+                    >
+                        Scaling Global Payroll Infrastructure & Integrating AI into Financial Workflows.
+                    </motion.p>
+
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: 0.8 }}
+                        className="flex flex-col sm:flex-row gap-4"
+                    >
+                        <Button variant="neon" size="lg" className="group">
+                            Enter Portfolio
+                            <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                        </Button>
+                        <Button variant="outline" size="lg">
+                            <FileText className="mr-2 h-4 w-4" />
+                            View Resume
+                        </Button>
+                        <Button variant="ghost" size="lg">
+                            <Linkedin className="mr-2 h-4 w-4" />
+                            Connect
+                        </Button>
+                    </motion.div>
+                </div>
+            </div>
+
+            <motion.div
+                style={{ y }}
+                className="absolute bottom-0 w-full h-[200px] bg-gradient-to-t from-background to-transparent z-0"
+            />
+        </section>
+    );
+}
