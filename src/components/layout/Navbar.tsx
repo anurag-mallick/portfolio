@@ -44,9 +44,9 @@ export function Navbar() {
             >
                 <Link
                     href="#"
-                    className="px-4 py-2 font-bold text-lg tracking-tighter text-foreground hover:text-primary transition-colors"
+                    className="px-4 py-2 font-bold text-lg tracking-tighter text-foreground hover:text-primary transition-colors whitespace-nowrap"
                 >
-                    AM
+                    ANURAG MALLICK
                 </Link>
 
                 <div className="h-6 w-px bg-white/10 mx-2" />

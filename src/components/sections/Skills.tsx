@@ -1,17 +1,42 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Award, Code2, Globe2, ShieldCheck, Zap } from "lucide-react";
+import {
+    Award, Code2, Globe2, ShieldCheck, Zap,
+    Package, Briefcase, Repeat, Users, FileText, Search, BarChart3, TrendingUp,
+    Handshake, Crown, PieChart, Lightbulb, Map, Cloud, Layers, Link as LinkIcon,
+    Database, PenTool, LayoutGrid, BarChart, Calculator, Activity, MousePointer2,
+    Trello
+} from "lucide-react";
 
 const coreCompetencies = [
-    "Product Ownership", "Program Management", "Agile", "User Experience (UX)",
-    "Requirement Gathering", "User Research", "Data Analytics", "Process Improvement",
-    "Stakeholder Alignment", "Leadership", "Data Visualization", "Design Thinking",
-    "Product Roadmapping", "SaaS Solutions", "Cloud Integration", "API Integration"
+    { name: "Product Ownership", icon: Package },
+    { name: "Program Management", icon: Briefcase },
+    { name: "Agile", icon: Repeat },
+    { name: "User Experience (UX)", icon: Users },
+    { name: "Requirement Gathering", icon: FileText },
+    { name: "User Research", icon: Search },
+    { name: "Data Analytics", icon: BarChart3 },
+    { name: "Process Improvement", icon: TrendingUp },
+    { name: "Stakeholder Alignment", icon: Handshake },
+    { name: "Leadership", icon: Crown },
+    { name: "Data Visualization", icon: PieChart },
+    { name: "Design Thinking", icon: Lightbulb },
+    { name: "Product Roadmapping", icon: Map },
+    { name: "SaaS Solutions", icon: Cloud },
+    { name: "Cloud Integration", icon: Layers },
+    { name: "API Integration", icon: LinkIcon }
 ];
 
 const technicalSkills = [
-    "Jira", "Figma", "SQL", "Tableau", "PowerBI", "SPSS", "QlikSense", "Balsamiq"
+    { name: "Jira", icon: Trello },
+    { name: "Figma", icon: PenTool },
+    { name: "SQL", icon: Database },
+    { name: "Tableau", icon: LayoutGrid },
+    { name: "PowerBI", icon: BarChart },
+    { name: "SPSS", icon: Calculator },
+    { name: "QlikSense", icon: Activity },
+    { name: "Balsamiq", icon: MousePointer2 }
 ];
 
 const certifications = [
@@ -59,12 +84,14 @@ export function Skills() {
                                             initial={{ opacity: 0, y: 10 }}
                                             whileInView={{ opacity: 1, y: 0 }}
                                             transition={{ delay: i * 0.02 }}
-                                            className="relative p-4 rounded-xl bg-white/[0.02] border border-white/5 hover:border-primary/30 hover:bg-primary/[0.02] transition-all group/card"
+                                            className="relative p-4 rounded-xl bg-white/[0.02] border border-white/5 hover:border-primary/30 hover:bg-primary/[0.02] transition-all group/card overflow-hidden"
                                         >
                                             <div className="flex items-center gap-3">
-                                                <div className="w-1.5 h-1.5 rounded-full bg-primary/40 group-hover/card:bg-primary transition-colors" />
+                                                <div className="p-2 rounded-lg bg-primary/5 group-hover/card:bg-primary/10 transition-colors">
+                                                    <skill.icon className="w-4 h-4 text-primary" />
+                                                </div>
                                                 <span className="text-sm font-medium text-gray-400 group-hover/card:text-white transition-colors">
-                                                    {skill}
+                                                    {skill.name}
                                                 </span>
                                             </div>
                                         </motion.div>
@@ -84,15 +111,16 @@ export function Skills() {
                                 </h3>
                                 <div className="flex flex-wrap gap-3">
                                     {technicalSkills.map((tool, i) => (
-                                        <motion.span
+                                        <motion.div
                                             key={i}
                                             initial={{ opacity: 0, scale: 0.9 }}
                                             whileInView={{ opacity: 1, scale: 1 }}
                                             transition={{ delay: i * 0.05 }}
-                                            className="px-4 py-2 rounded-lg bg-primary/5 border border-primary/20 text-primary text-sm font-medium hover:bg-primary hover:text-black transition-all cursor-default"
+                                            className="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary/5 border border-primary/20 text-primary text-sm font-medium hover:bg-primary hover:text-black transition-all cursor-default group/tool"
                                         >
-                                            {tool}
-                                        </motion.span>
+                                            <tool.icon className="w-3.5 h-3.5 group-hover/tool:scale-110 transition-transform" />
+                                            {tool.name}
+                                        </motion.div>
                                     ))}
                                 </div>
                             </div>
