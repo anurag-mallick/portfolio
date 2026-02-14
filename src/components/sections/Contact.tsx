@@ -58,96 +58,125 @@ export function Contact() {
             {/* Subtle background effect */}
             <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,0,0.01)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,0,0.01)_1px,transparent_1px)] bg-[size:30px_30px]" />
 
-            <div className="container px-4 md:px-6 relative z-10 max-w-2xl mx-auto">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="border border-primary/20 bg-[#050505] backdrop-blur-md rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(0,243,255,0.05)]"
-                >
-                    {/* Header */}
-                    <div className="bg-primary/5 border-b border-white/5 p-4 flex items-center justify-between">
-                        <div className="flex items-center gap-2">
-                            <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
-                            <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
-                            <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
+            <div className="container px-4 md:px-6 relative z-10 max-w-6xl mx-auto">
+                <div className="grid md:grid-cols-2 gap-12 items-center">
+                    {/* Left Column: Heading & Info */}
+                    <motion.div
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        className="space-y-6"
+                    >
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 mb-4">
+                            <Terminal className="w-3 h-3 text-primary" />
+                            <span className="text-[10px] font-mono text-primary uppercase tracking-widest">Available for hire</span>
                         </div>
-                        <div className="text-[10px] font-mono text-primary/60 flex items-center gap-2 uppercase tracking-widest">
-                            <Terminal className="w-3 h-3" /> Get in Touch
+                        <h2 className="text-4xl md:text-6xl font-bold tracking-tighter text-white uppercase">
+                            Get in <span className="text-primary">Touch</span>
+                        </h2>
+                        <p className="text-lg text-muted-foreground max-w-[450px] leading-relaxed">
+                            Have a project in mind or just want to chat about AI and product? I'm always open to discussing new opportunities and innovative ideas.
+                        </p>
+
+                        <div className="pt-8 space-y-4">
+                            <div className="flex items-center gap-4 text-muted-foreground hover:text-primary transition-colors cursor-pointer group">
+                                <div className="p-3 rounded-xl bg-white/5 border border-white/10 group-hover:border-primary/30 transition-all">
+                                    <Send className="w-5 h-5" />
+                                </div>
+                                <div>
+                                    <p className="text-xs uppercase tracking-widest text-primary/60 font-mono">Launch a thread</p>
+                                    <p className="text-white font-medium">anurag.mallick@iiml.org</p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                    </motion.div>
 
-                    <div className="p-8 md:p-10">
-                        {isSent ? (
-                            <motion.div
-                                initial={{ opacity: 0, scale: 0.95 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                className="text-center py-12"
-                            >
-                                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                                    <Send className="w-8 h-8 text-primary" />
-                                </div>
-                                <h3 className="text-2xl font-bold text-white mb-2">Message Received</h3>
-                                <p className="text-muted-foreground mb-8">Thanks for reaching out. I'll get back to you soon.</p>
-                                <Button
-                                    variant="outline"
-                                    className="border-primary/30 text-primary hover:bg-primary/10"
-                                    onClick={() => setIsSent(false)}
+                    {/* Right Column: Form Card */}
+                    <motion.div
+                        initial={{ opacity: 0, x: 20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        className="border border-primary/20 bg-[#050505] backdrop-blur-md rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(0,243,255,0.05)]"
+                    >
+                        {/* Fake Browser Top Bar */}
+                        <div className="bg-primary/5 border-b border-white/5 p-4 flex items-center gap-2">
+                            <div className="w-2 h-2 rounded-full bg-[#ff5f57]" />
+                            <div className="w-2 h-2 rounded-full bg-[#ffbd2e]" />
+                            <div className="w-2 h-2 rounded-full bg-[#27c93f]" />
+                        </div>
+
+                        <div className="p-8">
+                            {isSent ? (
+                                <motion.div
+                                    initial={{ opacity: 0, scale: 0.95 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    className="text-center py-12"
                                 >
-                                    Send Another Message
-                                </Button>
-                            </motion.div>
-                        ) : (
-                            <form onSubmit={handleSubmit} className="space-y-6">
-                                <div className="space-y-2">
-                                    <label className="text-[10px] uppercase tracking-[0.2em] text-primary/60 font-medium">Your Name</label>
-                                    <input
-                                        type="text"
-                                        required
-                                        value={formState.name}
-                                        onChange={(e) => setFormState({ ...formState, name: e.target.value })}
-                                        className="w-full bg-white/[0.02] border border-white/10 rounded-xl p-4 text-white placeholder:text-white/10 focus:outline-none focus:border-primary/50 focus:bg-primary/[0.02] transition-all"
-                                        placeholder="Enter your name"
-                                    />
-                                </div>
+                                    <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                                        <Send className="w-8 h-8 text-primary" />
+                                    </div>
+                                    <h3 className="text-2xl font-bold text-white mb-2">Message Received</h3>
+                                    <p className="text-muted-foreground mb-8">Thanks for reaching out. I'll get back to you soon.</p>
+                                    <Button
+                                        variant="outline"
+                                        className="border-primary/30 text-primary hover:bg-primary/10"
+                                        onClick={() => setIsSent(false)}
+                                    >
+                                        Send Another Message
+                                    </Button>
+                                </motion.div>
+                            ) : (
+                                <form onSubmit={handleSubmit} className="space-y-6">
+                                    <div className="space-y-2">
+                                        <label className="text-[10px] uppercase tracking-[0.2em] text-primary/60 font-medium">Your Name</label>
+                                        <input
+                                            type="text"
+                                            required
+                                            value={formState.name}
+                                            onChange={(e) => setFormState({ ...formState, name: e.target.value })}
+                                            className="w-full bg-white/[0.02] border border-white/10 rounded-xl p-4 text-white placeholder:text-white/10 focus:outline-none focus:border-primary/50 focus:bg-primary/[0.02] transition-all"
+                                            placeholder="John Doe"
+                                        />
+                                    </div>
 
-                                <div className="space-y-2">
-                                    <label className="text-[10px] uppercase tracking-[0.2em] text-primary/60 font-medium">Email Address</label>
-                                    <input
-                                        type="email"
-                                        required
-                                        value={formState.email}
-                                        onChange={(e) => setFormState({ ...formState, email: e.target.value })}
-                                        className="w-full bg-white/[0.02] border border-white/10 rounded-xl p-4 text-white placeholder:text-white/10 focus:outline-none focus:border-primary/50 focus:bg-primary/[0.02] transition-all"
-                                        placeholder="Enter your email"
-                                    />
-                                </div>
+                                    <div className="space-y-2">
+                                        <label className="text-[10px] uppercase tracking-[0.2em] text-primary/60 font-medium">Email Address</label>
+                                        <input
+                                            type="email"
+                                            required
+                                            value={formState.email}
+                                            onChange={(e) => setFormState({ ...formState, email: e.target.value })}
+                                            className="w-full bg-white/[0.02] border border-white/10 rounded-xl p-4 text-white placeholder:text-white/10 focus:outline-none focus:border-primary/50 focus:bg-primary/[0.02] transition-all"
+                                            placeholder="john@example.com"
+                                        />
+                                    </div>
 
-                                <div className="space-y-2">
-                                    <label className="text-[10px] uppercase tracking-[0.2em] text-primary/60 font-medium">Message</label>
-                                    <textarea
-                                        required
-                                        value={formState.message}
-                                        onChange={(e) => setFormState({ ...formState, message: e.target.value })}
-                                        className="w-full bg-white/[0.02] border border-white/10 rounded-xl p-4 text-white placeholder:text-white/10 focus:outline-none focus:border-primary/50 focus:bg-primary/[0.02] transition-all min-h-[150px] resize-none"
-                                        placeholder="How can I help you?"
-                                    />
-                                </div>
+                                    <div className="space-y-2">
+                                        <label className="text-[10px] uppercase tracking-[0.2em] text-primary/60 font-medium">Message</label>
+                                        <textarea
+                                            required
+                                            value={formState.message}
+                                            onChange={(e) => setFormState({ ...formState, message: e.target.value })}
+                                            className="w-full bg-white/[0.02] border border-white/10 rounded-xl p-4 text-white placeholder:text-white/10 focus:outline-none focus:border-primary/50 focus:bg-primary/[0.02] transition-all min-h-[150px] resize-none"
+                                            placeholder="How can I help you?"
+                                        />
+                                    </div>
 
-                                <Button
-                                    type="submit"
-                                    size="lg"
-                                    variant="neon"
-                                    className="w-full mt-4 font-bold tracking-widest uppercase text-xs h-14"
-                                    isLoading={isSubmitting}
-                                >
-                                    {!isSubmitting && <Send className="w-4 h-4 mr-2" />}
-                                    {isSubmitting ? "Sending..." : "Send Message"}
-                                </Button>
-                            </form>
-                        )}
-                    </div>
-                </motion.div>
+                                    <Button
+                                        type="submit"
+                                        size="lg"
+                                        variant="neon"
+                                        className="w-full mt-4 font-bold tracking-widest uppercase text-xs h-14"
+                                        isLoading={isSubmitting}
+                                    >
+                                        {!isSubmitting && <Send className="w-4 h-4 mr-2" />}
+                                        {isSubmitting ? "Sending..." : "Send Message"}
+                                    </Button>
+                                </form>
+                            )}
+                        </div>
+                    </motion.div>
+                </div>
             </div>
         </section>
     );
