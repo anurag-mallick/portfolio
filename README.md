@@ -59,4 +59,4 @@ The site is deployed on **Cloudflare Pages**.
 5. Deploy!
 
 ---
-Developed by **Antigravity AI** for Anurag Mallick.
+Developed by Anurag Mallick.
