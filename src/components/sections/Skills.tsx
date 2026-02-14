@@ -1,136 +1,140 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState } from "react";
 import { cn } from "@/lib/utils";
+import { Award, Code2, Globe2, ShieldCheck, Zap } from "lucide-react";
 
-const skillClusters = [
-    {
-        id: "product",
-        name: "Product & Strategy",
-        x: 20, y: 30,
-        skills: ["Product Ownership", "Program Management", "Agile", "UX", "Requirement Gathering", "User Research", "Data Analytics", "Design Thinking"]
-    },
-    {
-        id: "tech",
-        name: "Technical Tools",
-        x: 80, y: 30,
-        skills: ["Jira", "Figma", "SQL", "Tableau", "PowerBI", "SPSS", "QlikSense", "Balsamiq"]
-    },
-    {
-        id: "domain",
-        name: "Domain Expertise",
-        x: 50, y: 70,
-        skills: ["India Payroll", "Global Payroll (EOR)", "Financial Compliance", "SaaS Solutions", "AI/ML Integration", "Workflow Automation", "API Strategy"]
-    },
-    {
-        id: "core",
-        name: "Core Competencies",
-        x: 50, y: 40, // Central node
-        skills: ["Stakeholder Alignment", "Leadership", "Data Visualization", "Roadmapping", "Cloud Integration", "Process Improvement"]
-    }
+const coreCompetencies = [
+    "Product Ownership", "Program Management", "Agile", "User Experience (UX)",
+    "Requirement Gathering", "User Research", "Data Analytics", "Process Improvement",
+    "Stakeholder Alignment", "Leadership", "Data Visualization", "Design Thinking",
+    "Product Roadmapping", "SaaS Solutions", "Cloud Integration", "API Integration"
+];
+
+const technicalSkills = [
+    { name: "Jira", level: 95 },
+    { name: "Figma", level: 85 },
+    { name: "SQL", level: 90 },
+    { name: "Tableau", level: 88 },
+    { name: "PowerBI", level: 85 },
+    { name: "SPSS", level: 80 },
+    { name: "QlikSense", level: 75 },
+    { name: "Balsamiq", level: 90 }
+];
+
+const certifications = [
+    "Lean Six Sigma Green Belt",
+    "Advanced Google Analytics",
+    "Design Thinking (Atyaasaa)"
 ];
 
 export function Skills() {
-    const [activeCluster, setActiveCluster] = useState<string | null>(null);
-
     return (
-        <section id="skills" className="py-24 bg-background relative overflow-hidden min-h-[800px] flex items-center justify-center">
-            <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px]" />
+        <section id="skills" className="py-24 bg-black relative overflow-hidden">
+            {/* Background Ambience */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
 
-            <div className="container px-4 md:px-6 relative z-10 w-full h-full">
-                <div className="text-center mb-16">
-                    <h2 className="text-3xl md:text-5xl font-bold tracking-tighter text-foreground">
-                        Skills & <span className="text-primary">Competencies</span>
+            <div className="container px-4 md:px-6 relative z-10">
+                <div className="text-center mb-20">
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-mono mb-4"
+                    >
+                        <Zap className="w-3 h-3" /> SYSTEM_CAPABILITIES_v2.0
+                    </motion.div>
+                    <h2 className="text-4xl md:text-6xl font-bold tracking-tighter text-white mb-6">
+                        Expertise & <span className="text-primary">Artifacts</span>
                     </h2>
-                    <p className="text-muted-foreground mt-4">
-                        Comprehensive toolkit spanning product, technology, and domain expertise.
+                    <p className="text-muted-foreground max-w-[600px] mx-auto text-lg">
+                        A specialized toolkit for scaling global financial platforms and driving product innovation.
                     </p>
                 </div>
 
-                <div className="relative w-full aspect-square max-w-[800px] mx-auto hidden md:block">
-                    {/* SVG Connections */}
-                    <svg className="absolute inset-0 w-full h-full pointer-events-none">
-                        <motion.path
-                            d="M 20% 30% L 50% 40% L 80% 30% M 50% 40% L 50% 70%"
-                            stroke="rgba(0, 243, 255, 0.2)"
-                            strokeWidth="2"
-                            fill="none"
-                            initial={{ pathLength: 0 }}
-                            whileInView={{ pathLength: 1 }}
-                            transition={{ duration: 1.5, ease: "easeInOut" }}
-                        />
-
-                        {activeCluster === "product" && (
-                            <motion.path d="M 20% 30% L 50% 40%" stroke="rgba(0, 243, 255, 0.8)" strokeWidth="4" />
-                        )}
-                        {activeCluster === "tech" && (
-                            <motion.path d="M 80% 30% L 50% 40%" stroke="rgba(0, 243, 255, 0.8)" strokeWidth="4" />
-                        )}
-                        {activeCluster === "domain" && (
-                            <motion.path d="M 50% 70% L 50% 40%" stroke="rgba(0, 243, 255, 0.8)" strokeWidth="4" />
-                        )}
-                    </svg>
-
-                    {skillClusters.map((cluster) => (
-                        <div
-                            key={cluster.id}
-                            className="absolute transform -translate-x-1/2 -translate-y-1/2"
-                            style={{ left: `${cluster.x}%`, top: `${cluster.y}%` }}
-                        >
-                            <motion.div
-                                className={cn(
-                                    "relative w-24 h-24 rounded-full flex items-center justify-center text-center p-2 cursor-pointer transition-all duration-300 backdrop-blur-md glass border border-primary/30",
-                                    activeCluster === cluster.id ? "scale-125 border-primary shadow-[0_0_30px_rgba(0,243,255,0.4)] bg-primary/20" : "hover:scale-110 hover:border-primary/60"
-                                )}
-                                onClick={() => setActiveCluster(activeCluster === cluster.id ? null : cluster.id)}
-                                onHoverStart={() => setActiveCluster(cluster.id)}
-                                initial={{ scale: 0 }}
-                                whileInView={{ scale: 1 }}
-                                transition={{ type: "spring", bounce: 0.5 }}
-                            >
-                                <span className="text-xs font-bold">{cluster.name}</span>
-
-                                {/* Orbiting particles */}
-                                <div className="absolute inset-0 rounded-full animate-spin-slow border-t border-primary/50 opacity-0 hover:opacity-100 transition-opacity" />
-                            </motion.div>
-
-                            {/* Expanded Skills */}
-                            {activeCluster === cluster.id && (
-                                <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-full pt-4 w-80 pointer-events-none z-20">
-                                    <motion.div
-                                        initial={{ opacity: 0, y: 10 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        className="flex flex-wrap justify-center gap-2 bg-black/80 p-4 rounded-lg border border-primary/20 backdrop-blur-xl"
-                                    >
-                                        {cluster.skills.map((skill, i) => (
-                                            <span key={i} className="bg-primary/10 border border-primary/40 text-primary text-xs px-2 py-1 rounded-full shadow-sm">
-                                                {skill}
-                                            </span>
-                                        ))}
-                                    </motion.div>
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                    {/* Left Column: Core Competencies */}
+                    <div className="lg:col-span-7 space-y-8">
+                        <div className="relative group">
+                            <div className="absolute -inset-0.5 bg-gradient-to-r from-primary/20 to-blue-500/20 rounded-2xl blur opacity-30 group-hover:opacity-100 transition duration-1000"></div>
+                            <div className="relative bg-[#050505] border border-white/10 p-8 rounded-2xl">
+                                <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
+                                    <Globe2 className="text-primary w-5 h-5" /> Core Competencies
+                                </h3>
+                                <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                                    {coreCompetencies.map((skill, i) => (
+                                        <motion.div
+                                            key={i}
+                                            initial={{ opacity: 0, x: -10 }}
+                                            whileInView={{ opacity: 1, x: 0 }}
+                                            transition={{ delay: i * 0.05 }}
+                                            className="flex items-center gap-2 group/item"
+                                        >
+                                            <div className="w-1.5 h-1.5 rounded-full bg-primary/40 group-hover/item:bg-primary transition-colors" />
+                                            <span className="text-sm text-gray-400 group-hover/item:text-white transition-colors">{skill}</span>
+                                        </motion.div>
+                                    ))}
                                 </div>
-                            )}
-                        </div>
-                    ))}
-                </div>
-
-                {/* Mobile Fallback - Grid List */}
-                <div className="grid grid-cols-1 md:hidden gap-6">
-                    {skillClusters.map((cluster) => (
-                        <div key={cluster.id} className="border border-white/10 p-6 rounded-lg bg-white/5">
-                            <h3 className="text-lg font-bold mb-4 text-primary">{cluster.name}</h3>
-                            <div className="flex flex-wrap gap-2">
-                                {cluster.skills.map((skill, i) => (
-                                    <span key={i} className="bg-white/5 px-2 py-1 rounded text-sm text-muted-foreground">
-                                        {skill}
-                                    </span>
-                                ))}
                             </div>
                         </div>
-                    ))}
-                </div>
 
+                        {/* Certifications Card */}
+                        <div className="relative group">
+                            <div className="relative bg-[#050505] border border-white/10 p-8 rounded-2xl overflow-hidden">
+                                <div className="absolute top-0 right-0 p-4 opacity-10">
+                                    <Award className="w-24 h-24 text-primary" />
+                                </div>
+                                <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
+                                    <ShieldCheck className="text-primary w-5 h-5" /> Certifications
+                                </h3>
+                                <div className="space-y-4">
+                                    {certifications.map((cert, i) => (
+                                        <div key={i} className="flex items-center justify-between border-b border-white/5 pb-2 last:border-0">
+                                            <span className="text-gray-300 text-sm">{cert}</span>
+                                            <span className="text-[10px] font-mono text-primary/60 uppercase">VERIFIED_AUTH</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Right Column: Technical Tools */}
+                    <div className="lg:col-span-5">
+                        <div className="relative h-full">
+                            <div className="absolute -inset-0.5 bg-gradient-to-b from-primary/20 to-purple-500/20 rounded-2xl blur opacity-20 transition duration-1000"></div>
+                            <div className="relative bg-[#050505] border border-white/10 p-8 rounded-2xl h-full">
+                                <h3 className="text-xl font-bold text-white mb-8 flex items-center gap-2">
+                                    <Code2 className="text-primary w-5 h-5" /> Technical Stack
+                                </h3>
+                                <div className="space-y-8">
+                                    {technicalSkills.map((skill, i) => (
+                                        <div key={i} className="space-y-2">
+                                            <div className="flex justify-between text-sm">
+                                                <span className="text-gray-300">{skill.name}</span>
+                                                <span className="text-primary/60 font-mono text-xs">{skill.level}%</span>
+                                            </div>
+                                            <div className="h-1 w-full bg-white/5 rounded-full overflow-hidden">
+                                                <motion.div
+                                                    initial={{ width: 0 }}
+                                                    whileInView={{ width: `${skill.level}%` }}
+                                                    transition={{ duration: 1.5, ease: "easeOut" }}
+                                                    className="h-full bg-gradient-to-r from-primary/50 to-primary shadow-[0_0_10px_rgba(0,243,255,0.4)]"
+                                                />
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+
+                                <div className="mt-12 p-4 rounded-lg bg-primary/5 border border-primary/10">
+                                    <p className="text-[10px] font-mono text-primary/70 leading-relaxed uppercase tracking-wider">
+                                        Data-driven product management workflow enabled.
+                                        Systems optimized for accuracy and scale.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     );

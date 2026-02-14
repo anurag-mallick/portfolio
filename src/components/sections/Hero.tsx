@@ -52,6 +52,12 @@ export function Hero() {
     const containerRef = useRef<HTMLDivElement>(null);
     const { scrollY } = useScroll();
     const y = useTransform(scrollY, [0, 500], [0, 200]);
+    const scrollToSection = (id: string) => {
+        const element = document.getElementById(id);
+        if (element) {
+            element.scrollIntoView({ behavior: "smooth" });
+        }
+    };
 
     return (
         <section
@@ -118,7 +124,7 @@ export function Hero() {
                         transition={{ duration: 0.5, delay: 0.8 }}
                         className="flex flex-col sm:flex-row gap-4"
                     >
-                        <Button variant="neon" size="lg" className="group">
+                        <Button variant="neon" size="lg" className="group" onClick={() => scrollToSection('experience')}>
                             Enter Portfolio
                             <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                         </Button>
