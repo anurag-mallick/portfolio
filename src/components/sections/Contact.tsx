@@ -18,10 +18,31 @@ export function Contact() {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsSubmitting(true);
-        // Simulate API call for static site
-        await new Promise(resolve => setTimeout(resolve, 1500));
-        setIsSubmitting(false);
-        setIsSent(true);
+
+        try {
+            const formspreeId = process.env.NEXT_PUBLIC_FORMSPREE_ID;
+            if (!formspreeId) {
+                console.warn("Formspree ID not found. Using simulation.");
+                await new Promise(resolve => setTimeout(resolve, 1500));
+            } else {
+                const response = await fetch(`https://formspree.io/f/${formspreeId}`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(formState)
+                });
+
+                if (!response.ok) throw new Error("Failed to send message");
+            }
+
+            setIsSent(true);
+        } catch (error) {
+            console.error("Error sending email:", error);
+            alert("Sorry, there was an error sending your message. Please try again later.");
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     return (
