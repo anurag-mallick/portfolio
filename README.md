@@ -3,8 +3,7 @@
 A premium, high-performance portfolio website built with **Next.js 15**, **Tailwind CSS**, and **Framer Motion**. Designed to showcase professional expertise in Product Management, AI Integration, and Financial Infrastructure.
 
 ## 🚀 Live Preview
-The site is deployed on **Cloudflare Pages**. 
-*(Inert your Cloudflare URL here once deployed)*
+The site is live at: **[https://anurag-mallick.pages.dev](https://anurag-mallick.pages.dev)**
 
 ## 🛠️ Technical Stack
 

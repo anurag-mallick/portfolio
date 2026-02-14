@@ -301,7 +301,7 @@ export function Experience() {
     );
 }
 
-function ExperienceCard({ exp, index, viewMode }: { exp: typeof experiences[0], index: number, viewMode: 'grid' | 'timeline' }) {
+function ExperienceCard({ exp, index, viewMode }: { exp: typeof experiences[0] & { domain?: string }, index: number, viewMode: 'grid' | 'timeline' }) {
     const [isHovered, setIsHovered] = useState(false);
 
     return (
