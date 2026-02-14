@@ -20,25 +20,33 @@ export function Contact() {
         setIsSubmitting(true);
 
         try {
-            const formspreeId = process.env.NEXT_PUBLIC_FORMSPREE_ID;
-            if (!formspreeId) {
-                console.warn("Formspree ID not found. Using simulation.");
+            const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
+
+            if (!accessKey) {
+                console.warn("Web3Forms Access Key not found. Using simulation.");
                 await new Promise(resolve => setTimeout(resolve, 1500));
             } else {
-                const response = await fetch(`https://formspree.io/f/${formspreeId}`, {
+                const response = await fetch("https://api.web3forms.com/submit", {
                     method: "POST",
                     headers: {
-                        "Content-Type": "application/json"
+                        "Content-Type": "application/json",
+                        "Accept": "application/json"
                     },
-                    body: JSON.stringify(formState)
+                    body: JSON.stringify({
+                        ...formState,
+                        access_key: accessKey,
+                        subject: `New Portfolio Message from ${formState.name}`,
+                        from_name: "Anurag Mallick Portfolio",
+                    })
                 });
 
-                if (!response.ok) throw new Error("Failed to send message");
+                const result = await response.json();
+                if (!response.ok || !result.success) throw new Error(result.message || "Failed to send message");
             }
 
             setIsSent(true);
         } catch (error) {
-            console.error("Error sending email:", error);
+            console.error("Error sending message:", error);
             alert("Sorry, there was an error sending your message. Please try again later.");
         } finally {
             setIsSubmitting(false);
