@@ -21,13 +21,13 @@ export function Footer() {
                     <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
                         <Github className="h-5 w-5" />
                     </Link>
-                    <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                    <Link href="https://www.linkedin.com/in/anuragmallick901/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
                         <Linkedin className="h-5 w-5" />
                     </Link>
                     <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
                         <Twitter className="h-5 w-5" />
                     </Link>
-                    <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                    <Link href="mailto:anurag.mallick@iiml.org" className="text-muted-foreground hover:text-primary transition-colors">
                         <Mail className="h-5 w-5" />
                     </Link>
                 </div>

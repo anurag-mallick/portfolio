@@ -3,6 +3,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { ArrowRight, FileText, Linkedin } from "lucide-react";
+import Link from "next/link";
 import React, { useRef, useState, useEffect } from "react";
 
 function Particle({ index }: { index: number }) {
@@ -125,10 +126,12 @@ export function Hero() {
                             <FileText className="mr-2 h-4 w-4" />
                             View Resume
                         </Button>
-                        <Button variant="ghost" size="lg">
-                            <Linkedin className="mr-2 h-4 w-4" />
-                            Connect
-                        </Button>
+                        <Link href="https://www.linkedin.com/in/anuragmallick901/" target="_blank" rel="noopener noreferrer">
+                            <Button variant="ghost" size="lg">
+                                <Linkedin className="mr-2 h-4 w-4" />
+                                Connect
+                            </Button>
+                        </Link>
                     </motion.div>
                 </div>
             </div>
