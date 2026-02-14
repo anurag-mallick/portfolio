@@ -128,10 +128,12 @@ export function Hero() {
                             Enter Portfolio
                             <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                         </Button>
-                        <Button variant="outline" size="lg">
-                            <FileText className="mr-2 h-4 w-4" />
-                            View Resume
-                        </Button>
+                        <Link href="https://drive.google.com/file/d/1KmV8TzTGY9cDsypeo5xT9ZcNRcoKeg9F/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+                            <Button variant="outline" size="lg">
+                                <FileText className="mr-2 h-4 w-4" />
+                                View Resume
+                            </Button>
+                        </Link>
                         <Link href="https://www.linkedin.com/in/anuragmallick901/" target="_blank" rel="noopener noreferrer">
                             <Button variant="ghost" size="lg">
                                 <Linkedin className="mr-2 h-4 w-4" />
