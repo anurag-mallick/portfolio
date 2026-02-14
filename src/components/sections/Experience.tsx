@@ -4,15 +4,22 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Card } from "@/components/ui/Card";
 import { Calendar, MapPin, ChevronRight, GraduationCap, Briefcase } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 // Logo Component with Fallback
 function Logo({ src, domain, initial, color, className, bgClass = "bg-white" }: { src?: string, domain?: string, initial: string, color: string, className?: string, bgClass?: string }) {
     const [error, setError] = useState(false);
     const [loaded, setLoaded] = useState(false);
+    const imgRef = React.useRef<HTMLImageElement>(null);
 
     // Prioritize direct src, then domain (Clearbit), then fallback
     const logoSource = src || (domain ? `https://logo.clearbit.com/${domain}` : null);
+
+    React.useEffect(() => {
+        if (imgRef.current?.complete) {
+            setLoaded(true);
+        }
+    }, [logoSource]);
 
     if (!logoSource || error) {
         return (
@@ -34,6 +41,7 @@ function Logo({ src, domain, initial, color, className, bgClass = "bg-white" }: 
                 </div>
             )}
             <img
+                ref={imgRef}
                 src={logoSource}
                 alt={`${initial} Logo`}
                 className={cn("w-full h-full object-contain transition-opacity duration-300", loaded ? "opacity-100" : "opacity-0")}
@@ -96,7 +104,7 @@ const experiences = [
         description: "Owned logistics solutions, scaling partners and revenue.",
         logoColor: "bg-[#7143e1]", // Shiprocket Purple
         logoInitial: "S",
-        logoUrl: "https://www.shiprocket.in/wp-content/uploads/2021/04/shiprocket_dark.png",
+        logoUrl: "https://upload.wikimedia.org/wikipedia/commons/e/e5/SR-logo-wiki.png",
         logoBg: "bg-white",
         achievements: [
             "Co-developed end-to-end integration of logistics aggregator Shiprocket & LMS, increasing logistics partners from 4 to 17+ and reducing serviceability issues by 95%.",
@@ -136,7 +144,7 @@ const experiences = [
         description: "Master of Business Administration (73.2%).",
         logoColor: "bg-[#0b5d1e]",
         logoInitial: "IIM",
-        logoUrl: "https://www.iiml.ac.in/themes/awesome_zymphonies_theme/images/foot-logo.png",
+        logoUrl: "https://upload.wikimedia.org/wikipedia/en/thumb/b/b3/Indian_Institute_of_Management_Lucknow_Logo.png/220px-Indian_Institute_of_Management_Lucknow_Logo.png",
         logoBg: "bg-white",
         achievements: [
             "Live Project (Artpillz): Developed predictive pricing model, reducing costs by 20% for a B2B media start-up.",
@@ -173,7 +181,7 @@ const experiences = [
         description: "Bachelor of Technology (7.52/10).",
         logoColor: "bg-[#8b0000]",
         logoInitial: "NIT",
-        domain: "vnit.ac.in",
+        logoUrl: "https://vnit.ac.in/wp-content/themes/vnit/images/logo.png",
         logoBg: "bg-white",
         achievements: [],
         type: "education"
@@ -218,8 +226,10 @@ const experiences = [
 ];
 
 export function Experience() {
-    const [activeId, setActiveId] = useState<string | null>(null);
     const [viewMode, setViewMode] = useState<'grid' | 'timeline'>('timeline');
+
+    const workExperiences = experiences.filter(exp => exp.type === 'work');
+    const educationExperiences = experiences.filter(exp => exp.type === 'education');
 
     return (
         <section id="experience" className="py-24 bg-black relative">
@@ -228,8 +238,8 @@ export function Experience() {
             <div className="container px-4 md:px-6 relative z-10">
                 <div className="flex flex-col md:flex-row justify-between items-center mb-16 gap-4">
                     <div>
-                        <h2 className="text-3xl md:text-5xl font-bold tracking-tighter text-white">
-                            Experience <span className="text-primary">& Education</span>
+                        <h2 className="text-3xl md:text-5xl font-bold tracking-tighter text-white uppercase">
+                            Professional <span className="text-primary">Experience</span>
                         </h2>
                         <p className="text-muted-foreground mt-2">
                             A journey of scaling platforms and financial infrastructure.
@@ -258,105 +268,148 @@ export function Experience() {
                     </div>
                 </div>
 
-                <div className={cn(
-                    "grid gap-8",
-                    viewMode === 'grid' ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3" : "grid-cols-1"
-                )}>
-                    {experiences.map((exp, index) => (
-                        <motion.div
-                            key={exp.id}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ delay: index * 0.1 }}
-                            viewport={{ once: true }}
-                            className={cn(viewMode === 'timeline' ? "md:pl-8 md:border-l border-primary/20 relative" : "")}
-                        >
-                            {viewMode === 'timeline' && (
-                                <div className="absolute left-[-5px] top-0 w-2.5 h-2.5 rounded-full bg-primary shadow-[0_0_10px_rgba(0,243,255,0.8)] hidden md:block" />
-                            )}
+                {/* Professional Experience Section */}
+                <div className="mb-20">
+                    <h3 className="text-xl font-bold text-white mb-10 flex items-center gap-2 border-l-4 border-primary pl-4">
+                        PROFESSIONAL EXPERIENCE
+                    </h3>
+                    <div className={cn(
+                        "grid gap-8",
+                        viewMode === 'grid' ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3" : "grid-cols-1"
+                    )}>
+                        {workExperiences.map((exp, index) => (
+                            <ExperienceCard key={exp.id} exp={exp} index={index} viewMode={viewMode} />
+                        ))}
+                    </div>
+                </div>
 
-                            <Card
-                                className={cn(
-                                    "cursor-pointer group hover:bg-white/5 transition-all duration-300 overflow-hidden",
-                                    activeId === exp.id ? "ring-1 ring-primary/50 bg-white/5" : ""
-                                )}
-                                onClick={() => setActiveId(activeId === exp.id ? null : exp.id)}
-                            >
-                                <div className="p-6">
-                                    <div className="flex justify-between items-start mb-4">
-                                        <div className="flex items-start gap-4">
-                                            {/* Logo / Initials Placeholder */}
-                                            <Logo
-                                                src={exp.logoUrl}
-                                                domain={exp.domain}
-                                                initial={exp.logoInitial}
-                                                color={exp.logoColor}
-                                                bgClass={exp.logoBg}
-                                            />
-
-                                            <div>
-                                                <h3 className="text-xl font-bold text-white group-hover:text-primary transition-colors">
-                                                    {exp.role}
-                                                </h3>
-                                                <p className="text-secondary font-medium">{exp.company}</p>
-                                            </div>
-                                        </div>
-
-                                        {exp.type === 'education' ? (
-                                            <div className="bg-primary/10 p-2 rounded-full hidden sm:block">
-                                                <GraduationCap className="w-5 h-5 text-primary" />
-                                            </div>
-                                        ) : (
-                                            <div className="bg-primary/10 p-2 rounded-full hidden sm:block">
-                                                <Briefcase className="w-5 h-5 text-primary" />
-                                            </div>
-                                        )}
-                                    </div>
-
-                                    <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-sm text-muted-foreground mb-4">
-                                        <span className="flex items-center gap-1">
-                                            <Calendar className="w-4 h-4" />
-                                            {exp.period}
-                                        </span>
-                                        <span className="flex items-center gap-1">
-                                            <MapPin className="w-4 h-4" />
-                                            {exp.location}
-                                        </span>
-                                    </div>
-
-                                    <p className="text-sm text-muted-foreground mb-4 line-clamp-2 group-hover:line-clamp-none transition-all">
-                                        {exp.description}
-                                    </p>
-
-                                    <AnimatePresence>
-                                        {activeId === exp.id && (
-                                            <motion.div
-                                                initial={{ height: 0, opacity: 0 }}
-                                                animate={{ height: "auto", opacity: 1 }}
-                                                exit={{ height: 0, opacity: 0 }}
-                                                className="overflow-hidden"
-                                            >
-                                                <ul className="space-y-3 mt-4 text-sm text-gray-300 border-t border-white/10 pt-4">
-                                                    {exp.achievements.map((achievement, i) => (
-                                                        <li key={i} className="flex gap-2 items-start">
-                                                            <span className="text-primary mt-1.5 text-xs">▹</span>
-                                                            <span className="leading-relaxed">{achievement}</span>
-                                                        </li>
-                                                    ))}
-                                                </ul>
-                                            </motion.div>
-                                        )}
-                                    </AnimatePresence>
-
-                                    <div className="mt-4 flex items-center text-primary text-xs font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all transform translate-x-[-10px] group-hover:translate-x-0">
-                                        {activeId === exp.id ? "Show Less" : "View Details"} <ChevronRight className="w-3 h-3 ml-1" />
-                                    </div>
-                                </div>
-                            </Card>
-                        </motion.div>
-                    ))}
+                <div id="education">
+                    <h3 className="text-xl font-bold text-white mb-10 flex items-center gap-2 border-l-4 border-secondary pl-4">
+                        EDUCATION & ACADEMIC FOUNDATION
+                    </h3>
+                    <div className={cn(
+                        "grid gap-8",
+                        viewMode === 'grid' ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3" : "grid-cols-1"
+                    )}>
+                        {educationExperiences.map((exp, index) => (
+                            <ExperienceCard key={exp.id} exp={exp} index={index} viewMode={viewMode} />
+                        ))}
+                    </div>
                 </div>
             </div>
         </section>
+    );
+}
+
+function ExperienceCard({ exp, index, viewMode }: { exp: typeof experiences[0], index: number, viewMode: 'grid' | 'timeline' }) {
+    const [isHovered, setIsHovered] = useState(false);
+
+    return (
+        <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: index * 0.1 }}
+            viewport={{ once: true }}
+            className={cn(viewMode === 'timeline' ? "md:pl-8 md:border-l border-white/5 relative" : "")}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+        >
+            {viewMode === 'timeline' && (
+                <div className={cn(
+                    "absolute left-[-5px] top-0 w-2.5 h-2.5 rounded-full transition-all duration-300 hidden md:block",
+                    isHovered ? "bg-primary shadow-[0_0_15px_rgba(0,243,255,1)] scale-125" : "bg-white/20"
+                )} />
+            )}
+
+            <Card
+                className={cn(
+                    "group transition-all duration-500 overflow-hidden relative",
+                    isHovered ? "ring-1 ring-primary/40 bg-white/5 shadow-[0_0_30px_rgba(0,243,255,0.05)] translate-x-1" : "bg-white/[0.02] border-white/5"
+                )}
+            >
+                <div className="p-6">
+                    <div className="flex justify-between items-start mb-4">
+                        <div className="flex items-start gap-4">
+                            <Logo
+                                src={exp.logoUrl}
+                                domain={exp.domain}
+                                initial={exp.logoInitial}
+                                color={exp.logoColor}
+                                bgClass={exp.logoBg}
+                                className={cn("transition-transform duration-500", isHovered ? "scale-110" : "")}
+                            />
+
+                            <div>
+                                <h3 className={cn("text-xl font-bold transition-colors duration-300", isHovered ? "text-primary" : "text-white")}>
+                                    {exp.role}
+                                </h3>
+                                <p className="text-secondary font-medium">{exp.company}</p>
+                            </div>
+                        </div>
+
+                        {exp.type === 'education' ? (
+                            <div className={cn("p-2 rounded-full hidden sm:block transition-colors", isHovered ? "bg-primary/20" : "bg-white/5")}>
+                                <GraduationCap className={cn("w-5 h-5 transition-colors", isHovered ? "text-primary" : "text-muted-foreground")} />
+                            </div>
+                        ) : (
+                            <div className={cn("p-2 rounded-full hidden sm:block transition-colors", isHovered ? "bg-primary/20" : "bg-white/5")}>
+                                <Briefcase className={cn("w-5 h-5 transition-colors", isHovered ? "text-primary" : "text-muted-foreground")} />
+                            </div>
+                        )}
+                    </div>
+
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-sm text-muted-foreground mb-4">
+                        <span className="flex items-center gap-1">
+                            <Calendar className="w-4 h-4" />
+                            {exp.period}
+                        </span>
+                        <span className="flex items-center gap-1">
+                            <MapPin className="w-4 h-4" />
+                            {exp.location}
+                        </span>
+                    </div>
+
+                    <p className="text-sm text-muted-foreground mb-4 leading-relaxed line-clamp-2 group-hover:line-clamp-none transition-all duration-500">
+                        {exp.description}
+                    </p>
+
+                    <AnimatePresence>
+                        {(isHovered && exp.achievements.length > 0) && (
+                            <motion.div
+                                initial={{ height: 0, opacity: 0 }}
+                                animate={{ height: "auto", opacity: 1 }}
+                                exit={{ height: 0, opacity: 0 }}
+                                transition={{ duration: 0.4, ease: "easeOut" }}
+                                className="overflow-hidden"
+                            >
+                                <ul className="space-y-3 mt-4 text-sm text-gray-300 border-t border-white/10 pt-4">
+                                    {exp.achievements.map((achievement, i) => (
+                                        <motion.li
+                                            key={i}
+                                            initial={{ opacity: 0, x: -10 }}
+                                            animate={{ opacity: 1, x: 0 }}
+                                            transition={{ delay: i * 0.05 }}
+                                            className="flex gap-2 items-start"
+                                        >
+                                            <span className="text-primary mt-1.5 text-xs">▹</span>
+                                            <span className="leading-relaxed">{achievement}</span>
+                                        </motion.li>
+                                    ))}
+                                </ul>
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
+
+                    {exp.achievements.length > 0 && (
+                        <div className={cn(
+                            "mt-4 flex items-center text-[10px] font-bold uppercase tracking-[0.2em] transition-all duration-500",
+                            isHovered ? "text-primary translate-x-2" : "text-muted-foreground/30"
+                        )}>
+                            {isHovered ? "Exploring Details" : "Hover to Expand"} <ChevronRight className={cn("w-3 h-3 ml-1 transition-transform", isHovered ? "rotate-90" : "")} />
+                        </div>
+                    )}
+                </div>
+            </Card>
+        </motion.div>
     );
 }
