@@ -17,19 +17,28 @@ export function Footer() {
                     </p>
                 </div>
 
-                <div className="flex gap-6">
-                    <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                        <Github className="h-5 w-5" />
+                <div className="flex flex-wrap items-center justify-center md:justify-start gap-6">
+                    <Link href="/apps/ping-pong" className="group flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-xs font-bold text-primary hover:bg-primary/20 transition-all">
+                        <span className="relative flex h-2 w-2">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                            <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                        </span>
+                        NEON PONG
                     </Link>
-                    <Link href="https://www.linkedin.com/in/anuragmallick901/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
-                        <Linkedin className="h-5 w-5" />
-                    </Link>
-                    <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                        <Twitter className="h-5 w-5" />
-                    </Link>
-                    <Link href="mailto:anurag.mallick@iiml.org" className="text-muted-foreground hover:text-primary transition-colors">
-                        <Mail className="h-5 w-5" />
-                    </Link>
+                    <div className="flex gap-6">
+                        <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                            <Github className="h-5 w-5" />
+                        </Link>
+                        <Link href="https://www.linkedin.com/in/anuragmallick901/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+                            <Linkedin className="h-5 w-5" />
+                        </Link>
+                        <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                            <Twitter className="h-5 w-5" />
+                        </Link>
+                        <Link href="mailto:anurag.mallick@iiml.org" className="text-muted-foreground hover:text-primary transition-colors">
+                            <Mail className="h-5 w-5" />
+                        </Link>
+                    </div>
                 </div>
 
                 <p className="text-xs text-muted-foreground">
