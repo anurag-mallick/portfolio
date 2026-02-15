@@ -71,21 +71,23 @@ export function Hero() {
             {/* Background Elements */}
             <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
 
-            <div className="absolute inset-0 bg-primary/5 blur-[120px] rounded-full mix-blend-screen animate-pulse-slow pointer-events-none" />
+            {/* Aurora Effect (Subtle for non-terminal themes) */}
+            <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/20 blur-[100px] rounded-full mix-blend-screen animate-pulse-slow pointer-events-none opacity-50" />
+            <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-secondary/20 blur-[100px] rounded-full mix-blend-screen animate-pulse-slow pointer-events-none opacity-50" />
 
             {/* Floating Particles */}
-            {[...Array(20)].map((_, i) => (
+            {[...Array(30)].map((_, i) => (
                 <Particle key={i} />
             ))}
 
 
-            <div className="container relative z-10 px-4 md:px-6">
-                <div className="flex flex-col items-center text-center space-y-8">
+            <div className="theme-container theme-section relative z-10">
+                <div className="flex flex-col space-y-8">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5 }}
-                        className="inline-flex items-center rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-sm font-medium text-primary backdrop-blur-sm"
+                        className="inline-flex items-center rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-sm font-medium text-primary backdrop-blur-sm self-center"
                     >
                         <span className="flex h-2 w-2 rounded-full bg-primary mr-2 animate-pulse" />
                         Open for Innovation
@@ -95,7 +97,7 @@ export function Hero() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.2 }}
-                        className="text-5xl md:text-6xl lg:text-8xl font-bold tracking-tighter bg-clip-text text-transparent bg-gradient-to-b from-white to-white/60 leading-tight"
+                        className="text-5xl md:text-6xl lg:text-8xl font-bold tracking-tighter text-foreground leading-tight"
                     >
                         ANURAG MALLICK
                     </motion.h1>
@@ -104,7 +106,7 @@ export function Hero() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.4 }}
-                        className="h-auto md:h-12 overflow-hidden flex flex-col items-center"
+                        className="h-auto md:h-12 overflow-hidden flex flex-col"
                     >
                         <div className="animate-slide-up text-lg md:text-3xl font-light text-muted-foreground flex flex-col md:block items-center gap-1 md:gap-0">
                             <span className="text-primary">Product Manager</span>
@@ -117,7 +119,7 @@ export function Hero() {
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.5, delay: 0.6 }}
-                        className="max-w-[600px] text-muted-foreground md:text-xl px-4"
+                        className="max-w-[800px] mx-auto text-muted-foreground md:text-xl px-4"
                     >
                         Scaling Global Payroll Infrastructure & Integrating AI into Financial Workflows.
                     </motion.p>
@@ -126,7 +128,8 @@ export function Hero() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.8 }}
-                        className="flex flex-col sm:flex-row gap-3 md:gap-4 w-full sm:w-auto px-10 sm:px-0"
+                        className="flex flex-col sm:flex-row gap-3 md:gap-4 w-full sm:w-auto"
+                        style={{ justifyContent: 'var(--layout-align)' }}
                     >
                         <Button variant="neon" size="lg" className="group w-full sm:w-auto" onClick={() => scrollToSection('experience')}>
                             Enter Portfolio

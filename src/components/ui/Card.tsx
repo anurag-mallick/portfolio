@@ -22,11 +22,11 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
-                whileHover={neon ? {
-                    boxShadow: "0 0 25px rgba(0,243,255,0.2)",
-                    borderColor: "rgba(0,243,255,0.4)",
+                whileHover={{
+                    boxShadow: "0 0 calc(25px * var(--glow-intensity)) color-mix(in srgb, var(--primary) 20%, transparent)",
+                    borderColor: "color-mix(in srgb, var(--primary) 40%, transparent)",
                     y: -5
-                } : { y: -2 }}
+                }}
                 {...props}
             >
                 {children}

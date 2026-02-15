@@ -75,7 +75,7 @@ export function Impact() {
                     transition={{ duration: 0.6 }}
                     className="text-center mb-16"
                 >
-                    <h2 className="text-3xl md:text-5xl font-bold tracking-tighter text-white mb-4">
+                    <h2 className="text-3xl md:text-5xl font-bold tracking-tighter text-foreground mb-4">
                         Measurable <span className="text-primary">Impact</span>
                     </h2>
                     <p className="text-muted-foreground">Driving efficiency and growth through systems.</p>
@@ -83,14 +83,22 @@ export function Impact() {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
                     {metrics.map((metric, index) => (
-                        <div key={index} className="flex flex-col items-center text-center p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-primary/50 transition-colors w-full">
-                            {/* Circular Progress Indicator Logic could go here, simplified for clean impact */}
-                            <div className="mb-4">
-                                <Counter from={0} to={metric.value} prefix={metric.prefix} suffix={metric.suffix} />
+                        <motion.div
+                            key={index}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ delay: index * 0.1 }}
+                            viewport={{ once: true }}
+                        >
+                            {/* Replaced original div with a Card-like structure */}
+                            <div className="theme-card p-6 rounded-2xl bg-card border border-border hover:border-primary/50 transition-colors w-full flex flex-col items-center text-center">
+                                <div className="mb-4">
+                                    <Counter from={0} to={metric.value} prefix={metric.prefix} suffix={metric.suffix} />
+                                </div>
+                                <h3 className="text-lg font-medium text-primary mb-2">{metric.label}</h3>
+                                <p className="text-sm text-muted-foreground">{metric.description}</p>
                             </div>
-                            <h3 className="text-lg font-medium text-primary mb-2">{metric.label}</h3>
-                            <p className="text-sm text-muted-foreground">{metric.description}</p>
-                        </div>
+                        </motion.div>
                     ))}
                 </div>
             </div>

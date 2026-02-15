@@ -47,12 +47,12 @@ const certifications = [
 
 export function Skills() {
     return (
-        <section id="skills" className="py-24 bg-black relative overflow-hidden">
+        <section id="skills" className="theme-section bg-background relative overflow-hidden">
             {/* Background Ambience */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
 
-            <div className="container px-4 md:px-6 relative z-10">
-                <div className="text-center mb-20">
+            <div className="theme-container relative z-10">
+                <div className="mb-20">
                     <motion.div
                         initial={{ opacity: 0, scale: 0.9 }}
                         whileInView={{ opacity: 1, scale: 1 }}
@@ -60,10 +60,10 @@ export function Skills() {
                     >
                         <Zap className="w-3 h-3" /> SYSTEM_CAPABILITIES_v2.0
                     </motion.div>
-                    <h2 className="text-4xl md:text-6xl font-bold tracking-tighter text-white mb-6">
+                    <h2 className="text-4xl md:text-6xl font-bold tracking-tighter text-foreground mb-6">
                         Expertise & <span className="text-primary">Artifacts</span>
                     </h2>
-                    <p className="text-muted-foreground max-w-[600px] mx-auto text-lg">
+                    <p className="text-muted-foreground max-w-[600px] mx-auto text-lg text-center">
                         A specialized toolkit for scaling global financial platforms and driving product innovation.
                     </p>
                 </div>
@@ -73,8 +73,8 @@ export function Skills() {
                     <div className="lg:col-span-12">
                         <div className="relative group">
                             <div className="absolute -inset-0.5 bg-gradient-to-r from-primary/20 to-blue-500/20 rounded-2xl blur opacity-30 group-hover:opacity-100 transition duration-1000"></div>
-                            <div className="relative bg-[#050505] border border-white/10 p-8 rounded-2xl">
-                                <h3 className="text-xl font-bold text-white mb-8 flex items-center gap-2 border-b border-white/5 pb-4">
+                            <div className="theme-card p-8">
+                                <h3 className="text-xl font-bold text-foreground mb-8 flex items-center gap-2 border-b border-border pb-4">
                                     <Globe2 className="text-primary w-5 h-5" /> CORE COMPETENCIES
                                 </h3>
                                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -105,8 +105,8 @@ export function Skills() {
                     <div className="lg:col-span-7">
                         <div className="relative group h-full">
                             <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-500/10 to-primary/10 rounded-2xl blur opacity-20"></div>
-                            <div className="relative bg-[#050505] border border-white/10 p-8 rounded-2xl h-full">
-                                <h3 className="text-xl font-bold text-white mb-8 flex items-center gap-2 border-b border-white/5 pb-4">
+                            <div className="theme-card p-8 h-full">
+                                <h3 className="text-xl font-bold text-foreground mb-8 flex items-center gap-2 border-b border-border pb-4">
                                     <Code2 className="text-primary w-5 h-5" /> TECHNICAL SKILLS & TOOLS
                                 </h3>
                                 <div className="flex flex-wrap gap-3">
@@ -130,11 +130,11 @@ export function Skills() {
                     {/* Certifications */}
                     <div className="lg:col-span-5">
                         <div className="relative group h-full">
-                            <div className="relative bg-[#050505] border border-white/10 p-8 rounded-2xl h-full overflow-hidden">
-                                <div className="absolute -top-6 -right-6 opacity-5 rotate-12">
-                                    <Award className="w-32 h-32 text-primary" />
+                            <div className="theme-card p-8 h-full overflow-hidden">
+                                <div className="absolute -top-6 -right-6 opacity-5 rotate-12 text-primary">
+                                    <Award className="w-32 h-32" />
                                 </div>
-                                <h3 className="text-xl font-bold text-white mb-8 flex items-center gap-2 border-b border-white/5 pb-4">
+                                <h3 className="text-xl font-bold text-foreground mb-8 flex items-center gap-2 border-b border-border pb-4">
                                     <ShieldCheck className="text-primary w-5 h-5" /> CERTIFICATIONS
                                 </h3>
                                 <div className="space-y-4">

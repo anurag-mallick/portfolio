@@ -1,9 +1,10 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { Button } from "@/components/ui/Button";
-import { Send, Terminal } from "lucide-react";
+import { Card } from "@/components/ui/Card";
+import { Send, Terminal, Mail, MapPin, MessageSquare } from "lucide-react";
 
 export function Contact() {
     const [formState, setFormState] = useState({
@@ -14,7 +15,6 @@ export function Contact() {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSent, setIsSent] = useState(false);
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsSubmitting(true);
@@ -54,128 +54,137 @@ export function Contact() {
     };
 
     return (
-        <section id="contact" className="py-24 bg-black relative overflow-hidden flex items-center justify-center">
-            {/* Subtle background effect */}
-            <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,0,0.01)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,0,0.01)_1px,transparent_1px)] bg-[size:30px_30px]" />
+        <section id="contact" className="theme-section bg-background relative overflow-hidden">
+            <div className="absolute inset-0 bg-primary/2 blur-[150px] rounded-full pointer-events-none" />
 
-            <div className="container px-4 md:px-6 relative z-10 max-w-6xl mx-auto">
-                <div className="grid md:grid-cols-2 gap-12 items-center">
-                    {/* Left Column: Heading & Info */}
-                    <motion.div
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        className="space-y-6"
-                    >
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 mb-4">
-                            <Terminal className="w-3 h-3 text-primary" />
-                            <span className="text-[10px] font-mono text-primary uppercase tracking-widest">Available for hire</span>
-                        </div>
-                        <h2 className="text-4xl md:text-6xl font-bold tracking-tighter text-white uppercase">
-                            Get in <span className="text-primary">Touch</span>
-                        </h2>
-                        <p className="text-lg text-muted-foreground max-w-[450px] leading-relaxed">
-                            Have a project in mind or just want to chat about AI and product? I&apos;m always open to discussing new opportunities and innovative ideas.
-                        </p>
+            <div className="theme-container relative z-10">
+                <div className="max-w-6xl mx-auto">
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                        {/* Contact Info */}
+                        <div className="lg:col-span-5 space-y-12">
+                            <div>
+                                <motion.div
+                                    initial={{ opacity: 0, x: -20 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    className="flex items-center gap-2 text-primary font-mono text-xs mb-4"
+                                >
+                                    <Terminal size={14} /> ESTABLISH_CONNECTION
+                                </motion.div>
+                                <h2 className="text-4xl md:text-6xl font-bold tracking-tighter text-foreground mb-6">
+                                    Get in <span className="text-primary">Touch</span>
+                                </h2>
+                                <p className="text-muted-foreground text-lg leading-relaxed max-w-md">
+                                    Currently scaling global systems in Bangalore. Open for collaborations, speaking engagements, or discussing the future of AI in fintech.
+                                </p>
+                            </div>
 
-                        <div className="pt-8 space-y-4">
-                            <div className="flex items-center gap-4 text-muted-foreground hover:text-primary transition-colors cursor-pointer group">
-                                <div className="p-3 rounded-xl bg-white/5 border border-white/10 group-hover:border-primary/30 transition-all">
-                                    <Send className="w-5 h-5" />
+                            <div className="space-y-6">
+                                <div className="flex items-center gap-4 group">
+                                    <div className="p-3 rounded-xl bg-primary/5 border border-border group-hover:border-primary/50 transition-all">
+                                        <Mail className="w-6 h-6 text-primary" />
+                                    </div>
+                                    <div>
+                                        <p className="text-xs uppercase tracking-widest text-muted-foreground font-bold">Email Interface</p>
+                                        <p className="text-foreground font-medium">anurag.mallick@iiml.org</p>
+                                    </div>
                                 </div>
-                                <div>
-                                    <p className="text-xs uppercase tracking-widest text-primary/60 font-mono">Launch a thread</p>
-                                    <p className="text-white font-medium">anurag.mallick@iiml.org</p>
+
+                                <div className="flex items-center gap-4 group">
+                                    <div className="p-3 rounded-xl bg-primary/5 border border-border group-hover:border-primary/50 transition-all">
+                                        <MapPin className="w-6 h-6 text-primary" />
+                                    </div>
+                                    <div>
+                                        <p className="text-xs uppercase tracking-widest text-muted-foreground font-bold">Location</p>
+                                        <p className="text-foreground font-medium">Bangalore, India</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </motion.div>
 
-                    {/* Right Column: Form Card */}
-                    <motion.div
-                        initial={{ opacity: 0, x: 20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        className="border border-primary/20 bg-[#050505] backdrop-blur-md rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(0,243,255,0.05)]"
-                    >
-                        {/* Fake Browser Top Bar */}
-                        <div className="bg-primary/5 border-b border-white/5 p-4 flex items-center gap-2">
-                            <div className="w-2 h-2 rounded-full bg-[#ff5f57]" />
-                            <div className="w-2 h-2 rounded-full bg-[#ffbd2e]" />
-                            <div className="w-2 h-2 rounded-full bg-[#27c93f]" />
+                        {/* Form Card */}
+                        <div className="lg:col-span-7">
+                            <motion.div
+                                initial={{ opacity: 0, scale: 0.95 }}
+                                whileInView={{ opacity: 1, scale: 1 }}
+                                className="h-full"
+                            >
+                                <Card className="theme-card p-8 md:p-10 relative group h-full">
+                                    <AnimatePresence mode="wait">
+                                        {isSent ? (
+                                            <motion.div
+                                                key="success"
+                                                initial={{ opacity: 0, y: 10 }}
+                                                animate={{ opacity: 1, y: 0 }}
+                                                className="text-center py-12"
+                                            >
+                                                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                                                    <MessageSquare className="w-8 h-8 text-primary" />
+                                                </div>
+                                                <h3 className="text-2xl font-bold text-foreground mb-2">Message Transmitted</h3>
+                                                <p className="text-muted-foreground mb-8">Thanks for reaching out. I&apos;ll get back to you soon.</p>
+                                                <Button
+                                                    variant="outline"
+                                                    onClick={() => setIsSent(false)}
+                                                >
+                                                    Send Another Message
+                                                </Button>
+                                            </motion.div>
+                                        ) : (
+                                            <form key="form" onSubmit={handleSubmit} className="space-y-6">
+                                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                                    <div className="space-y-2">
+                                                        <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground ml-1">Full Name</label>
+                                                        <input
+                                                            type="text"
+                                                            required
+                                                            value={formState.name}
+                                                            onChange={(e) => setFormState({ ...formState, name: e.target.value })}
+                                                            placeholder="John Doe"
+                                                            className="w-full bg-muted border border-border rounded-xl px-4 py-4 text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all placeholder:text-muted-foreground/30"
+                                                        />
+                                                    </div>
+                                                    <div className="space-y-2">
+                                                        <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground ml-1">Email Address</label>
+                                                        <input
+                                                            type="email"
+                                                            required
+                                                            value={formState.email}
+                                                            onChange={(e) => setFormState({ ...formState, email: e.target.value })}
+                                                            placeholder="john@example.com"
+                                                            className="w-full bg-muted border border-border rounded-xl px-4 py-4 text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all placeholder:text-muted-foreground/30"
+                                                        />
+                                                    </div>
+                                                </div>
+
+                                                <div className="space-y-2">
+                                                    <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground ml-1">Message</label>
+                                                    <textarea
+                                                        required
+                                                        value={formState.message}
+                                                        onChange={(e) => setFormState({ ...formState, message: e.target.value })}
+                                                        placeholder="What's on your mind?"
+                                                        rows={5}
+                                                        className="w-full bg-muted border border-border rounded-xl px-4 py-4 text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all resize-none placeholder:text-muted-foreground/30"
+                                                    />
+                                                </div>
+
+                                                <Button
+                                                    type="submit"
+                                                    size="lg"
+                                                    variant="neon"
+                                                    className="w-full font-bold tracking-widest uppercase text-xs h-14"
+                                                    isLoading={isSubmitting}
+                                                >
+                                                    {!isSubmitting && <Send className="w-4 h-4 mr-2" />}
+                                                    {isSubmitting ? "TRANSMITTING..." : "EXECUTE_SEND"}
+                                                </Button>
+                                            </form>
+                                        )}
+                                    </AnimatePresence>
+                                </Card>
+                            </motion.div>
                         </div>
-
-                        <div className="p-8">
-                            {isSent ? (
-                                <motion.div
-                                    initial={{ opacity: 0, scale: 0.95 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    className="text-center py-12"
-                                >
-                                    <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                                        <Send className="w-8 h-8 text-primary" />
-                                    </div>
-                                    <h3 className="text-2xl font-bold text-white mb-2">Message Received</h3>
-                                    <p className="text-muted-foreground mb-8">Thanks for reaching out. I&apos;ll get back to you soon.</p>
-                                    <Button
-                                        variant="outline"
-                                        className="border-primary/30 text-primary hover:bg-primary/10"
-                                        onClick={() => setIsSent(false)}
-                                    >
-                                        Send Another Message
-                                    </Button>
-                                </motion.div>
-                            ) : (
-                                <form onSubmit={handleSubmit} className="space-y-6">
-                                    <div className="space-y-2">
-                                        <label className="text-[10px] uppercase tracking-[0.2em] text-primary/60 font-medium">Your Name</label>
-                                        <input
-                                            type="text"
-                                            required
-                                            value={formState.name}
-                                            onChange={(e) => setFormState({ ...formState, name: e.target.value })}
-                                            className="w-full bg-white/[0.02] border border-white/10 rounded-xl p-4 text-white placeholder:text-white/10 focus:outline-none focus:border-primary/50 focus:bg-primary/[0.02] transition-all"
-                                            placeholder="John Doe"
-                                        />
-                                    </div>
-
-                                    <div className="space-y-2">
-                                        <label className="text-[10px] uppercase tracking-[0.2em] text-primary/60 font-medium">Email Address</label>
-                                        <input
-                                            type="email"
-                                            required
-                                            value={formState.email}
-                                            onChange={(e) => setFormState({ ...formState, email: e.target.value })}
-                                            className="w-full bg-white/[0.02] border border-white/10 rounded-xl p-4 text-white placeholder:text-white/10 focus:outline-none focus:border-primary/50 focus:bg-primary/[0.02] transition-all"
-                                            placeholder="john@example.com"
-                                        />
-                                    </div>
-
-                                    <div className="space-y-2">
-                                        <label className="text-[10px] uppercase tracking-[0.2em] text-primary/60 font-medium">Message</label>
-                                        <textarea
-                                            required
-                                            value={formState.message}
-                                            onChange={(e) => setFormState({ ...formState, message: e.target.value })}
-                                            className="w-full bg-white/[0.02] border border-white/10 rounded-xl p-4 text-white placeholder:text-white/10 focus:outline-none focus:border-primary/50 focus:bg-primary/[0.02] transition-all min-h-[150px] resize-none"
-                                            placeholder="How can I help you?"
-                                        />
-                                    </div>
-
-                                    <Button
-                                        type="submit"
-                                        size="lg"
-                                        variant="neon"
-                                        className="w-full mt-4 font-bold tracking-widest uppercase text-xs h-14"
-                                        isLoading={isSubmitting}
-                                    >
-                                        {!isSubmitting && <Send className="w-4 h-4 mr-2" />}
-                                        {isSubmitting ? "Sending..." : "Send Message"}
-                                    </Button>
-                                </form>
-                            )}
-                        </div>
-                    </motion.div>
+                    </div>
                 </div>
             </div>
         </section>

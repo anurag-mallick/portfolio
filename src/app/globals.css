@@ -1,56 +1,145 @@
 @import "tailwindcss";
 
 :root {
-  /* Futuristic Neon Palette */
-  --background: #050505;
-  --foreground: #ededed;
+  /* --- TERMINAL THEME (Classic Tech) --- */
+  --background: #020202;
+  --foreground: #00ff41;
+  --primary: #00ff41;
+  --secondary: #008f11;
+  --accent: #22c55e;
+  --muted: #003b00;
+  --muted-foreground: #008f11;
+  --border: #003b00;
+  --card: #050505;
+  --glow-intensity: 0.4;
+  --nav-blur: 12px;
+  --font-main: var(--font-fira-code), monospace;
+  --layout-align: center;
+  --container-max-width: 1100px;
+  --section-spacing: 6rem;
+  --card-radius: 4px;
+  --glass-opacity: 0.02;
+}
 
+[data-theme="terminal"] {
+  --background: #020202;
+  --foreground: #00ff41;
+  --primary: #00ff41;
+  --secondary: #008f11;
+  --accent: #22c55e;
+  --muted: #003b00;
+  --muted-foreground: #008f11;
+  --border: #003b00;
+  --card: #050505;
+  --glow-intensity: 0.6;
+  --nav-blur: 16px;
+  --font-main: var(--font-fira-code), monospace;
+  --layout-align: center;
+  --container-max-width: 1000px;
+  --section-spacing: 7rem;
+  --card-radius: 0px;
+}
+
+/* --- MINIMAL EXECUTIVE (Prestige & Clean) --- */
+[data-theme="minimal"] {
+  --background: #ffffff;
+  --foreground: #111111;
+  --primary: #000000;
+  --secondary: #4b5563;
+  --accent: #9ca3af;
+  --muted: #f3f4f6;
+  --muted-foreground: #6b7280;
+  --border: #e5e7eb;
+  --card: #ffffff;
+  --glow-intensity: 0;
+  --nav-blur: 20px;
+  --font-main: var(--font-playfair), serif;
+  --layout-align: start;
+  --container-max-width: 1200px;
+  --section-spacing: 8rem;
+  --card-radius: 0px;
+  --glass-opacity: 0.8;
+}
+
+/* --- FUTURISTIC AI (High Contrast / Neon) --- */
+[data-theme="futuristic"] {
+  --background: #05050a;
+  --foreground: #ffffff;
   --primary: #00f3ff;
-  /* Electric Cyan */
-  --primary-foreground: #000000;
+  --secondary: #7000ff;
+  --accent: #ff00c8;
+  --muted: #101020;
+  --muted-foreground: #a0a0c0;
+  --border: #1a1a3a;
+  --card: #0a0a20;
+  --glow-intensity: 1;
+  --nav-blur: 10px;
+  --font-main: var(--font-outfit), sans-serif;
+  --layout-align: center;
+  --container-max-width: 1400px;
+  --section-spacing: 9rem;
+  --card-radius: 24px;
+  --glass-opacity: 0.1;
+}
 
-  --secondary: #7c3aed;
-  /* Electric Violet */
-  --secondary-foreground: #ffffff;
+/* --- MODERN GLASS (Ethereal & Soft) --- */
+[data-theme="glass"] {
+  --background: #0f172a;
+  --foreground: #f8fafc;
+  --primary: #38bdf8;
+  --secondary: #818cf8;
+  --accent: #c084fc;
+  --muted: #1e293b;
+  --muted-foreground: #94a3b8;
+  --border: rgba(255, 255, 255, 0.1);
+  --card: rgba(255, 255, 255, 0.03);
+  --glow-intensity: 0.5;
+  --nav-blur: 30px;
+  --font-main: var(--font-inter), sans-serif;
+  --layout-align: center;
+  --container-max-width: 1100px;
+  --section-spacing: 6rem;
+  --card-radius: 16px;
+  --glass-opacity: 0.05;
+}
 
-  --accent: #2563eb;
-  /* Electric Blue */
-  --accent-foreground: #ffffff;
-
-  --muted: #171717;
-  --muted-foreground: #a3a3a3;
-
-  --card: rgba(23, 23, 23, 0.6);
-  --card-foreground: #ededed;
-
-  --border: #262626;
-  --input: #262626;
-  --ring: #00f3ff;
-
-  --radius: 0.5rem;
+/* --- CREATIVE PORTFOLIO (Bold & Dynamic) --- */
+[data-theme="creative"] {
+  --background: #f87171;
+  /* Bold Red Base */
+  --foreground: #ffffff;
+  --primary: #ffffff;
+  --secondary: #1e1e1e;
+  --accent: #fcd34d;
+  --muted: rgba(0, 0, 0, 0.1);
+  --muted-foreground: rgba(255, 255, 255, 0.8);
+  --border: rgba(255, 255, 255, 0.3);
+  --card: rgba(0, 0, 0, 0.05);
+  --glow-intensity: 0.3;
+  --nav-blur: 8px;
+  --font-main: var(--font-syncopate), sans-serif;
+  --layout-align: end;
+  --container-max-width: 1600px;
+  --section-spacing: 5rem;
+  --card-radius: 40px;
+  --glass-opacity: 0.2;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
   --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
   --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
   --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
   --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
+
   --radius-sm: calc(var(--radius) - 2px);
   --radius-md: var(--radius);
   --radius-lg: calc(var(--radius) + 2px);
 
-  /* Custom Animations */
   --animate-float: float 6s ease-in-out infinite;
   --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   --animate-glow: glow 2s ease-in-out infinite alternate;
@@ -69,106 +158,52 @@
 
   @keyframes glow {
     from {
-      box-shadow: 0 0 10px -10px var(--primary);
+      box-shadow: 0 0 calc(10px * var(--glow-intensity)) calc(-10px * var(--glow-intensity)) var(--primary);
     }
 
     to {
-      box-shadow: 0 0 20px 5px var(--primary);
+      box-shadow: 0 0 calc(20px * var(--glow-intensity)) calc(5px * var(--glow-intensity)) var(--primary);
     }
   }
-}
-
-[data-theme="terminal"] {
-  --background: #050505;
-  --foreground: #ededed;
-  --primary: #00f3ff;
-  --secondary: #7c3aed;
-  --accent: #2563eb;
-  --muted: #171717;
-  --muted-foreground: #a3a3a3;
-  --card: rgba(23, 23, 23, 0.6);
-  --border: #262626;
-  --radius: 0.5rem;
-}
-
-[data-theme="minimal"] {
-  --background: #ffffff;
-  --foreground: #171717;
-  --primary: #000000;
-  --secondary: #404040;
-  --accent: #737373;
-  --muted: #f5f5f5;
-  --muted-foreground: #737373;
-  --card: rgba(255, 255, 255, 0.8);
-  --border: #e5e5e5;
-  --radius: 0rem;
-}
-
-[data-theme="futuristic"] {
-  --background: #020617;
-  --foreground: #f8fafc;
-  --primary: #38bdf8;
-  --secondary: #818cf8;
-  --accent: #c084fc;
-  --muted: #0f172a;
-  --muted-foreground: #94a3b8;
-  --card: rgba(15, 23, 42, 0.8);
-  --border: #1e293b;
-  --radius: 1rem;
-}
-
-[data-theme="glass"] {
-  --background: #0f172a;
-  --foreground: #f8fafc;
-  --primary: #6366f1;
-  --secondary: #ec4899;
-  --accent: #f43f5e;
-  --muted: rgba(255, 255, 255, 0.05);
-  --muted-foreground: #94a3b8;
-  --card: rgba(255, 255, 255, 0.03);
-  --border: rgba(255, 255, 255, 0.1);
-  --radius: 1.5rem;
-}
-
-[data-theme="creative"] {
-  --background: #fdfcf7;
-  --foreground: #1a1a1a;
-  --primary: #ff4d4d;
-  --secondary: #ffb84d;
-  --accent: #4d4dff;
-  --muted: #f0ede4;
-  --muted-foreground: #666666;
-  --card: #ffffff;
-  --border: #1a1a1a;
-  --radius: 2rem;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans), sans-serif;
+  font-family: var(--font-main), sans-serif;
   overflow-x: hidden;
-  transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1), 
-              color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-              border-color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease, border-radius 0.5s ease;
 
   ::selection {
     background-color: var(--primary);
-    color: var(--primary-foreground);
+    color: var(--foreground);
   }
 }
 
-/* Glassmorphism Utilities */
-.glass {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+/* Theme-Aware Helper Classes */
+.theme-container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 1rem;
+  text-align: var(--layout-align);
 }
 
-.glass-card {
-  background: rgba(23, 23, 23, 0.6);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+.theme-card {
+  background: var(--card);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: all 0.3s ease;
+}
+
+.theme-section {
+  padding: var(--section-spacing) 0;
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(var(--nav-blur));
+  border: 1px solid var(--border);
 }
 
 /* Scrollbar */

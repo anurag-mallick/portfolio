@@ -43,10 +43,10 @@ export function Navbar() {
             >
                 <div
                     className={cn(
-                        "flex items-center gap-1 rounded-full border border-transparent px-2 py-2 transition-all duration-300 pointer-events-auto",
+                        "theme-container flex items-center justify-between rounded-full border transition-all duration-300 pointer-events-auto w-full",
                         isScrolled || isMobileMenuOpen
-                            ? "glass border-white/10 bg-black/50 shadow-lg backdrop-blur-md"
-                            : ""
+                            ? "glass border-border shadow-lg"
+                            : "border-transparent"
                     )}
                 >
                     <Link

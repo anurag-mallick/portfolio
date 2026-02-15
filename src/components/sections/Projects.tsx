@@ -64,13 +64,13 @@ const projects = [
 
 export function Projects() {
     return (
-        <section id="projects" className="py-24 md:py-32 bg-black relative overflow-hidden">
+        <section id="projects" className="theme-section bg-background relative overflow-hidden">
             {/* Background Scanner Effect */}
             <div className="absolute inset-0 bg-[linear-gradient(rgba(0,243,255,0.02)_1px,transparent_1px)] bg-[size:100%_4px] animate-scan" />
 
-            <div className="container px-4 md:px-6 relative z-10">
-                <div className="mb-16 mt-8 md:mt-0">
-                    <h2 className="text-4xl md:text-5xl font-bold tracking-tighter text-white">
+            <div className="theme-container relative z-10">
+                <div className="mb-16">
+                    <h2 className="text-4xl md:text-5xl font-bold tracking-tighter text-foreground">
                         System <span className="text-primary">Deployments</span>
                     </h2>
                     <p className="text-muted-foreground mt-2">
@@ -78,7 +78,7 @@ export function Projects() {
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     {projects.map((project, index) => (
                         <motion.div
                             key={index}
@@ -88,10 +88,10 @@ export function Projects() {
                             viewport={{ once: true }}
                             className="h-full"
                         >
-                            <Card neon className="h-full group hover:bg-primary/5 transition-all duration-500 flex flex-col">
+                            <Card className="theme-card h-full group hover:bg-primary/5 transition-all duration-500 flex flex-col">
                                 <div className="p-6 md:p-8 flex flex-col h-full">
                                     <div className="flex justify-between items-start mb-6">
-                                        <div className="bg-white/5 p-3 rounded-lg border border-white/10 group-hover:border-primary/50 transition-colors">
+                                        <div className="bg-muted p-3 rounded-lg border border-border group-hover:border-primary/50 transition-colors">
                                             {project.icon}
                                         </div>
                                         <div className="text-xs font-mono text-primary/70 border border-primary/20 px-2 py-1 rounded">
@@ -99,7 +99,7 @@ export function Projects() {
                                         </div>
                                     </div>
 
-                                    <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-primary transition-colors">
+                                    <h3 className="text-2xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
                                         {project.title}
                                     </h3>
                                     <p className="text-sm text-primary mb-4">{project.category}</p>

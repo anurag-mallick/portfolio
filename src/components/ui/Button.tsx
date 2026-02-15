@@ -17,10 +17,10 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         const baseStyles = "inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 relative overflow-hidden";
 
         const variants = {
-            default: "bg-primary text-primary-foreground hover:bg-primary/90 shadow-[0_0_10px_rgba(0,243,255,0.3)] hover:shadow-[0_0_20px_rgba(0,243,255,0.5)]",
-            outline: "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
-            ghost: "hover:bg-accent hover:text-accent-foreground",
-            neon: "bg-transparent border border-primary text-primary shadow-[0_0_10px_inset_rgba(0,243,255,0.2)] hover:bg-primary/10 hover:shadow-[0_0_20px_inset_rgba(0,243,255,0.4),0_0_10px_rgba(0,243,255,0.4)]",
+            default: "bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg",
+            outline: "border border-border bg-background hover:bg-muted hover:text-foreground",
+            ghost: "hover:bg-muted hover:text-foreground",
+            neon: "bg-transparent border border-primary text-primary hover:bg-primary/10 shadow-[0_0_10px_rgba(0,255,65,0.3)]",
         };
 
         const sizes = {
@@ -33,15 +33,15 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
             <motion.button
                 ref={ref}
                 className={cn(baseStyles, variants[variant], sizes[size], className)}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+                whileHover={{ scale: 1.05, boxShadow: variant === 'neon' ? "0 0 20px rgba(var(--primary), 0.5)" : "none" }}
+                whileTap={{ scale: 0.95 }}
                 disabled={isLoading}
                 {...props}
             >
                 {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                <span className="relative z-10 flex items-center gap-2">{children}</span>
+                <span className="relative z-10 flex items-center gap-2 drop-shadow-md">{children}</span>
                 {variant === "neon" && (
-                    <div className="absolute inset-0 bg-primary/5 blur-xl -z-0" />
+                    <div className="absolute inset-0 bg-primary/20 blur-md -z-0" />
                 )}
             </motion.button>
         );

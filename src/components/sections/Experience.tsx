@@ -5,6 +5,7 @@ import { Card } from "@/components/ui/Card";
 import { Calendar, MapPin, ChevronRight, GraduationCap, Briefcase } from "lucide-react";
 import { cn } from "@/lib/utils";
 import React, { useState } from "react";
+import Image from "next/image";
 
 // Logo Component with Fallback
 function Logo({ src, domain, initial, color, className, bgClass = "bg-white" }: { src?: string, domain?: string, initial: string, color: string, className?: string, bgClass?: string }) {
@@ -40,13 +41,15 @@ function Logo({ src, domain, initial, color, className, bgClass = "bg-white" }: 
                     {initial}
                 </div>
             )}
-            <img
-                ref={imgRef}
+            <Image
                 src={logoSource}
                 alt={`${initial} Logo`}
+                width={48}
+                height={48}
                 className={cn("w-full h-full object-contain transition-opacity duration-300", loaded ? "opacity-100" : "opacity-0")}
                 onLoad={() => setLoaded(true)}
                 onError={() => setError(true)}
+                unoptimized // Sourcing from external URLs and logos dir
             />
         </div>
     );
@@ -232,13 +235,13 @@ export function Experience() {
     const educationExperiences = experiences.filter(exp => exp.type === 'education');
 
     return (
-        <section id="experience" className="py-24 bg-black relative">
-            <div className="absolute inset-0 bg-[#0a0a0a] bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.1),rgba(255,255,255,0))]" />
+        <section id="experience" className="theme-section bg-background relative overflow-hidden">
+            <div className="absolute inset-0 bg-primary/5 blur-[120px] rounded-full pointer-events-none opacity-20" />
 
-            <div className="container px-4 md:px-6 relative z-10">
+            <div className="theme-container relative z-10">
                 <div className="flex flex-col md:flex-row justify-between items-center mb-16 gap-4">
                     <div>
-                        <h2 className="text-3xl md:text-5xl font-bold tracking-tighter text-white uppercase">
+                        <h2 className="text-3xl md:text-5xl font-bold tracking-tighter text-foreground uppercase">
                             Professional <span className="text-primary">Experience</span>
                         </h2>
                         <p className="text-muted-foreground mt-2">
@@ -270,7 +273,7 @@ export function Experience() {
 
                 {/* Professional Experience Section */}
                 <div className="mb-20">
-                    <h3 className="text-xl font-bold text-white mb-10 flex items-center gap-2 border-l-4 border-primary pl-4">
+                    <h3 className="text-xl font-bold text-foreground mb-10 flex items-center gap-2 border-l-4 border-primary pl-4">
                         PROFESSIONAL EXPERIENCE
                     </h3>
                     <div className={cn(
@@ -284,7 +287,7 @@ export function Experience() {
                 </div>
 
                 <div id="education">
-                    <h3 className="text-xl font-bold text-white mb-10 flex items-center gap-2 border-l-4 border-secondary pl-4">
+                    <h3 className="text-xl font-bold text-foreground mb-10 flex items-center gap-2 border-l-4 border-secondary pl-4">
                         EDUCATION & ACADEMIC FOUNDATION
                     </h3>
                     <div className={cn(
@@ -324,8 +327,8 @@ function ExperienceCard({ exp, index, viewMode }: { exp: typeof experiences[0] &
 
             <Card
                 className={cn(
-                    "group transition-all duration-500 overflow-hidden relative cursor-pointer",
-                    isHovered ? "ring-1 ring-primary/40 bg-white/5 shadow-[0_0_30px_rgba(0,243,255,0.05)] translate-x-1" : "bg-white/[0.02] border-white/5"
+                    "theme-card group transition-all duration-500 overflow-hidden relative cursor-pointer",
+                    isHovered ? "ring-1 ring-primary/40 bg-primary/5 shadow-lg translate-x-1" : ""
                 )}
             >
                 <div className="p-6">
@@ -341,7 +344,7 @@ function ExperienceCard({ exp, index, viewMode }: { exp: typeof experiences[0] &
                             />
 
                             <div>
-                                <h3 className={cn("text-xl font-bold transition-colors duration-300", isHovered ? "text-primary" : "text-white")}>
+                                <h3 className={cn("text-xl font-bold transition-colors duration-300", isHovered ? "text-primary" : "text-foreground")}>
                                     {exp.role}
                                 </h3>
                                 <p className="text-secondary font-medium">{exp.company}</p>
