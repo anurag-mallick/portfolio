@@ -21,6 +21,17 @@ The site is live at: **[https://anurag-mallick.pages.dev](https://anurag-mallick
 - **Professional Timeline**: Detailed Experience and Education history with brand-synced logos.
 - **Interactive Playground**: Retro-themed mini-games (Neon Pong, Neon Tetris) built with High-Performance Canvas.
 - **Fully Responsive**: Optimized for all devices from mobile to desktop.
+
+## 🕹️ Interactive Playground (Mini-Apps)
+
+I've integrated a "Playground" section to demonstrate high-performance web capabilities at the Edge.
+
+- **[Neon Pong](https://anurag-mallick.pages.dev/apps/ping-pong)**: A 60FPS, AI-driven Ping Pong game. 
+  - Features: Dynamic AI difficulty, ball speed acceleration, and "Best of 5" round logic.
+- **[Neon Tetris](https://anurag-mallick.pages.dev/apps/tetris)**: A classic Tetris module with a cyberpunk aesthetic.
+  - Features: Level progression, score system, and responsive grid-based collision.
+
+*Accessible via the pulsating neon links in the site footer.*
 - **Dark Mode Aesthetic**: Premium "Cyber-Professional" design with glassmorphism and ambient lighting effects.
 - **Contact Integration**: Zero-backend email delivery system.
 
