@@ -75,7 +75,7 @@ export function Contact() {
                             Get in <span className="text-primary">Touch</span>
                         </h2>
                         <p className="text-lg text-muted-foreground max-w-[450px] leading-relaxed">
-                            Have a project in mind or just want to chat about AI and product? I'm always open to discussing new opportunities and innovative ideas.
+                            Have a project in mind or just want to chat about AI and product? I&apos;m always open to discussing new opportunities and innovative ideas.
                         </p>
 
                         <div className="pt-8 space-y-4">
@@ -116,7 +116,7 @@ export function Contact() {
                                         <Send className="w-8 h-8 text-primary" />
                                     </div>
                                     <h3 className="text-2xl font-bold text-white mb-2">Message Received</h3>
-                                    <p className="text-muted-foreground mb-8">Thanks for reaching out. I'll get back to you soon.</p>
+                                    <p className="text-muted-foreground mb-8">Thanks for reaching out. I&apos;ll get back to you soon.</p>
                                     <Button
                                         variant="outline"
                                         className="border-primary/30 text-primary hover:bg-primary/10"

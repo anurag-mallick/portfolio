@@ -6,7 +6,7 @@ import { ArrowRight, FileText, Linkedin } from "lucide-react";
 import Link from "next/link";
 import React, { useRef, useState, useEffect } from "react";
 
-function Particle({ index }: { index: number }) {
+function Particle() {
     const [style, setStyle] = useState({
         width: 10,
         height: 10,
@@ -16,13 +16,17 @@ function Particle({ index }: { index: number }) {
     });
 
     useEffect(() => {
-        setStyle({
-            width: Math.random() * 10 + 5,
-            height: Math.random() * 10 + 5,
-            top: `${Math.random() * 100}%`,
-            left: `${Math.random() * 100}%`,
-            duration: Math.random() * 5 + 5
+        // Use requestAnimationFrame to defer state update and avoid synchronous layout thrashing/cascading renders
+        const frame = requestAnimationFrame(() => {
+            setStyle({
+                width: Math.random() * 10 + 5,
+                height: Math.random() * 10 + 5,
+                top: `${Math.random() * 100}%`,
+                left: `${Math.random() * 100}%`,
+                duration: Math.random() * 5 + 5
+            });
         });
+        return () => cancelAnimationFrame(frame);
     }, []);
 
     return (
@@ -70,8 +74,8 @@ export function Hero() {
             <div className="absolute inset-0 bg-primary/5 blur-[120px] rounded-full mix-blend-screen animate-pulse-slow pointer-events-none" />
 
             {/* Floating Particles */}
-            {[...Array(10)].map((_, i) => (
-                <Particle key={i} index={i} />
+            {[...Array(20)].map((_, i) => (
+                <Particle key={i} />
             ))}
 
 

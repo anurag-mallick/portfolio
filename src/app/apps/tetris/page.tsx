@@ -51,7 +51,7 @@ export default function TetrisPage() {
     };
 
     const resetPiece = () => {
-        const index = Math.floor(Math.random() * (SHAPES.length - 1)) + 1;
+        const index = Math.floor(Math.random() * (SHAPES.length - 1)) + 1; // eslint-disable-line react-hooks/purity
         const shape = SHAPES[index];
         piece.current = {
             pos: { x: Math.floor(COLS / 2) - Math.floor(shape[0].length / 2), y: 0 },
@@ -252,14 +252,16 @@ export default function TetrisPage() {
             else if (e.key === "ArrowUp") rotate(1);
         };
 
+        const currentUpdate = update; // Capture current update for the closure
+
         window.addEventListener("keydown", handleKeyDown);
-        animationFrameId.current = requestAnimationFrame(update);
+        animationFrameId.current = requestAnimationFrame(currentUpdate);
 
         return () => {
             window.removeEventListener("keydown", handleKeyDown);
             cancelAnimationFrame(animationFrameId.current);
         };
-    }, [gameState]);
+    }, [gameState]); // eslint-disable-line react-hooks/exhaustive-deps
 
     return (
         <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center p-4">
@@ -301,7 +303,7 @@ export default function TetrisPage() {
                                     INITIATE
                                 </Button>
                                 <p className="mt-6 text-[10px] text-muted-foreground uppercase tracking-tighter text-center px-4">
-                                    Use Arrows to Move & Rotate<br />Down Arrow to Soft Drop
+                                    Use Arrows to Move &amp; Rotate<br />Down Arrow to Soft Drop
                                 </p>
                             </motion.div>
                         )}
@@ -359,7 +361,7 @@ export default function TetrisPage() {
 
             <div className="mt-12 max-w-xl text-center">
                 <p className="text-sm text-muted-foreground leading-relaxed italic">
-                    "Tetris is more than a game; it's an exercise in pattern recognition and cognitive load management. This implementation uses the same V8 Isolate optimization as the rest of this portfolio."
+                    &quot;Tetris is more than a game; it&apos;s an exercise in pattern recognition and cognitive load management. This implementation uses the same V8 Isolate optimization as the rest of this portfolio.&quot;
                 </p>
             </div>
         </div>

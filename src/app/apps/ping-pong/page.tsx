@@ -214,7 +214,7 @@ export default function PingPongPage() {
             canvas.removeEventListener("mousemove", handleMouseMove);
             canvas.removeEventListener("touchmove", handleTouchMove);
         };
-    }, [gameState]); // Removed score dependency to avoid reset on score change
+    }, [gameState]); // eslint-disable-line react-hooks/exhaustive-deps
 
     const startGame = () => {
         setScore({ player: 0, computer: 0 });
@@ -307,7 +307,7 @@ export default function PingPongPage() {
 
             <div className="mt-12 max-w-2xl text-center">
                 <p className="text-sm text-muted-foreground leading-relaxed italic">
-                    "This simple module demonstrates the responsiveness of the Edge runtime. Every paddle move and collision is handled with sub-millisecond precision."
+                    &quot;This simple module demonstrates the responsiveness of the Edge runtime. Every paddle move and collision is handled with sub-millisecond precision.&quot;
                 </p>
             </div>
         </div>
