@@ -19,6 +19,7 @@ The site is live at: **[https://anurag-mallick.pages.dev](https://anurag-mallick
 - **Dynamic Hero Section**: High-impact personal branding and call-to-actions.
 - **Interactive Skills System**: Icon-rich categorization of Core Competencies and Technical Skills.
 - **Professional Timeline**: Detailed Experience and Education history with brand-synced logos.
+- **Interactive Playground**: Retro-themed mini-games (Neon Pong, Neon Tetris) built with High-Performance Canvas.
 - **Fully Responsive**: Optimized for all devices from mobile to desktop.
 - **Dark Mode Aesthetic**: Premium "Cyber-Professional" design with glassmorphism and ambient lighting effects.
 - **Contact Integration**: Zero-backend email delivery system.

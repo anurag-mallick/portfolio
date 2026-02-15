@@ -21,16 +21,19 @@ export default function PingPongPage() {
     const [score, setScore] = useState({ player: 0, computer: 0 });
     const [winner, setWinner] = useState<"player" | "computer" | null>(null);
 
-    // Refs for mutable game state to avoid re-renders
+    // Refs for mutable game state to avoid stale closures in the loop
     const playerPaddleY = useRef(0);
     const computerPaddleY = useRef(0);
     const ballPos = useRef({ x: 0, y: 0 });
     const ballVel = useRef({ x: 0, y: 0 });
+    const internalScore = useRef({ player: 0, computer: 0 });
     const animationFrameId = useRef<number>(0);
 
     const initGame = (canvas: HTMLCanvasElement) => {
         playerPaddleY.current = canvas.height / 2 - PADDLE_HEIGHT / 2;
         computerPaddleY.current = canvas.height / 2 - PADDLE_HEIGHT / 2;
+        internalScore.current = { player: 0, computer: 0 };
+        setScore({ player: 0, computer: 0 });
         resetBall(canvas);
     };
 
@@ -52,16 +55,20 @@ export default function PingPongPage() {
         ballPos.current.y += ballVel.current.y;
 
         // Bounce off top and bottom
-        if (ballPos.current.y <= BALL_SIZE || ballPos.current.y >= canvas.height - BALL_SIZE) {
+        if (ballPos.current.y <= BALL_SIZE) {
+            ballPos.current.y = BALL_SIZE;
+            ballVel.current.y *= -1;
+        } else if (ballPos.current.y >= canvas.height - BALL_SIZE) {
+            ballPos.current.y = canvas.height - BALL_SIZE;
             ballVel.current.y *= -1;
         }
 
         // Computer AI (Simple follow with some delay/limited speed)
         const computerMid = computerPaddleY.current + PADDLE_HEIGHT / 2;
-        const aiSpeed = 4.5;
-        if (computerMid < ballPos.current.y - 10) {
+        const aiSpeed = 5.2; // Slightly faster to keep it challenging
+        if (computerMid < ballPos.current.y - 15) {
             computerPaddleY.current += aiSpeed;
-        } else if (computerMid > ballPos.current.y + 10) {
+        } else if (computerMid > ballPos.current.y + 15) {
             computerPaddleY.current -= aiSpeed;
         }
 
@@ -69,7 +76,7 @@ export default function PingPongPage() {
         computerPaddleY.current = Math.max(0, Math.min(canvas.height - PADDLE_HEIGHT, computerPaddleY.current));
 
         // Player collision
-        if (ballPos.current.x <= PADDLE_WIDTH + 10 + BALL_SIZE) {
+        if (ballPos.current.x <= PADDLE_WIDTH + 10 + BALL_SIZE && ballVel.current.x < 0) {
             if (ballPos.current.y >= playerPaddleY.current && ballPos.current.y <= playerPaddleY.current + PADDLE_HEIGHT) {
                 // Hit player paddle
                 const relativeIntersectY = (playerPaddleY.current + (PADDLE_HEIGHT / 2)) - ballPos.current.y;
@@ -84,21 +91,11 @@ export default function PingPongPage() {
 
                 // Prevent sticking
                 ballPos.current.x = PADDLE_WIDTH + 10 + BALL_SIZE + 1;
-            } else if (ballPos.current.x <= 0) {
-                // Computer scores
-                const newScoreComputer = score.computer + 1;
-                setScore(prev => ({ ...prev, computer: newScoreComputer }));
-                if (newScoreComputer >= WINNING_SCORE) {
-                    setWinner("computer");
-                    setGameState("gameover");
-                } else {
-                    resetBall(canvas);
-                }
             }
         }
 
         // Computer collision
-        if (ballPos.current.x >= canvas.width - PADDLE_WIDTH - 10 - BALL_SIZE) {
+        if (ballPos.current.x >= canvas.width - PADDLE_WIDTH - 10 - BALL_SIZE && ballVel.current.x > 0) {
             if (ballPos.current.y >= computerPaddleY.current && ballPos.current.y <= computerPaddleY.current + PADDLE_HEIGHT) {
                 // Hit computer paddle
                 const relativeIntersectY = (computerPaddleY.current + (PADDLE_HEIGHT / 2)) - ballPos.current.y;
@@ -113,16 +110,33 @@ export default function PingPongPage() {
 
                 // Prevent sticking
                 ballPos.current.x = canvas.width - PADDLE_WIDTH - 10 - BALL_SIZE - 1;
-            } else if (ballPos.current.x >= canvas.width) {
-                // Player scores
-                const newScorePlayer = score.player + 1;
-                setScore(prev => ({ ...prev, player: newScorePlayer }));
-                if (newScorePlayer >= WINNING_SCORE) {
-                    setWinner("player");
-                    setGameState("gameover");
-                } else {
-                    resetBall(canvas);
-                }
+            }
+        }
+
+        // Out of bounds detection for scoring
+        if (ballPos.current.x <= 0) {
+            // Computer scores
+            internalScore.current.computer += 1;
+            const currentComputerScore = internalScore.current.computer;
+            setScore({ ...internalScore.current });
+
+            if (currentComputerScore >= WINNING_SCORE) {
+                setWinner("computer");
+                setGameState("gameover");
+            } else {
+                resetBall(canvas);
+            }
+        } else if (ballPos.current.x >= canvas.width) {
+            // Player scores
+            internalScore.current.player += 1;
+            const currentPlayerScore = internalScore.current.player;
+            setScore({ ...internalScore.current });
+
+            if (currentPlayerScore >= WINNING_SCORE) {
+                setWinner("player");
+                setGameState("gameover");
+            } else {
+                resetBall(canvas);
             }
         }
     };
