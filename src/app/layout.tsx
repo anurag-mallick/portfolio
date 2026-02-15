@@ -17,6 +17,8 @@ export const metadata: Metadata = {
   description: "Building Payroll Systems at Scale & Integrating AI into Financial Workflows",
 };
 
+import { ThemeProvider } from "@/components/ThemeContext";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -27,7 +29,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <ThemeProvider>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

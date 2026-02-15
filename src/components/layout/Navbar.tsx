@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
+import { ThemeSwitcher } from "./ThemeSwitcher";
 
 const navItems = [
     { name: "Experience", href: "#experience" },
@@ -80,15 +81,20 @@ export function Navbar() {
                         ))}
                     </div>
 
-                    {/* Mobile Menu Trigger */}
-                    <button
-                        onClick={toggleMobileMenu}
-                        className="md:hidden flex items-center p-2 text-muted-foreground hover:text-primary transition-colors"
-                        aria-label="Toggle Menu"
-                    >
-                        {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
-                        <span className="text-xs ml-1 font-medium">{isMobileMenuOpen ? "Close" : "Menu"}</span>
-                    </button>
+                    <div className="h-6 w-px bg-white/10 mx-2 hidden md:block" />
+
+                    <div className="flex items-center gap-2">
+                        <ThemeSwitcher />
+
+                        {/* Mobile Menu Trigger */}
+                        <button
+                            onClick={toggleMobileMenu}
+                            className="md:hidden flex items-center p-2 text-muted-foreground hover:text-primary transition-colors"
+                            aria-label="Toggle Menu"
+                        >
+                            {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+                        </button>
+                    </div>
                 </div>
             </motion.nav>
 
