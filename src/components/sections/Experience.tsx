@@ -81,8 +81,8 @@ const experiences = [
         description: "Built EOR/Global Payroll platforms and AI-driven workflows.",
         logoColor: "bg-orange-600",
         logoInitial: "W",
-        logoUrl: "https://wisestep.com/wp-content/themes/wisestep/images/logo.png",
-        logoBg: "bg-[#f8f9fa]",
+        logoUrl: "/logos/avance.jpg",
+        logoBg: "bg-white",
         achievements: [
             "Built a no-code Employer of Record (EOR) and global payroll platform supporting US and EU markets, achieving €275,000+ ARR in 6 months. Reduced compliance risk by 40%, cut onboarding time by 30%, and scaled to 500+ clients.",
             "Led development of B2B/B2C payroll platforms, reducing payroll processing time by 40% through automation and improving payroll accuracy to 99.5%+. Partnered with Engineering, Design, Sales, and Customer Success to own roadmap and delivery.",
@@ -104,7 +104,7 @@ const experiences = [
         description: "Owned logistics solutions, scaling partners and revenue.",
         logoColor: "bg-[#7143e1]", // Shiprocket Purple
         logoInitial: "S",
-        logoUrl: "https://upload.wikimedia.org/wikipedia/commons/e/e5/SR-logo-wiki.png",
+        logoUrl: "/logos/shiprocket.png",
         logoBg: "bg-white",
         achievements: [
             "Co-developed end-to-end integration of logistics aggregator Shiprocket & LMS, increasing logistics partners from 4 to 17+ and reducing serviceability issues by 95%.",
@@ -125,7 +125,7 @@ const experiences = [
         description: "Consumer behavior analysis and data visualization for Healthcare Group.",
         logoColor: "bg-red-600",
         logoInitial: "3M",
-        logoUrl: "https://multimedia.3m.com/mws/media/1053702O/3m-logo-red-png.png",
+        logoUrl: "/logos/3m.jpg",
         logoBg: "bg-white",
         achievements: [
             "Applied design thinking to analyze consumer needs, forecasting 40% additional sales from recommended feature augmentations.",
@@ -144,7 +144,7 @@ const experiences = [
         description: "Master of Business Administration (73.2%).",
         logoColor: "bg-[#0b5d1e]",
         logoInitial: "IIM",
-        logoUrl: "https://upload.wikimedia.org/wikipedia/en/thumb/b/b3/Indian_Institute_of_Management_Lucknow_Logo.png/220px-Indian_Institute_of_Management_Lucknow_Logo.png",
+        logoUrl: "/logos/iiml.png",
         logoBg: "bg-white",
         achievements: [
             "Live Project (Artpillz): Developed predictive pricing model, reducing costs by 20% for a B2B media start-up.",
@@ -181,7 +181,7 @@ const experiences = [
         description: "Bachelor of Technology (7.52/10).",
         logoColor: "bg-[#8b0000]",
         logoInitial: "NIT",
-        logoUrl: "https://vnit.ac.in/wp-content/themes/vnit/images/logo.png",
+        logoUrl: "/logos/nit.jpg",
         logoBg: "bg-white",
         achievements: [],
         type: "education"
@@ -313,6 +313,7 @@ function ExperienceCard({ exp, index, viewMode }: { exp: typeof experiences[0] &
             className={cn(viewMode === 'timeline' ? "md:pl-8 md:border-l border-white/5 relative" : "")}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
+            onClick={() => setIsHovered(!isHovered)}
         >
             {viewMode === 'timeline' && (
                 <div className={cn(
@@ -323,7 +324,7 @@ function ExperienceCard({ exp, index, viewMode }: { exp: typeof experiences[0] &
 
             <Card
                 className={cn(
-                    "group transition-all duration-500 overflow-hidden relative",
+                    "group transition-all duration-500 overflow-hidden relative cursor-pointer",
                     isHovered ? "ring-1 ring-primary/40 bg-white/5 shadow-[0_0_30px_rgba(0,243,255,0.05)] translate-x-1" : "bg-white/[0.02] border-white/5"
                 )}
             >
@@ -405,7 +406,7 @@ function ExperienceCard({ exp, index, viewMode }: { exp: typeof experiences[0] &
                             "mt-4 flex items-center text-[10px] font-bold uppercase tracking-[0.2em] transition-all duration-500",
                             isHovered ? "text-primary translate-x-2" : "text-muted-foreground/30"
                         )}>
-                            {isHovered ? "Exploring Details" : "Hover to Expand"} <ChevronRight className={cn("w-3 h-3 ml-1 transition-transform", isHovered ? "rotate-90" : "")} />
+                            {isHovered ? "Exploring Details" : "Tap to Expand"} <ChevronRight className={cn("w-3 h-3 ml-1 transition-transform", isHovered ? "rotate-90" : "")} />
                         </div>
                     )}
                 </div>

@@ -82,9 +82,9 @@ export function Impact() {
                     <p className="text-muted-foreground">Driving efficiency and growth through systems.</p>
                 </motion.div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
                     {metrics.map((metric, index) => (
-                        <div key={index} className="flex flex-col items-center text-center p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-primary/50 transition-colors">
+                        <div key={index} className="flex flex-col items-center text-center p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-primary/50 transition-colors w-full">
                             {/* Circular Progress Indicator Logic could go here, simplified for clean impact */}
                             <div className="mb-4">
                                 <Counter from={0} to={metric.value} prefix={metric.prefix} suffix={metric.suffix} />

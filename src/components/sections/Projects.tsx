@@ -64,13 +64,13 @@ const projects = [
 
 export function Projects() {
     return (
-        <section id="projects" className="py-24 bg-black relative overflow-hidden">
+        <section id="projects" className="py-24 md:py-32 bg-black relative overflow-hidden">
             {/* Background Scanner Effect */}
             <div className="absolute inset-0 bg-[linear-gradient(rgba(0,243,255,0.02)_1px,transparent_1px)] bg-[size:100%_4px] animate-scan" />
 
             <div className="container px-4 md:px-6 relative z-10">
-                <div className="mb-16">
-                    <h2 className="text-3xl md:text-5xl font-bold tracking-tighter text-white">
+                <div className="mb-16 mt-8 md:mt-0">
+                    <h2 className="text-4xl md:text-5xl font-bold tracking-tighter text-white">
                         System <span className="text-primary">Deployments</span>
                     </h2>
                     <p className="text-muted-foreground mt-2">

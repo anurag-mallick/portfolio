@@ -91,7 +91,7 @@ export function Hero() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.2 }}
-                        className="text-4xl md:text-6xl lg:text-8xl font-bold tracking-tighter bg-clip-text text-transparent bg-gradient-to-b from-white to-white/60 leading-tight"
+                        className="text-5xl md:text-6xl lg:text-8xl font-bold tracking-tighter bg-clip-text text-transparent bg-gradient-to-b from-white to-white/60 leading-tight"
                     >
                         ANURAG MALLICK
                     </motion.h1>
@@ -113,7 +113,7 @@ export function Hero() {
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.5, delay: 0.6 }}
-                        className="max-w-[600px] text-muted-foreground md:text-xl"
+                        className="max-w-[600px] text-muted-foreground md:text-xl px-4"
                     >
                         Scaling Global Payroll Infrastructure & Integrating AI into Financial Workflows.
                     </motion.p>
@@ -122,20 +122,20 @@ export function Hero() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.8 }}
-                        className="flex flex-col sm:flex-row gap-4"
+                        className="flex flex-col sm:flex-row gap-3 md:gap-4 w-full sm:w-auto px-10 sm:px-0"
                     >
-                        <Button variant="neon" size="lg" className="group" onClick={() => scrollToSection('experience')}>
+                        <Button variant="neon" size="lg" className="group w-full sm:w-auto" onClick={() => scrollToSection('experience')}>
                             Enter Portfolio
                             <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                         </Button>
-                        <Link href="https://drive.google.com/file/d/1KmV8TzTGY9cDsypeo5xT9ZcNRcoKeg9F/view?usp=sharing" target="_blank" rel="noopener noreferrer">
-                            <Button variant="outline" size="lg">
+                        <Link href="https://drive.google.com/file/d/1KmV8TzTGY9cDsypeo5xT9ZcNRcoKeg9F/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+                            <Button variant="outline" size="lg" className="w-full">
                                 <FileText className="mr-2 h-4 w-4" />
                                 View Resume
                             </Button>
                         </Link>
-                        <Link href="https://www.linkedin.com/in/anuragmallick901/" target="_blank" rel="noopener noreferrer">
-                            <Button variant="ghost" size="lg">
+                        <Link href="https://www.linkedin.com/in/anuragmallick901/" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+                            <Button variant="outline" size="lg" className="w-full">
                                 <Linkedin className="mr-2 h-4 w-4" />
                                 Connect
                             </Button>
