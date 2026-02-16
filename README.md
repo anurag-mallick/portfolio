@@ -20,6 +20,7 @@ The site is live at: **[https://anurag-mallick.pages.dev](https://anurag-mallick
 - **Interactive Skills System**: Icon-rich categorization of Core Competencies
 - **19 Interactive Applications**: Professional-grade tools across 4 specialized domains
 - **10 Classic Games**: High-performance Canvas-based games with neon aesthetics
+- **Dynamic Articles Section**: Showcasing strategic insights from LinkedIn
 - **Dual Theme System**: Switch between Standard and Apple Glass layouts
 - **Fully Responsive**: Optimized for all devices with smooth animations
 

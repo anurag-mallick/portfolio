@@ -9,6 +9,7 @@ import { Skills } from "@/components/sections/Skills";
 import { Impact } from "@/components/sections/Impact";
 import { Contact } from "@/components/sections/Contact";
 import { AppShowcase } from "@/components/sections/AppShowcase";
+import { Articles } from "@/components/sections/Articles";
 
 export function StandardLayout() {
     return (
@@ -22,6 +23,7 @@ export function StandardLayout() {
             <Contact />
             <div className="w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
             <AppShowcase />
+            <Articles />
             <Footer />
         </main>
     );
