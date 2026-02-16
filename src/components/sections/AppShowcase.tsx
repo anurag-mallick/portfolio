@@ -1,0 +1,310 @@
+"use client";
+
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+    Globe, Rocket, Brain, PieChart, Activity, TrendingUp, GitBranch,
+    LayoutGrid, Zap, MousePointerClick, Gamepad2, Disc, Keyboard, Lock, Grid,
+    DollarSign, FileSearch, Calendar, Code, Gauge, Database, Network, Flag,
+    Truck, MapPin, TrendingDown, Package, Shield, ExternalLink, ArrowRight
+} from "lucide-react";
+import Link from "next/link";
+import { Button } from "@/components/ui/Button";
+
+interface AppDetail {
+    title: string;
+    description: string;
+    icon: React.ReactNode;
+    tech: string;
+    link: string;
+    color: string;
+    category: string;
+}
+
+const allApps: AppDetail[] = [
+    // Enterprise Solutions
+    {
+        title: "Global Payroll What-If Studio",
+        description: "Macro-economic stress-testing for global workforces. Model FX volatility, tax law shifts, and headcount growth across 150+ countries.",
+        icon: <Globe className="w-12 h-12" />,
+        tech: "Three.js, Scenario Modeling",
+        link: "/apps/payroll-whatif",
+        color: "#00f3ff",
+        category: "Enterprise"
+    },
+    {
+        title: "EOR Strategy Decision Engine",
+        description: "AI-driven expansion modeling. Identify optimal legal structures and visualize complex money flows with custom Sankey diagrams.",
+        icon: <Rocket className="w-12 h-12" />,
+        tech: "Sankey Flow, Logic Engine",
+        link: "/apps/eor-decision",
+        color: "#ff00ff",
+        category: "Enterprise"
+    },
+    {
+        title: "LLM Payroll Document Intel",
+        description: "Multi-doc AI audit engine. Automated extraction and 99.8% accurate reconciliation across payslips, contracts, and bank statements.",
+        icon: <Brain className="w-12 h-12" />,
+        tech: "LLM Simulator, OCR Logic",
+        link: "/apps/payroll-ai",
+        color: "#9d50bb",
+        category: "Enterprise"
+    },
+    // Fintech
+    {
+        title: "Multi-Country Tax Calculator",
+        description: "Compare employer costs across 15 countries. Interactive tax breakdown with pie charts and social security calculations.",
+        icon: <DollarSign className="w-12 h-12" />,
+        tech: "Chart.js, Tax Data",
+        link: "/apps/tax-calculator",
+        color: "#00f3ff",
+        category: "Fintech"
+    },
+    {
+        title: "FX Hedging Simulator",
+        description: "Model currency risk for payroll exposures. Monte Carlo simulations with 95% VaR calculation and hedging cost analysis.",
+        icon: <TrendingUp className="w-12 h-12" />,
+        tech: "Monte Carlo, Canvas",
+        link: "/apps/fx-hedging",
+        color: "#ff00ff",
+        category: "Fintech"
+    },
+    // Logistics
+    {
+        title: "Last-Mile Route Optimizer",
+        description: "Visual comparison of routing algorithms. Compare Nearest Neighbor vs 2-Opt vs Genetic Algorithm with animated path rendering.",
+        icon: <Truck className="w-12 h-12" />,
+        tech: "TSP Algorithms",
+        link: "/apps/route-optimizer",
+        color: "#00ff99",
+        category: "Logistics"
+    },
+    {
+        title: "Returns Prediction Model",
+        description: "ML model predicting return probability based on product category, price, and customer history with confidence scores.",
+        icon: <TrendingDown className="w-12 h-12" />,
+        tech: "ML, Prediction",
+        link: "/apps/returns-prediction",
+        color: "#ff6b6b",
+        category: "Logistics"
+    },
+    // Infrastructure
+    {
+        title: "API Rate Limit Visualizer",
+        description: "Simulate different throttling strategies. Compare Token bucket vs Leaky bucket vs Fixed window with animated request queues.",
+        icon: <Gauge className="w-12 h-12" />,
+        tech: "Token Bucket",
+        link: "/apps/rate-limiter",
+        color: "#ff0080",
+        category: "Infrastructure"
+    },
+    {
+        title: "Load Balancer Simulation",
+        description: "Compare load balancing algorithms. Particle-based request flow with Round-robin, Least-connections, and IP-hash strategies.",
+        icon: <Network className="w-12 h-12" />,
+        tech: "Particle System",
+        link: "/apps/load-balancer",
+        color: "#00f3ff",
+        category: "Infrastructure"
+    },
+    // Algorithms
+    {
+        title: "Git Branching Strategy Game",
+        description: "Interactive Git repository visualizer. D3 force-directed graph with commit, branch, merge, and rebase operations.",
+        icon: <GitBranch className="w-12 h-12" />,
+        tech: "D3.js Graph",
+        link: "/apps/git-branching",
+        color: "#ff00ff",
+        category: "Algorithms"
+    },
+    {
+        title: "Pathfinding Visualizer",
+        description: "Interactive shortest-path algorithm visualizer. Draw walls and watch BFS explore the grid in real-time with animated path discovery.",
+        icon: <Grid className="w-12 h-12" />,
+        tech: "BFS Algorithm",
+        link: "/apps/pathfinding",
+        color: "#ff0080",
+        category: "Algorithms"
+    },
+    // Games
+    {
+        title: "Neon Tetris",
+        description: "Classic pattern recognition logic. Stack blocks efficiently in a high-fidelity cyberpunk environment.",
+        icon: <LayoutGrid className="w-12 h-12" />,
+        tech: "React, Canvas",
+        link: "/apps/tetris",
+        color: "#00f3ff",
+        category: "Games"
+    },
+    {
+        title: "Neon Pong",
+        description: "High-speed reflex testing. Defeat the AI opponent in a zero-latency physics-simulated arena.",
+        icon: <Zap className="w-12 h-12" />,
+        tech: "Physics Engine",
+        link: "/apps/ping-pong",
+        color: "#ff0080",
+        category: "Games"
+    }
+];
+
+export function AppShowcase() {
+    const [selectedApp, setSelectedApp] = useState<AppDetail>(allApps[0]);
+    const categories = Array.from(new Set(allApps.map(app => app.category)));
+
+    return (
+        <section id="showcase" className="py-24 bg-black relative overflow-hidden min-h-screen flex flex-col justify-center">
+            {/* Background elements */}
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:60px_60px] opacity-20 pointer-events-none" />
+            <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-background to-transparent z-10" />
+
+            {/* Dynamic Background Glow */}
+            <AnimatePresence mode="wait">
+                <motion.div
+                    key={selectedApp.title}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 0.15 }}
+                    exit={{ opacity: 0 }}
+                    className="absolute inset-0 pointer-events-none"
+                    style={{
+                        background: `radial-gradient(circle at 70% 50%, ${selectedApp.color}, transparent 40%)`
+                    }}
+                />
+            </AnimatePresence>
+
+            <div className="container mx-auto px-4 md:px-6 relative z-20">
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="mb-12"
+                >
+                    <div className="inline-flex items-center rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-sm font-medium text-primary backdrop-blur-sm mb-6">
+                        <span className="flex h-2 w-2 rounded-full bg-primary mr-2 animate-pulse" />
+                        Interactive Portfolio
+                    </div>
+                    <h2 className="text-4xl md:text-6xl font-bold tracking-tighter mb-4 text-white">
+                        THE <span className="text-primary italic">LAB</span>
+                    </h2>
+                    <p className="text-muted-foreground max-w-[600px] text-lg">
+                        A centralized showcase of enterprise tools, financial simulators,
+                        and recursive logic games. Hover to investigate.
+                    </p>
+                </motion.div>
+
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                    {/* Left Pane: App List */}
+                    <div className="lg:col-span-4 space-y-8 max-h-[600px] overflow-y-auto pr-4 custom-scrollbar">
+                        {categories.map((category) => (
+                            <div key={category} className="space-y-3">
+                                <h3 className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground font-black px-2">
+                                    {category}
+                                </h3>
+                                <div className="space-y-1">
+                                    {allApps.filter(app => app.category === category).map((app) => (
+                                        <motion.button
+                                            key={app.title}
+                                            onMouseEnter={() => setSelectedApp(app)}
+                                            onClick={() => setSelectedApp(app)}
+                                            className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-300 group relative flex items-center justify-between ${selectedApp.title === app.title
+                                                ? "bg-white/10 text-white shadow-[0_0_20px_rgba(255,255,255,0.05)]"
+                                                : "text-muted-foreground hover:text-white hover:bg-white/5"
+                                                }`}
+                                        >
+                                            <span className="font-medium truncate mr-4">{app.title}</span>
+                                            <ArrowRight className={`w-4 h-4 transition-transform duration-300 ${selectedApp.title === app.title ? "translate-x-0 opacity-100" : "-translate-x-2 opacity-0"
+                                                }`} />
+
+                                            {selectedApp.title === app.title && (
+                                                <motion.div
+                                                    layoutId="active-indicator"
+                                                    className="absolute left-0 w-1 h-6 bg-primary rounded-full"
+                                                />
+                                            )}
+                                        </motion.button>
+                                    ))}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+
+                    {/* Right Pane: Details */}
+                    <div className="lg:col-span-8 sticky top-24">
+                        <AnimatePresence mode="wait">
+                            <motion.div
+                                key={selectedApp.title}
+                                initial={{ opacity: 0, x: 20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                exit={{ opacity: 0, x: -20 }}
+                                transition={{ duration: 0.3 }}
+                                className="bg-zinc-900/40 border border-white/10 backdrop-blur-2xl rounded-3xl p-8 md:p-12 relative overflow-hidden group"
+                            >
+                                {/* Decorative elements */}
+                                <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -mr-32 -mt-32" />
+
+                                <div className="relative z-10">
+                                    <div className="flex flex-wrap items-center justify-between gap-6 mb-8">
+                                        <div className="p-5 rounded-2xl bg-white/5 border border-white/10 shadow-inner group-hover:scale-110 transition-transform duration-500" style={{ color: selectedApp.color }}>
+                                            {selectedApp.icon}
+                                        </div>
+                                        <div className="flex flex-col items-end">
+                                            <span className="text-[10px] uppercase font-bold tracking-widest text-muted-foreground mb-1">Architecture</span>
+                                            <span className="text-white font-mono text-sm border border-white/10 px-3 py-1 rounded-full bg-black/50">
+                                                {selectedApp.tech}
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <h3 className="text-3xl md:text-5xl font-black mb-6 text-white tracking-tighter">
+                                        {selectedApp.title.split(' ').map((word, i) => (
+                                            <span key={i} className={i === selectedApp.title.split(' ').length - 1 ? "text-primary" : ""}>
+                                                {word}{' '}
+                                            </span>
+                                        ))}
+                                    </h3>
+
+                                    <p className="text-xl text-muted-foreground mb-10 leading-relaxed max-w-2xl">
+                                        {selectedApp.description}
+                                    </p>
+
+                                    <div className="flex flex-wrap gap-4">
+                                        <Link href={selectedApp.link} className="flex-1 min-w-[200px]">
+                                            <Button className="w-full h-14 text-lg font-bold bg-primary hover:bg-primary/90 text-primary-foreground shadow-[0_0_30px_rgba(var(--primary-rgb),0.3)] group">
+                                                LAUNCH MODULE
+                                                <ExternalLink className="ml-2 w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                                            </Button>
+                                        </Link>
+                                        <Button variant="outline" className="h-14 px-8 border-white/10 hover:bg-white/5 text-white">
+                                            VIEW DOCS
+                                        </Button>
+                                    </div>
+
+                                    <div className="mt-12 pt-8 border-t border-white/5 flex items-center justify-between text-[10px] text-muted-foreground uppercase tracking-[0.2em]">
+                                        <span>Status: Stable 2.4.0</span>
+                                        <span>Latency: 14ms</span>
+                                        <span>License: MIT Enterprise</span>
+                                    </div>
+                                </div>
+                            </motion.div>
+                        </AnimatePresence>
+                    </div>
+                </div>
+            </div>
+
+            <style jsx>{`
+                .custom-scrollbar::-webkit-scrollbar {
+                    width: 4px;
+                }
+                .custom-scrollbar::-webkit-scrollbar-track {
+                    background: transparent;
+                }
+                .custom-scrollbar::-webkit-scrollbar-thumb {
+                    background: rgba(255, 255, 255, 0.1);
+                    border-radius: 10px;
+                }
+                .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+                    background: rgba(255, 255, 255, 0.2);
+                }
+            `}</style>
+        </section>
+    );
+}
