@@ -61,6 +61,15 @@ export const apps = [
         color: "border-[#00f3ff]/20 hover:border-[#00f3ff]/50",
         shadow: "hover:shadow-[0_0_30px_rgba(0,243,255,0.2)]"
     },
+    {
+        title: "Pathfinding Visualizer",
+        description: "Interactive shortest-path algorithm visualizer. Draw walls and watch BFS explore the grid in real-time with animated path discovery.",
+        icon: <GitBranch className="w-10 h-10 text-[#ff0080]" />,
+        tech: "BFS Algorithm, Grid Logic",
+        link: "/apps/pathfinding",
+        color: "border-[#ff0080]/20 hover:border-[#ff0080]/50",
+        shadow: "hover:shadow-[0_0_30px_rgba(255,0,128,0.2)]"
+    },
 ];
 
 export function Apps() {
