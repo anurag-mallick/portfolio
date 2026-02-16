@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Globe, Network, FileText, PieChart, Rocket, Brain, TrendingUp, Activity, GitBranch, ListOrdered } from "lucide-react";
+import { Globe, Network, FileText, PieChart, Rocket, Brain, TrendingUp, Activity, GitBranch, ListOrdered, ShoppingBag } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 
@@ -70,6 +70,15 @@ export const apps = [
         color: "border-[#ff0080]/20 hover:border-[#ff0080]/50",
         shadow: "hover:shadow-[0_0_30px_rgba(255,0,128,0.2)]"
     },
+    {
+        title: "Food Delivery Express",
+        description: "Comprehensive food ordering and delivery UI. Real-time order tracking simulation, restaurant browsing, and dynamic cart management.",
+        icon: <ShoppingBag className="w-10 h-10 text-primary" />,
+        tech: "React, Framer Motion",
+        link: "/apps/food-delivery",
+        color: "border-primary/20 hover:border-primary/50",
+        shadow: "hover:shadow-[0_0_30px_rgba(0,243,255,0.2)]"
+    }
 ];
 
 export function Apps() {

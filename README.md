@@ -18,7 +18,7 @@ The site is live at: **[https://anurag-mallick.pages.dev](https://anurag-mallick
 
 - **Dynamic Hero Section**: High-impact personal branding with animated terminal effects
 - **Interactive Skills System**: Icon-rich categorization of Core Competencies
-- **18 Interactive Applications**: Professional-grade tools across 4 specialized domains
+- **19 Interactive Applications**: Professional-grade tools across 4 specialized domains
 - **10 Classic Games**: High-performance Canvas-based games with neon aesthetics
 - **Dual Theme System**: Switch between Standard and Apple Glass layouts
 - **Fully Responsive**: Optimized for all devices with smooth animations
@@ -34,12 +34,13 @@ Professional financial tools demonstrating expertise in global payroll and finte
 4. **Invoice Anomaly Detector**: Pattern recognition for financial fraud detection
 5. **Compliance Deadline Tracker**: Multi-jurisdiction regulatory timeline management
 
-### 📦 Logistics Lab (3 Apps)
+### 📦 Logistics Lab (4 Apps)
 Advanced routing algorithms and delivery optimization tools:
 
 1. **Route Optimizer Visualizer**: TSP algorithm comparison (Nearest Neighbor, 2-Opt, Genetic)
 2. **Returns Prediction Model**: Reverse logistics fraud detection with NPS analytics
 3. **3PL Cost Comparator**: Multi-carrier rate comparison and optimization
+4. **Food Delivery Express**: Comprehensive food ordering and delivery UI with real-time tracking
 
 ### 🏗️ Infrastructure Simulations (5 Apps)
 System architecture and performance optimization demonstrations:
