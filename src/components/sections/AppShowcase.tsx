@@ -169,6 +169,15 @@ const allApps: AppDetail[] = [
         color: "#00d4ff",
         category: "Logistics"
     },
+    {
+        title: "Food Delivery Express",
+        description: "Comprehensive food ordering and delivery UI. Real-time order tracking simulation, restaurant browsing, and dynamic cart management.",
+        icon: <Truck className="w-12 h-12" />,
+        tech: "React, Framer Motion",
+        link: "/apps/food-delivery",
+        color: "#00f3ff",
+        category: "Logistics"
+    },
     // Infrastructure
     {
         title: "API Rate Limit Visualizer",
