@@ -8,62 +8,58 @@ import { Button } from "@/components/ui/Button";
 
 const apps = [
     {
-        title: "Global Payroll & Tax Visualizer",
-        description: "Interactive 3D globe visualizing the true cost of employment vs net salary across 150+ countries. Features real-time currency conversion and compliance heatmaps.",
+        title: "Global Payroll What-If Studio",
+        description: "Macro-economic stress-testing for global workforces. Model FX volatility, tax law shifts, and headcount growth across 150+ countries.",
         icon: <Globe className="w-10 h-10 text-[#00f3ff]" />,
-        tech: "Three.js, D3.js",
-        link: "/apps/payroll",
+        tech: "Three.js, Scenario Modeling",
+        link: "/apps/payroll-whatif",
         color: "border-[#00f3ff]/20 hover:border-[#00f3ff]/50",
         shadow: "hover:shadow-[0_0_30px_rgba(0,243,255,0.2)]"
     },
     {
-        title: "Supply Chain Neuro-Network",
-        description: "Node-based simulation of logistics networks. Visualizes package routing, bottleneck detection, and auto-rerouting during simulated disruptions like port strikes.",
-        icon: <Network className="w-10 h-10 text-[#ff0080]" />,
-        tech: "Force Graph, Socket.io",
-        link: "/apps/logistics",
+        title: "EOR Strategy Decision Engine",
+        description: "AI-driven expansion modeling. Identify optimal legal structures and visualize complex money flows with custom Sankey diagrams.",
+        icon: <Rocket className="w-10 h-10 text-[#ff00ff]" />,
+        tech: "Sankey Flow, Logic Engine",
+        link: "/apps/eor-decision",
+        color: "border-[#ff00ff]/20 hover:border-[#ff00ff]/50",
+        shadow: "hover:shadow-[0_0_30px_rgba(255,0,255,0.2)]"
+    },
+    {
+        title: "LLM Payroll Document Intel",
+        description: "Multi-doc AI audit engine. Automated extraction and 99.8% accurate reconciliation across payslips, contracts, and bank statements.",
+        icon: <Brain className="w-10 h-10 text-[#9d50bb]" />,
+        tech: "LLM Simulator, OCR Logic",
+        link: "/apps/payroll-ai",
+        color: "border-[#9d50bb]/20 hover:border-[#9d50bb]/50",
+        shadow: "hover:shadow-[0_0_30px_rgba(157,80,187,0.2)]"
+    },
+    {
+        title: "Procurement Risk Monte Carlo",
+        description: "Probabilistic tender evaluation. Run 5,000+ simulations to analyze award sensitivity and mitigate government contract litigation risk.",
+        icon: <PieChart className="w-10 h-10 text-[#ffff00]" />,
+        tech: "Chart.js, Monte Carlo",
+        link: "/apps/procurement-mc",
+        color: "border-[#ffff00]/20 hover:border-[#ffff00]/50",
+        shadow: "hover:shadow-[0_0_30px_rgba(255,255,0,0.2)]"
+    },
+    {
+        title: "Returns Intelligence Lab",
+        description: "Reverse logistics fraud detection. Visual unboxing audits paired with real-time NPS impact and bad return rate analytics.",
+        icon: <Activity className="w-10 h-10 text-[#ff0080]" />,
+        tech: "Frame Sequencer, NPS Logic",
+        link: "/apps/returns-lab",
         color: "border-[#ff0080]/20 hover:border-[#ff0080]/50",
         shadow: "hover:shadow-[0_0_30px_rgba(255,0,128,0.2)]"
     },
     {
-        title: "AI Tender Evaluation Matrix",
-        description: "Procurement decision support system. dynamic weighting engine for evaluating complex government tenders based on technical, financial, and past-performance criteria.",
-        icon: <FileText className="w-10 h-10 text-[#ffff00]" />,
-        tech: "TensorFlow.js, Grid.js",
-        link: "/apps/tender",
-        color: "border-[#ffff00]/20 hover:border-[#ffff00]/50",
-        shadow: "hover:shadow-[0_0_30px_rgba(255,255,0,0.2)]"
-    },
-
-
-
-    {
         title: "Compound Interest Simulator",
-        description: "High-fidelity financial projection tool. Adjust principal, rate, and time sliders to trigger particle effects representing exponential wealth generation.",
+        description: "High-fidelity financial projection tool. Adjust principal, rate, and time sliders to trigger particle effects for exponential wealth generation.",
         icon: <TrendingUp className="w-10 h-10 text-[#00f3ff]" />,
         tech: "Canvas API, Finance.js",
         link: "/apps/compound",
         color: "border-[#00f3ff]/20 hover:border-[#00f3ff]/50",
         shadow: "hover:shadow-[0_0_30px_rgba(0,243,255,0.2)]"
-    },
-
-    {
-        title: "Pathfinding Visualizer",
-        description: "Interactive algorithm demonstration. Visualizes A*, Dijkstra, and BFS finding optimal paths through complex user-drawn mazes in real-time.",
-        icon: <GitBranch className="w-10 h-10 text-[#ff0080]" />,
-        tech: "Interactive Grid, Algorithms",
-        link: "/apps/pathfinding",
-        color: "border-[#ff0080]/20 hover:border-[#ff0080]/50",
-        shadow: "hover:shadow-[0_0_30px_rgba(255,0,128,0.2)]"
-    },
-    {
-        title: "Sorting Algorithm Visualizer",
-        description: "Educational tool visualizing sorting algorithms (Quick, Merge, Bubble) with synchronized audio cues for each array operation.",
-        icon: <ListOrdered className="w-10 h-10 text-[#9900ff]" />,
-        tech: "AudioContext, Canvas",
-        link: "/apps/sorting",
-        color: "border-[#9900ff]/20 hover:border-[#9900ff]/50",
-        shadow: "hover:shadow-[0_0_30px_rgba(153,0,255,0.2)]"
     },
 ];
 
