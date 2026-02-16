@@ -10,30 +10,37 @@ The site is live at: **[https://anurag-mallick.pages.dev](https://anurag-mallick
 - **Framework**: [Next.js 15+](https://nextjs.org/) (App Router, Edge Runtime)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/)
 - **Animations**: [Framer Motion](https://www.framer.com/motion/)
+- **Visualizations**: Three.js, D3.js, Chart.js, HTML5 Canvas
 - **Iconography**: [Lucide React](https://lucide.dev/)
-- **Form Handling**: [Web3Forms](https://web3forms.com/) (Serverless Email Delivery)
 - **Deployment**: [Cloudflare Pages](https://pages.cloudflare.com/)
 
 ## ✨ Key Features
 
-- **Dynamic Hero Section**: High-impact personal branding and call-to-actions.
-- **Interactive Skills System**: Icon-rich categorization of Core Competencies and Technical Skills.
-- **Professional Timeline**: Detailed Experience and Education history with brand-synced logos.
-- **Interactive Playground**: Retro-themed mini-games (Neon Pong, Neon Tetris) built with High-Performance Canvas.
-- **Fully Responsive**: Optimized for all devices from mobile to desktop.
+- **Dynamic Hero Section**: High-impact personal branding.
+- **Interactive Skills System**: Icon-rich categorization of Core Competencies.
+- **Enterprise Solutions Suite**: A collection of 6 high-fidelity professional tools demonstrating complex logic and data visualization.
+- **Interactive Playground**: A suite of 10 classic and modern web games built with high-performance Canvas rendering.
+- **Fully Responsive**: Optimized for all devices.
 
-## 🕹️ Interactive Playground (Mini-Apps)
+## 💼 Enterprise Solutions (New)
+I have built a suite of complex internal tools to demonstrate capabilities in FinTech and Logistics:
 
-I've integrated a "Playground" section to demonstrate high-performance web capabilities at the Edge.
+1.  **Global Payroll & Tax Visualizer**: Real-time salary vs net pay calculator with comparison mode and 3D globe elements.
+2.  **Supply Chain Neuro-Network**: Interactive logistics map with live "disruption" simulation and particle tracking.
+3.  **AI Tender Evaluation Matrix**: Document parsing simulation with weighted decision matrix and radar charts.
+4.  **Compound Interest Simulator**: Wealth projection tool with granular controls.
+5.  **Pathfinding Visualizer**: Interactive A*/BFS algorithm demonstration.
+6.  **Sorting Algorithm Visualizer**: Educational tool for visualizing bubble sort.
 
-- **[Neon Pong](https://anurag-mallick.pages.dev/apps/ping-pong)**: A 60FPS, AI-driven Ping Pong game. 
-  - Features: Dynamic AI difficulty, ball speed acceleration, and "Best of 5" round logic.
-- **[Neon Tetris](https://anurag-mallick.pages.dev/apps/tetris)**: A classic Tetris module with a cyberpunk aesthetic.
-  - Features: Level progression, score system, and responsive grid-based collision.
+## 🕹️ Interactive Playground
+A collection of 10 web-based games to demonstrate Edge capabilities:
 
-*Accessible via the pulsating neon links in the site footer.*
-- **Dark Mode Aesthetic**: Premium "Cyber-Professional" design with glassmorphism and ambient lighting effects.
-- **Contact Integration**: Zero-backend email delivery system.
+-   **Neon Pong**: AI-driven Ping Pong with dynamic difficulty.
+-   **Neon Tetris**: Cyberpunk-themed classic block stacker.
+-   **Space Invaders**: Retro arcade shooter.
+-   **Asteroids**: Vector-style physics shooter.
+-   **Snake**: Classic snake game with neon aesthetics.
+-   **And more**: Breakout, 2048, Minesweeper, Speed Typer, Memory Sequence.
 
 ## ⚙️ Local Development
 
@@ -48,26 +55,11 @@ I've integrated a "Playground" section to demonstrate high-performance web capab
    npm install
    ```
 
-3. **Configure Environment Variables**:
-   Create a `.env.local` file in the root directory:
-   ```env
-   NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY=your_access_key_here
-   ```
-
-4. **Run the development server**:
+3. **Run the development server**:
    ```bash
    npm run dev
    ```
    Open [http://localhost:3000](http://localhost:3000) to view the project.
-
-## 🌐 Deployment (Cloudflare Pages)
-
-1. Connect your GitHub repository to Cloudflare Pages.
-2. Set the `Build command` to `npm run build`.
-3. Set the `Build output directory` to `.vercel/output/static`.
-4. Add the following **Environment Variable** in the Cloudflare Dashboard:
-   - `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY`: Your Web3Forms Access Key.
-5. Deploy!
 
 ---
 Developed by Anurag Mallick.

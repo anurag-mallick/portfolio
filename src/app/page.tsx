@@ -8,6 +8,8 @@ import { Projects } from "@/components/sections/Projects";
 import { Skills } from "@/components/sections/Skills";
 import { Impact } from "@/components/sections/Impact";
 import { Contact } from "@/components/sections/Contact";
+import { Games } from "@/components/sections/Games";
+import { Apps } from "@/components/sections/Apps";
 
 export default function Home() {
   return (
@@ -19,6 +21,9 @@ export default function Home() {
       <Skills />
       <Impact />
       <Contact />
+      <Apps />
+      <div className="w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
+      <Games />
       <Footer />
     </main>
   );
