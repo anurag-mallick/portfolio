@@ -11,7 +11,9 @@ const themes: { id: Theme; name: string }[] = [
     { id: "minimal", name: "Minimal Executive" },
     { id: "futuristic", name: "Futuristic AI" },
     { id: "glass", name: "Modern Glass" },
+    { id: "glass", name: "Modern Glass" },
     { id: "creative", name: "Creative Portfolio" },
+    { id: "apple-glass", name: "Apple Light Glass" },
 ];
 
 export function ThemeSwitcher() {
@@ -142,6 +144,17 @@ function ThemePreview({ type }: { type: Theme }) {
                     <div className="text-white font-bold text-[10px] leading-tight">BOLD<br />DESIGN</div>
                     <div className="mt-auto w-full h-8 bg-black/20 rounded-full" />
                     <div className="absolute top-1 right-1 w-5 h-5 bg-[#fcd34d] rounded-full" />
+                </div>
+            );
+        case "apple-glass":
+            return (
+                <div className="w-full h-full bg-[#FAFAFA] p-2 flex flex-col gap-2 relative overflow-hidden">
+                    <div className="absolute top-0 left-0 w-full h-4 bg-white/80 backdrop-blur-md border-b border-black/5 z-10" />
+                    <div className="mt-4 w-full h-full flex flex-col gap-1.5">
+                        <div className="w-full h-8 bg-white/60 border border-white/40 rounded-lg shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] backdrop-blur-sm" />
+                        <div className="w-2/3 h-2 bg-[#0071E3]/20 rounded-full" />
+                    </div>
+                    <div className="absolute bottom-[-10px] right-[-10px] w-12 h-12 bg-gradient-to-br from-[#0071E3]/20 to-[#2997FF]/20 rounded-full blur-xl" />
                 </div>
             );
         default:

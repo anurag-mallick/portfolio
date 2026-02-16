@@ -3,7 +3,7 @@
 import { motion, useInView, useSpring, useTransform } from "framer-motion";
 import { useEffect, useRef } from "react";
 
-const metrics = [
+export const metrics = [
     {
         label: "ARR Generated",
         value: 275000,

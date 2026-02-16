@@ -8,7 +8,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 
 // Logo Component with Fallback
-function Logo({ src, domain, initial, color, className, bgClass = "bg-white" }: { src?: string, domain?: string, initial: string, color: string, className?: string, bgClass?: string }) {
+export function Logo({ src, domain, initial, color, className, bgClass = "bg-white" }: { src?: string, domain?: string, initial: string, color: string, className?: string, bgClass?: string }) {
     const [error, setError] = useState(false);
     const [loaded, setLoaded] = useState(false);
     const imgRef = React.useRef<HTMLImageElement>(null);
@@ -21,6 +21,17 @@ function Logo({ src, domain, initial, color, className, bgClass = "bg-white" }: 
             setLoaded(true);
         }
     }, [logoSource]);
+
+    // Log errors for debugging
+    const handleError = () => {
+        console.warn(`Failed to load logo: ${logoSource}`);
+        setError(true);
+    };
+
+    const handleLoad = () => {
+        console.log(`Successfully loaded logo: ${logoSource}`);
+        setLoaded(true);
+    };
 
     if (!logoSource || error) {
         return (
@@ -42,20 +53,21 @@ function Logo({ src, domain, initial, color, className, bgClass = "bg-white" }: 
                 </div>
             )}
             <Image
+                ref={imgRef}
                 src={logoSource}
                 alt={`${initial} Logo`}
                 width={48}
                 height={48}
                 className={cn("w-full h-full object-contain transition-opacity duration-300", loaded ? "opacity-100" : "opacity-0")}
-                onLoad={() => setLoaded(true)}
-                onError={() => setError(true)}
+                onLoad={handleLoad}
+                onError={handleError}
                 unoptimized // Sourcing from external URLs and logos dir
             />
         </div>
     );
 }
 
-const experiences = [
+export const experiences = [
     {
         id: "bluspring",
         role: "Product Manager - Digital Initiatives",

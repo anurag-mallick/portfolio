@@ -9,7 +9,7 @@ import {
     Trello
 } from "lucide-react";
 
-const coreCompetencies = [
+export const coreCompetencies = [
     { name: "Product Ownership", icon: Package },
     { name: "Program Management", icon: Briefcase },
     { name: "Agile", icon: Repeat },
@@ -28,7 +28,7 @@ const coreCompetencies = [
     { name: "API Integration", icon: LinkIcon }
 ];
 
-const technicalSkills = [
+export const technicalSkills = [
     { name: "Jira", icon: Trello },
     { name: "Figma", icon: PenTool },
     { name: "SQL", icon: Database },
@@ -39,7 +39,7 @@ const technicalSkills = [
     { name: "Balsamiq", icon: MousePointer2 }
 ];
 
-const certifications = [
+export const certifications = [
     "Lean Six Sigma Green Belt",
     "Advanced Google Analytics",
     "Design Thinking (Atyaasaa)"

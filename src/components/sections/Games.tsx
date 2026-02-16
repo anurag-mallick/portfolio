@@ -6,7 +6,7 @@ import { LayoutGrid, MousePointerClick, Gamepad2, Brain, Disc, Keyboard, Zap, Lo
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 
-const games = [
+export const games = [
     {
         title: "Neon Tetris",
         description: "Classic pattern recognition logic. Stack blocks efficiently.",

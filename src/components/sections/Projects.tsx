@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { Card } from "@/components/ui/Card";
 import { ArrowUpRight, Cpu, Database, Globe } from "lucide-react";
 
-const projects = [
+export const projects = [
     {
         title: "AI-Powered Reconciliation System",
         category: "Fintech Automation",

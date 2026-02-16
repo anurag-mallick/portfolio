@@ -6,7 +6,7 @@ import { Globe, Network, FileText, PieChart, Rocket, Brain, TrendingUp, Activity
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 
-const apps = [
+export const apps = [
     {
         title: "Global Payroll What-If Studio",
         description: "Macro-economic stress-testing for global workforces. Model FX volatility, tax law shifts, and headcount growth across 150+ countries.",
