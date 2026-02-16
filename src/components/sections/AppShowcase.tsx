@@ -350,7 +350,7 @@ export function AppShowcase() {
     const categories = Array.from(new Set(allApps.map(app => app.category)));
 
     return (
-        <section id="showcase" className="py-24 bg-black relative overflow-hidden min-h-screen flex flex-col justify-center">
+        <section id="apps" className="py-24 bg-black relative overflow-hidden min-h-screen flex flex-col justify-center">
             {/* Background elements */}
             <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:60px_60px] opacity-20 pointer-events-none" />
             <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-background to-transparent z-10" />

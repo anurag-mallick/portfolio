@@ -8,12 +8,12 @@ import { Menu, X } from "lucide-react";
 import { ThemeSwitcher } from "./ThemeSwitcher";
 
 const navItems = [
-    { name: "Experience", href: "#experience" },
-    { name: "Education", href: "#education" },
-    { name: "Projects", href: "#projects" },
-    { name: "Skills", href: "#skills" },
-    { name: "Apps", href: "#apps" },
-    { name: "Connect", href: "#contact" },
+    { name: "Experience", href: "/#experience" },
+    { name: "Education", href: "/#education" },
+    { name: "Projects", href: "/#projects" },
+    { name: "Skills", href: "/#skills" },
+    { name: "Apps", href: "/#apps" },
+    { name: "Connect", href: "/#contact" },
 ];
 
 export function Navbar() {
