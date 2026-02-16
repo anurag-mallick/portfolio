@@ -3,24 +3,27 @@
 import React, { useState } from 'react';
 import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
-import { MapContainer, TileLayer, Marker, Popup, Polyline, useMapEvents } from 'react-leaflet';
-import 'leaflet/dist/leaflet.css';
-import L from 'leaflet';
 import { TrendingDown, Navigation, Coins } from 'lucide-react';
 
 // Fix Leaflet marker icons in Next.js
-const icon = L.icon({
-    iconUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png',
-    iconRetinaUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon-2x.png',
-    shadowUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png',
-    iconSize: [25, 41],
-    iconAnchor: [12, 41],
-});
+const getIcon = () => {
+    if (typeof window === 'undefined') return null;
+    const L = require('leaflet');
+    return L.icon({
+        iconUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png',
+        iconRetinaUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon-2x.png',
+        shadowUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png',
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+    });
+};
 
 // Helper to handle clicks
-function MapEvents({ onMapClick }: { onMapClick: (latlng: L.LatLng) => void }) {
-    useMapEvents({
-        click(e) {
+function MapEvents({ onMapClick }: { onMapClick: (latlng: any) => void }) {
+    if (typeof window === 'undefined') return null;
+    const { useMapEvents } = require('react-leaflet');
+    const events = useMapEvents({
+        click(e: any) {
             onMapClick(e.latlng);
         },
     });
@@ -28,10 +31,10 @@ function MapEvents({ onMapClick }: { onMapClick: (latlng: L.LatLng) => void }) {
 }
 
 export function CostOptimizer() {
-    const [markers, setMarkers] = useState<L.LatLng[]>([]);
+    const [markers, setMarkers] = useState<any[]>([]);
     const [mode, setMode] = useState<'NAIVE' | 'OPTIMIZED'>('NAIVE');
 
-    const handleMapClick = (latlng: L.LatLng) => {
+    const handleMapClick = (latlng: any) => {
         if (markers.length < 10) {
             setMarkers([...markers, latlng]);
         }
@@ -81,6 +84,13 @@ export function CostOptimizer() {
     const cost = (parseFloat(distanceKm) * 15).toFixed(0); // ₹15 per km
     const savings = mode === 'OPTIMIZED' ? Math.round(parseInt(cost) * 0.25) : 0; // Fake savings for demo
 
+    if (typeof window === 'undefined') {
+        return <div className="h-[600px] w-full bg-zinc-900 animate-pulse rounded-xl" />;
+    }
+
+    const { MapContainer, TileLayer, Marker, Popup, Polyline } = require('react-leaflet');
+    const icon = getIcon();
+
     return (
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 h-[700px] lg:h-[600px]">
             <Card className="col-span-1 lg:col-span-2 p-0 overflow-hidden border-white/10 relative z-0">
@@ -97,7 +107,7 @@ export function CostOptimizer() {
                     <MapEvents onMapClick={handleMapClick} />
 
                     {markers.map((pos, idx) => (
-                        <Marker key={idx} position={pos} icon={icon}>
+                        <Marker key={idx} position={pos} icon={icon!}>
                             <Popup>Stop #{idx + 1}</Popup>
                         </Marker>
                     ))}
