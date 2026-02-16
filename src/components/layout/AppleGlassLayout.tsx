@@ -17,6 +17,10 @@ import { technicalSkills, coreCompetencies, certifications } from "@/components/
 import { metrics } from "@/components/sections/Impact";
 import { apps } from "@/components/sections/Apps";
 import { games } from "@/components/sections/Games";
+import { FintechToolkit } from "@/components/sections/FintechToolkit";
+import { LogisticsLab } from "@/components/sections/LogisticsLab";
+import { Infrastructure } from "@/components/sections/Infrastructure";
+import { Algorithms } from "@/components/sections/Algorithms";
 
 function Particle() {
     const [style, setStyle] = useState({
@@ -525,6 +529,10 @@ export function AppleGlassLayout() {
                 <GlassProjects />
                 <GlassApps />
                 <GlassSkills />
+                <div id="fintech" className="bg-black"><FintechToolkit /></div>
+                <div id="logistics-lab" className="bg-black"><LogisticsLab /></div>
+                <div id="infrastructure" className="bg-black"><Infrastructure /></div>
+                <div id="algorithms" className="bg-black"><Algorithms /></div>
                 <GlassGames />
                 <GlassContact />
             </main>
