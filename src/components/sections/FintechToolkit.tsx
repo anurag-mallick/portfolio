@@ -25,6 +25,42 @@ export const fintechApps = [
         color: "border-[#ff00ff]/20 hover:border-[#ff00ff]/50",
         shadow: "hover:shadow-[0_0_30px_rgba(255,0,255,0.2)]"
     },
+    {
+        title: "Invoice Anomaly Detector",
+        description: "ML-powered invoice validation detecting duplicate payments, pricing anomalies, and vendor fraud patterns.",
+        icon: <FileSearch className="w-10 h-10 text-[#ff6b00]" />,
+        tech: "ML, Pattern Recognition",
+        link: "/apps/invoice-anomaly",
+        color: "border-[#ff6b00]/20 hover:border-[#ff6b00]/50",
+        shadow: "hover:shadow-[0_0_30px_rgba(255,107,0,0.2)]"
+    },
+    {
+        title: "Compliance Deadline Tracker",
+        description: "Multi-country compliance calendar with automated reminders for tax filings, audits, and regulatory deadlines.",
+        icon: <Calendar className="w-10 h-10 text-[#00ff99]" />,
+        tech: "date-fns, Notifications",
+        link: "/apps/compliance-tracker",
+        color: "border-[#00ff99]/20 hover:border-[#00ff99]/50",
+        shadow: "hover:shadow-[0_0_30px_rgba(0,255,153,0.2)]"
+    },
+    {
+        title: "LLM Cost Optimizer",
+        description: "Compare GPT-4, Claude, Gemini costs across 1M+ tokens with caching strategies and batch processing savings.",
+        icon: <Brain className="w-10 h-10 text-[#ffff00]" />,
+        tech: "Cost Analysis, Charts",
+        link: "/apps/llm-cost",
+        color: "border-[#ffff00]/20 hover:border-[#ffff00]/50",
+        shadow: "hover:shadow-[0_0_30px_rgba(255,255,0,0.2)]"
+    },
+    {
+        title: "Prompt Engineering Lab",
+        description: "Interactive playground for testing prompts with token counting, cost estimation, and response comparison.",
+        icon: <Code className="w-10 h-10 text-[#a855f7]" />,
+        tech: "Monaco Editor, API",
+        link: "/apps/prompt-lab",
+        color: "border-[#a855f7]/20 hover:border-[#a855f7]/50",
+        shadow: "hover:shadow-[0_0_30px_rgba(168,85,247,0.2)]"
+    },
 ];
 
 export function FintechToolkit() {

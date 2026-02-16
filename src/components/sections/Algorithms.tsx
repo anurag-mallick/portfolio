@@ -25,6 +25,24 @@ export const algorithmApps = [
         color: "border-[#ffff00]/20 hover:border-[#ffff00]/50",
         shadow: "hover:shadow-[0_0_30px_rgba(255,255,0,0.2)]"
     },
+    {
+        title: "Auto-Scaling Simulator",
+        description: "Visualize horizontal pod autoscaling with CPU/memory metrics, scale-up/down delays, and cost optimization.",
+        icon: <TrendingUp className="w-10 h-10 text-[#2ecc71]" />,
+        tech: "K8s, Metrics",
+        link: "/apps/auto-scaling",
+        color: "border-[#2ecc71]/20 hover:border-[#2ecc71]/50",
+        shadow: "hover:shadow-[0_0_30px_rgba(46,204,113,0.2)]"
+    },
+    {
+        title: "Multi-Tenant Data Isolation",
+        description: "Compare database isolation strategies: shared schema, separate schema, and separate database with security analysis.",
+        icon: <Shield className="w-10 h-10 text-[#3498db]" />,
+        tech: "Security, DB",
+        link: "/apps/multi-tenant",
+        color: "border-[#3498db]/20 hover:border-[#3498db]/50",
+        shadow: "hover:shadow-[0_0_30px_rgba(52,152,219,0.2)]"
+    },
 ];
 
 export function Algorithms() {

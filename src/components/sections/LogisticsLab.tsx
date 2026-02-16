@@ -25,6 +25,24 @@ export const logisticsApps = [
         color: "border-[#ffff00]/20 hover:border-[#ffff00]/50",
         shadow: "hover:shadow-[0_0_30px_rgba(255,255,0,0.2)]"
     },
+    {
+        title: "Returns Prediction Model",
+        description: "ML model predicting return probability based on product category, price, and customer history with confidence scores.",
+        icon: <TrendingDown className="w-10 h-10 text-[#ff6b6b]" />,
+        tech: "ML, Prediction",
+        link: "/apps/returns-prediction",
+        color: "border-[#ff6b6b]/20 hover:border-[#ff6b6b]/50",
+        shadow: "hover:shadow-[0_0_30px_rgba(255,107,107,0.2)]"
+    },
+    {
+        title: "3PL Cost Comparator",
+        description: "Compare shipping costs across carriers (FedEx, UPS, DHL, USPS) with zone-based pricing and bulk discounts.",
+        icon: <Package className="w-10 h-10 text-[#00d4ff]" />,
+        tech: "Cost Analysis",
+        link: "/apps/3pl-comparator",
+        color: "border-[#00d4ff]/20 hover:border-[#00d4ff]/50",
+        shadow: "hover:shadow-[0_0_30px_rgba(0,212,255,0.2)]"
+    },
 ];
 
 export function LogisticsLab() {

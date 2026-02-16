@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Gauge, Database, Network, BarChart3 } from "lucide-react";
+import { Gauge, Database, Network, BarChart3, Flag } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 
@@ -24,6 +24,24 @@ export const infrastructureApps = [
         link: "/apps/load-balancer",
         color: "border-[#00f3ff]/20 hover:border-[#00f3ff]/50",
         shadow: "hover:shadow-[0_0_30px_rgba(0,243,255,0.2)]"
+    },
+    {
+        title: "Database Query Planner",
+        description: "Visualize SQL query execution plans with index usage, join strategies, and performance cost estimates.",
+        icon: <Database className="w-10 h-10 text-[#9b59b6]" />,
+        tech: "SQL, Visualization",
+        link: "/apps/db-query-planner",
+        color: "border-[#9b59b6]/20 hover:border-[#9b59b6]/50",
+        shadow: "hover:shadow-[0_0_30px_rgba(155,89,182,0.2)]"
+    },
+    {
+        title: "Feature Flag Impact Calculator",
+        description: "Simulate feature rollout strategies with A/B testing, gradual rollout percentages, and impact metrics.",
+        icon: <Flag className="w-10 h-10 text-[#e74c3c]" />,
+        tech: "A/B Testing",
+        link: "/apps/feature-flag",
+        color: "border-[#e74c3c]/20 hover:border-[#e74c3c]/50",
+        shadow: "hover:shadow-[0_0_30px_rgba(231,76,60,0.2)]"
     },
 ];
 
