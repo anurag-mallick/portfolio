@@ -386,7 +386,7 @@ function ExperienceCard({ exp, index, viewMode }: { exp: typeof experiences[0] &
                                 transition={{ duration: 0.4, ease: "easeOut" }}
                                 className="overflow-hidden"
                             >
-                                <ul className="space-y-3 mt-4 text-sm text-gray-300 border-t border-white/10 pt-4">
+                                <ul className="space-y-3 mt-4 text-sm text-gray-300 border-t border-white/10 pt-4 text-left">
                                     {exp.achievements.map((achievement, i) => (
                                         <motion.li
                                             key={i}

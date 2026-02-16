@@ -15,8 +15,8 @@
   --nav-blur: 12px;
   --font-main: var(--font-fira-code), monospace;
   --layout-align: center;
-  --container-max-width: 1100px;
-  --section-spacing: 6rem;
+  --container-max-width: 1000px;
+  --section-spacing: 4rem;
   --card-radius: 4px;
   --glass-opacity: 0.02;
 }
@@ -36,7 +36,7 @@
   --font-main: var(--font-fira-code), monospace;
   --layout-align: center;
   --container-max-width: 1000px;
-  --section-spacing: 7rem;
+  --section-spacing: 4rem;
   --card-radius: 0px;
 }
 
@@ -55,8 +55,8 @@
   --nav-blur: 20px;
   --font-main: var(--font-playfair), serif;
   --layout-align: start;
-  --container-max-width: 1200px;
-  --section-spacing: 8rem;
+  --container-max-width: 1000px;
+  --section-spacing: 4rem;
   --card-radius: 0px;
   --glass-opacity: 0.8;
 }
@@ -76,8 +76,8 @@
   --nav-blur: 10px;
   --font-main: var(--font-outfit), sans-serif;
   --layout-align: center;
-  --container-max-width: 1400px;
-  --section-spacing: 9rem;
+  --container-max-width: 1000px;
+  --section-spacing: 4rem;
   --card-radius: 24px;
   --glass-opacity: 0.1;
 }
@@ -97,8 +97,8 @@
   --nav-blur: 30px;
   --font-main: var(--font-inter), sans-serif;
   --layout-align: center;
-  --container-max-width: 1100px;
-  --section-spacing: 6rem;
+  --container-max-width: 1000px;
+  --section-spacing: 4rem;
   --card-radius: 16px;
   --glass-opacity: 0.05;
 }
@@ -119,8 +119,8 @@
   --nav-blur: 8px;
   --font-main: var(--font-syncopate), sans-serif;
   --layout-align: end;
-  --container-max-width: 1600px;
-  --section-spacing: 5rem;
+  --container-max-width: 1000px;
+  --section-spacing: 4rem;
   --card-radius: 40px;
   --glass-opacity: 0.2;
 }
