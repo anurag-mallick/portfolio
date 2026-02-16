@@ -39,7 +39,7 @@ export default function SpaceInvadersGame() {
         enemySpeed.current = 1;
 
         // Init enemies
-        const newEnemies = [];
+        const newEnemies: { x: number, y: number, active: boolean }[][] = [];
         for (let r = 0; r < ENEMY_ROWS; r++) {
             newEnemies[r] = [];
             for (let c = 0; c < ENEMY_COLS; c++) {

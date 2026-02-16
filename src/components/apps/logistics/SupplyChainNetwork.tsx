@@ -22,7 +22,7 @@ export function SupplyChainNetwork() {
     const [disruption, setDisruption] = useState(false);
     const [activeEvent, setActiveEvent] = useState<string | null>(null);
     const [stats, setStats] = useState({ delivered: 1420, active: 45, delayed: 0 });
-    const requestRef = useRef<number>();
+    const requestRef = useRef<number | null>(null);
 
     // Geo-distributed nodes (Abstract Map)
     const nodes: Node[] = [
@@ -147,7 +147,9 @@ export function SupplyChainNetwork() {
             requestRef.current = requestAnimationFrame(animate);
         };
         requestRef.current = requestAnimationFrame(animate);
-        return () => cancelAnimationFrame(requestRef.current!);
+        return () => {
+            if (requestRef.current) cancelAnimationFrame(requestRef.current);
+        };
 
     }, [disruption]);
 

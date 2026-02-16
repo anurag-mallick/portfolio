@@ -85,9 +85,9 @@ export function AITenderMatrix() {
                 <Card className="p-6 bg-zinc-900/50 border-white/10 backdrop-blur-md">
                     <h3 className="font-bold mb-4 border-b border-white/10 pb-2">Weighting Criteria</h3>
                     <div className="space-y-4">
-                        <Range label="Technical" val={weights.technical} change={(v) => setWeights({ ...weights, technical: v })} />
-                        <Range label="Financial" val={weights.financial} change={(v) => setWeights({ ...weights, financial: v })} />
-                        <Range label="History" val={weights.pastPerf} change={(v) => setWeights({ ...weights, pastPerf: v })} />
+                        <Range label="Technical" val={weights.technical} change={(v: number) => setWeights({ ...weights, technical: v })} />
+                        <Range label="Financial" val={weights.financial} change={(v: number) => setWeights({ ...weights, financial: v })} />
+                        <Range label="History" val={weights.pastPerf} change={(v: number) => setWeights({ ...weights, pastPerf: v })} />
                     </div>
                 </Card>
             </div>
