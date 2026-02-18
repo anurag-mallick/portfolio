@@ -157,8 +157,8 @@ export default function AsteroidsGame() {
         // Level up / Respawn asteroids if cleared
         if (asteroids.current.length === 0) {
             for (let i = 0; i < 5; i++) {
-                let x = Math.random() * CANVAS_WIDTH;
-                let y = Math.random() * CANVAS_HEIGHT;
+                const x = Math.random() * CANVAS_WIDTH;
+                const y = Math.random() * CANVAS_HEIGHT;
                 asteroids.current.push(createAsteroid(x, y, 40));
             }
         }

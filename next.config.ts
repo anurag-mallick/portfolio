@@ -2,12 +2,18 @@ import type { NextConfig } from "next";
 
 const isGithubActions = process.env.GITHUB_ACTIONS === 'true';
 
+const basePath = isGithubActions ? '/portfolio' : '';
+
 const nextConfig: NextConfig = {
   output: 'export',
   images: {
     unoptimized: true,
   },
-  basePath: isGithubActions ? '/portfolio' : '',
+  basePath,
+  env: {
+    NEXT_PUBLIC_BASE_PATH: basePath,
+  },
+
 };
 
 // Add Cloudflare compatibility

@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Gauge, Database, Network, BarChart3, Flag } from "lucide-react";
+import { Gauge, Database, Network, Flag } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 

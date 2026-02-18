@@ -68,7 +68,7 @@ export default function TwoZeroFourEightGame() {
     const handleInput = (dir: 'up' | 'down' | 'left' | 'right') => {
         if (gameOver) return;
 
-        let newGrid = grid.map(row => [...row]);
+        const newGrid = grid.map(row => [...row]);
         let totalScoreGain = 0;
         let changed = false;
 

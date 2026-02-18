@@ -22,7 +22,7 @@ export function EORDecisionEngine() {
     const [showProposal, setShowProposal] = useState(false);
 
     const calc = useMemo(() => {
-        let totalBase = headcount * salary;
+        const totalBase = headcount * salary;
         let totalBenefit = 0;
         let totalFees = 0;
 

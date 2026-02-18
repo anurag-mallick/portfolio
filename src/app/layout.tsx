@@ -5,8 +5,6 @@ import {
   Outfit,
   Fira_Code,
   Syncopate,
-  Space_Grotesk,
-  Lexend,
 } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeContext";
@@ -38,19 +36,10 @@ const syncopate = Syncopate({
   subsets: ["latin"],
 });
 
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
-  subsets: ["latin"],
-});
-
-const lexend = Lexend({
-  variable: "--font-lexend",
-  subsets: ["latin"],
-});
-
 export const metadata: Metadata = {
   title: "Anurag Mallick | AI Product Architect",
-  description: "Building Payroll Systems at Scale & Integrating AI into Financial Workflows",
+  description:
+    "Building Payroll Systems at Scale & Integrating AI into Financial Workflows",
 };
 
 export default function RootLayout({
@@ -60,6 +49,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  const savedTheme = localStorage.getItem("portfolio-theme") || "terminal";
+                  document.documentElement.setAttribute("data-theme", savedTheme);
+                } catch (e) {}
+              })();
+            `,
+          }}
+        />
+      </head>
       <body
         className={`
           ${inter.variable} 
@@ -67,14 +70,10 @@ export default function RootLayout({
           ${outfit.variable} 
           ${firaCode.variable} 
           ${syncopate.variable} 
-          ${spaceGrotesk.variable} 
-          ${lexend.variable} 
           antialiased transition-colors duration-500
         `}
       >
-        <ThemeProvider>
-          {children}
-        </ThemeProvider>
+        <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
   );

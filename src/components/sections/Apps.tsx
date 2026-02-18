@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Globe, Network, FileText, PieChart, Rocket, Brain, TrendingUp, Activity, GitBranch, ListOrdered, ShoppingBag } from "lucide-react";
+import { Globe, PieChart, Rocket, Brain, TrendingUp, Activity, GitBranch, ShoppingBag } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 

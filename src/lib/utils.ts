@@ -14,9 +14,8 @@ export function getAssetPath(path: string): string {
     // Remove leading slash if present
     const cleanPath = path.startsWith('/') ? path.slice(1) : path;
 
-    // Check if we're in GitHub Actions build (production)
-    const isGithubActions = process.env.GITHUB_ACTIONS === 'true';
-    const basePath = isGithubActions ? '/portfolio' : '';
+    // Use the exposed environment variable which aligns with next.config.ts
+    const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
     return `${basePath}/${cleanPath}`;
 }
