@@ -3,6 +3,7 @@
 A premium, high-performance portfolio website built with **Next.js 15**, **Tailwind CSS**, and **Framer Motion**. Designed to showcase professional expertise in Product Management, AI Integration, and Financial Infrastructure.
 
 ## 🚀 Live Preview
+
 The site is live at: **[https://anurag-mallick.pages.dev](https://anurag-mallick.pages.dev)**
 
 ## 🛠️ Technical Stack
@@ -11,79 +12,68 @@ The site is live at: **[https://anurag-mallick.pages.dev](https://anurag-mallick
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/)
 - **Animations**: [Framer Motion](https://www.framer.com/motion/)
 - **Visualizations**: Three.js, D3.js, Chart.js, HTML5 Canvas
+- **Security**: Content Security Policy (CSP), Honeypot Bot Protection
 - **Iconography**: [Lucide React](https://lucide.dev/)
 - **Deployment**: [Cloudflare Pages](https://pages.cloudflare.com/)
 
 ## ✨ Key Features
 
-- **Dynamic Hero Section**: High-impact personal branding with animated terminal effects
-- **Interactive Skills System**: Icon-rich categorization of Core Competencies
-- **19 Interactive Applications**: Professional-grade tools across 4 specialized domains
-- **10 Classic Games**: High-performance Canvas-based games with neon aesthetics
-- **Dynamic Articles Section**: Showcasing strategic insights from LinkedIn
-- **Dual Theme System**: Switch between Standard and Apple Glass layouts
-- **Fully Responsive**: Optimized for all devices with smooth animations
+- **Dynamic Hero Section**: Bold branding with animated roles and highlighted expertise.
+- **7 Premium Themes**: Dynamic aesthetics including **Midnight Nebula**, Terminal, Apple Glass, and more.
+- **Advanced Aesthetics Module**: High-end theme switcher with real-time metadata and smooth transitions.
+- **30+ Interactive Applications**: Professional-grade tools across 5 specialized domains in "The Lab".
+- **10 Neon Games**: High-performance Canvas-based games with premium aesthetics.
+- **Security Hardened**: Built-in Honeypot protection, CSP headers, and regular dependency vulnerability audits.
+- **Fully Responsive**: Optimized for all devices with buttery-smooth animations.
 
-## 🎯 Interactive Applications
+## 🎯 The Lab: Interactive Applications
 
-### 💰 Fintech Toolkit (5 Apps)
+### 💰 Fintech Toolkit
+
 Professional financial tools demonstrating expertise in global payroll and fintech operations:
 
-1. **EOR Decision Engine**: Multi-country employment model comparison with cost analysis
-2. **Global Payroll Tax Visualizer**: Real-time salary vs net pay calculator across countries
-3. **LLM Payroll Document Intelligence**: AI-powered document parsing and classification
-4. **Invoice Anomaly Detector**: Pattern recognition for financial fraud detection
-5. **Compliance Deadline Tracker**: Multi-jurisdiction regulatory timeline management
+- **Global Payroll What-If Studio**: Macro-economic stress-testing for workforces.
+- **EOR Strategy Decision Engine**: AI-driven expansion and legal structure modeling.
+- **LLM Document Intelligence**: Multi-doc AI audit and reconciliation engine.
+- **FX Hedging Simulator**: Monte Carlo simulations for currency risk.
+- **Multi-Country Tax Calculator**: Interactive cost comparison across 15+ countries.
 
-### 📦 Logistics Lab (4 Apps)
+### 📦 Logistics & Supply Chain
+
 Advanced routing algorithms and delivery optimization tools:
 
-1. **Route Optimizer Visualizer**: TSP algorithm comparison (Nearest Neighbor, 2-Opt, Genetic)
-2. **Returns Prediction Model**: Reverse logistics fraud detection with NPS analytics
-3. **3PL Cost Comparator**: Multi-carrier rate comparison and optimization
-4. **Food Delivery Express**: Comprehensive food ordering and delivery UI with real-time tracking
+- **Last-Mile Route Optimizer**: Algorithm comparison (Nearest Neighbor, 2-Opt, Genetic).
+- **Returns Intelligence Lab**: Reverse logistics fraud detection and ML prediction.
+- **3PL Cost Comparator**: Multi-carrier rate optimization.
+- **Food Delivery Express**: Real-time order tracking and dynamic cart management simulation.
 
-### 🏗️ Infrastructure Simulations (5 Apps)
+### 🏗️ Infrastructure & Architecture
+
 System architecture and performance optimization demonstrations:
 
-1. **Database Query Planner**: Visual query optimization with execution plan analysis
-2. **Load Balancer Simulator**: Particle-based request flow with multiple strategies
-3. **Feature Flag Impact Calculator**: A/B testing impact prediction with statistical analysis
-4. **Auto-Scaling Simulator**: Real-time resource allocation and cost optimization
-5. **Multi-Tenant Data Isolation Visualizer**: Database sharding and tenant separation patterns
+- **Database Query Planner**: Visual SQL execution plan analysis.
+- **Load Balancer Simulator**: Particle-based request flow strategies.
+- **API Rate Limit Visualizer**: Token bucket vs Leaky bucket simulations.
+- **Auto-Scaling Simulator**: K8s resource allocation and cost optimization.
+- **Feature Flag Calculator**: A/B testing impact and rollout strategy prediction.
 
-### 🧮 Algorithms (5 Apps)
-Classic computer science algorithms with interactive visualizations:
+## 🕹️ Neon Games
 
-1. **Pathfinding Visualizer**: BFS/A* shortest-path algorithm demonstration
-2. **Sorting Visualizer**: Bubble sort with step-by-step animation
-3. **LLM Cost Optimizer**: Token usage optimization and cost prediction
-4. **Prompt Engineering Lab**: AI prompt testing and comparison tool
-5. **Returns Intelligence Lab**: ML-based return prediction and fraud scoring
+A collection of classic games with premium cyberpunk aesthetics:
 
-## 🕹️ Interactive Games
-A collection of 10 classic web-based games with premium neon aesthetics:
-
-- **Neon Pong**: AI-driven Ping Pong with dynamic difficulty
-- **Neon Tetris**: Cyberpunk-themed classic block stacker
-- **Space Invaders**: Retro arcade shooter
-- **Asteroids**: Vector-style physics shooter
-- **Snake**: Classic snake game with neon aesthetics
-- **Breakout**: Brick-breaking arcade classic
-- **2048**: Number puzzle game
-- **Minesweeper**: Logic-based mine detection
-- **Speed Typer**: Typing speed challenge
-- **Memory Sequence**: Pattern memory game
+- **Neon Tetris**, **Neon Pong**, **Cyber Serpent**, **Void Defender**, **Neon Arkanoid**, **Memory Sequence**, **Speed Typer**, and more.
 
 ## ⚙️ Local Development
 
 1. **Clone the repository**:
+
    ```bash
    git clone https://github.com/anurag-mallick/portfolio.git
    cd portfolio
    ```
 
 2. **Install dependencies**:
+
    ```bash
    npm install
    ```
@@ -95,4 +85,5 @@ A collection of 10 classic web-based games with premium neon aesthetics:
    Open [http://localhost:3000](http://localhost:3000) to view the project.
 
 ---
+
 Developed by Anurag Mallick.
