@@ -44,24 +44,6 @@
   --card-radius: 0px;
 }
 
-[data-theme="terminal"] {
-  --background: #020202;
-  --foreground: #00ff41;
-  --primary: #00ff41;
-  --secondary: #008f11;
-  --accent: #22c55e;
-  --muted: #003b00;
-  --muted-foreground: #008f11;
-  --border: #003b00;
-  --card: #050505;
-  --glow-intensity: 0.6;
-  --nav-blur: 16px;
-  --font-main: var(--font-fira-code), monospace;
-  --layout-align: center;
-  --container-max-width: 1000px;
-  --section-spacing: 4rem;
-  --card-radius: 0px;
-}
 
 /* --- MINIMAL EXECUTIVE (Prestige & Clean) --- */
 [data-theme="minimal"] {
@@ -220,9 +202,9 @@
   --color-card: var(--card);
   --color-border: var(--border);
 
-  --radius-sm: calc(var(--radius) - 2px);
-  --radius-md: var(--radius);
-  --radius-lg: calc(var(--radius) + 2px);
+  --radius-sm: calc(var(--card-radius) - 2px);
+  --radius-md: var(--card-radius);
+  --radius-lg: calc(var(--card-radius) + 12px);
 
   --animate-float: float 6s ease-in-out infinite;
   --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
