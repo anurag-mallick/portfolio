@@ -10,13 +10,22 @@ export function Contact() {
     const [formState, setFormState] = useState({
         name: "",
         email: "",
-        message: ""
+        message: "",
+        botcheck: ""
     });
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSent, setIsSent] = useState(false);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        
+        // Honeypot check
+        if (formState.botcheck) {
+            console.warn("Bot detected.");
+            setIsSent(true); // Silently "success" to fool the bot
+            return;
+        }
+
         setIsSubmitting(true);
 
         try {
@@ -131,6 +140,15 @@ export function Contact() {
                                             </motion.div>
                                         ) : (
                                             <form key="form" onSubmit={handleSubmit} className="space-y-6">
+                                                {/* Honeypot Field (Hidden from users) */}
+                                                <input
+                                                    type="checkbox"
+                                                    name="botcheck"
+                                                    className="hidden"
+                                                    style={{ display: "none" }}
+                                                    onChange={(e) => setFormState({ ...formState, botcheck: e.target.checked ? "checked" : "" })}
+                                                />
+
                                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                                     <div className="space-y-2">
                                                         <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground ml-1">Full Name</label>

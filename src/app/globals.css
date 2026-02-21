@@ -5,6 +5,8 @@
   --background: #020202;
   --foreground: #00ff41;
   --primary: #00ff41;
+  --primary-foreground: #020202;
+  --primary-rgb: 0, 255, 65;
   --secondary: #008f11;
   --accent: #22c55e;
   --muted: #003b00;
@@ -19,6 +21,27 @@
   --section-spacing: 4rem;
   --card-radius: 4px;
   --glass-opacity: 0.02;
+}
+
+[data-theme="terminal"] {
+  --background: #020202;
+  --foreground: #00ff41;
+  --primary: #00ff41;
+  --primary-foreground: #020202;
+  --primary-rgb: 0, 255, 65;
+  --secondary: #008f11;
+  --accent: #22c55e;
+  --muted: #003b00;
+  --muted-foreground: #008f11;
+  --border: #003b00;
+  --card: #050505;
+  --glow-intensity: 0.6;
+  --nav-blur: 16px;
+  --font-main: var(--font-fira-code), monospace;
+  --layout-align: center;
+  --container-max-width: 1000px;
+  --section-spacing: 4rem;
+  --card-radius: 0px;
 }
 
 [data-theme="terminal"] {
@@ -45,6 +68,8 @@
   --background: #ffffff;
   --foreground: #111111;
   --primary: #000000;
+  --primary-foreground: #ffffff;
+  --primary-rgb: 0, 0, 0;
   --secondary: #4b5563;
   --accent: #9ca3af;
   --muted: #f3f4f6;
@@ -66,6 +91,8 @@
   --background: #05050a;
   --foreground: #ffffff;
   --primary: #00f3ff;
+  --primary-foreground: #05050a;
+  --primary-rgb: 0, 243, 255;
   --secondary: #7000ff;
   --accent: #ff00c8;
   --muted: #101020;
@@ -87,6 +114,8 @@
   --background: #0f172a;
   --foreground: #f8fafc;
   --primary: #38bdf8;
+  --primary-foreground: #0f172a;
+  --primary-rgb: 56, 189, 248;
   --secondary: #818cf8;
   --accent: #c084fc;
   --muted: #1e293b;
@@ -105,10 +134,11 @@
 
 /* --- CREATIVE PORTFOLIO (Bold & Dynamic) --- */
 [data-theme="creative"] {
-  --background: #f87171;
-  /* Bold Red Base */
+  --background: #f87171; /* Bold Red Base */
   --foreground: #ffffff;
   --primary: #ffffff;
+  --primary-foreground: #f87171;
+  --primary-rgb: 255, 255, 255;
   --secondary: #1e1e1e;
   --accent: #fcd34d;
   --muted: rgba(0, 0, 0, 0.1);
@@ -125,26 +155,53 @@
   --glass-opacity: 0.2;
 }
 
+/* --- MIDNIGHT NEBULA (Vibrant & Deep) --- */
+[data-theme="midnight"] {
+  --background: #02040a;
+  --foreground: #f8fafc;
+  --primary: #8b5cf6; /* Electric Violet */
+  --primary-foreground: #ffffff;
+  --primary-rgb: 139, 92, 246;
+  --secondary: #f59e0b; /* Golden Amber */
+  --accent: #06b6d4; /* Neon Cyan */
+  --muted: #0f172a;
+  --muted-foreground: #94a3b8;
+  --border: rgba(139, 92, 246, 0.2);
+  --card: rgba(15, 23, 42, 0.6);
+  --glow-intensity: 0.8;
+  --nav-blur: 20px;
+  --font-main: var(--font-outfit), sans-serif;
+  --layout-align: center;
+  --container-max-width: 1200px;
+  --section-spacing: 5rem;
+  --card-radius: 20px;
+  --glass-opacity: 0.1;
+}
+
 /* --- APPLE LIGHT GLASS (Premium & Ethereal) --- */
 [data-theme="apple-glass"] {
-  --background: #FAFAFA;
-  --foreground: #1D1D1F;
-  --primary: #0071E3;
+  --background: #fafafa;
+  --foreground: #1d1d1f;
+  --primary: #0071e3;
+  --primary-foreground: #ffffff;
+  --primary-rgb: 0, 113, 227;
   --secondary: #86868b;
-  --accent: #2997FF;
-  --muted: #F5F5F7;
+  --accent: #2997ff;
+  --muted: #f5f5f7;
   --muted-foreground: #86868b;
   --border: rgba(0, 0, 0, 0.08);
   --card: rgba(255, 255, 255, 0.65); /* Frosted glass base */
   --glow-intensity: 0.2;
   --nav-blur: 24px;
-  --font-main: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-main:
+    -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
   --layout-align: center;
   --container-max-width: 1200px;
   --section-spacing: 6rem;
   --card-radius: 20px;
   --glass-opacity: 0.8;
-  
+
   /* Apple Specific Tokens */
   --glass-border: 1px solid rgba(255, 255, 255, 0.4);
   --glass-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.04);
@@ -159,6 +216,7 @@
   --color-accent: var(--accent);
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
+  --color-primary-foreground: var(--primary-foreground);
   --color-card: var(--card);
   --color-border: var(--border);
 
@@ -171,7 +229,6 @@
   --animate-glow: glow 2s ease-in-out infinite alternate;
 
   @keyframes float {
-
     0%,
     100% {
       transform: translateY(0);
@@ -184,11 +241,13 @@
 
   @keyframes glow {
     from {
-      box-shadow: 0 0 calc(10px * var(--glow-intensity)) calc(-10px * var(--glow-intensity)) var(--primary);
+      box-shadow: 0 0 calc(10px * var(--glow-intensity))
+        calc(-10px * var(--glow-intensity)) var(--primary);
     }
 
     to {
-      box-shadow: 0 0 calc(20px * var(--glow-intensity)) calc(5px * var(--glow-intensity)) var(--primary);
+      box-shadow: 0 0 calc(20px * var(--glow-intensity))
+        calc(5px * var(--glow-intensity)) var(--primary);
     }
   }
 }
@@ -198,7 +257,11 @@ body {
   color: var(--foreground);
   font-family: var(--font-main), sans-serif;
   overflow-x: hidden;
-  transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease, border-radius 0.5s ease;
+  transition:
+    background-color 0.5s ease,
+    color 0.5s ease,
+    border-color 0.5s ease,
+    border-radius 0.5s ease;
 
   ::selection {
     background-color: var(--primary);

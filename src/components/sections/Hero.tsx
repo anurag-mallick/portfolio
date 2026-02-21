@@ -97,22 +97,21 @@ export function Hero() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.2 }}
-                        className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tighter text-foreground leading-tight"
+                        className="text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter text-foreground leading-[0.85] uppercase"
                     >
-                        ANURAG MALLICK
+                        ANURAG <br className="hidden md:block" />
+                        <span className="text-primary italic">MALLICK</span>
                     </motion.h1>
 
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.4 }}
-                        className="h-auto md:h-12 overflow-hidden flex flex-col"
+                        className="flex flex-col md:flex-row items-center justify-center gap-3 text-lg md:text-2xl font-medium tracking-tight"
                     >
-                        <div className="animate-slide-up text-lg md:text-3xl font-light text-muted-foreground flex flex-col md:block items-center gap-1 md:gap-0">
-                            <span className="text-primary">Product Manager</span>
-                            <span className="hidden md:inline mx-2">•</span>
-                            <span className="text-secondary">Digital Initiatives</span>
-                        </div>
+                        <span className="px-4 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary">Product Manager</span>
+                        <span className="hidden md:block text-muted-foreground/30">•</span>
+                        <span className="px-4 py-1 rounded-full border border-secondary/20 bg-secondary/5 text-secondary">Digital Initiatives</span>
                     </motion.div>
 
                     <motion.p

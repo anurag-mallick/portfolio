@@ -20,7 +20,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
             default: "bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg",
             outline: "border border-border bg-background hover:bg-muted hover:text-foreground",
             ghost: "hover:bg-muted hover:text-foreground",
-            neon: "bg-transparent border border-primary text-primary hover:bg-primary/10 shadow-[0_0_10px_rgba(0,255,65,0.3)]",
+            neon: "bg-transparent border border-primary text-primary hover:bg-primary/10 shadow-[0_0_10px_rgba(var(--primary-rgb),0.3)]",
         };
 
         const sizes = {
@@ -33,7 +33,10 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
             <motion.button
                 ref={ref}
                 className={cn(baseStyles, variants[variant], sizes[size], className)}
-                whileHover={{ scale: 1.05, boxShadow: variant === 'neon' ? "0 0 20px rgba(var(--primary), 0.5)" : "none" }}
+                whileHover={{ 
+                    scale: 1.05, 
+                    boxShadow: variant === 'neon' ? "0 0 20px rgba(var(--primary-rgb), 0.5)" : "none" 
+                }}
                 whileTap={{ scale: 0.95 }}
                 disabled={isLoading}
                 {...props}
@@ -41,7 +44,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
                 {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                 <span className="relative z-10 flex items-center gap-2 drop-shadow-md">{children}</span>
                 {variant === "neon" && (
-                    <div className="absolute inset-0 bg-primary/20 blur-md -z-0" />
+                    <div className="absolute inset-0 bg-primary/10 blur-md -z-0" />
                 )}
             </motion.button>
         );

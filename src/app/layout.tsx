@@ -50,6 +50,12 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <meta
+          http-equiv="Content-Security-Policy"
+          content="default-src 'self'; script-src 'self' 'unsafe-inline' https://api.web3forms.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://logo.clearbit.com; connect-src 'self' https://api.web3forms.com; frame-ancestors 'none'; upgrade-insecure-requests;"
+        />
+        <meta name="x-content-type-options" content="nosniff" />
+        <meta name="referrer" content="strict-origin-when-cross-origin" />
         <script
           dangerouslySetInnerHTML={{
             __html: `
