@@ -120,7 +120,7 @@ export function Hero() {
                         transition={{ duration: 0.5, delay: 0.6 }}
                         className="max-w-[800px] mx-auto text-muted-foreground md:text-xl px-4"
                     >
-                        Scaling Global Payroll Infrastructure & Integrating AI into Financial Workflows.
+                        Scaling Global Payroll Systems & Integrating AI into Financial Workflows.
                     </motion.p>
 
                     <motion.div

@@ -88,15 +88,6 @@ const allApps: AppDetail[] = [
         category: "Fintech"
     },
     {
-        title: "FX Hedging Simulator",
-        description: "Model currency risk for payroll exposures. Monte Carlo simulations with 95% VaR calculation and hedging cost analysis.",
-        icon: <TrendingUp className="w-12 h-12" />,
-        tech: "Monte Carlo, Canvas",
-        link: "/apps/fx-hedging",
-        color: "#ff00ff",
-        category: "Fintech"
-    },
-    {
         title: "Invoice Anomaly Detector",
         description: "ML-powered invoice validation detecting duplicate payments, pricing anomalies, and vendor fraud patterns.",
         icon: <FileSearch className="w-12 h-12" />,
@@ -177,43 +168,6 @@ const allApps: AppDetail[] = [
         link: "/apps/food-delivery",
         color: "#00f3ff",
         category: "Logistics"
-    },
-    // Infrastructure
-    {
-        title: "API Rate Limit Visualizer",
-        description: "Simulate different throttling strategies. Compare Token bucket vs Leaky bucket vs Fixed window with animated request queues.",
-        icon: <Gauge className="w-12 h-12" />,
-        tech: "Token Bucket",
-        link: "/apps/rate-limiter",
-        color: "#ff0080",
-        category: "Infrastructure"
-    },
-    {
-        title: "Load Balancer Simulation",
-        description: "Compare load balancing algorithms. Particle-based request flow with Round-robin, Least-connections, and IP-hash strategies.",
-        icon: <Network className="w-12 h-12" />,
-        tech: "Particle System",
-        link: "/apps/load-balancer",
-        color: "#00f3ff",
-        category: "Infrastructure"
-    },
-    {
-        title: "Database Query Planner",
-        description: "Visualize SQL query execution plans with index usage, join strategies, and performance cost estimates.",
-        icon: <Database className="w-12 h-12" />,
-        tech: "SQL, Visualization",
-        link: "/apps/db-query-planner",
-        color: "#9b59b6",
-        category: "Infrastructure"
-    },
-    {
-        title: "Feature Flag Impact Calculator",
-        description: "Simulate feature rollout strategies with A/B testing, gradual rollout percentages, and impact metrics.",
-        icon: <Flag className="w-12 h-12" />,
-        tech: "A/B Testing",
-        link: "/apps/feature-flag",
-        color: "#e74c3c",
-        category: "Infrastructure"
     },
     // Algorithms
     {

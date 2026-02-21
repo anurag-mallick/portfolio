@@ -1,6 +1,6 @@
 # Anurag Mallick | AI Product Architect Portfolio
 
-A premium, high-performance portfolio website built with **Next.js 15**, **Tailwind CSS**, and **Framer Motion**. Designed to showcase professional expertise in Product Management, AI Integration, and Financial Infrastructure.
+A premium, high-performance portfolio website built with **Next.js 15**, **Tailwind CSS**, and **Framer Motion**. Designed to showcase professional expertise in Product Management, AI Integration, and Financial Workflows.
 
 ## 🚀 Live Preview
 
@@ -21,7 +21,7 @@ The site is live at: **[https://anurag-mallick.pages.dev](https://anurag-mallick
 - **Dynamic Hero Section**: Bold branding with animated roles and highlighted expertise.
 - **7 Premium Themes**: Dynamic aesthetics including **Midnight Nebula**, Terminal, Apple Glass, and more.
 - **Advanced Aesthetics Module**: High-end theme switcher with real-time metadata and smooth transitions.
-- **30+ Interactive Applications**: Professional-grade tools across 5 specialized domains in "The Lab".
+- **20+ Interactive Applications**: Professional-grade tools across 4 specialized domains in "The Lab".
 - **10 Neon Games**: High-performance Canvas-based games with premium aesthetics.
 - **Security Hardened**: Built-in Honeypot protection, CSP headers, and regular dependency vulnerability audits.
 - **Fully Responsive**: Optimized for all devices with buttery-smooth animations.
@@ -35,7 +35,6 @@ Professional financial tools demonstrating expertise in global payroll and finte
 - **Global Payroll What-If Studio**: Macro-economic stress-testing for workforces.
 - **EOR Strategy Decision Engine**: AI-driven expansion and legal structure modeling.
 - **LLM Document Intelligence**: Multi-doc AI audit and reconciliation engine.
-- **FX Hedging Simulator**: Monte Carlo simulations for currency risk.
 - **Multi-Country Tax Calculator**: Interactive cost comparison across 15+ countries.
 
 ### 📦 Logistics & Supply Chain
@@ -47,15 +46,14 @@ Advanced routing algorithms and delivery optimization tools:
 - **3PL Cost Comparator**: Multi-carrier rate optimization.
 - **Food Delivery Express**: Real-time order tracking and dynamic cart management simulation.
 
-### 🏗️ Infrastructure & Architecture
+### 🧮 Algorithms & AI Strategy
 
-System architecture and performance optimization demonstrations:
+System strategy and performance optimization demonstrations:
 
-- **Database Query Planner**: Visual SQL execution plan analysis.
-- **Load Balancer Simulator**: Particle-based request flow strategies.
-- **API Rate Limit Visualizer**: Token bucket vs Leaky bucket simulations.
-- **Auto-Scaling Simulator**: K8s resource allocation and cost optimization.
-- **Feature Flag Calculator**: A/B testing impact and rollout strategy prediction.
+- **LLM Cost Optimizer**: Token usage optimization and cost prediction.
+- **Prompt Engineering Lab**: AI prompt testing and comparison tool.
+- **Returns Intelligence Lab**: ML-based return prediction and fraud scoring.
+- **Featured Rollout Strategy**: A/B testing impact and rollout strategy prediction.
 
 ## 🕹️ Neon Games
 
