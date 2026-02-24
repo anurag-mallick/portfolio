@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import {
   Inter,
   Playfair_Display,
@@ -61,6 +62,12 @@ export default function RootLayout({
               })();
             `,
           }}
+        />
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9092007033496792"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
         />
       </head>
       <body
