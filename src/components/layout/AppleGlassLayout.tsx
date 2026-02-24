@@ -11,9 +11,10 @@ import Image from "next/image";
 import Link from "next/link";
 
 // Import data from existing sections
-import { experiences, Logo } from "@/components/sections/Experience";
+import { experiences } from "@/lib/data/experience";
+import { Logo } from "@/components/sections/Experience";
 import { projects } from "@/components/sections/Projects";
-import { technicalSkills, coreCompetencies, certifications } from "@/components/sections/Skills";
+import { technicalSkills, coreCompetencies, certifications } from "@/lib/data/skills";
 import { metrics } from "@/components/sections/Impact";
 import { apps } from "@/components/sections/Apps";
 import { games } from "@/components/sections/Games";
