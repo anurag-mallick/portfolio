@@ -8,6 +8,7 @@ import {
 } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeContext";
+import Script from "next/script";
 
 // --- Font Configurations ---
 const inter = Inter({
@@ -50,6 +51,12 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0000000000000000"
+          crossOrigin="anonymous"
+          strategy="lazyOnload"
+        />
         <script
           dangerouslySetInnerHTML={{
             __html: `
