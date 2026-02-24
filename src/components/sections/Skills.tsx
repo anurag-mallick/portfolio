@@ -32,7 +32,6 @@ import {
   Activity,
   MousePointer2,
   Trello,
-  X,
   HelpCircle,
 } from "lucide-react";
 
@@ -244,8 +243,9 @@ export function Skills() {
                       initial={{ opacity: 0, y: 10 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       transition={{ delay: i * 0.02 }}
-                      onClick={() => setSelectedSkill(skill as any)}
-                      className="relative p-4 rounded-xl bg-white/[0.02] border border-white/5 hover:border-primary/30 hover:bg-primary/[0.02] transition-all group/card overflow-hidden cursor-pointer"
+                      onMouseEnter={() => setSelectedSkill(skill as any)}
+                      onMouseLeave={() => setSelectedSkill(null)}
+                      className="relative p-4 rounded-xl bg-white/[0.02] border border-white/5 hover:border-primary/30 hover:bg-primary/[0.02] transition-all group/card overflow-hidden cursor-help"
                     >
                       <div className="flex items-center gap-3">
                         <div className="p-2 rounded-lg bg-primary/5 group-hover/card:bg-primary/10 transition-colors">
@@ -281,8 +281,9 @@ export function Skills() {
                       initial={{ opacity: 0, scale: 0.9 }}
                       whileInView={{ opacity: 1, scale: 1 }}
                       transition={{ delay: i * 0.05 }}
-                      onClick={() => setSelectedSkill(tool as any)}
-                      className="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary/5 border border-primary/20 text-primary text-sm font-medium hover:bg-primary hover:text-black transition-all cursor-pointer group/tool"
+                      onMouseEnter={() => setSelectedSkill(tool as any)}
+                      onMouseLeave={() => setSelectedSkill(null)}
+                      className="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary/5 border border-primary/20 text-primary text-sm font-medium hover:bg-primary hover:text-black transition-all cursor-help group/tool"
                     >
                       <tool.icon className="w-3.5 h-3.5 group-hover/tool:scale-110 transition-transform" />
                       {tool.name}
@@ -345,28 +346,21 @@ export function Skills() {
       {/* Story Modal */}
       <AnimatePresence>
         {selectedSkill && (
-          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 pointer-events-none">
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              onClick={() => setSelectedSkill(null)}
-              className="absolute inset-0 bg-background/80 backdrop-blur-md"
+              className="absolute inset-0 bg-background/60 backdrop-blur-sm"
             />
             <motion.div
-              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              initial={{ opacity: 0, scale: 0.95, y: 10 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="relative w-full max-w-xl bg-card border border-primary/20 rounded-2xl p-8 shadow-2xl overflow-hidden"
+              exit={{ opacity: 0, scale: 0.95, y: 10 }}
+              transition={{ duration: 0.2 }}
+              className="relative w-full max-w-xl bg-card border border-primary/20 rounded-2xl p-8 shadow-2xl overflow-hidden pointer-events-auto"
             >
               <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent" />
-
-              <button
-                onClick={() => setSelectedSkill(null)}
-                className="absolute top-4 right-4 p-2 hover:bg-white/5 rounded-full text-muted-foreground hover:text-white transition-colors"
-              >
-                <X className="w-5 h-5" />
-              </button>
 
               <div className="flex items-center gap-4 mb-6">
                 <div className="p-3 rounded-xl bg-primary/10">
@@ -383,17 +377,8 @@ export function Skills() {
               </div>
 
               <p className="text-gray-300 leading-relaxed text-lg italic">
-                "{selectedSkill.story}"
+                &ldquo;{selectedSkill.story}&rdquo;
               </p>
-
-              <div className="mt-8 pt-6 border-t border-white/5 flex justify-end">
-                <button
-                  onClick={() => setSelectedSkill(null)}
-                  className="px-6 py-2 bg-primary/10 hover:bg-primary/20 text-primary rounded-full text-sm font-medium transition-all"
-                >
-                  Close Story
-                </button>
-              </div>
 
               <div className="absolute -bottom-10 -right-10 opacity-5 rotate-12">
                 <selectedSkill.icon className="w-40 h-40 text-primary" />
