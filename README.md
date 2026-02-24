@@ -9,28 +9,27 @@ The site is live at: **[https://anurag-mallick.pages.dev](https://anurag-mallick
 ## 🛠️ Technical Stack
 
 - **Framework**: [Next.js 15+](https://nextjs.org/) (App Router, Edge Runtime)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Styling**: [Tailwind CSS 4.0](https://tailwindcss.com/)
 - **Animations**: [Framer Motion](https://www.framer.com/motion/)
 - **Visualizations**: Three.js, D3.js, Chart.js, HTML5 Canvas
-- **Security**: Content Security Policy (CSP), Honeypot Bot Protection
+- **Security**: Global Middleware Security Headers (CSP, HSTS, XSS), Honeypot Bot Protection, Rate Limiting
 - **Iconography**: [Lucide React](https://lucide.dev/)
 - **Deployment**: [Cloudflare Pages](https://pages.cloudflare.com/)
 
 ## ✨ Key Features
 
 - **Dynamic Hero Section**: Bold branding with animated roles and highlighted expertise.
-- **7 Premium Themes**: Dynamic aesthetics including **Midnight Nebula**, Terminal, Apple Glass, and more.
-- **Advanced Aesthetics Module**: High-end theme switcher with real-time metadata and smooth transitions.
+- **Advanced Theme Engine**: 7 premium themes (Midnight Nebula, Terminal, Apple Glass, etc.) with real-time metadata and smooth transitions.
+- **Security Hardened**:
+  - **Middleware Layer**: Enforced CSP, HSTS, and XSS protection.
+  - **Bot Protection**: Honeypot verification and submission rate-limiting.
+  - **Audit Ready**: Optimized for accessibility and security performance.
 - **20+ Interactive Applications**: Professional-grade tools across 4 specialized domains in "The Lab".
 - **10 Neon Games**: High-performance Canvas-based games with premium aesthetics.
-- **Security Hardened**: Built-in Honeypot protection, CSP headers, and regular dependency vulnerability audits.
-- **Fully Responsive**: Optimized for all devices with buttery-smooth animations.
 
 ## 🎯 The Lab: Interactive Applications
 
 ### 💰 Fintech Toolkit
-
-Professional financial tools demonstrating expertise in global payroll and fintech operations:
 
 - **Global Payroll What-If Studio**: Macro-economic stress-testing for workforces.
 - **EOR Strategy Decision Engine**: AI-driven expansion and legal structure modeling.
@@ -39,27 +38,10 @@ Professional financial tools demonstrating expertise in global payroll and finte
 
 ### 📦 Logistics & Supply Chain
 
-Advanced routing algorithms and delivery optimization tools:
-
 - **Last-Mile Route Optimizer**: Algorithm comparison (Nearest Neighbor, 2-Opt, Genetic).
 - **Returns Intelligence Lab**: Reverse logistics fraud detection and ML prediction.
 - **3PL Cost Comparator**: Multi-carrier rate optimization.
-- **Food Delivery Express**: Real-time order tracking and dynamic cart management simulation.
-
-### 🧮 Algorithms & AI Strategy
-
-System strategy and performance optimization demonstrations:
-
-- **LLM Cost Optimizer**: Token usage optimization and cost prediction.
-- **Prompt Engineering Lab**: AI prompt testing and comparison tool.
-- **Returns Intelligence Lab**: ML-based return prediction and fraud scoring.
-- **Featured Rollout Strategy**: A/B testing impact and rollout strategy prediction.
-
-## 🕹️ Neon Games
-
-A collection of classic games with premium cyberpunk aesthetics:
-
-- **Neon Tetris**, **Neon Pong**, **Cyber Serpent**, **Void Defender**, **Neon Arkanoid**, **Memory Sequence**, **Speed Typer**, and more.
+- **Food Delivery Express**: Real-time order tracking simulation.
 
 ## ⚙️ Local Development
 
@@ -80,7 +62,6 @@ A collection of classic games with premium cyberpunk aesthetics:
    ```bash
    npm run dev
    ```
-   Open [http://localhost:3000](http://localhost:3000) to view the project.
 
 ---
 

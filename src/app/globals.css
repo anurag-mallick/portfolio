@@ -44,7 +44,6 @@
   --card-radius: 0px;
 }
 
-
 /* --- MINIMAL EXECUTIVE (Prestige & Clean) --- */
 [data-theme="minimal"] {
   --background: #ffffff;
@@ -101,8 +100,8 @@
   --secondary: #818cf8;
   --accent: #c084fc;
   --muted: #1e293b;
-  --muted-foreground: #94a3b8;
-  --border: rgba(255, 255, 255, 0.1);
+  --muted-foreground: #cbd5e1;
+  --border: rgba(255, 255, 255, 0.2);
   --card: rgba(255, 255, 255, 0.03);
   --glow-intensity: 0.5;
   --nav-blur: 30px;
