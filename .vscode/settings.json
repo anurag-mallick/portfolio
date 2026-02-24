@@ -1,0 +1,31 @@
+{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "files.autoSave": "onFocusChange",
+  "workbench.iconTheme": "pkief.material-icon-theme",
+  "tailwindCSS.emmetCompletions": true,
+  "tailwindCSS.includeLanguages": {
+    "typescript": "javascript",
+    "typescriptreact": "javascript"
+  },
+  "errorLens.enabled": true,
+  "gitlens.codeLens.enabled": true,
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": "active",
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "todo-tree.highlights.defaultHighlight": {
+    "type": "text",
+    "foreground": "white",
+    "background": "red",
+    "icon": "alert",
+    "gutterIcon": true
+  },
+  "cSpell.userWords": ["antigravity", "blupay", "quess"],
+  "path-intellisense.extensionOnImport": true,
+  "npm-intellisense.importES6": true,
+  "liveServer.settings.donotShowInfoMsg": true
+}
