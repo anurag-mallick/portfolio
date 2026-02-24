@@ -22,7 +22,6 @@ import { FintechToolkit } from "@/components/sections/FintechToolkit";
 import { LogisticsLab } from "@/components/sections/LogisticsLab";
 import { Infrastructure } from "@/components/sections/Infrastructure";
 import { Algorithms } from "@/components/sections/Algorithms";
-import { AdSection } from "@/components/ui/AdSection";
 
 function Particle() {
     const [style, setStyle] = useState({
@@ -537,7 +536,6 @@ export function AppleGlassLayout() {
                 <div id="algorithms" className="bg-black"><Algorithms /></div>
                 <GlassGames />
                 <GlassContact />
-                <AdSection />
             </main>
             <footer className="py-12 text-center text-[#86868b] text-sm border-t border-black/5 bg-white">
                 <p>© {new Date().getFullYear()} Anurag Mallick. Designed with Apple Liquid Glass aesthetics.</p>

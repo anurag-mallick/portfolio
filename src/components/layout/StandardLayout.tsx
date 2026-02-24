@@ -10,7 +10,6 @@ import { Impact } from "@/components/sections/Impact";
 import { Contact } from "@/components/sections/Contact";
 import { AppShowcase } from "@/components/sections/AppShowcase";
 import { Articles } from "@/components/sections/Articles";
-import { AdSection } from "@/components/ui/AdSection";
 
 export function StandardLayout() {
     return (
@@ -25,7 +24,6 @@ export function StandardLayout() {
             <div className="w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
             <AppShowcase />
             <Articles />
-            <AdSection />
             <Footer />
         </main>
     );
