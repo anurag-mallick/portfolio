@@ -27,10 +27,10 @@ export const experiences: ExperienceItem[] = [
         logoUrl: "https://www.bluspring.com/wp-content/uploads/2025/11/bluspring-logo-white.svg",
         logoBg: "bg-[#002f5d]", // Official dark blue background
         achievements: [
-            "Initiated rollout of an in-house India payroll system, enabling accurate and compliant payroll processing for 85,000+ associates across five business units.",
-            "Integrated Salesforce CRM and internal systems to streamline employee onboarding, automate user management, and ensure data integrity across Sales & Finance workflows.",
-            "Collaborated with HR, Finance, and IT teams to map and standardize end-to-end payroll workflows (earnings, deductions, statutory components, approvals), creating a scalable and compliance-ready foundation.",
-            "Developed and deployed initial payroll and finance analytics dashboards, providing real-time visibility into payroll costs, variances, and operational metrics to support data-driven decision-making."
+            "**Automated 85,000+ associate payrolls** by leading the rollout of a compliant in-house system, ensuring accurate processing across 5 business units.",
+            "**Streamlined employee onboarding** by integrating Salesforce CRM with internal systems, automating user management and ensuring cross-functional data integrity.",
+            "**Standardized nationwide payroll workflows** in collaboration with HR/Finance/IT, creating a scalable foundation for earnings, deductions, and statutory approvals.",
+            "**Launched real-time analytics dashboards** for payroll and finance, enabling data-driven visibility into costs, variances, and operational metrics."
         ],
         type: "work"
     },
@@ -46,14 +46,14 @@ export const experiences: ExperienceItem[] = [
         logoUrl: "/logos/avance.jpg",
         logoBg: "bg-white",
         achievements: [
-            "Built a no-code Employer of Record (EOR) and global payroll platform supporting US and EU markets, achieving €275,000+ ARR in 6 months. Reduced compliance risk by 40%, cut onboarding time by 30%, and scaled to 500+ clients.",
-            "Led development of B2B/B2C payroll platforms, reducing payroll processing time by 40% through automation and improving payroll accuracy to 99.5%+. Partnered with Engineering, Design, Sales, and Customer Success to own roadmap and delivery.",
-            "Led US payroll integration with Paychex, reducing payroll processing time by 50% while ensuring compliance, correctness, and seamless payroll execution for global customers.",
-            "Built ML-assisted payroll and financial reconciliation workflows, reducing manual effort by 60%, achieving 99.8% accuracy, and saving 15+ hours per week for Ops and Finance teams.",
-            "Implemented n8n automation solution with AI agents for scheduling, emails, and payments reducing manual tasks by 70%.",
-            "Integrated ChatGPT with ATS, cutting recruiter workload by 30% and improving candidate assessment efficiency by 25%. Leveraged NLP to enhance search functionality.",
-            "Conducted 50+ user interviews, identifying pain points that boosted user satisfaction scores by 25%. Implemented A/B testing to optimize UI/UX.",
-            "Identified new market opportunities, expanding the platform’s user base by 15% in 6 months. Conducted competitive benchmarking to refine product strategy."
+            "**Generated €275,000+ ARR in 6 months** by architecting a no-code EOR and global payroll platform, scaling to 500+ clients and reducing compliance risk by 40%.",
+            "**Reduced payroll processing time by 40%** and improved accuracy to 99.5%+ through automated B2B/B2C platforms and strategic roadmap leadership.",
+            "**Cut US payroll processing time by 50%** by leading a high-impact integration with Paychex while ensuring strict cross-border compliance.",
+            "**Saved 15+ hours/week for Ops & Finance** through ML-assisted reconciliation workflows, reducing manual effort by 60% with 99.8% accuracy.",
+            "**Eliminated 70% of manual scheduling and payment tasks** via custom n8n automation and AI agent deployment.",
+            "**Boosted recruiter efficiency by 30%** by integrating ChatGPT with ATS for intelligent candidate assessment and NLP-enhanced search.",
+            "**Increased user satisfaction scores by 25%** through 50+ user interviews and iterative A/B testing on core UI/UX flows.",
+            "**Expanded global user base by 15%** in 6 months by identifying new market opportunities and performing rigorous competitive benchmarking."
         ],
         type: "work"
     },
@@ -69,12 +69,12 @@ export const experiences: ExperienceItem[] = [
         logoUrl: "/logos/shiprocket.png",
         logoBg: "bg-white",
         achievements: [
-            "Co-developed end-to-end integration of logistics aggregator Shiprocket & LMS, increasing logistics partners from 4 to 17+ and reducing serviceability issues by 95%.",
-            "Developed same-day/next-day delivery features, increasing delivery TAT accuracy from 77% to >90%.",
-            "Reduced order status mismatches between systems from 15% to <0.5%, and created a custom logistics flow for Bestseller with centralized inventory.",
-            "Developed unboxing video capture feature for return orders, reducing bad returns by 30% and enabling claims within 24hrs.",
-            "Revised sourcing logic post-checkout, increasing sales volume by 5% for fashion and 10% for electronics brands.",
-            "Implemented hyperlocal delivery capabilities, resulting in an 83% reduction in Google Maps API costs."
+            "**Increased logistics partners by 325%** (4 to 17+) and reduced serviceability issues by 95% via end-to-end integration of Shiprocket & LMS.",
+            "**Boosted delivery TAT accuracy to >90%** from 77% by developing same-day and next-day delivery intelligence features.",
+            "**Achieved <0.5% order mismatch rate** (down from 15%) by revamping cross-system synchronization and inventory flows.",
+            "**Reduced bad returns by 30%** via an innovative unboxing video capture feature, enabling claims processing within 24 hours.",
+            "**Increased sales volume by 10%** for electronics and 5% for fashion brands by re-engineering post-checkout sourcing logic.",
+            "**Cut Google Maps API costs by 83%** through optimized hyperlocal delivery and address normalization capabilities."
         ],
         type: "work"
     },

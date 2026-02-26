@@ -55,6 +55,58 @@ function DataStream() {
   );
 }
 
+function SentimentAnalyzer({ message }: { message: string }) {
+  const [sentiment, setSentiment] = useState<{ label: string; color: string; score: number }>({
+    label: "Neutral",
+    color: "text-muted-foreground",
+    score: 0
+  });
+
+  useEffect(() => {
+    if (!message.trim()) {
+      setSentiment({ label: "Ready", color: "text-muted-foreground", score: 0 });
+      return;
+    }
+
+    const positive = ["interested", "opportunity", "love", "great", "excellent", "project", "hiring", "collaboration"];
+    const professional = ["system", "payroll", "ai", "enterprise", "integration", "workflow", "optimize", "scale"];
+    const urgent = ["urgent", "soon", "asap", "immediate", "deadline"];
+
+    const words = message.toLowerCase().split(/\s+/);
+    let pCount = words.filter(w => positive.includes(w)).length;
+    let profCount = words.filter(w => professional.includes(w)).length;
+    let uCount = words.filter(w => urgent.includes(w)).length;
+
+    if (uCount > 0) {
+      setSentiment({ label: "Urgent Inquiry", color: "text-amber-500", score: 0.8 });
+    } else if (profCount > 1 || (profCount > 0 && pCount > 0)) {
+      setSentiment({ label: "High-Impact Professional", color: "text-primary", score: 1 });
+    } else if (pCount > 0) {
+      setSentiment({ label: "Positive Alignment", color: "text-green-500", score: 0.6 });
+    } else {
+      setSentiment({ label: "Neutral / Objective", color: "text-blue-400", score: 0.3 });
+    }
+  }, [message]);
+
+  return (
+    <div className="flex items-center gap-2 mt-2 px-1">
+      <div className="flex gap-1 h-1 w-12 bg-white/5 rounded-full overflow-hidden">
+        <motion.div 
+          animate={{ width: `${sentiment.score * 100}%` }}
+          className={cn("h-full", sentiment.color.replace("text-", "bg-"))} 
+        />
+      </div>
+      <span className={cn("text-[10px] font-bold uppercase tracking-widest", sentiment.color)}>
+        AI Tone: {sentiment.label}
+      </span>
+      <Sparkles size={10} className={cn("animate-pulse", sentiment.color)} />
+    </div>
+  );
+}
+
+import { cn } from "@/lib/utils";
+import { Sparkles } from "lucide-react";
+
 export function Contact() {
   const [formState, setFormState] = useState({
     name: "",
@@ -278,24 +330,32 @@ export function Contact() {
                           </div>
                         </div>
 
-                        <div className="space-y-2">
-                          <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground ml-1">
-                            Message
-                          </label>
-                          <textarea
-                            required
-                            value={formState.message}
-                            onChange={(e) =>
-                              setFormState({
-                                ...formState,
-                                message: e.target.value,
-                              })
-                            }
-                            placeholder="What's on your mind?"
-                            rows={4}
-                            className="w-full bg-muted border border-border rounded-xl px-4 py-3 sm:py-4 text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all resize-none placeholder:text-muted-foreground/30 text-base"
-                          />
-                        </div>
+                          <div className="space-y-2">
+                            <div className="flex justify-between items-center">
+                              <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground ml-1">
+                                Message
+                              </label>
+                              <SentimentAnalyzer message={formState.message} />
+                            </div>
+                            <textarea
+                              required
+                              value={formState.message}
+                              onChange={(e) =>
+                                setFormState({
+                                  ...formState,
+                                  message: e.target.value,
+                                })
+                              }
+                              placeholder="What's on your mind? (e.g., Let's discuss a payroll AI integration project...)"
+                              rows={4}
+                              className="w-full bg-muted border border-border rounded-xl px-4 py-3 sm:py-4 text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all resize-none placeholder:text-muted-foreground/30 text-base"
+                            />
+                            {formState.message.length > 0 && formState.message.length < 20 && (
+                              <p className="text-[10px] text-amber-500/70 font-medium ml-1">
+                                Tip: Add more context for a personalized AI-generated reply.
+                              </p>
+                            )}
+                          </div>
 
                         <Button
                           type="submit"

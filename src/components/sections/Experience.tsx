@@ -404,7 +404,12 @@ function ExperienceCard({ exp, index, viewMode }: { exp: ExperienceItem, index: 
                                             className="flex gap-2 items-start"
                                         >
                                             <span className="text-primary mt-1.5 text-xs">▹</span>
-                                            <span className="leading-relaxed">{achievement}</span>
+                                            <span 
+                                                className="leading-relaxed"
+                                                dangerouslySetInnerHTML={{ 
+                                                    __html: achievement.replace(/\*\*(.*?)\*\*/g, '<strong class="text-primary font-bold">$1</strong>') 
+                                                }}
+                                            />
                                         </motion.li>
                                     ))}
                                 </ul>

@@ -249,11 +249,18 @@ export function Hero() {
 
             {/* 3D Product Core Experience — desktop only */}
             {!isMobile && !reducedMotion && (
-                <div className="absolute inset-0 z-0 flex items-center justify-center opacity-40">
+                <motion.div 
+                    style={{ 
+                        opacity, 
+                        scale: useTransform(scrollYProgress, [0, 0.5], [1, 1.2]),
+                        rotateY: useTransform(scrollYProgress, [0, 1], [0, 45]),
+                    }}
+                    className="absolute inset-0 z-0 flex items-center justify-center opacity-40"
+                >
                     <Suspense fallback={null}>
                         <ProductCore3D />
                     </Suspense>
-                </div>
+                </motion.div>
             )}
 
             {/* Aurora Effect */}
@@ -297,12 +304,12 @@ export function Hero() {
                         transition={{ duration: 0.5, delay: 0.4 }}
                         className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 text-base sm:text-lg md:text-2xl font-medium tracking-tight"
                     >
-                        <span className="px-3 sm:px-4 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-sm sm:text-base md:text-lg">
-                            Product Manager
+                        <span className="px-3 sm:px-4 py-1 rounded-full border border-primary/20 bg-primary/10 text-primary text-sm sm:text-base font-bold uppercase tracking-widest">
+                            AI Product Architect
                         </span>
                         <span className="hidden sm:block text-muted-foreground/30">•</span>
-                        <span className="px-3 sm:px-4 py-1 rounded-full border border-secondary/20 bg-secondary/5 text-secondary text-sm sm:text-base md:text-lg">
-                            Digital Initiatives
+                        <span className="px-3 sm:px-4 py-1 rounded-full border border-secondary/20 bg-secondary/5 text-secondary text-sm sm:text-base font-medium">
+                            Digital Transformation
                         </span>
                     </motion.div>
 
@@ -312,7 +319,7 @@ export function Hero() {
                         transition={{ duration: 0.5, delay: 0.6 }}
                         className="max-w-[800px] mx-auto text-muted-foreground text-base sm:text-lg md:text-xl px-2 sm:px-4"
                     >
-                        Scaling Global Payroll Systems & Integrating AI into Financial Workflows.
+                        I architect scalable global systems and harmonize AI with complex financial workflows to drive enterprise-grade transformation.
                     </motion.p>
 
                     <motion.div

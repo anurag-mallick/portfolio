@@ -10,6 +10,7 @@ import {
 } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeContext";
+import { AIAssistant } from "@/components/ui/AIAssistant";
 
 // --- Font Configurations ---
 const inter = Inter({
@@ -47,7 +48,7 @@ const ibmPlex = IBM_Plex_Sans({
 export const metadata: Metadata = {
   title: "Anurag Mallick | AI Product Architect",
   description:
-    "Building Payroll Systems at Scale & Integrating AI into Financial Workflows",
+    "I architect scalable global systems and harmonize AI with complex financial workflows to drive enterprise-grade transformation.",
 };
 
 export default function RootLayout({
@@ -88,7 +89,10 @@ export default function RootLayout({
           antialiased transition-colors duration-500
         `}
       >
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          {children}
+          <AIAssistant />
+        </ThemeProvider>
       </body>
     </html>
   );
