@@ -111,9 +111,7 @@ const Points = () => {
             <bufferGeometry>
                 <bufferAttribute
                     attach="attributes-position"
-                    count={positions.length / 3}
-                    array={positions}
-                    itemSize={3}
+                    args={[positions, 3]}
                 />
             </bufferGeometry>
             <pointsMaterial size={0.02} color="#8b5cf6" transparent opacity={0.4} sizeAttenuation />
