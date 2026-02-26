@@ -113,11 +113,20 @@
   }
 }
 
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-main), sans-serif;
   overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
+  /* Safe area insets for notched phones */
+  padding-left: env(safe-area-inset-left, 0);
+  padding-right: env(safe-area-inset-right, 0);
   transition:
     background-color 0.5s ease,
     color 0.5s ease,
@@ -130,6 +139,26 @@ body {
   }
 }
 
+/* Reduced Motion: disable all animations and transitions */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Body scroll lock (for mobile menu) */
+body.scroll-locked {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  top: 0;
+}
+
 /* Theme-Aware Helper Classes */
 .theme-container {
   max-width: var(--container-max-width);
@@ -138,16 +167,28 @@ body {
   text-align: var(--layout-align);
 }
 
+@media (min-width: 640px) {
+  .theme-container {
+    padding: 0 1.5rem;
+  }
+}
+
 .theme-card {
   background: var(--card);
   backdrop-filter: blur(10px);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
+  border-radius: var(--card-radius);
   transition: all 0.3s ease;
 }
 
 .theme-section {
-  padding: var(--section-spacing) 0;
+  padding: calc(var(--section-spacing) * 0.7) 0;
+}
+
+@media (min-width: 768px) {
+  .theme-section {
+    padding: var(--section-spacing) 0;
+  }
 }
 
 .glass {
@@ -156,20 +197,33 @@ body {
   border: 1px solid var(--border);
 }
 
-/* Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
+/* Scrollbar — desktop only */
+@media (min-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--background);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--muted);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--primary);
+  }
 }
 
-::-webkit-scrollbar-track {
-  background: var(--background);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--muted);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--primary);
+/* Hide scrollbar on mobile */
+@media (max-width: 767px) {
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  body {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 }

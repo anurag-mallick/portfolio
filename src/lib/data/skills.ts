@@ -23,6 +23,12 @@ import {
   Activity,
   MousePointer2,
   Trello,
+  ShieldCheck,
+  Award,
+  GraduationCap,
+  Gauge,
+  Presentation,
+  type LucideIcon,
 } from "lucide-react";
 
 export const coreCompetencies = [
@@ -175,8 +181,43 @@ export const technicalSkills = [
   },
 ];
 
-export const certifications = [
-  "Lean Six Sigma Green Belt",
-  "Advanced Google Analytics",
-  "Design Thinking (Atyaasaa)",
+export interface Certification {
+  name: string;
+  issuer: string;
+  date?: string;
+  icon: LucideIcon;
+  credentialId?: string;
+}
+
+export const certifications: Certification[] = [
+  {
+    name: "Agile Project Management and Tools for Product Managers",
+    issuer: "Skillsoft",
+    date: "Jan 2026",
+    icon: Repeat,
+    credentialId: "170874133",
+  },
+  {
+    name: "Technical Product Management: Leadership & Stakeholder Management",
+    issuer: "Skillsoft",
+    date: "Dec 2025",
+    icon: Presentation,
+    credentialId: "170037637",
+  },
+  {
+    name: "Lean Six Sigma Green Belt",
+    issuer: "Henry Harvin Education",
+    icon: Gauge,
+  },
+  {
+    name: "Advanced Google Analytics",
+    issuer: "Google Academy",
+    icon: BarChart3,
+  },
+  {
+    name: "Design Thinking",
+    issuer: "Atyaasaa Online",
+    date: "Mar 2023",
+    icon: Lightbulb,
+  },
 ];

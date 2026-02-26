@@ -46,7 +46,7 @@ function RadarChart() {
   const pointsStr = points.map(p => `${p.x},${p.y}`).join(' ');
 
   return (
-    <div className="relative w-72 h-72 mx-auto mb-12 hidden lg:flex items-center justify-center">
+    <div className="relative w-48 h-48 sm:w-60 sm:h-60 lg:w-72 lg:h-72 mx-auto mb-8 sm:mb-12 flex items-center justify-center">
       <svg viewBox={`0 0 ${size} ${size}`} className="w-full h-full drop-shadow-[0_0_15px_rgba(0,243,255,0.2)]">
         {/* Background Grids */}
         {[...Array(levels)].map((_, i) => (
@@ -125,7 +125,7 @@ function RadarChart() {
 
 function DiscoveryFunnel() {
     return (
-        <div className="relative w-48 h-48 mx-auto mb-12 hidden lg:flex flex-col items-center justify-center">
+        <div className="relative w-36 h-36 sm:w-48 sm:h-48 mx-auto mb-8 sm:mb-12 hidden sm:flex flex-col items-center justify-center">
             {/* Funnel Layers */}
             <motion.div 
                 initial={{ width: 120 }}
@@ -178,13 +178,13 @@ export function Skills() {
   return (
     <section
       id="skills"
-      className="theme-section bg-background relative overflow-hidden pt-32 md:pt-40"
+      className="theme-section bg-background relative overflow-hidden pt-16 sm:pt-24 md:pt-32"
     >
       {/* Background Ambience */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] sm:w-[800px] h-[400px] sm:h-[800px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="theme-container relative z-10">
-        <div className="flex flex-col lg:flex-row justify-between items-start mb-20 gap-12">
+        <div className="flex flex-col lg:flex-row justify-between items-start mb-10 sm:mb-16 md:mb-20 gap-8 sm:gap-12">
           <div className="max-w-2xl">
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
@@ -193,14 +193,14 @@ export function Skills() {
             >
               <Zap className="w-3 h-3" /> SYSTEM_CAPABILITIES_v2.1
             </motion.div>
-            <h2 className="text-4xl md:text-6xl font-bold tracking-tighter text-foreground mb-6">
+            <h2 className="text-2xl sm:text-4xl md:text-6xl font-bold tracking-tighter text-foreground mb-4 sm:mb-6">
               Expertise & <span className="text-primary">Artifacts</span>
             </h2>
-            <p className="text-muted-foreground text-lg">
+            <p className="text-muted-foreground text-sm sm:text-base md:text-lg">
               A specialized toolkit for scaling global financial platforms and
               driving product innovation through structured discovery.
-              <span className="block text-sm mt-2 text-primary/60 font-mono italic">
-                Click any skill to hear the story behind it.
+              <span className="block text-xs sm:text-sm mt-2 text-primary/60 font-mono italic">
+                Tap any skill to hear the story behind it.
               </span>
             </p>
           </div>
@@ -215,8 +215,8 @@ export function Skills() {
           <div className="lg:col-span-12">
             <div className="relative group">
               <div className="absolute -inset-0.5 bg-gradient-to-r from-primary/20 to-blue-500/20 rounded-2xl blur opacity-30 group-hover:opacity-100 transition duration-1000"></div>
-              <div className="theme-card p-8">
-                <h3 className="text-xl font-bold text-foreground mb-8 flex items-center gap-2 border-l-4 border-primary pl-4 uppercase tracking-wider">
+              <div className="theme-card p-4 sm:p-6 md:p-8">
+                <h3 className="text-base sm:text-xl font-bold text-foreground mb-6 sm:mb-8 flex items-center gap-2 border-l-4 border-primary pl-3 sm:pl-4 uppercase tracking-wider">
                   <Globe2 className="text-primary w-5 h-5" /> CORE COMPETENCIES
                 </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -228,9 +228,9 @@ export function Skills() {
                          initial={{ opacity: 0, y: 10 }}
                          whileInView={{ opacity: 1, y: 0 }}
                          transition={{ delay: i * 0.02 }}
-                         onMouseEnter={() => setSelectedSkill(skill as any)}
-                         onMouseLeave={() => setSelectedSkill(null)}
-                         className={`relative p-4 rounded-xl transition-all group/card overflow-hidden cursor-help border ${
+                         onClick={() => setSelectedSkill(skill as any)}
+                         onTouchEnd={(e) => { e.stopPropagation(); setSelectedSkill(skill as any); }}
+                         className={`relative p-3 sm:p-4 rounded-xl transition-all group/card overflow-hidden cursor-pointer border min-h-[44px] ${
                            isPMSkill 
                              ? "bg-primary/10 border-primary/40 hover:border-primary shadow-[0_0_15px_rgba(var(--primary-rgb),0.1)]" 
                              : "bg-white/[0.02] border-white/5 hover:border-primary/30 hover:bg-primary/[0.02]"
@@ -270,8 +270,8 @@ export function Skills() {
           <div className="lg:col-span-7">
             <div className="relative group h-full">
               <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-500/10 to-primary/10 rounded-2xl blur opacity-20"></div>
-              <div className="theme-card p-8 h-full">
-                <h3 className="text-xl font-bold text-foreground mb-8 flex items-center gap-2 border-l-4 border-primary pl-4 uppercase tracking-wider">
+              <div className="theme-card p-4 sm:p-6 md:p-8 h-full">
+                <h3 className="text-base sm:text-xl font-bold text-foreground mb-6 sm:mb-8 flex items-center gap-2 border-l-4 border-primary pl-3 sm:pl-4 uppercase tracking-wider">
                   <Code2 className="text-primary w-5 h-5" /> TECHNICAL SKILLS & TOOLS
                 </h3>
                 <div className="flex flex-wrap gap-3">
@@ -281,9 +281,9 @@ export function Skills() {
                       initial={{ opacity: 0, scale: 0.9 }}
                       whileInView={{ opacity: 1, scale: 1 }}
                       transition={{ delay: i * 0.05 }}
-                      onMouseEnter={() => setSelectedSkill(tool as any)}
-                      onMouseLeave={() => setSelectedSkill(null)}
-                      className="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary/5 border border-primary/20 text-primary text-sm font-medium hover:bg-primary hover:text-black transition-all cursor-help group/tool"
+                      onClick={() => setSelectedSkill(tool as any)}
+                      onTouchEnd={(e) => { e.stopPropagation(); setSelectedSkill(tool as any); }}
+                      className="flex items-center gap-2 px-3 sm:px-4 py-2 rounded-lg bg-primary/5 border border-primary/20 text-primary text-xs sm:text-sm font-medium hover:bg-primary hover:text-black transition-all cursor-pointer group/tool min-h-[44px]"
                     >
                       <tool.icon className="w-3.5 h-3.5 group-hover/tool:scale-110 transition-transform" />
                       {tool.name}
@@ -297,11 +297,11 @@ export function Skills() {
           {/* Certifications */}
           <div className="lg:col-span-5">
             <div className="relative group h-full">
-              <div className="theme-card p-8 h-full overflow-hidden">
+              <div className="theme-card p-4 sm:p-6 md:p-8 h-full overflow-hidden">
                 <div className="absolute -top-6 -right-6 opacity-5 rotate-12 text-primary">
-                  <Award className="w-32 h-32" />
+                  <Award className="w-24 sm:w-32 h-24 sm:h-32" />
                 </div>
-                <h3 className="text-xl font-bold text-foreground mb-8 flex items-center gap-2 border-l-4 border-primary pl-4 uppercase tracking-wider">
+                <h3 className="text-base sm:text-xl font-bold text-foreground mb-6 sm:mb-8 flex items-center gap-2 border-l-4 border-primary pl-3 sm:pl-4 uppercase tracking-wider">
                   <ShieldCheck className="text-primary w-5 h-5" />{" "}
                   CERTIFICATIONS
                 </h3>
@@ -312,14 +312,19 @@ export function Skills() {
                       initial={{ opacity: 0, x: 20 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       transition={{ delay: i * 0.1 }}
-                      className="flex flex-col space-y-1"
+                      className="flex items-start gap-3 p-3 rounded-xl bg-white/[0.02] border border-white/5 hover:border-primary/30 transition-all min-h-[44px]"
                     >
-                      <span className="text-gray-300 text-sm font-medium">
-                        {cert}
-                      </span>
-                      <span className="text-[10px] font-mono text-primary/40 uppercase tracking-tighter">
-                        verified_credential_secured
-                      </span>
+                      <div className="p-1.5 rounded-lg bg-primary/10 shrink-0 mt-0.5">
+                        <cert.icon className="w-4 h-4 text-primary" />
+                      </div>
+                      <div className="min-w-0">
+                        <span className="text-gray-300 text-sm font-medium leading-tight block">
+                          {cert.name}
+                        </span>
+                        <span className="text-[10px] sm:text-xs text-muted-foreground block mt-0.5">
+                          {cert.issuer}{cert.date ? ` · ${cert.date}` : ""}
+                        </span>
+                      </div>
                     </motion.div>
                   ))}
                 </div>
@@ -346,7 +351,10 @@ export function Skills() {
       {/* Story Modal */}
       <AnimatePresence>
         {selectedSkill && (
-          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 pointer-events-none">
+          <div
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4 cursor-pointer"
+            onClick={() => setSelectedSkill(null)}
+          >
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}

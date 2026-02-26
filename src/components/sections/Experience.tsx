@@ -58,7 +58,7 @@ function ActionLoop() {
 
 function StrategicRoadmap() {
     return (
-        <div className="w-full h-12 relative flex items-center mb-12 hidden md:flex">
+        <div className="w-full h-12 relative items-center mb-8 md:mb-12 hidden md:flex">
             <div className="absolute w-full h-px bg-white/10" />
             <motion.div 
                 initial={{ width: 0 }}
@@ -212,12 +212,12 @@ export function Experience() {
             <div className="absolute inset-0 bg-primary/5 blur-[120px] rounded-full pointer-events-none opacity-20" />
 
             <div className="theme-container relative z-10">
-                <div className="flex flex-col md:flex-row justify-between items-center mb-16 gap-4">
+                <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 md:mb-16 gap-4">
                     <div>
-                        <h2 className="text-3xl md:text-5xl font-bold tracking-tighter text-foreground uppercase">
+                        <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tighter text-foreground uppercase">
                             Professional <span className="text-primary">Experience</span>
                         </h2>
-                        <p className="text-muted-foreground mt-2">
+                        <p className="text-sm sm:text-base text-muted-foreground mt-2">
                             A journey of scaling platforms and financial infrastructure.
                         </p>
                     </div>
@@ -226,7 +226,7 @@ export function Experience() {
                         <button
                             onClick={() => setViewMode('timeline')}
                             className={cn(
-                                "px-4 py-2 rounded-full text-sm font-medium transition-all",
+                                "px-3 sm:px-4 py-2 rounded-full text-sm font-medium transition-all min-h-[44px]",
                                 viewMode === 'timeline' ? "bg-primary/20 text-primary shadow-[0_0_10px_rgba(0,243,255,0.2)]" : "text-muted-foreground hover:text-white"
                             )}
                         >
@@ -235,7 +235,7 @@ export function Experience() {
                         <button
                             onClick={() => setViewMode('grid')}
                             className={cn(
-                                "px-4 py-2 rounded-full text-sm font-medium transition-all",
+                                "px-3 sm:px-4 py-2 rounded-full text-sm font-medium transition-all min-h-[44px]",
                                 viewMode === 'grid' ? "bg-primary/20 text-primary shadow-[0_0_10px_rgba(0,243,255,0.2)]" : "text-muted-foreground hover:text-white"
                             )}
                         >
@@ -285,12 +285,12 @@ export function Experience() {
                     </div>
                 </div>
 
-                <div id="education" className="mt-32">
-                    <div className="mb-16">
-                        <h2 className="text-3xl md:text-5xl font-bold tracking-tighter text-foreground uppercase">
+                <div id="education" className="mt-16 md:mt-32">
+                    <div className="mb-10 md:mb-16">
+                        <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tighter text-foreground uppercase">
                            Academic <span className="text-secondary">Foundation</span>
                         </h2>
-                        <p className="text-muted-foreground mt-2">
+                        <p className="text-sm sm:text-base text-muted-foreground mt-2">
                             Educational background and specialized certifications.
                         </p>
                     </div>
@@ -312,7 +312,7 @@ export function Experience() {
 }
 
 function ExperienceCard({ exp, index, viewMode }: { exp: ExperienceItem, index: number, viewMode: 'grid' | 'timeline' }) {
-    const [isHovered, setIsHovered] = useState(false);
+    const [isExpanded, setIsExpanded] = useState(false);
 
     return (
         <motion.div
@@ -320,72 +320,73 @@ function ExperienceCard({ exp, index, viewMode }: { exp: ExperienceItem, index: 
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1 }}
             viewport={{ once: true }}
-            className={cn(viewMode === 'timeline' ? "md:pl-8 md:border-l border-white/5 relative" : "")}
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-            onClick={() => setIsHovered(!isHovered)}
+            className={cn(viewMode === 'timeline' ? "pl-6 sm:pl-8 border-l border-white/5 relative" : "")}
+            onClick={() => setIsExpanded(!isExpanded)}
         >
             {viewMode === 'timeline' && (
                 <div className={cn(
-                    "absolute left-[-5px] top-0 w-2.5 h-2.5 rounded-full transition-all duration-300 hidden md:block",
-                    isHovered ? "bg-primary shadow-[0_0_15px_rgba(0,243,255,1)] scale-125" : "bg-white/20"
+                    "absolute left-[-5px] top-4 w-2.5 h-2.5 rounded-full transition-all duration-300",
+                    isExpanded ? "bg-primary shadow-[0_0_15px_rgba(0,243,255,1)] scale-125" : "bg-white/20"
                 )} />
             )}
 
             <Card
                 className={cn(
                     "theme-card group transition-all duration-500 overflow-hidden relative cursor-pointer",
-                    isHovered ? "ring-1 ring-primary/40 bg-primary/5 shadow-lg translate-x-1" : ""
+                    isExpanded ? "ring-1 ring-primary/40 bg-primary/5 shadow-lg" : "hover:ring-1 hover:ring-primary/20"
                 )}
             >
-                <div className="p-6">
+                <div className="p-4 sm:p-6">
                     <div className="flex justify-between items-start mb-4">
-                        <div className="flex items-start gap-4">
+                        <div className="flex items-start gap-3 sm:gap-4">
                             <Logo
                                 src={exp.logoUrl}
                                 domain={exp.domain}
                                 initial={exp.logoInitial}
                                 color={exp.logoColor}
                                 bgClass={exp.logoBg}
-                                className={cn("transition-transform duration-500", isHovered ? "scale-110" : "")}
+                                className={cn("transition-transform duration-500", isExpanded ? "scale-110" : "")}
                             />
 
-                            <div>
-                                <h3 className={cn("text-xl font-bold transition-colors duration-300", isHovered ? "text-primary" : "text-foreground")}>
+                            <div className="min-w-0">
+                                <h3 className={cn("text-lg sm:text-xl font-bold transition-colors duration-300 leading-tight", isExpanded ? "text-primary" : "text-foreground")}>
                                     {exp.role}
                                 </h3>
-                                <p className="text-secondary font-medium">{exp.company}</p>
+                                <p className="text-secondary font-medium text-sm sm:text-base">{exp.company}</p>
                             </div>
                         </div>
 
                         {exp.type === 'education' ? (
-                            <div className={cn("p-2 rounded-full hidden sm:block transition-colors", isHovered ? "bg-primary/20" : "bg-white/5")}>
-                                <GraduationCap className={cn("w-5 h-5 transition-colors", isHovered ? "text-primary" : "text-muted-foreground")} />
+                            <div className={cn("p-2 rounded-full hidden sm:block transition-colors shrink-0", isExpanded ? "bg-primary/20" : "bg-white/5")}>
+                                <GraduationCap className={cn("w-5 h-5 transition-colors", isExpanded ? "text-primary" : "text-muted-foreground")} />
                             </div>
                         ) : (
-                            <div className={cn("p-2 rounded-full hidden sm:block transition-colors", isHovered ? "bg-primary/20" : "bg-white/5")}>
-                                <Briefcase className={cn("w-5 h-5 transition-colors", isHovered ? "text-primary" : "text-muted-foreground")} />
+                            <div className={cn("p-2 rounded-full hidden sm:block transition-colors shrink-0", isExpanded ? "bg-primary/20" : "bg-white/5")}>
+                                <Briefcase className={cn("w-5 h-5 transition-colors", isExpanded ? "text-primary" : "text-muted-foreground")} />
                             </div>
                         )}
                     </div>
 
-                    <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-sm text-muted-foreground mb-4">
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 text-xs sm:text-sm text-muted-foreground mb-4">
                         <span className="flex items-center gap-1">
-                            <Calendar className="w-4 h-4" />
+                            <Calendar className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                             {exp.period}
                         </span>
                         <span className="flex items-center gap-1">
-                            <MapPin className="w-4 h-4" />
+                            <MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                             {exp.location}
                         </span>
                     </div>
 
-                    <p className="text-sm text-muted-foreground mb-4 leading-relaxed line-clamp-2 group-hover:line-clamp-none transition-all duration-500 text-left">
+                    <p className={cn(
+                        "text-sm text-muted-foreground mb-4 leading-relaxed text-left transition-all duration-500",
+                        isExpanded ? "" : "line-clamp-2"
+                    )}>
                         {exp.description}
                     </p>
 
                     <AnimatePresence>
-                        {(isHovered && exp.achievements.length > 0) && (
+                        {(isExpanded && exp.achievements.length > 0) && (
                             <motion.div
                                 initial={{ height: 0, opacity: 0 }}
                                 animate={{ height: "auto", opacity: 1 }}
@@ -413,16 +414,16 @@ function ExperienceCard({ exp, index, viewMode }: { exp: ExperienceItem, index: 
 
                     {exp.achievements.length > 0 && (
                         <div className={cn(
-                            "mt-4 flex items-center text-[10px] font-bold uppercase tracking-[0.2em] transition-all duration-500",
-                            isHovered ? "text-primary translate-x-2" : "text-muted-foreground/30"
+                            "mt-4 flex items-center text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] transition-all duration-500 min-h-[44px] items-center",
+                            isExpanded ? "text-primary" : "text-muted-foreground/50"
                         )}>
-                            {isHovered ? "Exploring Details" : "Tap to Expand"} <ChevronRight className={cn("w-3 h-3 ml-1 transition-transform", isHovered ? "rotate-90" : "")} />
+                            {isExpanded ? "Collapse" : "Tap to Expand"} <ChevronRight className={cn("w-3 h-3 ml-1 transition-transform", isExpanded ? "rotate-90" : "")} />
                         </div>
                     )}
 
                     {/* D3.js Impact Visualizations */}
                     <AnimatePresence>
-                        {isHovered && exp.company === "Shiprocket" && (
+                        {isExpanded && exp.company === "Shiprocket" && (
                             <motion.div
                                 initial={{ opacity: 0, scale: 0.95 }}
                                 animate={{ opacity: 1, scale: 1 }}
@@ -439,7 +440,7 @@ function ExperienceCard({ exp, index, viewMode }: { exp: ExperienceItem, index: 
                                 />
                             </motion.div>
                         )}
-                        {isHovered && exp.company === "Maharashtra Metro Rail" && (
+                        {isExpanded && exp.company === "Maharashtra Metro Rail" && (
                             <motion.div
                                 initial={{ opacity: 0, scale: 0.95 }}
                                 animate={{ opacity: 1, scale: 1 }}

@@ -34,7 +34,7 @@ function DataStream() {
       for(let i=0; i<20; i++) s += chars[Math.floor(Math.random() * chars.length)];
       return s;
     };
-    setStreams(Array.from({ length: 15 }).map(generateStream));
+    setStreams(Array.from({ length: 8 }).map(generateStream));
   }, []);
 
   return (
@@ -145,10 +145,10 @@ export function Contact() {
                 >
                   <SignalPulse /> ESTABLISH_CONNECTION
                 </motion.div>
-                <h2 className="text-4xl md:text-6xl font-bold tracking-tighter text-foreground mb-6">
+                <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tighter text-foreground mb-4 sm:mb-6">
                   Get in <span className="text-primary">Touch</span>
                 </h2>
-                <p className="text-muted-foreground text-lg leading-relaxed max-w-md">
+                <p className="text-muted-foreground text-base sm:text-lg leading-relaxed max-w-md">
                   Currently scaling global systems in Bangalore. Open for
                   collaborations, speaking engagements, or discussing the future
                   of AI in fintech.
@@ -255,7 +255,7 @@ export function Contact() {
                                 })
                               }
                               placeholder="John Doe"
-                              className="w-full bg-muted border border-border rounded-xl px-4 py-4 text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all placeholder:text-muted-foreground/30"
+                              className="w-full bg-muted border border-border rounded-xl px-4 py-3 sm:py-4 text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all placeholder:text-muted-foreground/30 min-h-[44px] text-base"
                             />
                           </div>
                           <div className="space-y-2">
@@ -273,7 +273,7 @@ export function Contact() {
                                 })
                               }
                               placeholder="john@example.com"
-                              className="w-full bg-muted border border-border rounded-xl px-4 py-4 text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all placeholder:text-muted-foreground/30"
+                              className="w-full bg-muted border border-border rounded-xl px-4 py-3 sm:py-4 text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all placeholder:text-muted-foreground/30 min-h-[44px] text-base"
                             />
                           </div>
                         </div>
@@ -292,8 +292,8 @@ export function Contact() {
                               })
                             }
                             placeholder="What's on your mind?"
-                            rows={5}
-                            className="w-full bg-muted border border-border rounded-xl px-4 py-4 text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all resize-none placeholder:text-muted-foreground/30"
+                            rows={4}
+                            className="w-full bg-muted border border-border rounded-xl px-4 py-3 sm:py-4 text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all resize-none placeholder:text-muted-foreground/30 text-base"
                           />
                         </div>
 

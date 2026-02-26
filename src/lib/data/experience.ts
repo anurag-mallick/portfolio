@@ -168,20 +168,23 @@ export const experiences: ExperienceItem[] = [
     },
     {
         id: "awards",
-        role: "Awards & Recognition",
+        role: "Awards & Certifications",
         company: "Professional Career",
-        period: "2016 - 2023",
+        period: "2016 - 2026",
         location: "National",
-        description: "Recognition for excellence in procurement, digital transformation, and professional development.",
+        description: "Recognition for excellence in procurement, digital transformation, and continuous professional development through industry certifications.",
         logoColor: "bg-yellow-500",
         logoInitial: "🏆",
         logoBg: "bg-white",
         achievements: [
-            "Group Award: Finalizing 62 Tenders worth ₹2,234 Cr in 9 months (Metro Rail).",
-            "Outstanding Performance: Successful implementation of Government e-Marketplace (GeM).",
-            "MD's Award: Integration of E-tender portal with 5D-BIM (Maharashtra Metro).",
-            "Lean Six Sigma Green Belt (Henry Harvin Education).",
-            "Advanced Google Analytics & Digital Marketing (Google Academy/Unlocked)."
+            "🏅 Group Award: Finalizing 62 Tenders worth ₹2,234 Cr in 9 months (Metro Rail).",
+            "⭐ Outstanding Performance: Successful implementation of Government e-Marketplace (GeM).",
+            "🏆 MD's Award: Integration of E-tender portal with 5D-BIM (Maharashtra Metro).",
+            "📜 Agile Project Management and Tools for Product Managers (Skillsoft, Jan 2026).",
+            "📜 Technical Product Management: Leadership & Stakeholder Management (Skillsoft, Dec 2025).",
+            "📜 Lean Six Sigma Green Belt (Henry Harvin Education).",
+            "📜 Advanced Google Analytics & Digital Marketing (Google Academy).",
+            "📜 Design Thinking Certificate (Atyaasaa Online, Mar 2023)."
         ],
         type: "education"
     }
