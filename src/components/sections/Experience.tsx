@@ -88,6 +88,57 @@ function StrategicRoadmap() {
     );
 }
 
+function GlobalConnectivityMap() {
+    return (
+        <div className="absolute inset-0 pointer-events-none opacity-[0.03] overflow-hidden grayscale">
+            <svg viewBox="0 0 1000 500" className="w-full h-full object-cover">
+                {/* Simplified World Map Shape */}
+                <path
+                    d="M150,150 L200,120 L280,130 L350,180 L400,220 L450,200 L550,180 L650,150 L750,170 L850,250 L800,350 L700,400 L550,420 L400,400 L250,380 L180,300 Z"
+                    fill="currentColor"
+                />
+                <path
+                    d="M600,100 L650,80 L720,90 L780,130 L750,180 L650,160 Z"
+                    fill="currentColor"
+                />
+                
+                {/* Connecting Lines */}
+                {[
+                    { from: [300, 200], to: [600, 150] },
+                    { from: [300, 200], to: [450, 300] },
+                    { from: [600, 150], to: [750, 250] },
+                    { from: [450, 300], to: [750, 250] }
+                ].map((line, i) => (
+                    <motion.path
+                        key={i}
+                        d={`M ${line.from[0]} ${line.from[1]} Q ${(line.from[0] + line.to[0])/2} ${(line.from[1] + line.to[1])/2 - 50} ${line.to[0]} ${line.to[1]}`}
+                        stroke="currentColor"
+                        strokeWidth="1"
+                        fill="none"
+                        initial={{ pathLength: 0 }}
+                        whileInView={{ pathLength: 1 }}
+                        transition={{ duration: 3, delay: i * 0.5, repeat: Infinity }}
+                    />
+                ))}
+
+                {/* Pulsing Dots */}
+                {[[300, 200], [600, 150], [450, 300], [750, 250]].map((dot, i) => (
+                    <motion.circle
+                        key={i}
+                        cx={dot[0]}
+                        cy={dot[1]}
+                        r="4"
+                        fill="currentColor"
+                        initial={{ scale: 1, opacity: 0.5 }}
+                        animate={{ scale: [1, 2, 1], opacity: [0.5, 1, 0.5] }}
+                        transition={{ duration: 2, delay: i * 0.7, repeat: Infinity }}
+                    />
+                ))}
+            </svg>
+        </div>
+    );
+}
+
 // Logo Component with Fallback
 export function Logo({ src, domain, initial, color, className, bgClass = "bg-white" }: { src?: string, domain?: string, initial: string, color: string, className?: string, bgClass?: string }) {
     const [error, setError] = useState(false);
@@ -156,6 +207,7 @@ export function Experience() {
 
     return (
         <section id="experience" className="theme-section bg-background relative overflow-hidden">
+            <GlobalConnectivityMap />
             <div className="absolute inset-0 bg-primary/5 blur-[120px] rounded-full pointer-events-none opacity-20" />
 
             <div className="theme-container relative z-10">

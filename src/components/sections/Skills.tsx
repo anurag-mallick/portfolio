@@ -13,6 +13,98 @@ import {
 } from "lucide-react";
 import { coreCompetencies, technicalSkills, certifications } from "@/lib/data/skills";
 
+function RadarChart() {
+    const data = [
+        { label: "Product", value: 95 },
+        { label: "Growth", value: 90 },
+        { label: "AI/ML", value: 85 },
+        { label: "Design", value: 80 },
+        { label: "Strategy", value: 95 },
+        { label: "Ops", value: 85 }
+    ];
+
+    const angleStep = (Math.PI * 2) / data.length;
+    const radius = 80;
+    
+    const points = data.map((d, i) => {
+        const angle = i * angleStep - Math.PI / 2;
+        const x = 100 + (d.value / 100) * radius * Math.cos(angle);
+        const y = 100 + (d.value / 100) * radius * Math.sin(angle);
+        return `${x},${y}`;
+    }).join(' ');
+
+    const gridLevels = [0.2, 0.4, 0.6, 0.8, 1];
+
+    return (
+        <div className="relative w-64 h-64 mx-auto mb-12 hidden lg:flex items-center justify-center">
+            <svg viewBox="0 0 200 200" className="w-full h-full">
+                {/* Grid */}
+                {gridLevels.map((level, i) => (
+                    <circle
+                        key={i}
+                        cx="100"
+                        cy="100"
+                        r={level * radius}
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="0.5"
+                        className="text-white/10"
+                    />
+                ))}
+                
+                {/* Spokes */}
+                {data.map((_, i) => {
+                    const angle = i * angleStep - Math.PI / 2;
+                    const x = 100 + radius * Math.cos(angle);
+                    const y = 100 + radius * Math.sin(angle);
+                    return (
+                        <line
+                            key={i}
+                            x1="100"
+                            y1="100"
+                            x2={x}
+                            y2={y}
+                            stroke="currentColor"
+                            strokeWidth="0.5"
+                            className="text-white/10"
+                        />
+                    );
+                })}
+
+                {/* Data Shape */}
+                <motion.polygon
+                    points={points}
+                    fill="rgba(0, 243, 255, 0.2)"
+                    stroke="rgba(0, 243, 255, 0.5)"
+                    strokeWidth="2"
+                    initial={{ opacity: 0, scale: 0 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 1.5, ease: "easeOut" }}
+                />
+
+                {/* Labels */}
+                {data.map((d, i) => {
+                    const angle = i * angleStep - Math.PI / 2;
+                    const x = 100 + (radius + 20) * Math.cos(angle);
+                    const y = 100 + (radius + 20) * Math.sin(angle);
+                    return (
+                        <text
+                            key={i}
+                            x={x}
+                            y={y}
+                            textAnchor="middle"
+                            dominantBaseline="middle"
+                            className="text-[8px] font-bold text-muted-foreground uppercase fill-current"
+                        >
+                            {d.label}
+                        </text>
+                    );
+                })}
+            </svg>
+        </div>
+    );
+}
+
 function DiscoveryFunnel() {
     return (
         <div className="relative w-48 h-48 mx-auto mb-12 hidden lg:flex flex-col items-center justify-center">
@@ -94,7 +186,10 @@ export function Skills() {
               </span>
             </p>
           </div>
-          <DiscoveryFunnel />
+          <div className="flex flex-col md:flex-row items-center gap-12">
+            <RadarChart />
+            <DiscoveryFunnel />
+          </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">

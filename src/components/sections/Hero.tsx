@@ -6,6 +6,101 @@ import { ArrowRight, FileText, Linkedin, Database, Layout, PieChart, TrendingUp,
 import Link from "next/link";
 import React, { useRef, useState, useEffect } from "react";
 
+function AIIntelligenceHub() {
+    const canvasRef = useRef<HTMLCanvasElement>(null);
+    const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+
+    useEffect(() => {
+        const canvas = canvasRef.current;
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        if (!ctx) return;
+
+        let animationFrameId: number;
+        let particles: { x: number, y: number, vx: number, vy: number, size: number }[] = [];
+        const particleCount = 40;
+
+        const resize = () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            particles = Array.from({ length: particleCount }).map(() => ({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                vx: (Math.random() - 0.5) * 0.5,
+                vy: (Math.random() - 0.5) * 0.5,
+                size: Math.random() * 2 + 1
+            }));
+        };
+
+        const draw = () => {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = 'rgba(0, 243, 255, 0.2)';
+            ctx.strokeStyle = 'rgba(0, 243, 255, 0.05)';
+
+            particles.forEach((p, i) => {
+                p.x += p.vx;
+                p.y += p.vy;
+
+                if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+                if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                ctx.fill();
+
+                for (let j = i + 1; j < particles.length; j++) {
+                    const p2 = particles[j];
+                    const dx = p.x - p2.x;
+                    const dy = p.y - p2.y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+
+                    if (dist < 150) {
+                        ctx.beginPath();
+                        ctx.moveTo(p.x, p.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        ctx.stroke();
+                    }
+                }
+
+                // Mouse interaction
+                const mDx = mousePos.x - p.x;
+                const mDy = mousePos.y - p.y;
+                const mDist = Math.sqrt(mDx * mDx + mDy * mDy);
+                if (mDist < 200) {
+                    ctx.beginPath();
+                    ctx.moveTo(p.x, p.y);
+                    ctx.lineTo(mousePos.x, mousePos.y);
+                    ctx.stroke();
+                }
+            });
+
+            animationFrameId = requestAnimationFrame(draw);
+        };
+
+        window.addEventListener('resize', resize);
+        const handleMouseMove = (e: MouseEvent) => {
+            setMousePos({ x: e.clientX, y: e.clientY });
+        };
+        window.addEventListener('mousemove', handleMouseMove);
+
+        resize();
+        draw();
+
+        return () => {
+            window.removeEventListener('resize', resize);
+            window.removeEventListener('mousemove', handleMouseMove);
+            cancelAnimationFrame(animationFrameId);
+        };
+    }, [mousePos]);
+
+    return (
+        <canvas 
+            ref={canvasRef} 
+            className="absolute inset-0 pointer-events-none opacity-30 z-0"
+        />
+    );
+}
+
 function PMIcon({ icon: Icon, delay, initialPos }: { icon: any, delay: number, initialPos: { top: string, left?: string, right?: string } }) {
     return (
         <motion.div
@@ -131,6 +226,8 @@ export function Hero() {
         >
             {/* Background Elements */}
             <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse:60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
+            
+            <AIIntelligenceHub />
 
             {/* PM Visual Language Elements */}
             <PMSweetSpot />

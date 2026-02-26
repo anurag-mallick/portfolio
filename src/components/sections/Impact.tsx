@@ -2,6 +2,7 @@
 
 import { motion, useInView, useSpring, useTransform } from "framer-motion";
 import { useEffect, useRef } from "react";
+import { cn } from "@/lib/utils";
 
 export const metrics = [
     {
@@ -33,6 +34,30 @@ export const metrics = [
         description: "On Indian Payroll Systems"
     }
 ];
+
+function Sparkline({ delay = 0, color = "primary" }: { delay?: number, color?: string }) {
+    const points = [40, 35, 45, 30, 55, 40, 60, 50, 75];
+    const pathData = points.map((p, i) => `${i === 0 ? 'M' : 'L'} ${i * 12.5} ${100 - p}`).join(' ');
+
+    return (
+        <div className="w-full h-8 mt-4 overflow-hidden opacity-50">
+            <svg viewBox="0 0 100 100" className="w-full h-full preserve-3d" preserveAspectRatio="none">
+                <motion.path
+                    d={pathData}
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                    className={cn(
+                        color === "primary" ? "text-primary" : "text-secondary"
+                    )}
+                    initial={{ pathLength: 0 }}
+                    whileInView={{ pathLength: 1 }}
+                    transition={{ duration: 2, delay, ease: "easeInOut" }}
+                />
+            </svg>
+        </div>
+    );
+}
 
 function Counter({ from, to, prefix = "", suffix = "" }: { from: number; to: number; prefix?: string; suffix?: string }) {
     const ref = useRef(null);
@@ -97,6 +122,7 @@ export function Impact() {
                                 </div>
                                 <h3 className="text-lg font-medium text-primary mb-2">{metric.label}</h3>
                                 <p className="text-sm text-muted-foreground">{metric.description}</p>
+                                <Sparkline delay={index * 0.2} />
                             </div>
                         </motion.div>
                     ))}

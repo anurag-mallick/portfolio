@@ -4,6 +4,17 @@ import { motion } from "framer-motion";
 import { Card } from "@/components/ui/Card";
 import { ArrowUpRight, Cpu, Database, Globe, Users, Code, PenTool, BarChart, HardHat, Share2 } from "lucide-react";
 
+function DeploymentWave() {
+    return (
+        <motion.div
+            initial={{ scale: 1, opacity: 0 }}
+            whileHover={{ scale: 2.5, opacity: 0.1 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="absolute inset-0 bg-primary rounded-full pointer-events-none z-0"
+        />
+    );
+}
+
 function StakeholderNetwork() {
     return (
         <div className="relative w-48 h-48 mx-auto mb-12 hidden lg:flex items-center justify-center">
@@ -146,8 +157,9 @@ export function Projects() {
                                 <div className="p-6 md:p-8 flex flex-col h-full">
                                     <div className="flex justify-between items-start mb-6">
                                         <div className="flex gap-4">
-                                            <div className="bg-muted p-3 rounded-lg border border-border group-hover:border-primary/50 transition-colors">
-                                                {project.icon}
+                                            <div className="bg-muted p-3 rounded-lg border border-border group-hover:border-primary/50 transition-colors relative">
+                                                <DeploymentWave />
+                                                <div className="relative z-10">{project.icon}</div>
                                             </div>
                                             <div className="flex flex-col">
                                                 <div className="text-[10px] font-bold text-primary uppercase tracking-widest mb-1">
