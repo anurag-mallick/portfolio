@@ -10,12 +10,7 @@ import { useTheme, Theme } from "@/components/ThemeContext";
 import { motion, AnimatePresence } from "framer-motion";
 
 const themeConfig = [
-    { id: "terminal", name: "Terminal", icon: Terminal, color: "#00ff41", desc: "Classic Matrix" },
-    { id: "minimal", name: "Executive", icon: User, color: "#111111", desc: "Clean & Serif" },
     { id: "futuristic", name: "Futuristic", icon: Zap, color: "#00f3ff", desc: "Neon & Glow" },
-    { id: "glass", name: "Modern Glass", icon: Box, color: "#38bdf8", desc: "Frosted Effects" },
-    { id: "creative", name: "Creative", icon: Palette, color: "#f87171", desc: "Bold & Loud" },
-    { id: "apple-glass", name: "Apple Glass", icon: Laptop, color: "#0071E3", desc: "Premium Light" },
     { id: "midnight", name: "Midnight", icon: Moon, color: "#8b5cf6", desc: "Deep & Vibrant" },
 ] as const;
 

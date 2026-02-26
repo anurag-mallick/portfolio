@@ -2,14 +2,7 @@
 
 import React, { createContext, useContext, useEffect, useState } from "react";
 
-export type Theme =
-  | "terminal"
-  | "minimal"
-  | "futuristic"
-  | "glass"
-  | "creative"
-  | "apple-glass"
-  | "midnight";
+export type Theme = "futuristic" | "midnight";
 
 interface ThemeContextType {
   theme: Theme;
@@ -19,16 +12,17 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setThemeState] = useState<Theme>("terminal");
+  const [theme, setThemeState] = useState<Theme>("midnight");
 
   useEffect(() => {
     // Sync state with what was set by the blocking script or localStorage
-    const savedTheme =
-      (localStorage.getItem("portfolio-theme") as Theme) || "terminal";
-    // eslint-disable-next-line
-    setThemeState(savedTheme);
-    // Ensure attribute is set (redundant if script ran, but good for safety)
-    document.documentElement.setAttribute("data-theme", savedTheme);
+    const savedTheme = localStorage.getItem("portfolio-theme") as Theme;
+    const initialTheme: Theme = (savedTheme === "futuristic" || savedTheme === "midnight") 
+      ? savedTheme 
+      : "midnight";
+    
+    setThemeState(initialTheme);
+    document.documentElement.setAttribute("data-theme", initialTheme);
   }, []);
 
   const setTheme = (newTheme: Theme) => {

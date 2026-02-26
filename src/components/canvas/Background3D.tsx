@@ -72,7 +72,7 @@ function FloatingOrbs() {
 export default function Background3D() {
   const { theme } = useTheme();
 
-  const isDark = ["midnight", "terminal", "futuristic"].includes(theme);
+  const isDark = theme === "midnight" || theme === "futuristic";
   const bgImage = isDark ? "/images/bg-dark.png" : "/images/bg-light.png";
 
   return (
