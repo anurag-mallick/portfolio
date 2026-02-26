@@ -270,8 +270,8 @@ export function Experience() {
 
                     {/* Professional Experience Section */}
                     <div className="lg:col-span-3">
-                        <h3 className="text-xl font-bold text-foreground mb-10 flex items-center gap-2 border-l-4 border-primary pl-4">
-                            PROFESSIONAL EXPERIENCE
+                        <h3 className="text-xl font-bold text-foreground mb-10 flex items-center gap-2 border-l-4 border-primary pl-4 uppercase tracking-wider">
+                            Career Timeline
                         </h3>
                         <div className={cn(
                             "grid gap-8",
@@ -284,9 +284,17 @@ export function Experience() {
                     </div>
                 </div>
 
-                <div id="education">
-                    <h3 className="text-xl font-bold text-foreground mb-10 flex items-center gap-2 border-l-4 border-secondary pl-4">
-                        EDUCATION & ACADEMIC FOUNDATION
+                <div id="education" className="mt-32">
+                    <div className="mb-16">
+                        <h2 className="text-3xl md:text-5xl font-bold tracking-tighter text-foreground uppercase">
+                           Academic <span className="text-secondary">Foundation</span>
+                        </h2>
+                        <p className="text-muted-foreground mt-2">
+                            Educational background and specialized certifications.
+                        </p>
+                    </div>
+                    <h3 className="text-xl font-bold text-foreground mb-10 flex items-center gap-2 border-l-4 border-secondary pl-4 uppercase tracking-wider">
+                        Education & Degrees
                     </h3>
                     <div className={cn(
                         "grid gap-8",

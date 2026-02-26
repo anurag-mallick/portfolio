@@ -160,7 +160,7 @@ export function Skills() {
   return (
     <section
       id="skills"
-      className="theme-section bg-background relative overflow-hidden"
+      className="theme-section bg-background relative overflow-hidden pt-32 md:pt-40"
     >
       {/* Background Ambience */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
@@ -198,7 +198,7 @@ export function Skills() {
             <div className="relative group">
               <div className="absolute -inset-0.5 bg-gradient-to-r from-primary/20 to-blue-500/20 rounded-2xl blur opacity-30 group-hover:opacity-100 transition duration-1000"></div>
               <div className="theme-card p-8">
-                <h3 className="text-xl font-bold text-foreground mb-8 flex items-center gap-2 border-b border-border pb-4">
+                <h3 className="text-xl font-bold text-foreground mb-8 flex items-center gap-2 border-l-4 border-primary pl-4 uppercase tracking-wider">
                   <Globe2 className="text-primary w-5 h-5" /> CORE COMPETENCIES
                 </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -251,9 +251,8 @@ export function Skills() {
             <div className="relative group h-full">
               <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-500/10 to-primary/10 rounded-2xl blur opacity-20"></div>
               <div className="theme-card p-8 h-full">
-                <h3 className="text-xl font-bold text-foreground mb-8 flex items-center gap-2 border-b border-border pb-4">
-                  <Code2 className="text-primary w-5 h-5" /> TECHNICAL SKILLS &
-                  TOOLS
+                <h3 className="text-xl font-bold text-foreground mb-8 flex items-center gap-2 border-l-4 border-primary pl-4 uppercase tracking-wider">
+                  <Code2 className="text-primary w-5 h-5" /> TECHNICAL SKILLS & TOOLS
                 </h3>
                 <div className="flex flex-wrap gap-3">
                   {technicalSkills.map((tool, i) => (
@@ -282,7 +281,7 @@ export function Skills() {
                 <div className="absolute -top-6 -right-6 opacity-5 rotate-12 text-primary">
                   <Award className="w-32 h-32" />
                 </div>
-                <h3 className="text-xl font-bold text-foreground mb-8 flex items-center gap-2 border-b border-border pb-4">
+                <h3 className="text-xl font-bold text-foreground mb-8 flex items-center gap-2 border-l-4 border-primary pl-4 uppercase tracking-wider">
                   <ShieldCheck className="text-primary w-5 h-5" />{" "}
                   CERTIFICATIONS
                 </h3>
