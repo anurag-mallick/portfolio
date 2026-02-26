@@ -4,6 +4,8 @@ import { useRef, useMemo } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Points, PointMaterial } from "@react-three/drei";
 import * as THREE from "three";
+import { useTheme } from "@/components/ThemeContext";
+import { motion, AnimatePresence } from "framer-motion";
 
 function StarField({ count = 1000 }) {
   const points = useMemo(() => {
@@ -68,12 +70,36 @@ function FloatingOrbs() {
 }
 
 export default function Background3D() {
+  const { theme } = useTheme();
+
+  const isDark = ["midnight", "terminal", "futuristic"].includes(theme);
+  const bgImage = isDark ? "/images/bg-dark.png" : "/images/bg-light.png";
+
   return (
-    <div className="fixed inset-0 z-[-1] pointer-events-none opacity-40">
-      <Canvas camera={{ position: [0, 0, 10] }}>
-        <StarField />
-        <FloatingOrbs />
-      </Canvas>
+    <div className="fixed inset-0 z-[-1] pointer-events-none overflow-hidden">
+      {/* High Quality Background Image with Fade Animation */}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={bgImage}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.6 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1 }}
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(${bgImage})`, filter: "blur(20px) scale(1.1)" }}
+        />
+      </AnimatePresence>
+
+      {/* Subtle Overlay to ensure contrast */}
+      <div className={`absolute inset-0 ${isDark ? "bg-black/20" : "bg-white/20"}`} />
+
+      {/* Existing 3D Elements */}
+      <div className="absolute inset-0 opacity-40">
+        <Canvas camera={{ position: [0, 0, 10] }}>
+          <StarField />
+          <FloatingOrbs />
+        </Canvas>
+      </div>
     </div>
   );
 }
