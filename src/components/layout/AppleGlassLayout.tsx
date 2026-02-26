@@ -22,6 +22,9 @@ import { FintechToolkit } from "@/components/sections/FintechToolkit";
 import { LogisticsLab } from "@/components/sections/LogisticsLab";
 import { Infrastructure } from "@/components/sections/Infrastructure";
 import { Algorithms } from "@/components/sections/Algorithms";
+import HeroScene from "@/components/canvas/HeroScene";
+import Background3D from "@/components/canvas/Background3D";
+
 
 function Particle() {
     const [style, setStyle] = useState({
@@ -180,48 +183,51 @@ function GlassHero() {
                 </motion.div>
 
                 <motion.div
-                    initial={{ opacity: 0, scale: 0.95 }}
+                    initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                    className="relative h-[600px] lg:h-[800px] w-full hidden lg:block"
+                    transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                    className="relative h-[600px] lg:h-[800px] w-full hidden lg:flex items-center justify-center p-8"
                 >
-                    {/* Abstract Phone/Glass representation */}
-                    <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[400px] h-[700px] bg-white rounded-[60px] border-8 border-[#F5F5F7] shadow-2xl overflow-hidden">
-                        <div className="absolute inset-0 bg-gradient-to-br from-[#F5F5F7] to-white" />
-                        <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-[#0071E3]/5 to-transparent" />
+                    <div className="w-full h-full relative group">
+                        {/* Decorative 3D Glow */}
+                        <div className="absolute inset-0 bg-[#0071E3]/20 rounded-full blur-[100px] group-hover:bg-[#0071E3]/30 transition-all duration-700" />
+                        
+                        {/* The 3D Component */}
+                        <div className="relative z-10 w-full h-full">
+                            <HeroScene />
+                        </div>
 
-                        {/* Floating Cards inside phone */}
+                        {/* Floating Overlay Cards (Responsive to 3D) */}
                         <motion.div
                             animate={{ y: [0, -20, 0] }}
-                            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                            className="absolute top-24 left-8 right-8 p-6 bg-white/80 backdrop-blur-xl rounded-2xl border border-white/60 shadow-lg"
+                            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                            className="absolute top-1/4 -left-4 p-6 bg-white/40 backdrop-blur-2xl rounded-3xl border border-white/40 shadow-2xl z-20 max-w-[200px]"
                         >
-                            <div className="flex items-center gap-4 mb-4">
-                                <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-[#0071E3] to-[#42A5F5]" />
-                                <div className="space-y-2">
-                                    <div className="w-32 h-3 bg-black/10 rounded-full" />
-                                    <div className="w-20 h-2 bg-black/5 rounded-full" />
+                            <div className="flex items-center gap-3 mb-3">
+                                <div className="p-2 bg-[#0071E3] rounded-lg text-white">
+                                    <Zap size={18} />
                                 </div>
+                                <span className="font-bold text-sm">Performance</span>
                             </div>
-                            <div className="space-y-2">
-                                <div className="w-full h-2 bg-black/5 rounded-full" />
-                                <div className="w-full h-2 bg-black/5 rounded-full" />
-                                <div className="w-2/3 h-2 bg-black/5 rounded-full" />
+                            <div className="w-full h-1.5 bg-black/10 rounded-full overflow-hidden">
+                                <div className="w-[85%] h-full bg-[#0071E3]" />
                             </div>
                         </motion.div>
 
                         <motion.div
-                            animate={{ y: [0, 15, 0] }}
-                            transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                            className="absolute top-80 left-8 right-8 p-6 bg-white/60 backdrop-blur-md rounded-2xl border border-white/60 shadow-lg"
+                            animate={{ y: [0, 20, 0] }}
+                            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                            className="absolute bottom-1/4 -right-4 p-6 bg-white/40 backdrop-blur-2xl rounded-3xl border border-white/40 shadow-2xl z-20 max-w-[200px]"
                         >
-                            <div className="flex justify-between items-center mb-6">
-                                <span className="font-bold text-[#1D1D1F]">Impact</span>
-                                <span className="text-[#0071E3] font-bold">+275%</span>
+                            <div className="flex items-center gap-3 mb-3">
+                                <div className="p-2 bg-[#2997FF] rounded-lg text-white">
+                                    <ExternalLink size={18} />
+                                </div>
+                                <span className="font-bold text-sm">Innovation</span>
                             </div>
-                            <div className="h-32 flex items-end justify-between gap-2">
-                                {[40, 60, 45, 80, 65, 90, 75].map((h, i) => (
-                                    <div key={i} style={{ height: `${h}%` }} className="w-full bg-[#0071E3]/20 rounded-t-sm" />
+                            <div className="flex gap-1 items-end h-8">
+                                {[3, 5, 8, 4, 9].map((h, i) => (
+                                    <div key={i} style={{ height: `${h * 10}%` }} className="w-2 bg-[#2997FF]/40 rounded-t-sm" />
                                 ))}
                             </div>
                         </motion.div>
@@ -520,7 +526,8 @@ function GlassGames() {
 // --- Main Layout Export ---
 export function AppleGlassLayout() {
     return (
-        <div className="min-h-screen bg-[#FAFAFA] text-[#1D1D1F] font-sans selection:bg-[#0071E3] selection:text-white">
+        <div className="min-h-screen bg-[#FAFAFA] text-[#1D1D1F] font-sans selection:bg-[#0071E3] selection:text-white relative">
+            <Background3D />
             <GlassHeader />
             <main>
                 <GlassHero />
