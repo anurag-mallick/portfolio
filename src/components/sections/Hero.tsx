@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/Button";
 import { ArrowRight, FileText, Linkedin, Database, Layout, PieChart, TrendingUp, Users } from "lucide-react";
 import Link from "next/link";
 import React, { useRef, useState, useEffect } from "react";
+import { ProductCore3D } from "@/components/viz/ProductCore3D";
 
 function AIIntelligenceHub() {
     const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -210,8 +211,15 @@ function Particle() {
 
 export function Hero() {
     const containerRef = useRef<HTMLDivElement>(null);
-    const { scrollY } = useScroll();
-    const y = useTransform(scrollY, [0, 500], [0, 200]);
+    const { scrollYProgress } = useScroll({
+        target: containerRef,
+        offset: ["start start", "end start"]
+    });
+
+    const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+    const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.9]);
+    const yHero = useTransform(scrollYProgress, [0, 0.5], [0, 100]);
+
     const scrollToSection = (id: string) => {
         const element = document.getElementById(id);
         if (element) {
@@ -229,13 +237,10 @@ export function Hero() {
             
             <AIIntelligenceHub />
 
-            {/* PM Visual Language Elements */}
-            <PMSweetSpot />
-            <PMIcon icon={Database} delay={0} initialPos={{ top: '15%', left: '10%' }} />
-            <PMIcon icon={Layout} delay={1} initialPos={{ top: '25%', right: '15%' }} />
-            <PMIcon icon={PieChart} delay={2} initialPos={{ top: '65%', left: '15%' }} />
-            <PMIcon icon={TrendingUp} delay={1.5} initialPos={{ top: '75%', right: '12%' }} />
-            <PMIcon icon={Users} delay={0.5} initialPos={{ top: '10%', right: '25%' }} />
+            {/* 3D Product Core Experience */}
+            <div className="absolute inset-0 z-0 flex items-center justify-center opacity-40">
+                <ProductCore3D />
+            </div>
 
             {/* Aurora Effect (Subtle for non-terminal themes) */}
             <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/20 blur-[100px] rounded-full mix-blend-screen animate-pulse-slow pointer-events-none opacity-50" />
@@ -248,7 +253,10 @@ export function Hero() {
 
 
             <div className="theme-container theme-section relative z-10">
-                <div className="flex flex-col space-y-8">
+                <motion.div 
+                    style={{ opacity, scale, y: yHero }}
+                    className="flex flex-col space-y-8"
+                >
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -313,11 +321,11 @@ export function Hero() {
                             </Button>
                         </Link>
                     </motion.div>
-                </div>
+                </motion.div>
             </div>
 
             <motion.div
-                style={{ y }}
+                style={{ y: yHero }}
                 className="absolute bottom-0 w-full h-[200px] bg-gradient-to-t from-background to-transparent z-0"
             />
         </section>

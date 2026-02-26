@@ -2,11 +2,12 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { Card } from "@/components/ui/Card";
-import { Calendar, MapPin, ChevronRight, GraduationCap, Briefcase, BarChart3, Lightbulb, Zap, Target, Repeat, Milestone, Flag, TrendingUp } from "lucide-react";
+import { Calendar, MapPin, ChevronRight, GraduationCap, Briefcase, BarChart3, Lightbulb, Zap, Target, Repeat, Milestone, Flag, TrendingUp, Presentation } from "lucide-react";
 import { cn } from "@/lib/utils";
 import React, { useState } from "react";
 import Image from "next/image";
 import { experiences, type ExperienceItem } from "@/lib/data/experience";
+import { ImpactChart } from "@/components/charts/ImpactChart";
 
 function ActionLoop() {
     return (
@@ -418,6 +419,44 @@ function ExperienceCard({ exp, index, viewMode }: { exp: ExperienceItem, index: 
                             {isHovered ? "Exploring Details" : "Tap to Expand"} <ChevronRight className={cn("w-3 h-3 ml-1 transition-transform", isHovered ? "rotate-90" : "")} />
                         </div>
                     )}
+
+                    {/* D3.js Impact Visualizations */}
+                    <AnimatePresence>
+                        {isHovered && exp.company === "Shiprocket" && (
+                            <motion.div
+                                initial={{ opacity: 0, scale: 0.95 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0, scale: 0.95 }}
+                                className="mt-6"
+                            >
+                                <ImpactChart 
+                                    title="Status Mismatch Reduction"
+                                    unit="%"
+                                    data={[
+                                        { label: "Before", value: 15, color: "#94a3b8" },
+                                        { label: "After", value: 0.5, color: "#f59e0b" }
+                                    ]}
+                                />
+                            </motion.div>
+                        )}
+                        {isHovered && exp.company === "Maharashtra Metro Rail" && (
+                            <motion.div
+                                initial={{ opacity: 0, scale: 0.95 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0, scale: 0.95 }}
+                                className="mt-6"
+                            >
+                                <ImpactChart 
+                                    title="Evaluation Efficiency"
+                                    unit="x"
+                                    data={[
+                                        { label: "Legacy", value: 1, color: "#94a3b8" },
+                                        { label: "Standardized", value: 2.5, color: "#8b5cf6" }
+                                    ]}
+                                />
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
                 </div>
             </Card>
         </motion.div>

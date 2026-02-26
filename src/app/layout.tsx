@@ -6,6 +6,7 @@ import {
   Outfit,
   Fira_Code,
   Syncopate,
+  IBM_Plex_Sans,
 } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeContext";
@@ -34,6 +35,12 @@ const firaCode = Fira_Code({
 const syncopate = Syncopate({
   weight: ["400", "700"],
   variable: "--font-syncopate",
+  subsets: ["latin"],
+});
+
+const ibmPlex = IBM_Plex_Sans({
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-ibm-plex",
   subsets: ["latin"],
 });
 
@@ -77,6 +84,7 @@ export default function RootLayout({
           ${outfit.variable} 
           ${firaCode.variable} 
           ${syncopate.variable} 
+          ${ibmPlex.variable}
           antialiased transition-colors duration-500
         `}
       >

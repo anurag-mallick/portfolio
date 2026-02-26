@@ -48,20 +48,20 @@
 
 /* --- MIDNIGHT NEBULA (Vibrant & Deep) --- */
 [data-theme="midnight"] {
-  --background: #02040a;
-  --foreground: #f8fafc;
-  --primary: #8b5cf6; /* Electric Violet */
-  --primary-foreground: #ffffff;
-  --primary-rgb: 139, 92, 246;
-  --secondary: #f59e0b; /* Golden Amber */
-  --accent: #06b6d4; /* Neon Cyan */
-  --muted: #0f172a;
-  --muted-foreground: #94a3b8;
-  --border: rgba(139, 92, 246, 0.2);
-  --card: rgba(15, 23, 42, 0.6);
+  --background: #0f172a; /* Slate 900 */
+  --foreground: #f8fafc; /* Slate 50 */
+  --primary: #f59e0b; /* Amber 500 */
+  --primary-foreground: #020617;
+  --primary-rgb: 245, 158, 11;
+  --secondary: #fbbf24; /* Amber 400 */
+  --accent: #8b5cf6; /* Violet 500 */
+  --muted: #1e293b; /* Slate 800 */
+  --muted-foreground: #94a3b8; /* Slate 400 */
+  --border: rgba(245, 158, 11, 0.2);
+  --card: rgba(30, 41, 59, 0.7);
   --glow-intensity: 0.8;
   --nav-blur: 20px;
-  --font-main: var(--font-outfit), sans-serif;
+  --font-main: var(--font-ibm-plex), sans-serif;
   --layout-align: center;
   --container-max-width: 1200px;
   --section-spacing: 5rem;

@@ -12,97 +12,114 @@ import {
   Filter,
 } from "lucide-react";
 import { coreCompetencies, technicalSkills, certifications } from "@/lib/data/skills";
+import { AIStrategyConsultant } from "@/components/ai/AIStrategyConsultant";
 
 function RadarChart() {
-    const data = [
-        { label: "Product", value: 95 },
-        { label: "Growth", value: 90 },
-        { label: "AI/ML", value: 85 },
-        { label: "Design", value: 80 },
-        { label: "Strategy", value: 95 },
-        { label: "Ops", value: 85 }
-    ];
+  const levels = 5;
+  const size = 200;
+  const radius = 70;
+  const centerX = size / 2;
+  const centerY = size / 2;
+  
+  const data = [
+    { label: "Product", value: 95 },
+    { label: "Growth", value: 90 },
+    { label: "AI/ML", value: 85 },
+    { label: "Design", value: 80 },
+    { label: "Strategy", value: 95 },
+    { label: "Ops", value: 85 }
+  ];
 
-    const angleStep = (Math.PI * 2) / data.length;
-    const radius = 80;
-    
-    const points = data.map((d, i) => {
-        const angle = i * angleStep - Math.PI / 2;
-        const x = 100 + (d.value / 100) * radius * Math.cos(angle);
-        const y = 100 + (d.value / 100) * radius * Math.sin(angle);
-        return `${x},${y}`;
-    }).join(' ');
+  const angleStep = (Math.PI * 2) / data.length;
 
-    const gridLevels = [0.2, 0.4, 0.6, 0.8, 1];
+  const getCoordinates = (index: number, value: number) => {
+    const angle = index * angleStep - Math.PI / 2;
+    const r = (value / 100) * radius;
+    return {
+      x: centerX + r * Math.cos(angle),
+      y: centerY + r * Math.sin(angle),
+    };
+  };
 
-    return (
-        <div className="relative w-64 h-64 mx-auto mb-12 hidden lg:flex items-center justify-center">
-            <svg viewBox="0 0 200 200" className="w-full h-full">
-                {/* Grid */}
-                {gridLevels.map((level, i) => (
-                    <circle
-                        key={i}
-                        cx="100"
-                        cy="100"
-                        r={level * radius}
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="0.5"
-                        className="text-white/10"
-                    />
-                ))}
-                
-                {/* Spokes */}
-                {data.map((_, i) => {
-                    const angle = i * angleStep - Math.PI / 2;
-                    const x = 100 + radius * Math.cos(angle);
-                    const y = 100 + radius * Math.sin(angle);
-                    return (
-                        <line
-                            key={i}
-                            x1="100"
-                            y1="100"
-                            x2={x}
-                            y2={y}
-                            stroke="currentColor"
-                            strokeWidth="0.5"
-                            className="text-white/10"
-                        />
-                    );
-                })}
+  const points = data.map((d, i) => getCoordinates(i, d.value));
+  const pointsStr = points.map(p => `${p.x},${p.y}`).join(' ');
 
-                {/* Data Shape */}
-                <motion.polygon
-                    points={points}
-                    fill="rgba(0, 243, 255, 0.2)"
-                    stroke="rgba(0, 243, 255, 0.5)"
-                    strokeWidth="2"
-                    initial={{ opacity: 0, scale: 0 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 1.5, ease: "easeOut" }}
-                />
+  return (
+    <div className="relative w-72 h-72 mx-auto mb-12 hidden lg:flex items-center justify-center">
+      <svg viewBox={`0 0 ${size} ${size}`} className="w-full h-full drop-shadow-[0_0_15px_rgba(0,243,255,0.2)]">
+        {/* Background Grids */}
+        {[...Array(levels)].map((_, i) => (
+          <circle
+            key={i}
+            cx={centerX}
+            cy={centerY}
+            r={(radius / levels) * (i + 1)}
+            className="fill-none stroke-white/10"
+            strokeWidth="0.5"
+          />
+        ))}
 
-                {/* Labels */}
-                {data.map((d, i) => {
-                    const angle = i * angleStep - Math.PI / 2;
-                    const x = 100 + (radius + 20) * Math.cos(angle);
-                    const y = 100 + (radius + 20) * Math.sin(angle);
-                    return (
-                        <text
-                            key={i}
-                            x={x}
-                            y={y}
-                            textAnchor="middle"
-                            dominantBaseline="middle"
-                            className="text-[8px] font-bold text-muted-foreground uppercase fill-current"
-                        >
-                            {d.label}
-                        </text>
-                    );
-                })}
-            </svg>
-        </div>
-    );
+        {/* Axis Lines */}
+        {data.map((_, i) => {
+          const { x, y } = getCoordinates(i, 100);
+          return (
+            <line
+              key={i}
+              x1={centerX}
+              y1={centerY}
+              x2={x}
+              y2={y}
+              className="stroke-white/10"
+              strokeWidth="0.5"
+            />
+          );
+        })}
+
+        {/* Data Path */}
+        <motion.polygon
+          points={pointsStr}
+          className="fill-primary/20 stroke-primary"
+          strokeWidth="2"
+          strokeLinejoin="round"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
+        />
+
+        {/* Data Points and Pulsing Effect */}
+        {points.map((p, i) => (
+          <g key={i}>
+            <circle cx={p.x} cy={p.y} r="2.5" className="fill-primary group-hover:fill-white transition-colors" />
+            <motion.circle 
+              cx={p.x} 
+              cy={p.y} 
+              r="5" 
+              className="fill-primary/20"
+              animate={{ scale: [1, 1.5, 1], opacity: [0.3, 0, 0.3] }}
+              transition={{ duration: 2, repeat: Infinity, delay: i * 0.2 }}
+            />
+          </g>
+        ))}
+
+        {/* Labels relocated as text in SVG for better precision */}
+        {data.map((d, i) => {
+          const { x, y } = getCoordinates(i, 130);
+          return (
+            <text
+              key={i}
+              x={x}
+              y={y}
+              textAnchor="middle"
+              dominantBaseline="middle"
+              className="text-[7px] font-bold fill-muted-foreground uppercase tracking-widest"
+            >
+              {d.label}
+            </text>
+          );
+        })}
+      </svg>
+    </div>
+  );
 }
 
 function DiscoveryFunnel() {
@@ -244,6 +261,17 @@ export function Skills() {
                 </div>
               </div>
             </div>
+          </div>
+
+          {/* AI Strategy Simulator - Full Width Integration */}
+          <div className="lg:col-span-12 mt-8">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5 }}
+            >
+              <AIStrategyConsultant />
+            </motion.div>
           </div>
 
           {/* Technical Tools */}
