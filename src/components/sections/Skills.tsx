@@ -12,7 +12,8 @@ import {
   Filter,
 } from "lucide-react";
 import { coreCompetencies, technicalSkills, certifications } from "@/lib/data/skills";
-import { AIStrategyConsultant } from "@/components/ai/AIStrategyConsultant";
+          {/* AI Strategy Simulator - Removed */}
+
 
 function RadarChart() {
   const levels = 5;
@@ -263,16 +264,7 @@ export function Skills() {
             </div>
           </div>
 
-          {/* AI Strategy Simulator - Full Width Integration */}
-          <div className="lg:col-span-12 mt-8">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5 }}
-            >
-              <AIStrategyConsultant />
-            </motion.div>
-          </div>
+
 
           {/* Technical Tools */}
           <div className="lg:col-span-7">
