@@ -1,9 +1,43 @@
 "use client";
 
-import React from "react";
-import { motion } from "framer-motion";
-import { ExternalLink, BookOpen, Quote } from "lucide-react";
+import React, { useEffect, useState } from "react";
+import { motion, useScroll, useSpring } from "framer-motion";
+import { ExternalLink, BookOpen, Quote, Brain } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+
+function ReadingProgress() {
+    const { scrollYProgress } = useScroll();
+    const scaleX = useSpring(scrollYProgress, {
+        stiffness: 100,
+        damping: 30,
+        restDelta: 0.001
+    });
+
+    return (
+        <motion.div
+            className="fixed top-0 left-0 right-0 h-1 bg-primary origin-left z-[100]"
+            style={{ scaleX }}
+        />
+    );
+}
+
+function ThoughtPulse() {
+    return (
+        <div className="relative inline-flex items-center justify-center p-3 rounded-2xl bg-primary/10 text-primary mb-6">
+            <motion.div
+                animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0.2, 0.5] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute inset-0 bg-primary/20 rounded-2xl blur-md"
+            />
+            <motion.div
+                animate={{ rotate: [0, 360] }}
+                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                className="absolute inset-0 border border-primary/20 rounded-2xl border-dashed"
+            />
+            <Brain className="relative z-10 w-8 h-8" />
+        </div>
+    );
+}
 
 const articles = [
     {
@@ -27,6 +61,7 @@ const articles = [
 export function Articles() {
     return (
         <section id="articles" className="py-24 bg-black relative overflow-hidden">
+            <ReadingProgress />
             {/* Background elements */}
             <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-[120px] -mr-48 -mt-48" />
             <div className="absolute bottom-0 left-0 w-96 h-96 bg-secondary/5 rounded-full blur-[120px] -ml-48 -mb-48" />
@@ -38,6 +73,7 @@ export function Articles() {
                     viewport={{ once: true }}
                     className="text-center mb-16"
                 >
+                    <ThoughtPulse />
                     <div className="inline-flex items-center rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-sm font-medium text-primary backdrop-blur-sm mb-6">
                         <BookOpen className="w-4 h-4 mr-2" />
                         Thought Leadership

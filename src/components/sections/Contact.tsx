@@ -1,10 +1,59 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
-import { Send, Terminal, Mail, MapPin, MessageSquare } from "lucide-react";
+import { Send, Terminal, Mail, MapPin, MessageSquare, Activity } from "lucide-react";
+
+function SignalPulse() {
+  return (
+    <div className="relative flex items-center justify-center">
+      <motion.div
+        animate={{ scale: [1, 1.5, 1], opacity: [0.3, 0, 0.3] }}
+        transition={{ duration: 2, repeat: Infinity, ease: "easeOut" }}
+        className="absolute w-8 h-8 rounded-full border border-primary/50"
+      />
+      <motion.div
+        animate={{ scale: [1, 2, 1], opacity: [0.2, 0, 0.2] }}
+        transition={{ duration: 2, delay: 0.5, repeat: Infinity, ease: "easeOut" }}
+        className="absolute w-8 h-8 rounded-full border border-primary/30"
+      />
+      <Terminal size={14} className="relative z-10" />
+    </div>
+  );
+}
+
+function DataStream() {
+  const [streams, setStreams] = useState<string[]>([]);
+  
+  useEffect(() => {
+    const chars = "01ABCDEF";
+    const generateStream = () => {
+      let s = "";
+      for(let i=0; i<20; i++) s += chars[Math.floor(Math.random() * chars.length)];
+      return s;
+    };
+    setStreams(Array.from({ length: 15 }).map(generateStream));
+  }, []);
+
+  return (
+    <div className="absolute inset-0 pointer-events-none opacity-[0.03] flex flex-wrap gap-12 p-12 overflow-hidden select-none font-mono text-[10px]">
+      {streams.map((s, i) => (
+        <motion.div
+          key={i}
+          initial={{ y: -100, opacity: 0 }}
+          animate={{ y: 1000, opacity: [0, 1, 0] }}
+          transition={{ duration: Math.random() * 10 + 10, repeat: Infinity, delay: Math.random() * 10 }}
+          className="text-primary vertical-text"
+          style={{ writingMode: 'vertical-rl' }}
+        >
+          {s}
+        </motion.div>
+      ))}
+    </div>
+  );
+}
 
 export function Contact() {
   const [formState, setFormState] = useState({
@@ -80,6 +129,7 @@ export function Contact() {
       id="contact"
       className="theme-section bg-background relative overflow-hidden"
     >
+      <DataStream />
       <div className="absolute inset-0 bg-primary/2 blur-[150px] rounded-full pointer-events-none" />
 
       <div className="theme-container relative z-10">
@@ -93,7 +143,7 @@ export function Contact() {
                   whileInView={{ opacity: 1, x: 0 }}
                   className="flex items-center gap-2 text-primary font-mono text-xs mb-4"
                 >
-                  <Terminal size={14} /> ESTABLISH_CONNECTION
+                  <SignalPulse /> ESTABLISH_CONNECTION
                 </motion.div>
                 <h2 className="text-4xl md:text-6xl font-bold tracking-tighter text-foreground mb-6">
                   Get in <span className="text-primary">Touch</span>

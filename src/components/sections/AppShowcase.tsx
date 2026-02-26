@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
     ArrowRight, ExternalLink
@@ -8,6 +8,56 @@ import {
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { allApps, type AppDetail } from "@/lib/data/apps";
+
+function SystemStatusTerminal() {
+    const [logs, setLogs] = useState<string[]>(["INITIALIZING CORE V4.0...", "LATENCY_CHECK: 14ms", "AUTH_STATUS: VERIFIED"]);
+    
+    useEffect(() => {
+        const messages = [
+            "SCANNING_VULNERABILITIES...",
+            "RECONCILING_FINANCIAL_DATA...",
+            "OPTIMIZING_TRAFFIC_FLOW...",
+            "UPDATING_PAYROLL_ENGINE...",
+            "SYSCALL_READY"
+        ];
+        const timer = setInterval(() => {
+            setLogs(prev => [...prev.slice(-4), messages[Math.floor(Math.random() * messages.length)]]);
+        }, 3000);
+        return () => clearInterval(timer);
+    }, []);
+
+    return (
+        <div className="absolute bottom-4 right-8 z-10 hidden md:block">
+            <div className="bg-black/80 backdrop-blur-md border border-white/10 rounded-lg p-3 font-mono text-[8px] text-primary/70 w-40 shadow-2xl">
+                <div className="flex items-center gap-1.5 mb-2 border-b border-white/5 pb-1">
+                    <div className="w-1.5 h-1.5 rounded-full bg-red-500/50" />
+                    <div className="w-1.5 h-1.5 rounded-full bg-yellow-500/50" />
+                    <div className="w-1.5 h-1.5 rounded-full bg-green-500/50" />
+                    <span className="ml-auto text-[6px] opacity-40 uppercase tracking-tighter">sys_log</span>
+                </div>
+                <div className="space-y-1">
+                    {logs.map((log, i) => (
+                        <div key={i} className="flex gap-2">
+                            <span className="opacity-30">[{new Date().toLocaleTimeString([], {hour12: false, hour: '2-digit', minute:'2-digit'})}]</span>
+                            <span className="truncate">{log}</span>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </div>
+    );
+}
+
+function ModularGridGlow() {
+    return (
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: [0.1, 0.3, 0.1] }}
+            transition={{ duration: 4, repeat: Infinity }}
+            className="absolute -inset-1 bg-primary/20 blur-xl rounded-3xl pointer-events-none z-0"
+        />
+    );
+}
 
 export function AppShowcase() {
     const [selectedApp, setSelectedApp] = useState<AppDetail>(allApps[0]);
@@ -100,6 +150,8 @@ export function AppShowcase() {
                                 transition={{ duration: 0.3 }}
                                 className="bg-zinc-900/40 border border-white/10 backdrop-blur-2xl rounded-3xl p-8 md:p-12 relative overflow-hidden group"
                             >
+                                <ModularGridGlow />
+                                <SystemStatusTerminal />
                                 {/* Decorative elements */}
                                 <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -mr-32 -mt-32" />
 
