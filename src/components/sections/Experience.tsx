@@ -2,11 +2,91 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { Card } from "@/components/ui/Card";
-import { Calendar, MapPin, ChevronRight, GraduationCap, Briefcase } from "lucide-react";
+import { Calendar, MapPin, ChevronRight, GraduationCap, Briefcase, BarChart3, Lightbulb, Zap, Target, Repeat, Milestone, Flag, TrendingUp } from "lucide-react";
 import { cn } from "@/lib/utils";
 import React, { useState } from "react";
 import Image from "next/image";
 import { experiences, type ExperienceItem } from "@/lib/data/experience";
+
+function ActionLoop() {
+    return (
+        <div className="relative w-40 h-40 mx-auto mb-8 hidden lg:flex items-center justify-center">
+            <svg className="w-full h-full" viewBox="0 0 100 100">
+                <motion.path
+                    d="M 50,10 A 40,40 0 1,1 49.9,10"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1"
+                    className="text-primary/20"
+                    strokeDasharray="4 2"
+                />
+                <motion.path
+                    d="M 50,10 A 40,40 0 1,1 49.9,10"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    className="text-primary"
+                    initial={{ pathLength: 0 }}
+                    whileInView={{ pathLength: 1 }}
+                    transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                />
+            </svg>
+            <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 p-6">
+                <div className="flex flex-col items-center justify-center">
+                    <BarChart3 className="w-4 h-4 text-blue-400/60" />
+                </div>
+                <div className="flex flex-col items-center justify-center">
+                    <Lightbulb className="w-4 h-4 text-yellow-400/60" />
+                </div>
+                <div className="flex flex-col items-center justify-center">
+                    <Zap className="w-4 h-4 text-purple-400/60" />
+                </div>
+                <div className="flex flex-col items-center justify-center">
+                    <Target className="w-4 h-4 text-green-400/60" />
+                </div>
+            </div>
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                <Repeat className="w-5 h-5 text-primary/40 animate-spin-slow" />
+            </div>
+            <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 text-[8px] font-bold text-primary/40 uppercase tracking-widest whitespace-nowrap">
+                Iterative Loop
+            </div>
+        </div>
+    );
+}
+
+function StrategicRoadmap() {
+    return (
+        <div className="w-full h-12 relative flex items-center mb-12 hidden md:flex">
+            <div className="absolute w-full h-px bg-white/10" />
+            <motion.div 
+                initial={{ width: 0 }}
+                whileInView={{ width: '80%' }}
+                className="absolute h-px bg-primary shadow-[0_0_10px_rgba(var(--primary-rgb),0.5)]" 
+            />
+            
+            {[
+                { label: 'Discovery', pos: '10%' },
+                { label: 'Planning', pos: '35%' },
+                { label: 'Execution', pos: '60%' },
+                { label: 'Growth', pos: '85%' }
+            ].map((step, i) => (
+                <div key={i} className="absolute flex flex-col items-center" style={{ left: step.pos }}>
+                    <div className="w-2 h-2 rounded-full bg-primary mb-2 shadow-[0_0_8px_rgba(var(--primary-rgb),0.8)]" />
+                    <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-tighter">{step.label}</span>
+                </div>
+            ))}
+            
+            <motion.div 
+                animate={{ x: [0, 5, 0] }}
+                transition={{ duration: 2, repeat: Infinity }}
+                className="absolute right-[15%]"
+            >
+                <Flag className="w-4 h-4 text-primary" />
+            </motion.div>
+        </div>
+    );
+}
 
 // Logo Component with Fallback
 export function Logo({ src, domain, initial, color, className, bgClass = "bg-white" }: { src?: string, domain?: string, initial: string, color: string, className?: string, bgClass?: string }) {
@@ -111,18 +191,44 @@ export function Experience() {
                     </div>
                 </div>
 
-                {/* Professional Experience Section */}
-                <div className="mb-20">
-                    <h3 className="text-xl font-bold text-foreground mb-10 flex items-center gap-2 border-l-4 border-primary pl-4">
-                        PROFESSIONAL EXPERIENCE
-                    </h3>
-                    <div className={cn(
-                        "grid gap-8",
-                        viewMode === 'grid' ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3" : "grid-cols-1"
-                    )}>
-                        {workExperiences.map((exp, index) => (
-                            <ExperienceCard key={exp.id} exp={exp} index={index} viewMode={viewMode} />
-                        ))}
+                <StrategicRoadmap />
+
+                <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+                    {/* Action Loop Sidebar Sidebar Component */}
+                    <div className="hidden lg:block lg:col-span-1">
+                        <div className="sticky top-24">
+                             <ActionLoop />
+                             <div className="p-6 rounded-2xl bg-primary/5 border border-primary/10 backdrop-blur-sm mt-8">
+                                <h4 className="text-xs font-bold text-primary uppercase tracking-widest mb-4">Strategic Framework</h4>
+                                <ul className="space-y-4">
+                                    {[
+                                        { icon: Milestone, text: "Product Strategy" },
+                                        { icon: Target, text: "Business Alignment" },
+                                        { icon: TrendingUp, text: "Market Positioning" }
+                                    ].map((item, i) => (
+                                        <li key={i} className="flex items-center gap-3">
+                                            <item.icon className="w-4 h-4 text-primary/60" />
+                                            <span className="text-[10px] text-muted-foreground uppercase font-bold">{item.text}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                             </div>
+                        </div>
+                    </div>
+
+                    {/* Professional Experience Section */}
+                    <div className="lg:col-span-3">
+                        <h3 className="text-xl font-bold text-foreground mb-10 flex items-center gap-2 border-l-4 border-primary pl-4">
+                            PROFESSIONAL EXPERIENCE
+                        </h3>
+                        <div className={cn(
+                            "grid gap-8",
+                            viewMode === 'grid' ? "grid-cols-1 md:grid-cols-2" : "grid-cols-1"
+                        )}>
+                            {workExperiences.map((exp, index) => (
+                                <ExperienceCard key={exp.id} exp={exp} index={index} viewMode={viewMode} />
+                            ))}
+                        </div>
                     </div>
                 </div>
 
