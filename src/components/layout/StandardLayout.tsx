@@ -10,6 +10,7 @@ import { Impact } from "@/components/sections/Impact";
 import { Contact } from "@/components/sections/Contact";
 import { AppShowcase } from "@/components/sections/AppShowcase";
 import { Articles } from "@/components/sections/Articles";
+import { ProductPhilosophy } from "@/components/sections/ProductPhilosophy";
 
 export function StandardLayout() {
     return (
@@ -17,6 +18,7 @@ export function StandardLayout() {
             <Navbar />
             <Hero />
             <Experience />
+            <ProductPhilosophy />
             <Projects />
             <Skills />
             <Impact />

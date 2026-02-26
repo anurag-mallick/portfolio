@@ -58,29 +58,45 @@ export function Skills() {
                   <Globe2 className="text-primary w-5 h-5" /> CORE COMPETENCIES
                 </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                  {coreCompetencies.map((skill, i) => (
-                    <motion.div
-                      key={i}
-                      initial={{ opacity: 0, y: 10 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ delay: i * 0.02 }}
-                      onMouseEnter={() => setSelectedSkill(skill as any)}
-                      onMouseLeave={() => setSelectedSkill(null)}
-                      className="relative p-4 rounded-xl bg-white/[0.02] border border-white/5 hover:border-primary/30 hover:bg-primary/[0.02] transition-all group/card overflow-hidden cursor-help"
-                    >
-                      <div className="flex items-center gap-3">
-                        <div className="p-2 rounded-lg bg-primary/5 group-hover/card:bg-primary/10 transition-colors">
-                          <skill.icon className="w-4 h-4 text-primary" />
-                        </div>
-                        <span className="text-sm font-medium text-gray-400 group-hover/card:text-white transition-colors">
-                          {skill.name}
-                        </span>
-                      </div>
-                      <div className="absolute top-2 right-2 opacity-0 group-hover/card:opacity-100 transition-opacity">
-                        <HelpCircle className="w-3 h-3 text-primary/40" />
-                      </div>
-                    </motion.div>
-                  ))}
+                   {coreCompetencies.map((skill: any, i) => {
+                     const isPMSkill = skill.category === "PRODUCT & GROWTH";
+                     return (
+                       <motion.div
+                         key={i}
+                         initial={{ opacity: 0, y: 10 }}
+                         whileInView={{ opacity: 1, y: 0 }}
+                         transition={{ delay: i * 0.02 }}
+                         onMouseEnter={() => setSelectedSkill(skill as any)}
+                         onMouseLeave={() => setSelectedSkill(null)}
+                         className={`relative p-4 rounded-xl transition-all group/card overflow-hidden cursor-help border ${
+                           isPMSkill 
+                             ? "bg-primary/10 border-primary/40 hover:border-primary shadow-[0_0_15px_rgba(var(--primary-rgb),0.1)]" 
+                             : "bg-white/[0.02] border-white/5 hover:border-primary/30 hover:bg-primary/[0.02]"
+                         }`}
+                       >
+                         <div className="flex items-center gap-3">
+                           <div className={`p-2 rounded-lg transition-colors ${
+                             isPMSkill ? "bg-primary/20" : "bg-primary/5 group-hover/card:bg-primary/10"
+                           }`}>
+                             <skill.icon className={`w-4 h-4 text-primary ${isPMSkill ? "animate-pulse" : ""}`} />
+                           </div>
+                           <span className={`text-sm font-medium transition-colors ${
+                             isPMSkill ? "text-white" : "text-gray-400 group-hover/card:text-white"
+                           }`}>
+                             {skill.name}
+                           </span>
+                         </div>
+                         {isPMSkill && (
+                           <div className="absolute -top-1 -right-1">
+                             <div className="w-4 h-4 bg-primary rotate-45 translate-x-1/2 -translate-y-1/2" />
+                           </div>
+                         )}
+                         <div className="absolute top-2 right-2 opacity-0 group-hover/card:opacity-100 transition-opacity">
+                           <HelpCircle className="w-3 h-3 text-primary/40" />
+                         </div>
+                       </motion.div>
+                     );
+                   })}
                 </div>
               </div>
             </div>
