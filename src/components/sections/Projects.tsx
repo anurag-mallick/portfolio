@@ -128,7 +128,7 @@ export function Projects() {
     return (
         <section id="projects" className="theme-section bg-background relative overflow-hidden">
             {/* Background Scanner Effect */}
-            <div className="absolute inset-0 bg-[linear-gradient(rgba(var(--primary-rgb),0.02)_1px,transparent_1px)] bg-[size:100%_4px] animate-scan" />
+            <div className="absolute inset-0 bg-[linear-gradient(rgba(0,243,255,0.02)_1px,transparent_1px)] bg-[size:100%_4px] animate-scan" />
 
             <div className="theme-container relative z-10">
                 <div className="flex flex-col lg:flex-row justify-between items-start mb-16 gap-12">
