@@ -24,10 +24,6 @@ export function PathfindingVisualizer() {
     const startNode = { r: 7, c: 4 };
     const endNode = { r: 7, c: 25 };
 
-    useEffect(() => {
-        resetGrid();
-    }, []);
-
     const resetGrid = () => {
         const newGrid: Node[][] = [];
         for (let r = 0; r < ROWS; r++) {
@@ -42,6 +38,10 @@ export function PathfindingVisualizer() {
         }
         setGrid(newGrid);
     };
+
+    useEffect(() => {
+        resetGrid();
+    }, []);
 
     const toggleWall = (r: number, c: number) => {
         if (isRunning) return;
@@ -116,44 +116,74 @@ export function PathfindingVisualizer() {
         setIsRunning(false);
     };
 
+    const [isMouseDown, setIsMouseDown] = useState(false);
+
+    const handleMouseEnter = (r: number, c: number) => {
+        if (!isMouseDown) return;
+        toggleWall(r, c);
+    };
+
+    const handleMouseDown = (r: number, c: number) => {
+        setIsMouseDown(true);
+        toggleWall(r, c);
+    };
+
+    const handleMouseUp = () => {
+        setIsMouseDown(false);
+    };
+
     return (
-        <div className="w-full max-w-4xl mx-auto">
+        <div className="w-full max-w-5xl mx-auto" onMouseUp={handleMouseUp}>
             <Card className="p-6 bg-zinc-900/50 border-white/10 backdrop-blur-md mb-6 flex justify-between items-center">
                 <div className="flex gap-4">
-                    <div className="flex items-center gap-2 text-sm"><div className="w-4 h-4 bg-green-500 rounded sm" /> Start</div>
-                    <div className="flex items-center gap-2 text-sm"><div className="w-4 h-4 bg-red-500 rounded sm" /> End</div>
-                    <div className="flex items-center gap-2 text-sm"><div className="w-4 h-4 bg-[#ff0080]" /> Path</div>
+                    <div className="flex items-center gap-2 text-sm">
+                        <div className="w-4 h-4 bg-green-500 rounded-sm" /> Start
+                    </div>
+                    <div className="flex items-center gap-2 text-sm">
+                        <div className="w-4 h-4 bg-red-500 rounded-sm" /> End
+                    </div>
+                    <div className="flex items-center gap-2 text-sm">
+                        <div className="w-4 h-4 bg-[#ff0080] rounded-sm" /> Path
+                    </div>
                 </div>
                 <div className="flex gap-2">
-                    <Button onClick={resetGrid} variant="outline" size="sm">
+                    <Button onClick={resetGrid} variant="outline" size="sm" className="border-white/10 hover:bg-white/5">
                         <RefreshCw className="w-4 h-4 mr-2" /> Reset
                     </Button>
-                    <Button onClick={runAlgorithm} disabled={isRunning} size="sm" className="bg-[#ff0080] hover:bg-[#d10069]">
+                    <Button onClick={runAlgorithm} disabled={isRunning} size="sm" className="bg-[#ff0080] hover:bg-[#d10069] text-white">
                         <Play className="w-4 h-4 mr-2" /> Run BFS
                     </Button>
                 </div>
             </Card>
 
-            <div className="bg-black/40 p-4 rounded-xl border border-white/5 overflow-x-auto">
-                {grid.map((row, r) => (
-                    <div key={r} className="flex justify-center">
-                        {row.map((node, c) => (
-                            <div
-                                key={`${r}-${c}`}
-                                onClick={() => toggleWall(r, c)}
-                                className={`w-6 h-6 border border-white/5 cursor-pointer transition-all duration-200 ${node.type === 'start' ? 'bg-green-500 shadow-[0_0_10px_#22c55e]' :
-                                        node.type === 'end' ? 'bg-red-500 shadow-[0_0_10px_#ef4444]' :
-                                            node.type === 'wall' ? 'bg-white/40' :
-                                                node.type === 'path' ? 'bg-[#ff0080] scale-110 shadow-[0_0_10px_#ff0080]' :
-                                                    node.type === 'visited' ? 'bg-[#ff0080]/30' :
-                                                        'hover:bg-white/10'
-                                    }`}
-                            />
-                        ))}
-                    </div>
-                ))}
+            <div className="bg-black/40 p-4 rounded-xl border border-white/5 flex justify-center">
+                <div 
+                    className="grid"
+                    style={{ 
+                        gridTemplateColumns: `repeat(${COLS}, 1.5rem)`,
+                        gap: '1px'
+                    }}
+                >
+                    {grid.flat().map((node) => (
+                        <div
+                            key={`${node.r}-${node.c}`}
+                            onMouseDown={() => handleMouseDown(node.r, node.c)}
+                            onMouseEnter={() => handleMouseEnter(node.r, node.c)}
+                            className={`w-6 h-6 rounded-sm cursor-pointer transition-all duration-200 ${
+                                node.type === 'start' ? 'bg-green-500 shadow-[0_0_10px_#22c55e]' :
+                                node.type === 'end' ? 'bg-red-500 shadow-[0_0_10px_#ef4444]' :
+                                node.type === 'wall' ? 'bg-white/40' :
+                                node.type === 'path' ? 'bg-[#ff0080] scale-110 shadow-[0_0_10px_#ff0080]' :
+                                node.type === 'visited' ? 'bg-[#ff0080]/20' :
+                                'bg-white/5 hover:bg-white/10'
+                            }`}
+                        />
+                    ))}
+                </div>
             </div>
-            <p className="text-center text-muted-foreground mt-4 text-sm">Click grid layout to add walls</p>
+            <p className="text-center text-muted-foreground mt-4 text-xs font-medium uppercase tracking-widest">
+                Click and drag to draw walls
+            </p>
         </div>
     );
 }

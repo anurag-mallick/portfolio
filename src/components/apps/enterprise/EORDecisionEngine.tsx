@@ -189,7 +189,7 @@ export function EORDecisionEngine() {
     };
   }, [selectedCountries, headcount, salary]);
 
-  const [proposalRef] = useState(() => Math.floor(Math.random() * 9000) + 1000);
+  const proposalRef = useMemo(() => Math.floor(Math.random() * 9000) + 1000, []);
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
