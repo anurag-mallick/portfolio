@@ -4,7 +4,7 @@ A premium, high-performance portfolio website built with **Next.js 16**, **Tailw
 
 ## 🚀 Live Preview
 
-**[https://anurag-mallick.pages.dev](https://anurag-mallick.pages.dev)**
+**[GitHub Pages](https://anurag-mallick.github.io/portfolio/)** · **[Cloudflare Mirror](https://anurag-mallick.pages.dev)**
 
 ## 🛠️ Technical Stack
 
@@ -16,7 +16,7 @@ A premium, high-performance portfolio website built with **Next.js 16**, **Tailw
 | **3D / Viz**   | Three.js (lazy-loaded), D3.js, Recharts, HTML5 Canvas                                 |
 | **Security**   | CSP, HSTS, XSS headers, Honeypot bot protection, Rate limiting                        |
 | **Icons**      | [Lucide React](https://lucide.dev/)                                                   |
-| **Deployment** | [Cloudflare Pages](https://pages.cloudflare.com/)                                     |
+| **Deployment** | [GitHub Pages (Primary)](https://anurag-mallick.github.io/portfolio/) & [Cloudflare (Mirror)](https://pages.cloudflare.com/) |
 
 ## ✨ Key Features
 
