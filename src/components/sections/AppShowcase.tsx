@@ -161,8 +161,8 @@ export function AppShowcase() {
                                             {selectedApp.icon}
                                         </div>
                                         <div className="flex flex-col items-end">
-                                            <span className="text-[10px] uppercase font-bold tracking-widest text-muted-foreground mb-1">Architecture</span>
-                                            <span className="text-white font-mono text-sm border border-white/10 px-3 py-1 rounded-full bg-black/50">
+                                            <span className="text-[10px] uppercase font-bold tracking-widest text-foreground/60 mb-1">Architecture</span>
+                                            <span className="text-white font-mono text-sm border border-primary/20 px-3 py-1 rounded-full bg-primary/5">
                                                 {selectedApp.tech}
                                             </span>
                                         </div>
@@ -192,7 +192,7 @@ export function AppShowcase() {
                                         </Button>
                                     </div>
 
-                                    <div className="mt-12 pt-8 border-t border-white/5 flex items-center justify-between text-[10px] text-muted-foreground uppercase tracking-[0.2em]">
+                                    <div className="mt-12 pt-8 border-t border-white/10 flex items-center justify-between text-[10px] text-foreground/50 uppercase tracking-[0.2em]">
                                         <span>Status: Stable 2.4.0</span>
                                         <span>Latency: 14ms</span>
                                         <span>License: MIT Enterprise</span>

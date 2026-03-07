@@ -9,9 +9,9 @@
   --primary-rgb: 0, 229, 255;
   --secondary: #6366f1;
   --accent: #f43f5e;
-  --muted: #0a0a1a;
-  --muted-foreground: #94a3b8;
-  --border: rgba(255, 255, 255, 0.08);
+  --muted: #0a0a20;
+  --muted-foreground: #cbd5e1;
+  --border: rgba(255, 255, 255, 0.12);
   --card: rgba(10, 10, 20, 0.6);
   --glow-intensity: 1.2;
   --nav-blur: 12px;

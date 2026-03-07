@@ -18,7 +18,7 @@ function ActionLoop() {
                     fill="none"
                     stroke="currentColor"
                     strokeWidth="1"
-                    className="text-primary/20"
+                    className="text-primary/30"
                     strokeDasharray="4 2"
                 />
                 <motion.path
@@ -49,7 +49,7 @@ function ActionLoop() {
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
                 <Repeat className="w-5 h-5 text-primary/40 animate-spin-slow" />
             </div>
-            <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 text-[8px] font-bold text-primary/40 uppercase tracking-widest whitespace-nowrap">
+            <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 text-[8px] font-bold text-primary/60 uppercase tracking-[0.2em] whitespace-nowrap">
                 Iterative Loop
             </div>
         </div>
@@ -73,8 +73,8 @@ function StrategicRoadmap() {
                 { label: 'Growth', pos: '85%' }
             ].map((step, i) => (
                 <div key={i} className="absolute flex flex-col items-center" style={{ left: step.pos }}>
-                    <div className="w-2 h-2 rounded-full bg-primary mb-2 shadow-[0_0_8px_rgba(var(--primary-rgb),0.8)]" />
-                    <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-tighter">{step.label}</span>
+                    <div className="w-2 h-2 rounded-full bg-primary mb-2 shadow-[0_0_10px_rgba(var(--primary-rgb),0.8)]" />
+                    <span className="text-[10px] font-bold text-foreground/80 uppercase tracking-tighter">{step.label}</span>
                 </div>
             ))}
             
@@ -260,8 +260,8 @@ export function Experience() {
                                         { icon: TrendingUp, text: "Market Positioning" }
                                     ].map((item, i) => (
                                         <li key={i} className="flex items-center gap-3">
-                                            <item.icon className="w-4 h-4 text-primary/60" />
-                                            <span className="text-[10px] text-muted-foreground uppercase font-bold">{item.text}</span>
+                                            <item.icon className="w-4 h-4 text-primary/70" />
+                                            <span className="text-[10px] text-foreground/70 uppercase font-bold tracking-wider">{item.text}</span>
                                         </li>
                                     ))}
                                 </ul>
@@ -394,7 +394,7 @@ function ExperienceCard({ exp, index, viewMode }: { exp: ExperienceItem, index: 
                                 transition={{ duration: 0.4, ease: "easeOut" }}
                                 className="overflow-hidden"
                             >
-                                <ul className="space-y-3 mt-4 text-sm text-gray-300 border-t border-white/10 pt-4 text-left">
+                                <ul className="space-y-3 mt-4 text-sm text-foreground/80 border-t border-white/10 pt-4 text-left">
                                     {exp.achievements.map((achievement, i) => (
                                         <motion.li
                                             key={i}
@@ -407,7 +407,7 @@ function ExperienceCard({ exp, index, viewMode }: { exp: ExperienceItem, index: 
                                             <span 
                                                 className="leading-relaxed"
                                                 dangerouslySetInnerHTML={{ 
-                                                    __html: achievement.replace(/\*\*(.*?)\*\*/g, '<strong class="text-primary font-bold">$1</strong>') 
+                                                    __html: achievement.replace(/\*\*(.*?)\*\*/g, '<strong class="text-primary font-bold drop-shadow-[0_0_5px_rgba(var(--primary-rgb),0.3)]">$1</strong>') 
                                                 }}
                                             />
                                         </motion.li>
@@ -419,8 +419,8 @@ function ExperienceCard({ exp, index, viewMode }: { exp: ExperienceItem, index: 
 
                     {exp.achievements.length > 0 && (
                         <div className={cn(
-                            "mt-4 flex items-center text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] transition-all duration-500 min-h-[44px] items-center",
-                            isExpanded ? "text-primary" : "text-muted-foreground/50"
+                            "mt-4 flex items-center text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] transition-all duration-500 min-h-[44px]",
+                            isExpanded ? "text-primary shadow-[0_0_10px_rgba(var(--primary-rgb),0.2)]" : "text-foreground/40 hover:text-foreground/60"
                         )}>
                             {isExpanded ? "Collapse" : "Tap to Expand"} <ChevronRight className={cn("w-3 h-3 ml-1 transition-transform", isExpanded ? "rotate-90" : "")} />
                         </div>
