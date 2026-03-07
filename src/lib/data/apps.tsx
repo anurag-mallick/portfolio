@@ -37,15 +37,6 @@ export const allApps: AppDetail[] = [
         category: "Enterprise"
     },
     {
-        title: "AI Agent Orchestrator",
-        description: "Multi-agent task decomposition visualizer. Autonomous execution of complex workflows using specialized LLM agents (Research, Booking, Scheduling).",
-        icon: <Brain className="w-12 h-12" />,
-        tech: "Framer Motion, React",
-        link: "/apps/agent-orchestrator",
-        color: "#00f3ff",
-        category: "AI & Automation"
-    },
-    {
         title: "LLM Payroll Document Intel",
         description: "Multi-doc AI audit engine. Automated extraction and 99.8% accurate reconciliation across payslips, contracts, and bank statements.",
         icon: <Brain className="w-12 h-12" />,
