@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useEffect, useState, useMemo } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import {
@@ -89,35 +89,29 @@ export function LogisticsDisruption() {
 
   const packets = useRef<any[]>([]);
 
-  const currentStats = useMemo(() => {
-    let s = { cost: 12500, time: 48, efficiency: 98 };
-    if (disruptionType === "STRIKE") {
-      s = { cost: 18200, time: 72, efficiency: 65 };
-    } else if (disruptionType === "WEATHER") {
-      s = { cost: 14500, time: 60, efficiency: 80 };
-    } else if (disruptionType === "FUEL") {
-      s = { cost: 25000, time: 48, efficiency: 90 };
-    }
-    return s;
-  }, [disruptionType]);
-
   useEffect(() => {
-    // preparign node status updates
+    // Adjust stats based on disruption
+    let newStats = { cost: 12500, time: 48, efficiency: 98 };
+    // We avoid direct mutation and use local variables to prepare the update
     if (disruptionType === "NONE") {
       nodes.forEach((n) => {
         n.status = "active";
       });
     } else if (disruptionType === "STRIKE") {
+      newStats = { cost: 18200, time: 72, efficiency: 65 };
       const mumb = nodes.find((n) => n.id === "MUM");
       if (mumb) mumb.status = "disrupted";
     } else if (disruptionType === "WEATHER") {
+      newStats = { cost: 14500, time: 60, efficiency: 80 };
       const kol = nodes.find((n) => n.id === "CCU");
       if (kol) kol.status = "disrupted";
     } else if (disruptionType === "FUEL") {
+      newStats = { cost: 25000, time: 48, efficiency: 90 };
       nodes.forEach((n) => {
         n.status = "active";
       });
     }
+    setStats(newStats);
   }, [disruptionType, nodes]);
 
   useEffect(() => {

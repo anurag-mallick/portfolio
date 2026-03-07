@@ -1,5 +1,7 @@
-import { AppleGlassLayout, HomeSections } from "./AppleGlassLayout";
+"use client";
+
+import { StandardLayout } from "./StandardLayout";
 
 export function LayoutWrapper() {
-    return <HomeSections />;
+    return <StandardLayout />;
 }

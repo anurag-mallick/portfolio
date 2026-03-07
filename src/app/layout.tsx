@@ -46,38 +46,10 @@ const ibmPlex = IBM_Plex_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Anurag Mallick | AI Product Manager",
+  title: "Anurag Mallick | AI Product Architect",
   description:
     "I architect scalable global systems and harmonize AI with complex financial workflows to drive enterprise-grade transformation.",
-  metadataBase: new URL("https://anurag-mallick.pages.dev"),
-  alternates: {
-    canonical: "/",
-  },
-  openGraph: {
-    title: "Anurag Mallick | AI Product Manager",
-    description: "Architecting scalable systems and harmonizing AI with complex financial workflows.",
-    url: "https://anurag-mallick.pages.dev",
-    siteName: "Anurag Mallick Portfolio",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Anurag Mallick | AI Product Manager",
-      },
-    ],
-    locale: "en_US",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Anurag Mallick | AI Product Manager",
-    description: "Architecting scalable systems and harmonizing AI with complex financial workflows.",
-    images: ["/og-image.png"],
-  },
 };
-
-import { AppleGlassLayout } from "@/components/layout/AppleGlassLayout";
 
 export default function RootLayout({
   children,
@@ -92,7 +64,7 @@ export default function RootLayout({
             __html: `
               (function() {
                 try {
-                  const savedTheme = localStorage.getItem("portfolio-theme") || "futuristic";
+                  const savedTheme = localStorage.getItem("portfolio-theme") || "terminal";
                   document.documentElement.setAttribute("data-theme", savedTheme);
                 } catch (e) {}
               })();
@@ -118,10 +90,8 @@ export default function RootLayout({
         `}
       >
         <ThemeProvider>
-          <AppleGlassLayout>
-            {children}
-            <AIAssistant />
-          </AppleGlassLayout>
+          {children}
+          <AIAssistant />
         </ThemeProvider>
       </body>
     </html>

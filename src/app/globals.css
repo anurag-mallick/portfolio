@@ -1,28 +1,49 @@
 @import "tailwindcss";
 
 :root {
-  /* --- ENTERPRISE OBSIDIAN (Premium Default) --- */
-  --background: #020204;
+  /* --- TERMINAL THEME (Classic Tech) --- */
+  --background: #020202;
+  --foreground: #00ff41;
+  --primary: #00ff41;
+  --primary-foreground: #020202;
+  --primary-rgb: 0, 255, 65;
+  --secondary: #008f11;
+  --accent: #22c55e;
+  --muted: #003b00;
+  --muted-foreground: #00bf11;
+  --border: #005000;
+  --card: #050505;
+  --glow-intensity: 0.4;
+  --nav-blur: 12px;
+  --font-main: var(--font-fira-code), monospace;
+  --layout-align: center;
+  --container-max-width: 1000px;
+  --section-spacing: 4rem;
+  --card-radius: 4px;
+  --glass-opacity: 0.02;
+}
+
+/* --- FUTURISTIC AI (High Contrast / Neon) --- */
+[data-theme="futuristic"] {
+  --background: #05050a;
   --foreground: #ffffff;
-  --primary: #00e5ff;
-  --primary-foreground: #020204;
-  --primary-rgb: 0, 229, 255;
-  --secondary: #6366f1;
-  --accent: #f43f5e;
-  --muted: #0a0a20;
-  --muted-foreground: #cbd5e1;
-  --border: rgba(255, 255, 255, 0.08);
-  --card: rgba(10, 10, 20, 0.4);
-  --glow-intensity: 1.5;
-  --nav-blur: 16px;
+  --primary: #00f3ff;
+  --primary-foreground: #05050a;
+  --primary-rgb: 0, 243, 255;
+  --secondary: #7000ff;
+  --accent: #ff00c8;
+  --muted: #101020;
+  --muted-foreground: #a0a0c0;
+  --border: #1a1a3a;
+  --card: #0a0a20;
+  --glow-intensity: 1;
+  --nav-blur: 10px;
   --font-main: var(--font-outfit), sans-serif;
   --layout-align: center;
-  --container-max-width: 1100px;
-  --section-spacing: 5rem;
-  --card-radius: 20px;
-  --glass-opacity: 0.08;
-  --section-padding: 8rem;
-  --section-padding-mobile: 6rem;
+  --container-max-width: 1000px;
+  --section-spacing: 4rem;
+  --card-radius: 24px;
+  --glass-opacity: 0.1;
 }
 
 /* --- MIDNIGHT NEBULA (Vibrant & Deep) --- */
@@ -46,8 +67,6 @@
   --section-spacing: 5rem;
   --card-radius: 20px;
   --glass-opacity: 0.1;
-  --section-padding: 8rem;
-  --section-padding-mobile: 6rem;
 }
 
 @theme inline {

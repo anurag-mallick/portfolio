@@ -98,13 +98,12 @@ export function Impact() {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
-                    className="text-center mb-20"
+                    className="text-center mb-16"
                 >
-                    <div className="meta-label">Performance Metrics</div>
-                    <h2 className="h2-premium">
-                        MEASURABLE <span className="text-primary">IMPACT</span>
+                    <h2 className="text-3xl md:text-5xl font-bold tracking-tighter text-foreground mb-4">
+                        Measurable <span className="text-primary">Impact</span>
                     </h2>
-                    <p className="text-muted-foreground max-w-2xl mx-auto text-lg">Driving exponential efficiency and growth through systemic innovation.</p>
+                    <p className="text-muted-foreground">Driving efficiency and growth through systems.</p>
                 </motion.div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
@@ -117,12 +116,12 @@ export function Impact() {
                             viewport={{ once: true }}
                         >
                             {/* Replaced original div with a Card-like structure */}
-                            <div className="theme-card theme-card-hover p-8 w-full flex flex-col items-center text-center">
-                                <div className="mb-6">
+                            <div className="theme-card p-6 rounded-2xl bg-card border border-border hover:border-primary/50 transition-colors w-full flex flex-col items-center text-center">
+                                <div className="mb-4">
                                     <Counter from={0} to={metric.value} prefix={metric.prefix} suffix={metric.suffix} />
                                 </div>
-                                <h3 className="text-xs font-bold text-primary uppercase tracking-[0.2em] mb-3">{metric.label}</h3>
-                                <p className="text-xs text-foreground/50 leading-relaxed font-medium mb-4">{metric.description}</p>
+                                <h3 className="text-lg font-medium text-primary mb-2">{metric.label}</h3>
+                                <p className="text-sm text-muted-foreground">{metric.description}</p>
                                 <Sparkline delay={index * 0.2} />
                             </div>
                         </motion.div>

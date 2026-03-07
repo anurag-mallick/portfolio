@@ -11,8 +11,8 @@ export function Footer() {
                     <h3 className="text-lg sm:text-xl font-bold tracking-tighter text-foreground">
                         Anurag Mallick
                     </h3>
-                    <p className="text-xs sm:text-sm text-foreground/70 mt-1 uppercase tracking-wider font-medium">
-                        Leading the future of AI-driven product innovation.
+                    <p className="text-xs sm:text-sm text-muted-foreground mt-1">
+                        Architecting the future of financial infrastructure.
                     </p>
                 </div>
 

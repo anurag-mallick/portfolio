@@ -41,8 +41,8 @@ function AIIntelligenceHub() {
 
         const draw = () => {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = "rgba(var(--primary-rgb), 0.2)";
-            ctx.strokeStyle = "rgba(var(--primary-rgb), 0.05)";
+            ctx.fillStyle = "rgba(0, 243, 255, 0.2)";
+            ctx.strokeStyle = "rgba(0, 243, 255, 0.05)";
 
             particles.forEach((p, i) => {
                 p.x += p.vx;
@@ -146,13 +146,13 @@ function PMSweetSpot() {
                 className="relative w-full h-full"
             >
                 {/* Venn Circles */}
-                <div className="absolute top-0 left-1/4 w-[350px] h-[350px] rounded-full border border-primary/20 bg-primary/5 backdrop-blur-[2px] flex items-start justify-center pt-8">
+                <div className="absolute top-0 left-1/4 w-[350px] h-[350px] rounded-full border border-primary/30 bg-primary/5 backdrop-blur-[2px] flex items-start justify-center pt-8">
                     <span className="text-[10px] font-bold tracking-[0.3em] uppercase opacity-40">Business</span>
                 </div>
-                <div className="absolute bottom-0 left-0 w-[350px] h-[350px] rounded-full border border-secondary/20 bg-secondary/5 backdrop-blur-[2px] flex items-end justify-start pl-8 pb-8">
+                <div className="absolute bottom-0 left-0 w-[350px] h-[350px] rounded-full border border-secondary/30 bg-secondary/5 backdrop-blur-[2px] flex items-end justify-start pl-8 pb-8">
                     <span className="text-[10px] font-bold tracking-[0.3em] uppercase opacity-40">Technology</span>
                 </div>
-                <div className="absolute bottom-0 right-0 w-[350px] h-[350px] rounded-full border border-secondary/20 bg-secondary/5 backdrop-blur-[2px] flex items-end justify-end pr-8 pb-8">
+                <div className="absolute bottom-0 right-0 w-[350px] h-[350px] rounded-full border border-accent/30 bg-accent/5 backdrop-blur-[2px] flex items-end justify-end pr-8 pb-8">
                     <span className="text-[10px] font-bold tracking-[0.3em] uppercase opacity-40">User Experience</span>
                 </div>
 
@@ -288,11 +288,11 @@ export function Hero() {
                         Open for Innovation
                     </motion.div>
 
-                    <motion.h1 
+                    <motion.h1
                         initial={reducedMotion ? false : { opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.2 }}
-                        className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-tighter text-foreground leading-[0.9] mb-8"
+                        className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl xl:text-9xl font-black tracking-tighter text-foreground leading-[0.85] uppercase"
                     >
                         ANURAG <br className="hidden sm:block" />
                         <span className="text-primary italic">MALLICK</span>
@@ -304,7 +304,9 @@ export function Hero() {
                         transition={{ duration: 0.5, delay: 0.4 }}
                         className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 text-base sm:text-lg md:text-2xl font-medium tracking-tight"
                     >
-                        <div className="meta-label">AI Product Manager</div>
+                        <span className="px-3 sm:px-4 py-1 rounded-full border border-primary/20 bg-primary/10 text-primary text-sm sm:text-base font-bold uppercase tracking-widest">
+                            AI Product Architect
+                        </span>
                         <span className="hidden sm:block text-muted-foreground/30">•</span>
                         <span className="px-3 sm:px-4 py-1 rounded-full border border-secondary/20 bg-secondary/5 text-secondary text-sm sm:text-base font-medium">
                             Digital Transformation

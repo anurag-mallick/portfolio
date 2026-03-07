@@ -179,7 +179,7 @@ export function Contact() {
   return (
     <section
       id="contact"
-      className="theme-section bg-background"
+      className="theme-section bg-background relative overflow-hidden"
     >
       <DataStream />
       <div className="absolute inset-0 bg-primary/2 blur-[150px] rounded-full pointer-events-none" />
@@ -190,9 +190,15 @@ export function Contact() {
             {/* Contact Info */}
             <div className="lg:col-span-5 space-y-12">
               <div>
-                <div className="meta-label">Establish Connection</div>
-                <h2 className="h2-premium">
-                  GET IN <span className="text-primary">TOUCH</span>
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  className="flex items-center gap-2 text-primary font-mono text-xs mb-4"
+                >
+                  <SignalPulse /> ESTABLISH_CONNECTION
+                </motion.div>
+                <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tighter text-foreground mb-4 sm:mb-6">
+                  Get in <span className="text-primary">Touch</span>
                 </h2>
                 <p className="text-muted-foreground text-base sm:text-lg leading-relaxed max-w-md">
                   Currently scaling global systems in Bangalore. Open for
@@ -239,7 +245,7 @@ export function Contact() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 className="h-full"
               >
-                <Card className="theme-card theme-card-hover p-8 md:p-12 h-full">
+                <Card className="theme-card p-8 md:p-10 relative group h-full">
                   <AnimatePresence mode="wait">
                     {isSent ? (
                       <motion.div

@@ -161,8 +161,8 @@ function DiscoveryFunnel() {
                 <Filter className="w-4 h-4" />
             </motion.div>
 
-            <div className="absolute -bottom-6 text-[8px] font-bold text-primary/60 uppercase tracking-[0.2em]">
-                Product Strategy Funnel
+            <div className="absolute -bottom-6 text-[8px] font-bold text-primary/40 uppercase tracking-widest">
+                Product Discovery Funnel
             </div>
         </div>
     );
@@ -214,14 +214,14 @@ export function Skills() {
           {/* Core Competencies */}
           <div className="lg:col-span-12">
             <div className="relative group">
-              <div className="absolute -inset-0.5 bg-gradient-to-r from-primary/30 to-secondary/30 rounded-2xl blur-xl opacity-20 group-hover:opacity-40 transition duration-1000"></div>
-              <div className="theme-card p-6 sm:p-8 md:p-10 border-white/5 bg-white/[0.01]">
-                <h3 className="text-lg sm:text-2xl font-bold text-foreground mb-8 sm:mb-10 flex items-center gap-3 border-l-4 border-primary pl-4 uppercase tracking-[0.2em]">
-                  <Globe2 className="text-primary w-6 h-6" /> CORE COMPETENCIES
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-primary/20 to-blue-500/20 rounded-2xl blur opacity-30 group-hover:opacity-100 transition duration-1000"></div>
+              <div className="theme-card p-4 sm:p-6 md:p-8">
+                <h3 className="text-base sm:text-xl font-bold text-foreground mb-6 sm:mb-8 flex items-center gap-2 border-l-4 border-primary pl-3 sm:pl-4 uppercase tracking-wider">
+                  <Globe2 className="text-primary w-5 h-5" /> CORE COMPETENCIES
                 </h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                    {coreCompetencies.map((skill: any, i) => {
-                     const isPMSkill = skill.category === "PRODUCT & GROWTH" || ["Product Ownership", "User Experience (UX)", "Data Analytics", "Design Thinking"].includes(skill.name);
+                     const isPMSkill = skill.category === "PRODUCT & GROWTH";
                      return (
                        <motion.div
                          key={i}
@@ -229,27 +229,28 @@ export function Skills() {
                          whileInView={{ opacity: 1, y: 0 }}
                          transition={{ delay: i * 0.02 }}
                          onClick={() => setSelectedSkill(skill as any)}
-                         className={`relative p-5 rounded-2xl transition-all duration-300 group/card overflow-hidden cursor-pointer border ${
+                         onTouchEnd={(e) => { e.stopPropagation(); setSelectedSkill(skill as any); }}
+                         className={`relative p-3 sm:p-4 rounded-xl transition-all group/card overflow-hidden cursor-pointer border min-h-[44px] ${
                            isPMSkill 
-                             ? "bg-primary/5 border-primary/20 hover:border-primary/50 hover:bg-primary/10 shadow-[0_0_20px_rgba(var(--primary-rgb),0.05)]" 
-                             : "bg-white/[0.01] border-white/5 hover:border-secondary/30 hover:bg-secondary/5"
+                             ? "bg-primary/10 border-primary/40 hover:border-primary shadow-[0_0_15px_rgba(var(--primary-rgb),0.1)]" 
+                             : "bg-white/[0.02] border-white/5 hover:border-primary/30 hover:bg-primary/[0.02]"
                          }`}
                        >
-                         <div className="flex items-center gap-4">
-                           <div className={`p-2.5 rounded-xl transition-all duration-300 ${
-                             isPMSkill ? "bg-primary/10 group-hover/card:bg-primary/20" : "bg-white/5 group-hover/card:bg-secondary/10"
+                         <div className="flex items-center gap-3">
+                           <div className={`p-2 rounded-lg transition-colors ${
+                             isPMSkill ? "bg-primary/20" : "bg-primary/5 group-hover/card:bg-primary/10"
                            }`}>
-                             <skill.icon className={`w-5 h-5 ${isPMSkill ? "text-primary animate-pulse" : "text-muted-foreground group-hover/card:text-secondary"} transition-colors`} />
+                             <skill.icon className={`w-4 h-4 text-primary ${isPMSkill ? "animate-pulse" : ""}`} />
                            </div>
-                           <span className={`text-sm font-semibold tracking-tight transition-colors ${
-                             isPMSkill ? "text-white" : "text-muted-foreground group-hover/card:text-white"
+                           <span className={`text-sm font-medium transition-colors ${
+                             isPMSkill ? "text-white" : "text-gray-400 group-hover/card:text-white"
                            }`}>
                              {skill.name}
                            </span>
                          </div>
                          {isPMSkill && (
-                           <div className="absolute top-0 right-0 p-1">
-                             <div className="w-1.5 h-1.5 rounded-full bg-primary animate-ping" />
+                           <div className="absolute -top-1 -right-1">
+                             <div className="w-4 h-4 bg-primary rotate-45 translate-x-1/2 -translate-y-1/2" />
                            </div>
                          )}
                          <div className="absolute top-2 right-2 opacity-0 group-hover/card:opacity-100 transition-opacity">
