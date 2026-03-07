@@ -12,14 +12,14 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setThemeState] = useState<Theme>("midnight");
+  const [theme, setThemeState] = useState<Theme>("futuristic");
 
   useEffect(() => {
     // Sync state with what was set by the blocking script or localStorage
     const savedTheme = localStorage.getItem("portfolio-theme") as Theme;
     const initialTheme: Theme = (savedTheme === "futuristic" || savedTheme === "midnight") 
       ? savedTheme 
-      : "midnight";
+      : "futuristic";
     
     setThemeState(initialTheme);
     document.documentElement.setAttribute("data-theme", initialTheme);

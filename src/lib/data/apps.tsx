@@ -136,51 +136,6 @@ export const allApps: AppDetail[] = [
         link: "/apps/returns-prediction",
         color: "#ff6b6b",
         category: "Logistics"
-    },
-    {
-        title: "Food Delivery Express",
-        description: "Comprehensive food ordering and delivery UI. Real-time order tracking simulation, restaurant browsing, and dynamic cart management.",
-        icon: <Truck className="w-12 h-12" />,
-        tech: "React, Framer Motion",
-        link: "/apps/food-delivery",
-        color: "#00f3ff",
-        category: "Logistics"
-    },
-    // Algorithms & Architecture
-    {
-        title: "Git Branching Strategy Game",
-        description: "Interactive Git repository visualizer. D3 force-directed graph with commit, branch, merge, and rebase operations.",
-        icon: <GitBranch className="w-12 h-12" />,
-        tech: "D3.js Graph",
-        link: "/apps/git-branching",
-        color: "#ff00ff",
-        category: "Algorithms"
-    },
-    {
-        title: "Pathfinding Visualizer",
-        description: "Interactive shortest-path algorithm visualizer. Draw walls and watch BFS explore the grid in real-time with animated path discovery.",
-        icon: <Grid className="w-12 h-12" />,
-        tech: "BFS Algorithm",
-        link: "/apps/pathfinding",
-        color: "#ff0080",
-        category: "Algorithms"
-    },
-    {
-        title: "Circuit Breaker Pattern",
-        description: "Microservices resilience pattern demo. State machine visualization with request flow animation and failure detection.",
-        icon: <Zap className="w-12 h-12" />,
-        tech: "State Machine",
-        link: "/apps/circuit-breaker",
-        color: "#ffff00",
-        category: "Algorithms"
-    },
-    {
-        title: "Auto-Scaling Simulator",
-        description: "Visualize horizontal pod autoscaling with CPU/memory metrics, scale-up/down delays, and cost optimization.",
-        icon: <TrendingUp className="w-12 h-12" />,
-        tech: "K8s, Metrics",
-        link: "/apps/auto-scaling",
-        color: "#2ecc71",
-        category: "Algorithms"
     }
+,
 ];

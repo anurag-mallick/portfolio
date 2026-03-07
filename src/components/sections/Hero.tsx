@@ -305,7 +305,7 @@ export function Hero() {
                         className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 text-base sm:text-lg md:text-2xl font-medium tracking-tight"
                     >
                         <span className="px-3 sm:px-4 py-1 rounded-full border border-primary/20 bg-primary/10 text-primary text-sm sm:text-base font-bold uppercase tracking-widest">
-                            AI Product Architect
+                            AI Product Manager
                         </span>
                         <span className="hidden sm:block text-muted-foreground/30">•</span>
                         <span className="px-3 sm:px-4 py-1 rounded-full border border-secondary/20 bg-secondary/5 text-secondary text-sm sm:text-base font-medium">

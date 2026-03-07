@@ -25,6 +25,42 @@ import { Algorithms } from "@/components/sections/Algorithms";
 import HeroScene from "@/components/canvas/HeroScene";
 import Background3D from "@/components/canvas/Background3D";
 
+// --- Global Apple Fluid Layout Shell ---
+export function AppleGlassLayout({ children }: { children: React.ReactNode }) {
+    return (
+        <div className="min-h-screen bg-[#FAFAFA] text-[#1D1D1F] font-sans selection:bg-[#0071E3] selection:text-white relative">
+            <Background3D />
+            <GlassHeader />
+            <main className="relative z-10 pt-20">
+                {children}
+            </main>
+            <footer className="py-12 text-center text-[#86868b] text-sm border-t border-black/5 bg-white relative z-10">
+                <p>© {new Date().getFullYear()} Anurag Mallick. Designed with Apple Liquid Glass aesthetics.</p>
+            </footer>
+        </div>
+    );
+}
+
+// --- Homepage Content Wrapper ---
+export function HomeSections() {
+    return (
+        <>
+            <GlassHero />
+            <GlassImpact />
+            <GlassExperience />
+            <GlassEducation />
+            <GlassProjects />
+            <GlassApps />
+            <GlassSkills />
+            <div id="fintech" className="bg-black"><FintechToolkit /></div>
+            <div id="logistics-lab" className="bg-black"><LogisticsLab /></div>
+            <div id="infrastructure" className="bg-black"><Infrastructure /></div>
+            <div id="algorithms" className="bg-black"><Algorithms /></div>
+            <GlassGames />
+            <GlassContact />
+        </>
+    );
+}
 
 function Particle() {
     const [style, setStyle] = useState({
@@ -75,8 +111,6 @@ function Particle() {
 function GlassHeader() {
     const [isScrolled, setIsScrolled] = useState(false);
     const { scrollY } = useScroll();
-    const headerOpacity = useTransform(scrollY, [0, 100], [0.8, 0.95]);
-    const headerBlur = useTransform(scrollY, [0, 100], [10, 20]);
 
     useEffect(() => {
         const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -100,17 +134,17 @@ function GlassHeader() {
                 WebkitBackdropFilter: "blur(24px)",
             }}
             className={cn(
-                "fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-black/5",
+                "fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-black/5 flex items-center",
                 isScrolled ? "h-16 shadow-sm" : "h-20"
             )}
         >
-            <div className="max-w-[1200px] mx-auto px-6 h-full flex items-center justify-between">
-                <a href="#" className="flex items-center gap-2 group">
+            <div className="max-w-[1200px] mx-auto px-6 w-full flex items-center justify-between">
+                <Link href="/" className="flex items-center gap-2 group">
                     <div className="w-8 h-8 bg-black rounded-lg flex items-center justify-center text-white font-bold text-sm group-hover:bg-[#0071E3] transition-colors">
                         AM
                     </div>
                     <span className="font-semibold text-lg tracking-tight text-black/90 group-hover:text-[#0071E3] transition-colors">Anurag Mallick</span>
-                </a>
+                </Link>
 
                 <nav className="hidden md:flex items-center gap-1">
                     {navLinks.map((link) => (
@@ -141,7 +175,6 @@ function GlassHero() {
     return (
         <section className="relative min-h-[90vh] flex items-center pt-20 overflow-hidden bg-[#FAFAFA]">
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                {/* Soft Apple-style gradients */}
                 <div className="absolute top-[-20%] right-[-10%] w-[80vw] h-[80vw] bg-gradient-to-b from-[#0071E3]/5 to-transparent rounded-full blur-[120px]" />
                 <div className="absolute bottom-[-10%] left-[-10%] w-[60vw] h-[60vw] bg-gradient-to-t from-[#2997FF]/10 to-transparent rounded-full blur-[100px]" />
             </div>
@@ -154,7 +187,7 @@ function GlassHero() {
                     className="space-y-8"
                 >
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0071E3]/10 border border-[#0071E3]/20 text-[#0071E3] text-xs font-semibold uppercase tracking-wide">
-                        Product Architect
+                        AI Product Manager
                     </div>
                     <h1 className="text-6xl md:text-8xl font-bold tracking-tight text-[#1D1D1F] leading-[1.05]">
                         Vision.<br />
@@ -189,15 +222,11 @@ function GlassHero() {
                     className="relative h-[600px] lg:h-[800px] w-full hidden lg:flex items-center justify-center p-8"
                 >
                     <div className="w-full h-full relative group">
-                        {/* Decorative 3D Glow */}
                         <div className="absolute inset-0 bg-[#0071E3]/20 rounded-full blur-[100px] group-hover:bg-[#0071E3]/30 transition-all duration-700" />
-                        
-                        {/* The 3D Component */}
                         <div className="relative z-10 w-full h-full">
                             <HeroScene />
                         </div>
 
-                        {/* Floating Overlay Cards (Responsive to 3D) */}
                         <motion.div
                             animate={{ y: [0, -20, 0] }}
                             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
@@ -238,7 +267,6 @@ function GlassHero() {
     );
 }
 
-// --- Impact Section ---
 function GlassImpact() {
     return (
         <section className="py-24 bg-[#FAFAFA]">
@@ -250,7 +278,6 @@ function GlassImpact() {
                                 {metric.prefix}{typeof metric.value === 'number' && metric.value > 1000 ? `${(metric.value / 1000)}k` : metric.value}{metric.suffix}
                             </div>
                             <div className="text-sm font-semibold text-[#86868b] uppercase tracking-wide">{metric.label}</div>
-
                         </div>
                     ))}
                 </div>
@@ -259,7 +286,6 @@ function GlassImpact() {
     );
 }
 
-// --- Experience Timeline ---
 function GlassExperience() {
     const workExp = experiences.filter(e => e.type === "work");
 
@@ -284,7 +310,6 @@ function GlassExperience() {
                                 i % 2 === 0 ? "md:flex-row-reverse text-left md:text-left" : "text-left md:text-right"
                             )}
                         >
-                            {/* Timeline Node */}
                             <div className="absolute left-[27px] md:left-1/2 top-0 md:top-1/2 -translate-x-1/2 md:-translate-y-1/2 w-4 h-4 rounded-full bg-[#FAFAFA] border-4 border-[#0071E3] shadow-[0_0_0_4px_rgba(0,113,227,0.1)] z-10" />
 
                             <div className="flex-1 pl-16 md:pl-0 md:pr-0">
@@ -330,7 +355,6 @@ function GlassExperience() {
     );
 }
 
-// --- Education & Awards Grid ---
 function GlassEducation() {
     const eduExp = experiences.filter(e => e.type === "education");
 
@@ -374,7 +398,6 @@ function GlassEducation() {
     );
 }
 
-// --- Projects Matrix ---
 function GlassProjects() {
     return (
         <section id="glass-projects" className="py-32 bg-[#1D1D1F] text-[#F5F5F7]">
@@ -410,7 +433,6 @@ function GlassProjects() {
     );
 }
 
-// --- Enterprise Solutions (Apps) ---
 function GlassApps() {
     return (
         <section id="glass-apps" className="py-32 bg-[#F5F5F7] overflow-hidden">
@@ -427,9 +449,11 @@ function GlassApps() {
                             </div>
                             <h3 className="text-2xl font-bold text-[#1D1D1F] mb-4">{app.title}</h3>
                             <p className="text-[#86868b] leading-relaxed mb-8 h-20">{app.description}</p>
-                            <button className="w-full py-4 rounded-xl bg-[#F5F5F7] text-[#0071E3] font-bold hover:bg-[#0071E3] hover:text-white transition-all">
-                                Launch Solution
-                            </button>
+                            <Link href={app.link || "#"}>
+                                <button className="w-full py-4 rounded-xl bg-[#F5F5F7] text-[#0071E3] font-bold hover:bg-[#0071E3] hover:text-white transition-all">
+                                    Launch Solution
+                                </button>
+                            </Link>
                         </div>
                     ))}
                 </div>
@@ -438,7 +462,6 @@ function GlassApps() {
     );
 }
 
-// --- Skills Grid ---
 function GlassSkills() {
     return (
         <section className="py-32 bg-white">
@@ -447,7 +470,6 @@ function GlassSkills() {
                 <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
                     {technicalSkills.map((skill, i) => (
                         <div key={i} className="flex flex-col items-center justify-center p-6 rounded-2xl bg-[#F5F5F7] hover:bg-[#0071E3] hover:text-white transition-all duration-300 group cursor-default">
-                            {/* Icon would go here, simplified for text */}
                             <span className="font-semibold text-sm group-hover:text-white transition-colors">{skill.name}</span>
                         </div>
                     ))}
@@ -457,7 +479,6 @@ function GlassSkills() {
     );
 }
 
-// --- Contact Form ---
 function GlassContact() {
     return (
         <section id="glass-contact" className="py-32 bg-[#FAFAFA]">
@@ -478,7 +499,6 @@ function GlassContact() {
     );
 }
 
-// --- Games Section ---
 function GlassGames() {
     return (
         <section className="py-32 bg-white">
@@ -520,41 +540,5 @@ function GlassGames() {
                 </div>
             </div>
         </section>
-    );
-}
-
-// --- Main Layout Export ---
-export function AppleGlassLayout({ children }: { children?: React.ReactNode }) {
-    return (
-        <div className="min-h-screen bg-[#FAFAFA] text-[#1D1D1F] font-sans selection:bg-[#0071E3] selection:text-white relative">
-            <Background3D />
-            <GlassHeader />
-            <main>
-                {children ? (
-                    <div className="pt-24 min-h-[calc(100vh-80px)]">
-                        {children}
-                    </div>
-                ) : (
-                    <>
-                        <GlassHero />
-                        <GlassImpact />
-                        <GlassExperience />
-                        <GlassEducation />
-                        <GlassProjects />
-                        <GlassApps />
-                        <GlassSkills />
-                        <div id="fintech" className="bg-black"><FintechToolkit /></div>
-                        <div id="logistics-lab" className="bg-black"><LogisticsLab /></div>
-                        <div id="infrastructure" className="bg-black"><Infrastructure /></div>
-                        <div id="algorithms" className="bg-black"><Algorithms /></div>
-                        <GlassGames />
-                        <GlassContact />
-                    </>
-                )}
-            </main>
-            <footer className="py-12 text-center text-[#86868b] text-sm border-t border-black/5 bg-white">
-                <p>© {new Date().getFullYear()} Anurag Mallick. Designed with Apple Liquid Glass aesthetics.</p>
-            </footer>
-        </div>
     );
 }

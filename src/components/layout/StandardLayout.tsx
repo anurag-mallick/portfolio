@@ -20,10 +20,9 @@ export function StandardLayout() {
             <Projects />
             <Skills />
             <Impact />
-            <Contact />
-            <div className="w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
             <AppShowcase />
             <Articles />
+            <Contact />
             <Footer />
         </main>
     );

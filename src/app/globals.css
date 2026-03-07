@@ -1,30 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  /* --- TERMINAL THEME (Classic Tech) --- */
-  --background: #020202;
-  --foreground: #00ff41;
-  --primary: #00ff41;
-  --primary-foreground: #020202;
-  --primary-rgb: 0, 255, 65;
-  --secondary: #008f11;
-  --accent: #22c55e;
-  --muted: #003b00;
-  --muted-foreground: #00bf11;
-  --border: #005000;
-  --card: #050505;
-  --glow-intensity: 0.4;
-  --nav-blur: 12px;
-  --font-main: var(--font-fira-code), monospace;
-  --layout-align: center;
-  --container-max-width: 1000px;
-  --section-spacing: 4rem;
-  --card-radius: 4px;
-  --glass-opacity: 0.02;
-}
-
-/* --- FUTURISTIC AI (High Contrast / Neon) --- */
-[data-theme="futuristic"] {
+  /* --- FUTURISTIC AI (Default Theme) --- */
   --background: #05050a;
   --foreground: #ffffff;
   --primary: #00f3ff;
