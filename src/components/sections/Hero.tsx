@@ -41,8 +41,8 @@ function AIIntelligenceHub() {
 
         const draw = () => {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = "rgba(0, 243, 255, 0.2)";
-            ctx.strokeStyle = "rgba(0, 243, 255, 0.05)";
+            ctx.fillStyle = "rgba(var(--primary-rgb), 0.2)";
+            ctx.strokeStyle = "rgba(var(--primary-rgb), 0.05)";
 
             particles.forEach((p, i) => {
                 p.x += p.vx;
@@ -146,13 +146,13 @@ function PMSweetSpot() {
                 className="relative w-full h-full"
             >
                 {/* Venn Circles */}
-                <div className="absolute top-0 left-1/4 w-[350px] h-[350px] rounded-full border border-primary/30 bg-primary/5 backdrop-blur-[2px] flex items-start justify-center pt-8">
+                <div className="absolute top-0 left-1/4 w-[350px] h-[350px] rounded-full border border-primary/20 bg-primary/5 backdrop-blur-[2px] flex items-start justify-center pt-8">
                     <span className="text-[10px] font-bold tracking-[0.3em] uppercase opacity-40">Business</span>
                 </div>
-                <div className="absolute bottom-0 left-0 w-[350px] h-[350px] rounded-full border border-secondary/30 bg-secondary/5 backdrop-blur-[2px] flex items-end justify-start pl-8 pb-8">
+                <div className="absolute bottom-0 left-0 w-[350px] h-[350px] rounded-full border border-secondary/20 bg-secondary/5 backdrop-blur-[2px] flex items-end justify-start pl-8 pb-8">
                     <span className="text-[10px] font-bold tracking-[0.3em] uppercase opacity-40">Technology</span>
                 </div>
-                <div className="absolute bottom-0 right-0 w-[350px] h-[350px] rounded-full border border-accent/30 bg-accent/5 backdrop-blur-[2px] flex items-end justify-end pr-8 pb-8">
+                <div className="absolute bottom-0 right-0 w-[350px] h-[350px] rounded-full border border-secondary/20 bg-secondary/5 backdrop-blur-[2px] flex items-end justify-end pr-8 pb-8">
                     <span className="text-[10px] font-bold tracking-[0.3em] uppercase opacity-40">User Experience</span>
                 </div>
 

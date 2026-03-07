@@ -64,7 +64,7 @@ export function AppShowcase() {
     const categories = Array.from(new Set(allApps.map(app => app.category)));
 
     return (
-        <section id="apps" className="py-24 bg-black relative overflow-hidden min-h-screen flex flex-col justify-center">
+        <section id="apps" className="py-24 bg-background relative overflow-hidden min-h-screen flex flex-col justify-center">
             {/* Background elements */}
             <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:60px_60px] opacity-20 pointer-events-none" />
             <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-background to-transparent z-10" />
@@ -148,7 +148,7 @@ export function AppShowcase() {
                                 animate={{ opacity: 1, x: 0 }}
                                 exit={{ opacity: 0, x: -20 }}
                                 transition={{ duration: 0.3 }}
-                                className="bg-zinc-900/40 border border-white/10 backdrop-blur-2xl rounded-3xl p-8 md:p-12 relative overflow-hidden group"
+                                className="theme-card p-8 md:p-12 relative overflow-hidden group border-white/10"
                             >
                                 <ModularGridGlow />
                                 <SystemStatusTerminal />
