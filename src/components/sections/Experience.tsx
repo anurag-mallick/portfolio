@@ -212,15 +212,22 @@ export function Experience() {
             <div className="absolute inset-0 bg-primary/5 blur-[120px] rounded-full pointer-events-none opacity-20" />
 
             <div className="theme-container relative z-10">
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="text-center mb-20"
+                >
+                    <div className="meta-label">Professional Journey</div>
+                    <h2 className="h2-premium">
+                        PROVEN <span className="text-primary">IMPACT</span>
+                    </h2>
+                    <p className="text-muted-foreground max-w-2xl mx-auto text-lg leading-relaxed">
+                        Leading digital transformation and scaling high-performance product teams.
+                    </p>
+                </motion.div>
+
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 md:mb-16 gap-4">
-                    <div>
-                        <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tighter text-foreground uppercase">
-                            Professional <span className="text-primary">Experience</span>
-                        </h2>
-                        <p className="text-sm sm:text-base text-muted-foreground mt-2">
-                            A journey of scaling platforms and financial infrastructure.
-                        </p>
-                    </div>
 
                     <div className="flex items-center gap-2 bg-white/5 rounded-full p-1 border border-white/10 backdrop-blur-sm">
                         <button

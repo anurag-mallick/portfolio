@@ -288,11 +288,11 @@ export function Hero() {
                         Open for Innovation
                     </motion.div>
 
-                    <motion.h1
+                    <motion.h1 
                         initial={reducedMotion ? false : { opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.2 }}
-                        className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl xl:text-9xl font-black tracking-tighter text-foreground leading-[0.85] uppercase"
+                        className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-tighter text-foreground leading-[0.9] mb-8"
                     >
                         ANURAG <br className="hidden sm:block" />
                         <span className="text-primary italic">MALLICK</span>
@@ -304,9 +304,7 @@ export function Hero() {
                         transition={{ duration: 0.5, delay: 0.4 }}
                         className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 text-base sm:text-lg md:text-2xl font-medium tracking-tight"
                     >
-                        <span className="px-3 sm:px-4 py-1 rounded-full border border-primary/20 bg-primary/10 text-primary text-sm sm:text-base font-bold uppercase tracking-widest">
-                            AI Product Manager
-                        </span>
+                        <div className="meta-label">AI Product Manager</div>
                         <span className="hidden sm:block text-muted-foreground/30">•</span>
                         <span className="px-3 sm:px-4 py-1 rounded-full border border-secondary/20 bg-secondary/5 text-secondary text-sm sm:text-base font-medium">
                             Digital Transformation

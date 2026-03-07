@@ -60,7 +60,7 @@ const articles = [
 
 export function Articles() {
     return (
-        <section id="articles" className="py-24 bg-black relative overflow-hidden">
+        <section id="articles" className="theme-section bg-background">
             <ReadingProgress />
             {/* Background elements */}
             <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-[120px] -mr-48 -mt-48" />
@@ -74,14 +74,11 @@ export function Articles() {
                     className="text-center mb-16"
                 >
                     <ThoughtPulse />
-                    <div className="inline-flex items-center rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-sm font-medium text-primary backdrop-blur-sm mb-6">
-                        <BookOpen className="w-4 h-4 mr-2" />
-                        Thought Leadership
-                    </div>
-                    <h2 className="text-3xl md:text-5xl font-bold tracking-tighter mb-4 text-white">
+                    <div className="meta-label text-center">Thought Leadership</div>
+                    <h2 className="h2-premium">
                         STRATEGIC <span className="text-primary">INSIGHTS</span>
                     </h2>
-                    <p className="text-muted-foreground max-w-[800px] mx-auto text-lg">
+                    <p className="text-muted-foreground max-w-[800px] mx-auto text-lg leading-relaxed">
                         Deep dives into logistics optimization, data architecture, and
                         scaling product operations at industry-leading companies.
                     </p>
@@ -101,26 +98,26 @@ export function Articles() {
                                 <Quote className="w-16 h-16" />
                             </div>
 
-                            <div className="flex items-center gap-4 mb-6">
+                            <div className="flex items-center justify-between mb-8">
                                 <div className="p-3 rounded-2xl bg-primary/10 text-primary">
                                     <BookOpen className="w-6 h-6" />
                                 </div>
-                                <div className="text-xs font-mono text-muted-foreground uppercase tracking-widest">
-                                    {article.date} • {article.readTime}
+                                <div className="text-[10px] font-bold text-foreground/40 uppercase tracking-[0.2em]">
+                                    {article.readTime}
                                 </div>
                             </div>
 
-                            <h3 className="text-2xl font-bold mb-4 text-white group-hover:text-primary transition-colors leading-tight">
+                            <h3 className="text-2xl font-bold mb-4 text-white group-hover:text-primary transition-all duration-500 leading-tight tracking-tight">
                                 {article.title}
                             </h3>
 
-                            <p className="text-muted-foreground mb-8 line-clamp-3 leading-relaxed flex-grow">
+                            <p className="text-foreground/70 mb-8 line-clamp-3 leading-relaxed flex-grow text-sm">
                                 {article.description}
                             </p>
 
                             <div className="flex flex-wrap gap-2 mb-8">
                                 {article.tags.map((tag) => (
-                                    <span key={tag} className="text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-white/5 border border-white/10 text-muted-foreground">
+                                    <span key={tag} className="glass-pill">
                                         {tag}
                                     </span>
                                 ))}
@@ -132,9 +129,9 @@ export function Articles() {
                                 rel="noopener noreferrer"
                                 className="mt-auto"
                             >
-                                <Button className="w-full group/btn bg-white/5 hover:bg-primary hover:text-primary-foreground border-white/10 transition-all duration-300">
+                                <Button className="w-full group/btn bg-primary/10 hover:bg-primary text-primary hover:text-black border-primary/20 transition-all duration-500 font-bold tracking-widest text-[10px] h-12 uppercase">
                                     READ ARTICLE
-                                    <ExternalLink className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
+                                    <ExternalLink className="ml-2 w-3.5 h-3.5 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
                                 </Button>
                             </a>
                         </motion.div>

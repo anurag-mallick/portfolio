@@ -11,16 +11,18 @@
   --accent: #f43f5e;
   --muted: #0a0a20;
   --muted-foreground: #cbd5e1;
-  --border: rgba(255, 255, 255, 0.12);
-  --card: rgba(10, 10, 20, 0.6);
-  --glow-intensity: 1.2;
-  --nav-blur: 12px;
+  --border: rgba(255, 255, 255, 0.08);
+  --card: rgba(10, 10, 20, 0.4);
+  --glow-intensity: 1.5;
+  --nav-blur: 16px;
   --font-main: var(--font-outfit), sans-serif;
   --layout-align: center;
   --container-max-width: 1100px;
   --section-spacing: 5rem;
   --card-radius: 20px;
   --glass-opacity: 0.08;
+  --section-padding: 8rem;
+  --section-padding-mobile: 6rem;
 }
 
 /* --- MIDNIGHT NEBULA (Vibrant & Deep) --- */
@@ -44,6 +46,8 @@
   --section-spacing: 5rem;
   --card-radius: 20px;
   --glass-opacity: 0.1;
+  --section-padding: 8rem;
+  --section-padding-mobile: 6rem;
 }
 
 @theme inline {

@@ -1,7 +1,6 @@
 import type { NextConfig } from "next";
 
 const isGithubActions = process.env.GITHUB_ACTIONS === 'true';
-
 const basePath = isGithubActions ? '/portfolio' : '';
 
 const nextConfig: NextConfig = {
@@ -10,9 +9,7 @@ const nextConfig: NextConfig = {
     unoptimized: true,
   },
   basePath,
-  env: {
-    NEXT_PUBLIC_BASE_PATH: basePath,
-  },
+  assetPrefix: basePath,
 };
 
 // Add Cloudflare compatibility
