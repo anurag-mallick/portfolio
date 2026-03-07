@@ -6,7 +6,7 @@ import {
     ArrowRight, ChevronRight, Play, Download, ExternalLink, Calendar, MapPin, 
     Search, Linkedin, FileText, Zap, Mail, Terminal, MessageSquare, 
     GraduationCap, BarChart3, Lightbulb, Target, Repeat, Milestone, Flag, 
-    TrendingUp, Presentation, Globe, Layers, Database, ShieldCheck
+    TrendingUp, Presentation, Globe, Layers, Database, ShieldCheck, Briefcase
 } from "lucide-react";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
