@@ -47,30 +47,36 @@ A premium, high-performance portfolio website built with **Next.js 16**, **Tailw
 - **Certifications**: 5 industry certifications with icons (Skillsoft, Google, etc.)
 - **Contact**: Web3Forms integration with bot protection
 
-## 🎯 The Lab: 30+ Interactive Applications
+## 🎯 The Lab: 18+ Interactive High-Performance Apps
+
+### 🤖 AI & Automation
+
+- AI Agent Orchestrator — multi-agent autonomous task decomposition visualizer
+- LLM Payroll Document Intel — multi-doc AI audit & reconciliation engine
+- LLM Cost Optimizer — token cost analysis across GMT-4, Claude, and Gemini
 
 ### 💰 Fintech Toolkit
 
-- Global Payroll What-If Studio — macro-economic stress-testing
-- EOR Strategy Decision Engine — AI-driven expansion modeling
-- LLM Document Intelligence — multi-doc audit & reconciliation
-- Multi-Country Tax Calculator — cost comparison across 15+ countries
+- Sentinel Fraud Intelligence — real-time transaction stream & anomaly scoring
+- Global Payroll What-If Studio — macro-economic stress-testing for workforces
+- EOR Strategy Decision Engine — AI-driven expansion & flow modeling
+- Multi-Country Tax Calculator — comparative cost analysis for 15+ regions
+- Invoice Anomaly Detector — ML-powered payment & fraud validation
 
 ### 📦 Logistics & Supply Chain
 
-- Last-Mile Route Optimizer — algorithm comparison (Nearest Neighbor, 2-Opt, Genetic)
-- Returns Intelligence Lab — reverse logistics fraud detection & ML prediction
-- 3PL Cost Comparator — multi-carrier rate optimization
-- Food Delivery Express — real-time order tracking simulation
+- Supply Chain Digital Twin — global resilience & shock impact simulator
+- Last-Mile Route Optimizer — animated TSP algorithm comparison
+- Returns Intelligence Lab — reverse logistics fraud detection & NPS impact
+- Returns Prediction Model — ML-based return probability scoring
+- Food Delivery Express — real-time order tracking & cart simulation
 
-### 🏗️ Infrastructure & DevOps
+### 🏗️ Algorithms & Architecture
 
-- Load Balancer Simulator, Circuit Breaker, Rate Limiter, Feature Flag Manager
-- DB Query Planner, Auto-Scaling Simulator, Git Branching Visualizer
-
-### 🎮 Neon Games
-
-- Tetris, Snake, Minesweeper, Asteroids, Space Invaders, 2048, Arkanoid, and more
+- Pathfinding Visualizer — interactive BFS discovery with drag-to-draw walls
+- Git Branching Strategy — D3.js force-directed graph for repository operations
+- Circuit Breaker Pattern — microservices resilience state machine
+- Auto-Scaling Simulator — horizontal pod autoscaling & cost metrics
 
 ## 📜 Certifications
 

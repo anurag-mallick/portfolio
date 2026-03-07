@@ -524,25 +524,33 @@ function GlassGames() {
 }
 
 // --- Main Layout Export ---
-export function AppleGlassLayout() {
+export function AppleGlassLayout({ children }: { children?: React.ReactNode }) {
     return (
         <div className="min-h-screen bg-[#FAFAFA] text-[#1D1D1F] font-sans selection:bg-[#0071E3] selection:text-white relative">
             <Background3D />
             <GlassHeader />
             <main>
-                <GlassHero />
-                <GlassImpact />
-                <GlassExperience />
-                <GlassEducation />
-                <GlassProjects />
-                <GlassApps />
-                <GlassSkills />
-                <div id="fintech" className="bg-black"><FintechToolkit /></div>
-                <div id="logistics-lab" className="bg-black"><LogisticsLab /></div>
-                <div id="infrastructure" className="bg-black"><Infrastructure /></div>
-                <div id="algorithms" className="bg-black"><Algorithms /></div>
-                <GlassGames />
-                <GlassContact />
+                {children ? (
+                    <div className="pt-24 min-h-[calc(100vh-80px)]">
+                        {children}
+                    </div>
+                ) : (
+                    <>
+                        <GlassHero />
+                        <GlassImpact />
+                        <GlassExperience />
+                        <GlassEducation />
+                        <GlassProjects />
+                        <GlassApps />
+                        <GlassSkills />
+                        <div id="fintech" className="bg-black"><FintechToolkit /></div>
+                        <div id="logistics-lab" className="bg-black"><LogisticsLab /></div>
+                        <div id="infrastructure" className="bg-black"><Infrastructure /></div>
+                        <div id="algorithms" className="bg-black"><Algorithms /></div>
+                        <GlassGames />
+                        <GlassContact />
+                    </>
+                )}
             </main>
             <footer className="py-12 text-center text-[#86868b] text-sm border-t border-black/5 bg-white">
                 <p>© {new Date().getFullYear()} Anurag Mallick. Designed with Apple Liquid Glass aesthetics.</p>
