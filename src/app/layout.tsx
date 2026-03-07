@@ -1,7 +1,4 @@
 import type { Metadata } from "next";
-
-export const runtime = 'edge';
-
 import Script from "next/script";
 import {
   Inter,
