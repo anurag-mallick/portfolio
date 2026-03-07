@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
-import { Play, RefreshCw, Eraser } from 'lucide-react';
+import { Play, RefreshCw } from 'lucide-react';
 
 const ROWS = 15;
 const COLS = 30;
@@ -61,7 +61,6 @@ export function PathfindingVisualizer() {
         if (isRunning) return;
         setIsRunning(true);
 
-        // Simple BFS for demo
         const queue = [{ r: startNode.r, c: startNode.c, path: [] as Node[] }];
         const visited = new Set<string>();
         visited.add(`${startNode.r},${startNode.c}`);
@@ -70,7 +69,6 @@ export function PathfindingVisualizer() {
             const current = queue.shift()!;
             const { r, c, path } = current;
 
-            // Visual update for visited
             if (!(r === startNode.r && c === startNode.c) && !(r === endNode.r && c === endNode.c)) {
                 setGrid(prev => {
                     const g = [...prev];
@@ -79,11 +77,10 @@ export function PathfindingVisualizer() {
                     g[r] = row;
                     return g;
                 });
-                await new Promise(res => setTimeout(res, 10)); // Speed
+                await new Promise(res => setTimeout(res, 10));
             }
 
             if (r === endNode.r && c === endNode.c) {
-                // Path found
                 for (const node of path) {
                     if (!(node.r === startNode.r && node.c === startNode.c)) {
                         setGrid(prev => {
@@ -116,24 +113,8 @@ export function PathfindingVisualizer() {
         setIsRunning(false);
     };
 
-    const [isMouseDown, setIsMouseDown] = useState(false);
-
-    const handleMouseEnter = (r: number, c: number) => {
-        if (!isMouseDown) return;
-        toggleWall(r, c);
-    };
-
-    const handleMouseDown = (r: number, c: number) => {
-        setIsMouseDown(true);
-        toggleWall(r, c);
-    };
-
-    const handleMouseUp = () => {
-        setIsMouseDown(false);
-    };
-
     return (
-        <div className="w-full max-w-5xl mx-auto" onMouseUp={handleMouseUp}>
+        <div className="w-full max-w-4xl mx-auto">
             <Card className="p-6 bg-zinc-900/50 border-white/10 backdrop-blur-md mb-6 flex justify-between items-center">
                 <div className="flex gap-4">
                     <div className="flex items-center gap-2 text-sm">
@@ -156,33 +137,28 @@ export function PathfindingVisualizer() {
                 </div>
             </Card>
 
-            <div className="bg-black/40 p-4 rounded-xl border border-white/5 flex justify-center">
-                <div 
-                    className="grid"
-                    style={{ 
-                        gridTemplateColumns: `repeat(${COLS}, 1.5rem)`,
-                        gap: '1px'
-                    }}
-                >
-                    {grid.flat().map((node) => (
-                        <div
-                            key={`${node.r}-${node.c}`}
-                            onMouseDown={() => handleMouseDown(node.r, node.c)}
-                            onMouseEnter={() => handleMouseEnter(node.r, node.c)}
-                            className={`w-6 h-6 rounded-sm cursor-pointer transition-all duration-200 ${
-                                node.type === 'start' ? 'bg-green-500 shadow-[0_0_10px_#22c55e]' :
-                                node.type === 'end' ? 'bg-red-500 shadow-[0_0_10px_#ef4444]' :
-                                node.type === 'wall' ? 'bg-white/40' :
-                                node.type === 'path' ? 'bg-[#ff0080] scale-110 shadow-[0_0_10px_#ff0080]' :
-                                node.type === 'visited' ? 'bg-[#ff0080]/20' :
-                                'bg-white/5 hover:bg-white/10'
-                            }`}
-                        />
-                    ))}
-                </div>
+            <div className="bg-black/40 p-4 rounded-xl border border-white/5 overflow-x-auto">
+                {grid.map((row, r) => (
+                    <div key={r} className="flex justify-center">
+                        {row.map((node, c) => (
+                            <div
+                                key={`${r}-${c}`}
+                                onClick={() => toggleWall(r, c)}
+                                className={`w-6 h-6 border border-white/5 cursor-pointer transition-all duration-200 ${
+                                    node.type === 'start' ? 'bg-green-500 shadow-[0_0_10px_#22c55e]' :
+                                    node.type === 'end' ? 'bg-red-500 shadow-[0_0_10px_#ef4444]' :
+                                    node.type === 'wall' ? 'bg-white/40' :
+                                    node.type === 'path' ? 'bg-[#ff0080] scale-110 shadow-[0_0_10px_#ff0080]' :
+                                    node.type === 'visited' ? 'bg-[#ff0080]/30' :
+                                    'hover:bg-white/10'
+                                }`}
+                            />
+                        ))}
+                    </div>
+                ))}
             </div>
-            <p className="text-center text-muted-foreground mt-4 text-xs font-medium uppercase tracking-widest">
-                Click and drag to draw walls
+            <p className="text-center text-muted-foreground mt-4 text-sm">
+                Click grid layout to add walls
             </p>
         </div>
     );
