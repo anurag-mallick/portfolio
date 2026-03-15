@@ -108,38 +108,39 @@ export function Apps() {
                     </p>
                 </motion.div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 place-content-center">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 place-content-center">
                     {apps.map((app, index) => (
-                        <motion.div
-                            key={index}
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: index * 0.05 }}
-                            className={`group bg-zinc-900/50 border backdrop-blur-xl rounded-xl p-6 transition-all duration-300 ${app.color} ${app.shadow} flex flex-col h-full`}
-                        >
-                            <div className="flex justify-between items-start mb-4">
-                                <div className="p-3 rounded-lg bg-white/5 group-hover:scale-110 transition-transform duration-300">
-                                    {app.icon}
+                        <Link href={app.link} key={index} className="block h-full cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary/50 rounded-xl">
+                            <motion.div
+                                initial={{ opacity: 0, scale: 0.95 }}
+                                whileInView={{ opacity: 1, scale: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: index * 0.05 }}
+                                className={`group bg-zinc-900/50 border backdrop-blur-xl rounded-xl p-6 hover:scale-[1.02] transition-all duration-200 ${app.color} ${app.shadow} flex flex-col h-full`}
+                            >
+                                <div className="flex justify-between items-start mb-4">
+                                    <div className="p-3 rounded-lg bg-white/5 group-hover:scale-110 transition-transform duration-300">
+                                        {app.icon}
+                                    </div>
+                                    <span className="text-[10px] uppercase font-bold tracking-widest text-muted-foreground border border-white/10 px-2 py-1 rounded self-start">
+                                        {app.tech}
+                                    </span>
                                 </div>
-                                <span className="text-[10px] uppercase font-bold tracking-widest text-muted-foreground border border-white/10 px-2 py-1 rounded self-start">
-                                    {app.tech}
-                                </span>
-                            </div>
 
-                            <h3 className="text-xl font-bold mb-2 text-white group-hover:text-primary transition-colors">
-                                {app.title}
-                            </h3>
-                            <p className="text-sm text-muted-foreground mb-6 line-clamp-3 leading-relaxed flex-grow">
-                                {app.description}
-                            </p>
+                                <h3 className="text-xl font-bold mb-2 text-white group-hover:text-primary transition-colors">
+                                    {app.title}
+                                </h3>
+                                <p className="text-sm text-muted-foreground mb-6 line-clamp-3 leading-relaxed flex-grow">
+                                    {app.description}
+                                </p>
 
-                            <Link href={app.link} className="block mt-auto">
-                                <Button className="w-full bg-white/5 hover:bg-white/10 border-white/10 text-white group-hover:border-white/30">
-                                    LAUNCH TOOL
-                                </Button>
-                            </Link>
-                        </motion.div>
+                                <div className="mt-auto">
+                                    <Button className="w-full bg-white/5 hover:bg-white/10 border-white/10 text-white group-hover:border-white/30 pointer-events-none">
+                                        LAUNCH TOOL
+                                    </Button>
+                                </div>
+                            </motion.div>
+                        </Link>
                     ))}
                 </div>
             </div>

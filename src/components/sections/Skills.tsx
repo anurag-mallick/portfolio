@@ -46,7 +46,7 @@ function RadarChart() {
   const pointsStr = points.map(p => `${p.x},${p.y}`).join(' ');
 
   return (
-    <div className="relative w-48 h-48 sm:w-60 sm:h-60 lg:w-72 lg:h-72 mx-auto mb-8 sm:mb-12 flex items-center justify-center">
+    <div className="relative w-full max-w-[240px] aspect-square mx-auto mb-8 sm:mb-12 flex items-center justify-center">
       <svg viewBox={`0 0 ${size} ${size}`} className="w-full h-full drop-shadow-[0_0_15px_rgba(0,243,255,0.2)]">
         {/* Background Grids */}
         {[...Array(levels)].map((_, i) => (
@@ -283,7 +283,7 @@ export function Skills() {
                       transition={{ delay: i * 0.05 }}
                       onClick={() => setSelectedSkill(tool as any)}
                       onTouchEnd={(e) => { e.stopPropagation(); setSelectedSkill(tool as any); }}
-                      className="flex items-center gap-2 px-3 sm:px-4 py-2 rounded-lg bg-primary/5 border border-primary/20 text-primary text-xs sm:text-sm font-medium hover:bg-primary hover:text-black transition-all cursor-pointer group/tool min-h-[44px]"
+                      className="flex items-center gap-2 px-3 sm:px-4 py-2 rounded-lg bg-primary/5 border border-primary/20 text-primary text-xs sm:text-sm font-medium hover:bg-primary/20 hover:text-white transition-all cursor-pointer group/tool min-h-[44px]"
                     >
                       <tool.icon className="w-3.5 h-3.5 group-hover/tool:scale-110 transition-transform" />
                       {tool.name}

@@ -320,8 +320,10 @@ function ExperienceCard({ exp, index, viewMode }: { exp: ExperienceItem, index: 
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1 }}
             viewport={{ once: true }}
-            className={cn(viewMode === 'timeline' ? "pl-6 sm:pl-8 border-l border-white/5 relative" : "")}
-            onClick={() => setIsExpanded(!isExpanded)}
+            className={cn(viewMode === 'timeline' ? "pl-6 sm:pl-8 border-l border-white/5 relative" : "", "group")}
+            onClick={(e) => { e.preventDefault(); setIsExpanded(!isExpanded); }}
+            onTouchEnd={(e) => { e.preventDefault(); setIsExpanded(!isExpanded); }}
+            style={{ touchAction: "manipulation" }}
         >
             {viewMode === 'timeline' && (
                 <div className={cn(
@@ -332,7 +334,7 @@ function ExperienceCard({ exp, index, viewMode }: { exp: ExperienceItem, index: 
 
             <Card
                 className={cn(
-                    "theme-card group transition-all duration-500 overflow-hidden relative cursor-pointer",
+                    "theme-card transition-all duration-300 overflow-hidden relative cursor-pointer hover:-translate-y-1 hover:border-primary/50 hover:shadow-[0_4px_20px_rgba(var(--primary-rgb),0.15)]",
                     isExpanded ? "ring-1 ring-primary/40 bg-primary/5 shadow-lg" : "hover:ring-1 hover:ring-primary/20"
                 )}
             >
@@ -394,7 +396,7 @@ function ExperienceCard({ exp, index, viewMode }: { exp: ExperienceItem, index: 
                                 transition={{ duration: 0.4, ease: "easeOut" }}
                                 className="overflow-hidden"
                             >
-                                <ul className="space-y-3 mt-4 text-sm text-gray-300 border-t border-white/10 pt-4 text-left">
+                                <ul className="space-y-3 mt-4 text-sm text-gray-300 border-t border-white/10 pt-4 text-left overflow-hidden break-words">
                                     {exp.achievements.map((achievement, i) => (
                                         <motion.li
                                             key={i}

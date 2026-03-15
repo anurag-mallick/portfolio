@@ -8,10 +8,10 @@ export function Footer() {
         <footer className="relative border-t border-border bg-background py-8 sm:py-12 backdrop-blur-md overflow-hidden">
             <div className="theme-container flex flex-col items-center gap-6 px-4 text-center">
                 <div>
-                    <h3 className="text-lg sm:text-xl font-bold tracking-tighter text-foreground">
+                    <h3 className="text-lg sm:text-xl font-bold tracking-tighter text-foreground break-words text-balance">
                         Anurag Mallick
                     </h3>
-                    <p className="text-xs sm:text-sm text-muted-foreground mt-1">
+                    <p className="text-xs sm:text-sm text-muted-foreground mt-1 break-words text-balance">
                         Architecting the future of financial infrastructure.
                     </p>
                 </div>
@@ -42,7 +42,7 @@ export function Footer() {
                     </Link>
                 </div>
 
-                <p className="text-xs text-muted-foreground">
+                <p className="text-xs text-muted-foreground break-words text-balance">
                     © {new Date().getFullYear()} Anurag Mallick. All rights reserved.
                 </p>
             </div>

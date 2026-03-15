@@ -89,17 +89,17 @@ function SentimentAnalyzer({ message }: { message: string }) {
   }, [message]);
 
   return (
-    <div className="flex items-center gap-2 mt-2 px-1">
-      <div className="flex gap-1 h-1 w-12 bg-white/5 rounded-full overflow-hidden">
+    <div className="flex items-center justify-center gap-2 mt-2 px-3 py-2 min-h-[44px] rounded-lg bg-background/50 border border-border/50">
+      <div className="flex gap-1 h-1.5 w-16 bg-white/5 rounded-full overflow-hidden">
         <motion.div 
           animate={{ width: `${sentiment.score * 100}%` }}
           className={cn("h-full", sentiment.color.replace("text-", "bg-"))} 
         />
       </div>
-      <span className={cn("text-[10px] font-bold uppercase tracking-widest", sentiment.color)}>
+      <span className={cn("text-[10px] sm:text-xs font-bold uppercase tracking-widest", sentiment.color)}>
         AI Tone: {sentiment.label}
       </span>
-      <Sparkles size={10} className={cn("animate-pulse", sentiment.color)} />
+      <Sparkles size={12} className={cn("animate-pulse", sentiment.color)} />
     </div>
   );
 }
@@ -331,7 +331,7 @@ export function Contact() {
                         </div>
 
                           <div className="space-y-2">
-                            <div className="flex justify-between items-center">
+                            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
                               <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground ml-1">
                                 Message
                               </label>
