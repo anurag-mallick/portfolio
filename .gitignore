@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+*lint*.txt
+*_snapshot.md
+*_mapping.md
+.vscode/

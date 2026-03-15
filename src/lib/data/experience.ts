@@ -24,7 +24,7 @@ export const experiences: ExperienceItem[] = [
         description: "Leading digital transformation for payroll and finance workflows.",
         logoColor: "bg-blue-600",
         logoInitial: "B",
-        logoUrl: "https://www.bluspring.com/wp-content/uploads/2025/11/bluspring-logo-white.svg",
+        logoUrl: "/logos/bluspring-logo-white.svg",
         logoBg: "bg-[#002f5d]", // Official dark blue background
         achievements: [
             "**Automated 85,000+ associate payrolls** by leading the rollout of a compliant in-house system, ensuring accurate processing across 5 business units.",
@@ -124,7 +124,7 @@ export const experiences: ExperienceItem[] = [
         description: "Managed ₹4,000+ Cr procurement and contracts.",
         logoColor: "bg-[#df2020]",
         logoInitial: "M",
-        logoUrl: "https://www.mahametro.org/images/logo.svg",
+        logoUrl: "/logos/mahametro-logo.svg",
         logoBg: "bg-white",
         achievements: [
             "Spearheaded 20+ Pre-bid meetings with 50+ experts, reducing pre-bid queries by 30% and saving ₹3.5+ Cr through contract optimization.",

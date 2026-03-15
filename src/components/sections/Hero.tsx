@@ -285,7 +285,7 @@ export function Hero() {
                         className="inline-flex items-center rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-xs sm:text-sm font-medium text-primary backdrop-blur-sm self-center"
                     >
                         <span className="flex h-2 w-2 rounded-full bg-primary mr-2 animate-pulse" />
-                        Open for Innovation
+                        Open to Senior PM Roles
                     </motion.div>
 
                     <motion.h1
@@ -319,7 +319,7 @@ export function Hero() {
                         transition={{ duration: 0.5, delay: 0.6 }}
                         className="max-w-[800px] mx-auto text-muted-foreground text-base sm:text-lg md:text-xl px-2 sm:px-4"
                     >
-                        I architect scalable global systems and harmonize AI with complex financial workflows to drive enterprise-grade transformation.
+                        Built EOR platforms for 500+ clients · Cut payroll ops effort by 60%
                     </motion.p>
 
                     <motion.div
@@ -332,12 +332,19 @@ export function Hero() {
                             Enter Portfolio
                             <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                         </Button>
-                        <Link href="https://drive.google.com/file/d/1KmV8TzTGY9cDsypeo5xT9ZcNRcoKeg9F/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+                        <a href="/resume.pdf" download className="w-full sm:w-auto">
                             <Button variant="outline" size="lg" className="w-full min-h-[44px]">
                                 <FileText className="mr-2 h-4 w-4" />
                                 View Resume
                             </Button>
-                        </Link>
+                        </a>
+                        {/* Fallback Google Drive Link */}
+                        {/* <Link href="https://drive.google.com/file/d/1KmV8TzTGY9cDsypeo5xT9ZcNRcoKeg9F/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+                            <Button variant="outline" size="lg" className="w-full min-h-[44px]">
+                                <FileText className="mr-2 h-4 w-4" />
+                                Drive Link
+                            </Button>
+                        </Link> */}
                         <Link href="https://www.linkedin.com/in/anuragmallick901/" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
                             <Button variant="outline" size="lg" className="w-full min-h-[44px]">
                                 <Linkedin className="mr-2 h-4 w-4" />

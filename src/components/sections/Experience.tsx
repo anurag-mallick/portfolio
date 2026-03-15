@@ -188,7 +188,7 @@ export function Logo({ src, domain, initial, color, className, bgClass = "bg-whi
             <Image
                 ref={imgRef}
                 src={logoSource}
-                alt={`${initial} Logo`}
+                alt={`${initial} company logo - Professional Experience at ${domain || initial}`}
                 width={48}
                 height={48}
                 className={cn("w-full h-full object-contain transition-opacity duration-300", loaded ? "opacity-100" : "opacity-0")}
