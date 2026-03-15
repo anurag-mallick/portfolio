@@ -332,18 +332,29 @@ export function Hero() {
                             Enter Portfolio
                             <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                         </Button>
-                        <a href="/resume.pdf" download className="w-full sm:w-auto hover:scale-[1.03] hover:brightness-110 transition-all duration-150">
-                            <Button variant="outline" size="lg" className="w-full min-h-[44px]">
-                                <FileText className="mr-2 h-4 w-4" />
-                                View Resume
-                            </Button>
-                        </a>
-                        <Link href="https://www.linkedin.com/in/anuragmallick901/" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto hover:scale-[1.03] hover:brightness-110 transition-all duration-150">
-                            <Button variant="outline" size="lg" className="w-full min-h-[44px]">
-                                <Linkedin className="mr-2 h-4 w-4" />
-                                Connect
-                            </Button>
-                        </Link>
+                        <Button 
+                            variant="outline" 
+                            size="lg" 
+                            className="w-full sm:w-auto min-h-[44px] hover:scale-[1.03] hover:brightness-110 transition-all duration-150" 
+                            onClick={() => {
+                                const link = document.createElement('a');
+                                link.href = '/resume.pdf';
+                                link.download = 'resume.pdf';
+                                link.click();
+                            }}
+                        >
+                            <FileText className="mr-2 h-4 w-4" />
+                            View Resume
+                        </Button>
+                        <Button 
+                            variant="outline" 
+                            size="lg" 
+                            className="w-full sm:w-auto min-h-[44px] hover:scale-[1.03] hover:brightness-110 transition-all duration-150" 
+                            onClick={() => window.open('https://www.linkedin.com/in/anuragmallick901/', '_blank', 'noopener,noreferrer')}
+                        >
+                            <Linkedin className="mr-2 h-4 w-4" />
+                            Connect
+                        </Button>
                     </motion.div>
                 </motion.div>
             </div>

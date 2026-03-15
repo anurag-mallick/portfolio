@@ -135,9 +135,9 @@ export function Apps() {
                                 </p>
 
                                 <div className="mt-auto">
-                                    <Button className="w-full bg-white/5 hover:bg-white/10 border-white/10 text-white group-hover:border-white/30 pointer-events-none">
+                                    <div className="flex items-center justify-center rounded-md font-medium transition-colors h-11 px-8 text-sm w-full bg-white/5 group-hover:bg-white/10 border border-white/10 text-white group-hover:border-white/30 pointer-events-none">
                                         LAUNCH TOOL
-                                    </Button>
+                                    </div>
                                 </div>
                             </motion.div>
                         </Link>
