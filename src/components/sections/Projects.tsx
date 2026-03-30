@@ -18,15 +18,15 @@ function DeploymentWave() {
 function StakeholderNetwork() {
     return (
         <div className="relative w-48 h-48 mx-auto mb-12 hidden lg:flex items-center justify-center">
-            <motion.div 
+            <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                className="absolute inset-0 border border-dashed border-primary/20 rounded-full" 
+                className="absolute inset-0 border border-dashed border-primary/20 rounded-full"
             />
             <div className="relative z-10 w-12 h-12 rounded-full bg-primary/20 border border-primary/40 flex items-center justify-center">
                 <Users className="w-6 h-6 text-primary" />
             </div>
-            
+
             {[
                 { icon: Code, label: "Eng", angle: 0 },
                 { icon: PenTool, label: "Design", angle: 90 },
@@ -36,7 +36,7 @@ function StakeholderNetwork() {
                 const x = Math.cos((node.angle * Math.PI) / 180) * 70;
                 const y = Math.sin((node.angle * Math.PI) / 180) * 70;
                 return (
-                    <motion.div 
+                    <motion.div
                         key={i}
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
@@ -51,7 +51,7 @@ function StakeholderNetwork() {
                     </motion.div>
                 );
             })}
-            
+
             {/* Connection Lines (Simplified) */}
             <div className="absolute inset-0 pointer-events-none opacity-20">
                 <div className="absolute top-1/2 left-0 w-full h-px bg-primary/30" />
@@ -62,6 +62,45 @@ function StakeholderNetwork() {
 }
 
 export const projects = [
+    {
+        title: "Horizon IT",
+        category: "IT Service Management",
+        icon: <Cpu className="w-6 h-6 text-primary" />,
+        priority: "Featured",
+        metrics: [
+            { label: "Framework", value: "Next.js 15" },
+            { label: "Database", value: "Neon Postgres" }
+        ],
+        description: "Complete IT Asset & Helpdesk Management Suite with intelligent ticketing, SLA management, automated email-to-ticket conversion, and premium glassmorphism UI.",
+        tech: ["Next.js", "TypeScript", "Prisma", "Tailwind CSS"],
+        link: "https://github.com/anurag-mallick/IT-Project-Management"
+    },
+    {
+        title: "Decision DNA Tracker",
+        category: "Decision Intelligence",
+        icon: <Globe className="w-6 h-6 text-secondary" />,
+        priority: "Featured",
+        metrics: [
+            { label: "Visualization", value: "D3.js Graph" },
+            { label: "Auth", value: "NextAuth v5" }
+        ],
+        description: "System for capturing, auditing, and scaling team's collective intelligence. Tracks the 'why' behind decisions with hypothesis-driven thinking and outcome tracking.",
+        tech: ["Next.js 15", "PostgreSQL", "Drizzle ORM", "D3.js"],
+        link: "https://github.com/anurag-mallick/decision-dna-tracker"
+    },
+    {
+        title: "RuView - WiFi DensePose",
+        category: "IoT & Signal Processing",
+        icon: <Database className="w-6 h-6 text-accent" />,
+        priority: "Featured",
+        metrics: [
+            { label: "Speed", value: "54K fps" },
+            { label: "Tests", value: "1300+" }
+        ],
+        description: "See through walls with WiFi. Real-time human pose estimation, vital sign monitoring, and presence detection using Channel State Information (CSI) without cameras.",
+        tech: ["Rust", "Machine Learning", "ESP32", "Signal Processing"],
+        link: "https://github.com/ruvnet/RuView"
+    },
     {
         title: "AI-Powered Reconciliation System",
         category: "Fintech Automation",

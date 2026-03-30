@@ -22,7 +22,7 @@ export function StandardLayout() {
             <Impact />
             <Contact />
             <div className="w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
-            <AppShowcase />
+            {/* <AppShowcase /> */}
             <Articles />
             <Footer />
         </main>
