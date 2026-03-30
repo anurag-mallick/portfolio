@@ -89,17 +89,17 @@ export const projects = [
         link: "https://github.com/anurag-mallick/decision-dna-tracker"
     },
     {
-        title: "RuView - WiFi DensePose",
-        category: "IoT & Signal Processing",
+        title: "IT Project Management Local",
+        category: "IT Service Management",
         icon: <Database className="w-6 h-6 text-accent" />,
         priority: "Featured",
         metrics: [
-            { label: "Speed", value: "54K fps" },
-            { label: "Tests", value: "1300+" }
+            { label: "Deployment", value: "Docker" },
+            { label: "Database", value: "Supabase" }
         ],
-        description: "See through walls with WiFi. Real-time human pose estimation, vital sign monitoring, and presence detection using Channel State Information (CSI) without cameras.",
-        tech: ["Rust", "Machine Learning", "ESP32", "Signal Processing"],
-        link: "https://github.com/ruvnet/RuView"
+        description: "Self-hosted IT Asset & Helpdesk Management Suite with Docker deployment, Supabase integration, and comprehensive setup scripts for local and VM installations.",
+        tech: ["Next.js", "Docker", "Supabase", "TypeScript"],
+        link: "https://github.com/anurag-mallick/IT-Project-Management-Local"
     },
     {
         title: "AI-Powered Reconciliation System",
