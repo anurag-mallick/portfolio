@@ -63,45 +63,6 @@ function StakeholderNetwork() {
 
 export const projects = [
     {
-        title: "Horizon IT",
-        category: "IT Service Management",
-        icon: <Cpu className="w-6 h-6 text-primary" />,
-        priority: "Featured",
-        metrics: [
-            { label: "Framework", value: "Next.js 15" },
-            { label: "Database", value: "Neon Postgres" }
-        ],
-        description: "Complete IT Asset & Helpdesk Management Suite with intelligent ticketing, SLA management, automated email-to-ticket conversion, and premium glassmorphism UI.",
-        tech: ["Next.js", "TypeScript", "Prisma", "Tailwind CSS"],
-        link: "https://github.com/anurag-mallick/IT-Project-Management"
-    },
-    {
-        title: "Decision DNA Tracker",
-        category: "Decision Intelligence",
-        icon: <Globe className="w-6 h-6 text-secondary" />,
-        priority: "Featured",
-        metrics: [
-            { label: "Visualization", value: "D3.js Graph" },
-            { label: "Auth", value: "NextAuth v5" }
-        ],
-        description: "System for capturing, auditing, and scaling team's collective intelligence. Tracks the 'why' behind decisions with hypothesis-driven thinking and outcome tracking.",
-        tech: ["Next.js 15", "PostgreSQL", "Drizzle ORM", "D3.js"],
-        link: "https://github.com/anurag-mallick/decision-dna-tracker"
-    },
-    {
-        title: "IT Project Management Local",
-        category: "IT Service Management",
-        icon: <Database className="w-6 h-6 text-accent" />,
-        priority: "Featured",
-        metrics: [
-            { label: "Deployment", value: "Docker" },
-            { label: "Database", value: "Supabase" }
-        ],
-        description: "Self-hosted IT Asset & Helpdesk Management Suite with Docker deployment, Supabase integration, and comprehensive setup scripts for local and VM installations.",
-        tech: ["Next.js", "Docker", "Supabase", "TypeScript"],
-        link: "https://github.com/anurag-mallick/IT-Project-Management-Local"
-    },
-    {
         title: "AI-Powered Reconciliation System",
         category: "Fintech Automation",
         icon: <Cpu className="w-6 h-6 text-primary" />,
@@ -230,6 +191,130 @@ export function Projects() {
                                                 <div className="text-xl font-bold text-white">{metric.value}</div>
                                             </div>
                                         ))}
+                                    </div>
+
+                                    <div className="flex flex-wrap gap-2 mt-auto">
+                                        {project.tech.map((t, i) => (
+                                            <span key={i} className="text-[10px] uppercase bg-white/5 px-2 py-1 rounded text-gray-400 border border-white/5">
+                                                {t}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </div>
+                            </Card>
+                        </motion.div>
+                    ))}
+                </div>
+            </div>
+        </section>
+    );
+}
+
+export const deployedSystems = [
+    {
+        title: "Horizon IT",
+        category: "IT Service Management",
+        icon: <Cpu className="w-6 h-6 text-primary" />,
+        description: "Complete IT Asset & Helpdesk Management Suite with intelligent ticketing, SLA management, automated email-to-ticket conversion, and premium glassmorphism UI.",
+        tech: ["Next.js", "TypeScript", "Prisma", "Tailwind CSS"],
+        liveLink: "https://horizon-it.vercel.app",
+        githubLink: "https://github.com/anurag-mallick/IT-Project-Management"
+    },
+    {
+        title: "Decision DNA Tracker",
+        category: "Decision Intelligence",
+        icon: <Globe className="w-6 h-6 text-secondary" />,
+        description: "System for capturing, auditing, and scaling team's collective intelligence. Tracks the 'why' behind decisions with hypothesis-driven thinking and outcome tracking.",
+        tech: ["Next.js 15", "PostgreSQL", "Drizzle ORM", "D3.js"],
+        liveLink: "https://decision-dna-tracker.vercel.app",
+        githubLink: "https://github.com/anurag-mallick/decision-dna-tracker"
+    },
+    {
+        title: "IT Project Management Local",
+        category: "IT Service Management",
+        icon: <Database className="w-6 h-6 text-accent" />,
+        description: "Self-hosted IT Asset & Helpdesk Management Suite with Docker deployment, Supabase integration, and comprehensive setup scripts for local and VM installations.",
+        tech: ["Next.js", "Docker", "Supabase", "TypeScript"],
+        liveLink: "https://it-project-local.vercel.app",
+        githubLink: "https://github.com/anurag-mallick/IT-Project-Management-Local"
+    }
+];
+
+export function DeployedSystems() {
+    return (
+        <section id="deployed-systems" className="theme-section bg-background relative overflow-hidden">
+            {/* Background Scanner Effect */}
+            <div className="absolute inset-0 bg-[linear-gradient(rgba(0,243,255,0.02)_1px,transparent_1px)] bg-[size:100%_4px] animate-scan" />
+
+            <div className="theme-container relative z-10">
+                <div className="flex flex-col lg:flex-row justify-between items-start mb-16 gap-12">
+                    <div className="max-w-2xl">
+                        <h2 className="text-4xl md:text-5xl font-bold tracking-tighter text-foreground">
+                            Deployed <span className="text-primary">Systems</span>
+                        </h2>
+                        <p className="text-muted-foreground mt-2">
+                            Live applications and open-source projects with active deployments.
+                        </p>
+                    </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {deployedSystems.map((project, index) => (
+                        <motion.div
+                            key={index}
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            transition={{ delay: index * 0.1 }}
+                            viewport={{ once: true }}
+                            className="h-full"
+                        >
+                            <Card className="theme-card h-full group hover:bg-primary/5 transition-all duration-500 flex flex-col">
+                                <div className="p-6 md:p-8 flex flex-col h-full">
+                                    <div className="flex justify-between items-start mb-6">
+                                        <div className="flex gap-4">
+                                            <div className="bg-muted p-3 rounded-lg border border-border group-hover:border-primary/50 transition-colors relative">
+                                                <DeploymentWave />
+                                                <div className="relative z-10">{project.icon}</div>
+                                            </div>
+                                            <div className="flex flex-col">
+                                                <div className="text-[10px] font-bold text-primary uppercase tracking-widest mb-1">
+                                                    Deployed
+                                                </div>
+                                                <div className="text-xs font-mono text-muted-foreground/60">
+                                                    LIVE
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <h3 className="text-2xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
+                                        {project.title}
+                                    </h3>
+                                    <p className="text-sm text-primary mb-4">{project.category}</p>
+
+                                    <p className="text-muted-foreground mb-6 flex-grow min-h-[80px]">
+                                        {project.description}
+                                    </p>
+
+                                    <div className="flex flex-col gap-3 mb-6">
+                                        <a
+                                            href={project.liveLink}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors"
+                                        >
+                                            <ArrowUpRight className="w-4 h-4" />
+                                            <span>Live Demo</span>
+                                        </a>
+                                        <a
+                                            href={project.githubLink}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                                        >
+                                            <Share2 className="w-4 h-4" />
+                                            <span>GitHub Repository</span>
+                                        </a>
                                     </div>
 
                                     <div className="flex flex-wrap gap-2 mt-auto">
