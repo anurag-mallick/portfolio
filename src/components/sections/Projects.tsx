@@ -217,7 +217,7 @@ export const deployedSystems = [
         icon: <Cpu className="w-6 h-6 text-primary" />,
         description: "Complete IT Asset & Helpdesk Management Suite with intelligent ticketing, SLA management, automated email-to-ticket conversion, and premium glassmorphism UI.",
         tech: ["Next.js", "TypeScript", "Prisma", "Tailwind CSS"],
-        liveLink: "https://horizon-it.vercel.app",
+        liveLink: "https://it-itam-project-management.vercel.app/login",
         githubLink: "https://github.com/anurag-mallick/IT-Project-Management"
     },
     {
@@ -235,7 +235,7 @@ export const deployedSystems = [
         icon: <Database className="w-6 h-6 text-accent" />,
         description: "Self-hosted IT Asset & Helpdesk Management Suite with Docker deployment, Supabase integration, and comprehensive setup scripts for local and VM installations.",
         tech: ["Next.js", "Docker", "Supabase", "TypeScript"],
-        liveLink: "https://it-project-local.vercel.app",
+        liveLink: undefined,
         githubLink: "https://github.com/anurag-mallick/IT-Project-Management-Local"
     }
 ];
@@ -297,15 +297,17 @@ export function DeployedSystems() {
                                     </p>
 
                                     <div className="flex flex-col gap-3 mb-6">
-                                        <a
-                                            href={project.liveLink}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors"
-                                        >
-                                            <ArrowUpRight className="w-4 h-4" />
-                                            <span>Live Demo</span>
-                                        </a>
+                                        {project.liveLink && (
+                                            <a
+                                                href={project.liveLink}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors"
+                                            >
+                                                <ArrowUpRight className="w-4 h-4" />
+                                                <span>Live Demo</span>
+                                            </a>
+                                        )}
                                         <a
                                             href={project.githubLink}
                                             target="_blank"
