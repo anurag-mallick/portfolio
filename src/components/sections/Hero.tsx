@@ -336,12 +336,7 @@ export function Hero() {
                             variant="outline" 
                             size="lg" 
                             className="w-full sm:w-auto min-h-[44px] hover:scale-[1.03] hover:brightness-110 transition-all duration-150" 
-                            onClick={() => {
-                                const link = document.createElement('a');
-                                link.href = '/resume.pdf';
-                                link.download = 'resume.pdf';
-                                link.click();
-                            }}
+                            onClick={() => window.open('https://drive.google.com/file/d/1KmV8TzTGY9cDsypeo5xT9ZcNRcoKeg9F/view?usp=drive_link', '_blank', 'noopener,noreferrer')}
                         >
                             <FileText className="mr-2 h-4 w-4" />
                             View Resume
