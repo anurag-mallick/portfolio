@@ -212,7 +212,7 @@ export function Experience() {
             <div className="absolute inset-0 bg-primary/5 blur-[120px] rounded-full pointer-events-none opacity-20" />
 
             <div className="theme-container relative z-10">
-                <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 md:mb-16 gap-4">
+                        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 md:mb-16 gap-4">
                     <div>
                         <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tighter text-foreground uppercase">
                             Professional <span className="text-primary">Experience</span>

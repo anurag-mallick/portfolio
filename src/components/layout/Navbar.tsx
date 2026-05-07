@@ -119,10 +119,19 @@ export function Navbar() {
                             <FileText size={20} />
                         </button>
 
+                        {/* Resume Download Button - Mobile */}
+                        <button
+                            onClick={() => window.open('https://drive.google.com/file/d/1KmV8TzTGY9cDsypeo5xT9ZcNRcoKeg9F/view?usp=drive_link', '_blank', 'noopener,noreferrer')}
+                            className="md:hidden flex items-center justify-center min-w-[44px] min-h-[44px] p-2 text-muted-foreground hover:text-primary transition-colors rounded-full active:bg-white/5"
+                            aria-label="Download Resume"
+                        >
+                            <FileText size={20} />
+                        </button>
+
                         {/* Mobile Menu Trigger — 44px min touch target */}
                         <button
                             onClick={toggleMobileMenu}
-                            className="md:hidden flex items-center justify-center min-w-[44px] min-h-[44px] p-2 text-muted-foreground hover:text-primary transition-colors rounded-full active:bg-white/5"
+                            className="flex items-center justify-center min-w-[44px] min-h-[44px] p-2 text-muted-foreground hover:text-primary transition-colors rounded-full active:bg-white/5"
                             aria-label="Toggle Menu"
                             aria-expanded={isMobileMenuOpen}
                         >

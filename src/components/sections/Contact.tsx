@@ -186,7 +186,7 @@ export function Contact() {
 
       <div className="theme-container relative z-10">
         <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
             {/* Contact Info */}
             <div className="lg:col-span-5 space-y-12">
               <div>
