@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
-import { Send, Terminal, Mail, MapPin, MessageSquare, Activity } from "lucide-react";
+import { Send, Terminal, Mail, MapPin, MessageSquare, Activity, FileText } from "lucide-react";
 
 function SignalPulse() {
   return (
@@ -222,19 +222,38 @@ export function Contact() {
                   </div>
                 </div>
 
-                <div className="flex items-center gap-4 group">
-                  <div className="p-3 rounded-xl bg-primary/5 border border-border group-hover:border-primary/50 transition-all">
-                    <MapPin className="w-6 h-6 text-primary" />
-                  </div>
-                  <div>
-                    <p className="text-xs uppercase tracking-widest text-muted-foreground font-bold">
-                      Location
-                    </p>
-                    <p className="text-foreground font-medium">
-                      Bangalore, India
-                    </p>
-                  </div>
-                </div>
+                 <div className="flex items-center gap-4 group">
+                   <div className="p-3 rounded-xl bg-primary/5 border border-border group-hover:border-primary/50 transition-all">
+                     <MapPin className="w-6 h-6 text-primary" />
+                   </div>
+                   <div>
+                     <p className="text-xs uppercase tracking-widest text-muted-foreground font-bold">
+                       Location
+                     </p>
+                     <p className="text-foreground font-medium">
+                       Bangalore, India
+                     </p>
+                   </div>
+                 </div>
+
+                 <div className="flex items-center gap-4 group">
+                   <div className="p-3 rounded-xl bg-primary/5 border border-border group-hover:border-primary/50 transition-all">
+                     <FileText className="w-6 h-6 text-primary" />
+                   </div>
+                   <div>
+                     <p className="text-xs uppercase tracking-widest text-muted-foreground font-bold">
+                       Resume
+                     </p>
+                     <a
+                       href="https://drive.google.com/file/d/1KmV8TzTGY9cDsypeo5xT9ZcNRcoKeg9F/view?usp=drive_link"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       className="text-foreground font-medium hover:text-primary transition-colors"
+                     >
+                       Download PDF
+                     </a>
+                   </div>
+                 </div>
               </div>
             </div>
 

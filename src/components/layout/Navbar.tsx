@@ -4,7 +4,7 @@ import * as React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
+import { Menu, X, FileText } from "lucide-react";
 import { ThemeSwitcher } from "./ThemeSwitcher";
 
 const navItems = [
@@ -109,6 +109,15 @@ export function Navbar() {
 
                     <div className="flex items-center gap-1 sm:gap-2">
                         <ThemeSwitcher />
+
+                        {/* Resume Download Button - Desktop */}
+                        <button
+                            onClick={() => window.open('https://drive.google.com/file/d/1KmV8TzTGY9cDsypeo5xT9ZcNRcoKeg9F/view?usp=drive_link', '_blank', 'noopener,noreferrer')}
+                            className="hidden md:flex items-center justify-center min-w-[44px] min-h-[44px] p-2 text-muted-foreground hover:text-primary transition-colors rounded-full active:bg-white/5"
+                            aria-label="Download Resume"
+                        >
+                            <FileText size={20} />
+                        </button>
 
                         {/* Mobile Menu Trigger — 44px min touch target */}
                         <button
