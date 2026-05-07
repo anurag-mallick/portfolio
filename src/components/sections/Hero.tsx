@@ -279,8 +279,9 @@ export function Hero() {
                     className="flex flex-col space-y-6 sm:space-y-8"
                 >
                     <motion.div
-                        initial={reducedMotion ? false : { opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
                         transition={{ duration: 0.5 }}
                         className="inline-flex items-center rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-xs sm:text-sm font-medium text-primary backdrop-blur-sm self-center"
                     >
@@ -289,9 +290,10 @@ export function Hero() {
                     </motion.div>
 
                     <motion.h1
-                        initial={reducedMotion ? false : { opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: 0.2 }}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5, delay: 0.1 }}
                         className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl xl:text-9xl font-black tracking-tighter text-foreground leading-[0.85] uppercase"
                     >
                         ANURAG <br className="hidden sm:block" />
@@ -299,9 +301,10 @@ export function Hero() {
                     </motion.h1>
 
                     <motion.div
-                        initial={reducedMotion ? false : { opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: 0.4 }}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5, delay: 0.2 }}
                         className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 text-base sm:text-lg md:text-2xl font-medium tracking-tight"
                     >
                         <span className="px-3 sm:px-4 py-1 rounded-full border border-primary/20 bg-primary/10 text-primary text-sm sm:text-base font-bold uppercase tracking-widest">
@@ -314,18 +317,20 @@ export function Hero() {
                     </motion.div>
 
                     <motion.p
-                        initial={reducedMotion ? false : { opacity: 0, scale: 0.9 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.5, delay: 0.6 }}
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5, delay: 0.3 }}
                         className="max-w-[800px] mx-auto text-muted-foreground text-base sm:text-lg md:text-xl px-2 sm:px-4"
                     >
                         Built EOR platforms for 500+ clients · Cut payroll ops effort by 60%
                     </motion.p>
 
                     <motion.div
-                        initial={reducedMotion ? false : { opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: 0.8 }}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5, delay: 0.4 }}
                         className="flex flex-col sm:flex-row gap-3 md:gap-4 w-full sm:w-auto justify-center items-center"
                     >
                         <Button variant="neon" size="lg" className="group w-full sm:w-auto min-h-[44px] hover:scale-[1.03] hover:brightness-110 transition-all duration-150" onClick={() => scrollToSection("experience")}>
