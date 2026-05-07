@@ -2,7 +2,7 @@
 
 import React, { createContext, useContext, useEffect, useState } from "react";
 
-export type Theme = "futuristic" | "midnight" | "professional";
+export type Theme = "futuristic" | "midnight";
 
 interface ThemeContextType {
   theme: Theme;
@@ -12,14 +12,14 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-    const [theme, setThemeState] = useState<Theme>("professional");
+    const [theme, setThemeState] = useState<Theme>("midnight");
 
   useEffect(() => {
     // Sync state with what was set by the blocking script or localStorage
     const savedTheme = localStorage.getItem("portfolio-theme") as Theme;
-    const initialTheme: Theme = (savedTheme === "futuristic" || savedTheme === "midnight" || savedTheme === "professional")
+    const initialTheme: Theme = (savedTheme === "futuristic" || savedTheme === "midnight")
       ? savedTheme
-      : "professional";
+      : "midnight";
     
     setThemeState(initialTheme);
     document.documentElement.setAttribute("data-theme", initialTheme);
