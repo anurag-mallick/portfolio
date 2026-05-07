@@ -10,6 +10,7 @@ import { useTheme, Theme } from "@/components/ThemeContext";
 import { motion, AnimatePresence } from "framer-motion";
 
 const themeConfig = [
+    { id: "professional", name: "Professional", icon: User, color: "#10b981", desc: "Clean & Modern" },
     { id: "futuristic", name: "Futuristic", icon: Zap, color: "#00f3ff", desc: "Neon & Glow" },
     { id: "midnight", name: "Midnight", icon: Moon, color: "#8b5cf6", desc: "Deep & Vibrant" },
 ] as const;
