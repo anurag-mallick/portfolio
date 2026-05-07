@@ -8,13 +8,13 @@ import { Menu, X, FileText } from "lucide-react";
 import { ThemeSwitcher } from "./ThemeSwitcher";
 
 const navItems = [
-    { name: "Experience", href: "/#experience" },
-    { name: "Projects", href: "/#projects" },
-    { name: "Deployed", href: "/#deployed-systems" },
-    { name: "Skills", href: "/#skills" },
-    { name: "Impact", href: "/#impact" },
-    { name: "Articles", href: "/#articles" },
-    { name: "Connect", href: "/#contact" },
+    { name: "Experience", href: "#experience" },
+    { name: "Projects", href: "#projects" },
+    { name: "Deployed", href: "#deployed-systems" },
+    { name: "Skills", href: "#skills" },
+    { name: "Impact", href: "#impact" },
+    { name: "Articles", href: "#articles" },
+    { name: "Connect", href: "#contact" },
 ];
 
 export function Navbar() {
@@ -51,6 +51,21 @@ export function Navbar() {
 
     const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
+    // Smooth scroll function for navigation
+    const smoothScroll = (e: React.MouseEvent, href: string) => {
+        e.preventDefault();
+        const targetId = href.replace(/^.*#/, '');
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+            targetElement.scrollIntoView({
+                behavior: 'smooth'
+            });
+            // Update URL without page reload
+            window.history.pushState(null, '', href);
+        }
+        setActiveTab(navItems.find(item => item.href === href)?.name || "");
+    };
+
     return (
         <>
             <motion.nav
@@ -84,7 +99,9 @@ export function Navbar() {
                             <Link
                                 key={item.name}
                                 href={item.href}
-                                onClick={() => setActiveTab(item.name)}
+                                onClick={(e) => {
+                                    smoothScroll(e, item.href);
+                                }}
                                 className={cn(
                                     "relative flex items-center justify-center min-h-[44px] px-3 lg:px-4 py-2 text-sm font-medium transition-colors hover:text-primary group",
                                     activeTab === item.name ? "text-primary" : "text-muted-foreground"
@@ -160,8 +177,8 @@ export function Navbar() {
                                 >
                                     <Link
                                         href={item.href}
-                                        onClick={() => {
-                                            setActiveTab(item.name);
+                                        onClick={(e) => {
+                                            smoothScroll(e, item.href);
                                             setIsMobileMenuOpen(false);
                                         }}
                                         className={cn(
