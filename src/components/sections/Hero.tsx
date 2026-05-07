@@ -274,11 +274,13 @@ export function Hero() {
                 ))}
 
             <div className="theme-container theme-section relative z-10 px-4 sm:px-6">
-                <motion.div
-                    style={reducedMotion ? {} : { opacity, scale, y: yHero }}
-                    className="flex flex-col space-y-6 sm:space-y-8"
-                >
-                    <div className="inline-flex items-center rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-xs sm:text-sm font-medium text-primary backdrop-blur-sm self-center">
+                {/* Fallback for mobile browsers with animation issues */}
+                {typeof window !== 'undefined' && !reducedMotion ? (
+                    <motion.div
+                        style={{ opacity, scale, y: yHero }}
+                        className="flex flex-col space-y-6 sm:space-y-8"
+                    >
+                        <div className="inline-flex items-center rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-xs sm:text-sm font-medium text-primary backdrop-blur-sm self-center">
                         <span className="flex h-2 w-2 rounded-full bg-primary mr-2 animate-pulse" />
                         Open to Senior PM Roles
                     </div>
@@ -341,7 +343,60 @@ export function Hero() {
                             Connect
                         </Button>
                     </motion.div>
-                </motion.div>
+                    </motion.div>
+                ) : (
+                    // Fallback static content for mobile browsers with issues
+                    <div className="flex flex-col space-y-6 sm:space-y-8">
+                        <div className="inline-flex items-center rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-xs sm:text-sm font-medium text-primary backdrop-blur-sm self-center">
+                            <span className="flex h-2 w-2 rounded-full bg-primary mr-2 animate-pulse" />
+                            Open to Senior PM Roles
+                        </div>
+
+                        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl xl:text-9xl font-black tracking-tighter text-foreground leading-[0.85] uppercase">
+                            ANURAG <br className="hidden sm:block" />
+                            <span className="text-primary italic">MALLICK</span>
+                        </h1>
+
+                        <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 text-base sm:text-lg md:text-2xl font-medium tracking-tight">
+                            <span className="px-3 sm:px-4 py-1 rounded-full border border-primary/20 bg-primary/10 text-primary text-sm sm:text-base font-bold uppercase tracking-widest">
+                                AI Product Architect
+                            </span>
+                            <span className="hidden sm:block text-muted-foreground/30">•</span>
+                            <span className="px-3 sm:px-4 py-1 rounded-full border border-secondary/20 bg-secondary/5 text-secondary text-sm sm:text-base font-medium">
+                                Digital Transformation
+                            </span>
+                        </div>
+
+                        <p className="max-w-[800px] mx-auto text-muted-foreground text-base sm:text-lg md:text-xl px-2 sm:px-4">
+                            Built EOR platforms for 500+ clients · Cut payroll ops effort by 60%
+                        </p>
+
+                        <div className="flex flex-col sm:flex-row gap-3 md:gap-4 w-full sm:w-auto justify-center items-center">
+                            <Button variant="neon" size="lg" className="group w-full sm:w-auto min-h-[44px] hover:scale-[1.03] hover:brightness-110 transition-all duration-150" onClick={() => scrollToSection("experience")}>
+                                Enter Portfolio
+                                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                            </Button>
+                            <Button
+                                variant="outline"
+                                size="lg"
+                                className="w-full sm:w-auto min-h-[44px] hover:scale-[1.03] hover:brightness-110 transition-all duration-150"
+                                onClick={() => window.open('https://drive.google.com/file/d/1KmV8TzTGY9cDsypeo5xT9ZcNRcoKeg9F/view?usp=drive_link', '_blank', 'noopener,noreferrer')}
+                            >
+                                <FileText className="mr-2 h-4 w-4" />
+                                View Resume
+                            </Button>
+                            <Button
+                                variant="outline"
+                                size="lg"
+                                className="w-full sm:w-auto min-h-[44px] hover:scale-[1.03] hover:brightness-110 transition-all duration-150"
+                                onClick={() => window.open('https://www.linkedin.com/in/anuragmallick901/', '_blank', 'noopener,noreferrer')}
+                            >
+                                <Linkedin className="mr-2 h-4 w-4" />
+                                Connect
+                            </Button>
+                        </div>
+                    </div>
+                )}
             </div>
 
             <motion.div
