@@ -187,6 +187,8 @@ export interface Certification {
   date?: string;
   icon: LucideIcon;
   credentialId?: string;
+  /** URL to a logo image for the certification */
+  logoUrl?: string;
 }
 
 export const certifications: Certification[] = [
@@ -196,6 +198,7 @@ export const certifications: Certification[] = [
     date: "Jan 2026",
     icon: Repeat,
     credentialId: "170874133",
+    logoUrl: "https://example.com/skillsoft-logo.png",
   },
   {
     name: "Technical Product Management: Leadership & Stakeholder Management",
@@ -203,21 +206,25 @@ export const certifications: Certification[] = [
     date: "Dec 2025",
     icon: Presentation,
     credentialId: "170037637",
+    logoUrl: "https://example.com/skillsoft-logo.png",
   },
   {
     name: "Lean Six Sigma Green Belt",
     issuer: "Henry Harvin Education",
     icon: Gauge,
+    logoUrl: "https://example.com/henryharvin-logo.png",
   },
   {
     name: "Advanced Google Analytics",
     issuer: "Google Academy",
     icon: BarChart3,
+    logoUrl: "https://example.com/google-academy-logo.png",
   },
   {
     name: "Design Thinking",
     issuer: "Atyaasaa Online",
     date: "Mar 2023",
     icon: Lightbulb,
+    logoUrl: "https://example.com/atyaasaa-logo.png",
   },
 ];
