@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Card } from "@/components/ui/Card";
 import { Calendar, MapPin, ChevronRight, GraduationCap, Briefcase, BarChart3, Lightbulb, Zap, Target, Repeat, Milestone, Flag, TrendingUp, Presentation } from "lucide-react";
 import { cn } from "@/lib/utils";
-import React, { useState } from "react";
+import React, { useState, useCallback, useRef } from "react";
 import Image from "next/image";
 import { experiences, type ExperienceItem } from "@/lib/data/experience";
 import { ImpactChart } from "@/components/charts/ImpactChart";
@@ -140,33 +140,122 @@ function GlobalConnectivityMap() {
     );
 }
 
-// Logo Component with Fallback
+// Logo Component with Fallback - Optimized Version
 export function Logo({ src, domain, initial, color, className, bgClass = "bg-white" }: { src?: string, domain?: string, initial: string, color: string, className?: string, bgClass?: string }) {
     const [error, setError] = useState(false);
     const [loaded, setLoaded] = useState(false);
+    const [loading, setLoading] = useState(false);
     const imgRef = React.useRef<HTMLImageElement>(null);
+    const retryCountRef = useRef(0);
 
     // Prioritize direct src, then domain (Clearbit), then fallback
     const logoSource = src || (domain ? `https://logo.clearbit.com/${domain}` : null);
 
-    React.useEffect(() => {
-        if (imgRef.current?.complete) {
-            setLoaded(true);
+    // Cache for external logos to prevent repeated requests
+    const getCachedLogo = useCallback((url: string): string | null => {
+        if (!url.startsWith('http')) return url; // Local file
+
+        try {
+            const cached = localStorage.getItem(`logo_cache_${url}`);
+            if (cached) {
+                return JSON.parse(cached);
+            }
+        } catch (e) {
+            // Ignore cache errors
         }
-    }, [logoSource]);
+        return null;
+    }, []);
 
-    // Log errors for debugging
-    const handleError = () => {
-        console.warn(`Failed to load logo: ${logoSource}`);
-        setError(true);
-    };
+    const cacheLogo = useCallback((url: string, data: string) => {
+        if (!url.startsWith('http')) return;
+        try {
+            localStorage.setItem(`logo_cache_${url}`, JSON.stringify(data));
+        } catch (e) {
+            // Ignore cache errors
+        }
+    }, []);
 
-    const handleLoad = () => {
-        console.log(`Successfully loaded logo: ${logoSource}`);
-        setLoaded(true);
-    };
+    React.useEffect(() => {
+        if (!logoSource) return;
 
-    if (!logoSource || error) {
+        // Check cache first for external logos
+        const cached = getCachedLogo(logoSource);
+        if (cached) {
+            if (imgRef.current) {
+                imgRef.current.src = cached;
+            }
+            return;
+        }
+
+        // Reset state
+        setLoaded(false);
+        setError(false);
+        setLoading(true);
+        retryCountRef.current = 0;
+
+        const handleImgLoad = () => {
+            setLoaded(true);
+            setLoading(false);
+            if (logoSource.startsWith('http')) {
+                cacheLogo(logoSource, logoSource);
+            }
+        };
+
+        const handleImgError = () => {
+            // Retry logic for external logos
+            if (logoSource.startsWith('http') && retryCountRef.current < 2) {
+                retryCountRef.current++;
+                setTimeout(() => {
+                    if (imgRef.current) {
+                        imgRef.current.src = logoSource;
+                    }
+                }, 500 * retryCountRef.current); // Exponential backoff
+            } else {
+                setError(true);
+                setLoading(false);
+            }
+        };
+
+        if (imgRef.current) {
+            imgRef.current.onload = handleImgLoad;
+            imgRef.current.onerror = handleImgError;
+        }
+
+        return () => {
+            if (imgRef.current) {
+                imgRef.current.onload = null;
+                imgRef.current.onerror = null;
+            }
+        };
+    }, [logoSource, getCachedLogo, cacheLogo]);
+
+    // Timeout for external requests
+    React.useEffect(() => {
+        if (!logoSource || !logoSource.startsWith('http')) return;
+
+        const timeoutId = setTimeout(() => {
+            if (!loaded && !error) {
+                setError(true);
+                setLoading(false);
+            }
+        }, 5000); // 5 second timeout
+
+        return () => clearTimeout(timeoutId);
+    }, [logoSource, loaded, error]);
+
+    if (!logoSource) {
+        return (
+            <div className={cn(
+                "w-12 h-12 rounded-lg flex items-center justify-center text-white font-bold text-xl shadow-lg shrink-0",
+                color,
+                className
+            )} aria-label={`${initial} company logo`}>
+                {initial}
+            </div>
+        );
+    }
+
+    if (error) {
         return (
             <div className={cn(
                 "w-12 h-12 rounded-lg flex items-center justify-center text-white font-bold text-xl shadow-lg shrink-0",
@@ -180,11 +269,11 @@ export function Logo({ src, domain, initial, color, className, bgClass = "bg-whi
 
     return (
         <div className={cn("w-12 h-12 rounded-lg p-1 shadow-lg shrink-0 overflow-hidden flex items-center justify-center relative", bgClass, className)}>
-            {!loaded && (
+            {(!loaded && loading) || (!loaded && !error) ? (
                 <div className={cn("absolute inset-0 flex items-center justify-center text-white font-bold text-xl", color)}>
                     {initial}
                 </div>
-            )}
+            ) : null}
             <Image
                 ref={imgRef}
                 src={logoSource}
@@ -192,10 +281,10 @@ export function Logo({ src, domain, initial, color, className, bgClass = "bg-whi
                 width={48}
                 height={48}
                 className={cn("w-full h-full object-contain transition-opacity duration-300", loaded ? "opacity-100" : "opacity-0")}
-                onLoad={handleLoad}
-                onError={handleError}
-                unoptimized // Sourcing from external URLs and logos dir
                 priority={domain ? false : true} // Prioritize local logos
+                // Note: onLoad/onError handled via useEffect above
+                // unoptimized is needed for external domains
+                unoptimized={logoSource.startsWith('http')}
             />
         </div>
     );

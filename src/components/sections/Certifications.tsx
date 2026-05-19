@@ -60,7 +60,7 @@ export function Certifications() {
                 ) : cert.icon === Lightbulb ? (
                   <Lightbulb className="w-6 h-6 text-primary" />
                 ) : (
-                  <award className="w-6 h-6 text-primary" />
+                  <Award className="w-6 h-6 text-primary" />
                 )}
               </div>
               <div className="min-w-0">
