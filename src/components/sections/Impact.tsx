@@ -65,8 +65,7 @@ function Counter({ from, to, prefix = "", suffix = "" }: { from: number; to: num
     const springValue = useSpring(from, {
         mass: 1,
         stiffness: 50,
-        damping: 15, // Smoother transition
-        duration: 2000
+        damping: 15
     });
 
     useEffect(() => {
