@@ -6,6 +6,7 @@ import { Hero } from "@/components/sections/Hero";
 import { Experience } from "@/components/sections/Experience";
 import { Projects, DeployedSystems } from "@/components/sections/Projects";
 import { Skills } from "@/components/sections/Skills";
+import { Certifications } from "@/components/sections/Certifications";
 import { Impact } from "@/components/sections/Impact";
 import { Contact } from "@/components/sections/Contact";
 import { AppShowcase } from "@/components/sections/AppShowcase";
@@ -20,6 +21,7 @@ export function StandardLayout() {
             <Projects />
             <DeployedSystems />
             <Skills />
+            <Certifications />
             <Impact />
             <Contact />
             <div className="w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
