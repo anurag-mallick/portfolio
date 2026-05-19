@@ -1,48 +1,24 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import {
-  Inter,
-  Playfair_Display,
-  Outfit,
-  Fira_Code,
-  Syncopate,
-  IBM_Plex_Sans,
+  Syne,
+  DM_Sans,
 } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeContext";
 import { AIAssistant } from "@/components/ui/AIAssistant";
 
 // --- Font Configurations ---
-const inter = Inter({
-  variable: "--font-inter",
+const syne = Syne({
+  variable: "--font-syne",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
 });
 
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
+const dmSans = DM_Sans({
+  variable: "--font-dm-sans",
   subsets: ["latin"],
-});
-
-const outfit = Outfit({
-  variable: "--font-outfit",
-  subsets: ["latin"],
-});
-
-const firaCode = Fira_Code({
-  variable: "--font-fira-code",
-  subsets: ["latin"],
-});
-
-const syncopate = Syncopate({
-  weight: ["400", "700"],
-  variable: "--font-syncopate",
-  subsets: ["latin"],
-});
-
-const ibmPlex = IBM_Plex_Sans({
-  weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-ibm-plex",
-  subsets: ["latin"],
+  weight: ["400", "500", "700"],
 });
 
 export const metadata: Metadata = {
@@ -153,12 +129,7 @@ export default function RootLayout({
       </head>
       <body
         className={`
-          ${inter.variable} 
-          ${playfair.variable} 
-          ${outfit.variable} 
-          ${firaCode.variable} 
-          ${syncopate.variable} 
-          ${ibmPlex.variable}
+          ${dmSans.variable}
           antialiased transition-colors duration-500
         `}
       >

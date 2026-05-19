@@ -25,48 +25,48 @@
 
 /* --- FUTURISTIC AI (High Contrast / Neon) --- */
 [data-theme="futuristic"] {
-  --background: #05050a;
+  --background: #0a0f1e;
   --foreground: #ffffff;
-  --primary: #00f3ff;
-  --primary-foreground: #05050a;
-  --primary-rgb: 0, 243, 255;
-  --secondary: #7000ff;
-  --accent: #ff00c8;
-  --muted: #101020;
-  --muted-foreground: #a0a0c0;
-  --border: #1a1a3a;
-  --card: #0a0a20;
-  --glow-intensity: 1;
-  --nav-blur: 10px;
-  --font-main: var(--font-outfit), sans-serif;
+  --primary: #00d4ff;
+  --primary-foreground: #0a0f1e;
+  --primary-rgb: 0, 212, 255;
+  --secondary: #0066ff;
+  --accent: #00d4ff;
+  --muted: #152033;
+  --muted-foreground: #64748b;
+  --border: #1e293b;
+  --card: #0f172a;
+  --glow-intensity: 0.8;
+  --nav-blur: 16px;
+  --font-main: var(--font-syne), sans-serif;
   --layout-align: center;
   --container-max-width: 1000px;
   --section-spacing: 4rem;
-  --card-radius: 24px;
-  --glass-opacity: 0.1;
+  --card-radius: 16px;
+  --glass-opacity: 0.05;
 }
 
 /* --- MIDNIGHT NEBULA (Vibrant & Deep) --- */
 [data-theme="midnight"] {
-    --background: #0f172a; /* Slate 900 */
+    --background: #020617; /* Darker slate */
     --foreground: #f8fafc; /* Slate 50 */
-    --primary: #f59e0b; /* Amber 500 */
+    --primary: #10b981; /* Emerald 500 - terminal green */
     --primary-foreground: #020617;
-    --primary-rgb: 245, 158, 11;
-    --secondary: #fbbf24; /* Amber 400 */
-    --accent: #8b5cf6; /* Violet 500 */
+    --primary-rgb: 16, 185, 129;
+    --secondary: #059669; /* Emerald 600 */
+    --accent: #10b981; /* Emerald 500 */
     --muted: #1e293b; /* Slate 800 */
-    --muted-foreground: #94a3b8; /* Slate 400 */
-    --border: rgba(245, 158, 11, 0.2);
+    --muted-foreground: #64748b; /* Slate 400 */
+    --border: #334155;
     --card: rgba(30, 41, 59, 0.7);
-    --glow-intensity: 0.8;
+    --glow-intensity: 0.6;
     --nav-blur: 20px;
-    --font-main: var(--font-ibm-plex), sans-serif;
+    --font-main: var(--font-syne), sans-serif;
     --layout-align: center;
     --container-max-width: 1200px;
     --section-spacing: 5rem;
-    --card-radius: 20px;
-    --glass-opacity: 0.1;
+    --card-radius: 16px;
+    --glass-opacity: 0.08;
 }
 
 @theme inline {
@@ -80,6 +80,9 @@
   --color-primary-foreground: var(--primary-foreground);
   --color-card: var(--card);
   --color-border: var(--border);
+  --color-surface: var(--card);
+  --color-text-primary: var(--foreground);
+  --color-text-muted: var(--muted-foreground);
 
   --radius-sm: calc(var(--card-radius) - 2px);
   --radius-md: var(--card-radius);
@@ -111,6 +114,10 @@
         calc(5px * var(--glow-intensity)) var(--primary);
     }
   }
+}
+
+.font-syne {
+  font-family: var(--font-syne);
 }
 
 html {
