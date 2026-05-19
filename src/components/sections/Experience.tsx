@@ -172,7 +172,7 @@ export function Logo({ src, domain, initial, color, className, bgClass = "bg-whi
                 "w-12 h-12 rounded-lg flex items-center justify-center text-white font-bold text-xl shadow-lg shrink-0",
                 color,
                 className
-            )}>
+            )} aria-label={`${initial} company logo`}>
                 {initial}
             </div>
         );
@@ -195,6 +195,7 @@ export function Logo({ src, domain, initial, color, className, bgClass = "bg-whi
                 onLoad={handleLoad}
                 onError={handleError}
                 unoptimized // Sourcing from external URLs and logos dir
+                priority={domain ? false : true} // Prioritize local logos
             />
         </div>
     );
