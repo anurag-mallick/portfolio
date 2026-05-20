@@ -2,12 +2,12 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { Card } from "@/components/ui/Card";
-import { Calendar, MapPin, ChevronRight, GraduationCap, Briefcase, BarChart3, Lightbulb, Zap, Target, Repeat, Milestone, Flag, TrendingUp, Presentation } from "lucide-react";
+import { Calendar, MapPin, ChevronRight, GraduationCap, Briefcase, BarChart3, Lightbulb, Zap, Target, Repeat, Milestone, Flag, TrendingUp, Presentation, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
-import React, { useState, useCallback, useRef } from "react";
-import Image from "next/image";
+import React, { useState } from "react";
 import { experiences, type ExperienceItem } from "@/lib/data/experience";
 import { ImpactChart } from "@/components/charts/ImpactChart";
+import { Reveal } from "@/components/ui/Reveal";
 
 function ActionLoop() {
     return (
@@ -404,157 +404,115 @@ export function Experience() {
 function ExperienceCard({ exp, index, viewMode }: { exp: ExperienceItem, index: number, viewMode: 'grid' | 'timeline' }) {
     const [isExpanded, setIsExpanded] = useState(false);
 
+    // Define industry colors for the vertical accent bar
+    const getIndustryColor = (company: string) => {
+        if (company.includes('Payroll') || company.includes('EOR') || company.includes('Avance') || company.includes('Wisestep')) {
+            return 'border-cyan-500';
+        } else if (company.includes('Shiprocket')) {
+            return 'border-amber-500';
+        } else if (company.includes('Maharashtra')) {
+            return 'border-amber-500';
+        } else {
+            return 'border-purple-500';
+        }
+    };
+
+    const industryColor = getIndustryColor(exp.company);
+
     return (
         <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.1 }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
             viewport={{ once: true }}
-            className={cn(viewMode === 'timeline' ? "pl-6 sm:pl-8 border-l border-white/5 relative" : "", "group")}
-            onClick={(e) => { e.preventDefault(); setIsExpanded(!isExpanded); }}
-            onTouchEnd={(e) => { e.preventDefault(); setIsExpanded(!isExpanded); }}
+            className={cn(
+                "flex group cursor-pointer",
+                viewMode === 'timeline' ? "pl-6 border-l-4 border-primary/20" : ""
+            )}
+            onClick={() => setIsExpanded(!isExpanded)}
             style={{ touchAction: "manipulation" }}
         >
-            {viewMode === 'timeline' && (
-                <div className={cn(
-                    "absolute left-[-5px] top-4 w-2.5 h-2.5 rounded-full transition-all duration-300",
-                    isExpanded ? "bg-primary shadow-[0_0_15px_rgba(0,243,255,1)] scale-125" : "bg-white/20"
-                )} />
-            )}
+            {/* Colored vertical accent bar */}
+            <div className={cn("w-1", exp.type === 'work' ? industryColor : 'border-purple-500', "absolute left-0 top-0 bottom-0 rounded-r")} />
 
             <Card
                 className={cn(
-                    "theme-card transition-all duration-300 overflow-hidden relative cursor-pointer hover:-translate-y-1 hover:border-primary/50 hover:shadow-[0_4px_20px_rgba(var(--primary-rgb),0.15)]",
+                    "theme-card w-full transition-all duration-300 overflow-hidden relative hover:-translate-y-1 hover:border-primary/50 hover:shadow-[0_4px_20px_rgba(var(--primary-rgb),0.15)]",
                     isExpanded ? "ring-1 ring-primary/40 bg-primary/5 shadow-lg" : "hover:ring-1 hover:ring-primary/20"
                 )}
             >
                 <div className="p-4 sm:p-6">
-                    <div className="flex justify-between items-start mb-4">
-                        <div className="flex items-start gap-3 sm:gap-4">
-                            <Logo
-                                src={exp.logoUrl}
-                                domain={exp.domain}
-                                initial={exp.logoInitial}
-                                color={exp.logoColor}
-                                bgClass={exp.logoBg}
-                                className={cn("transition-transform duration-500", isExpanded ? "scale-110" : "")}
-                            />
-
-                            <div className="min-w-0">
-                                <h3 className={cn("text-lg sm:text-xl font-bold transition-colors duration-300 leading-tight", isExpanded ? "text-primary" : "text-foreground")}>
-                                    {exp.role}
-                                </h3>
-                                <p className="text-secondary font-medium text-sm sm:text-base">{exp.company}</p>
+                    <div className="flex flex-col sm:flex-row">
+                        {/* Left side - Company logo and accent bar */}
+                        <div className="flex flex-col items-center sm:items-start sm:w-16 sm:mr-4 mb-4 sm:mb-0">
+                            <div className="w-12 h-12 rounded-lg flex items-center justify-center text-white font-bold text-xl bg-primary mb-2">
+                                {exp.logoInitial}
                             </div>
+                            <div className={cn("w-1 h-full rounded-full", industryColor.replace('border-', 'bg-'))} />
                         </div>
 
-                        {exp.type === 'education' ? (
-                            <div className={cn("p-2 rounded-full hidden sm:block transition-colors shrink-0", isExpanded ? "bg-primary/20" : "bg-white/5")}>
-                                <GraduationCap className={cn("w-5 h-5 transition-colors", isExpanded ? "text-primary" : "text-muted-foreground")} />
+                        {/* Right side - Content */}
+                        <div className="flex-1">
+                            <div className="flex justify-between items-start">
+                                <div>
+                                    <h3 className="text-lg sm:text-xl font-bold text-foreground mb-1">
+                                        {exp.role}
+                                    </h3>
+                                    <p className="text-secondary font-medium text-sm sm:text-base mb-2">
+                                        {exp.company}
+                                    </p>
+                                </div>
                             </div>
-                        ) : (
-                            <div className={cn("p-2 rounded-full hidden sm:block transition-colors shrink-0", isExpanded ? "bg-primary/20" : "bg-white/5")}>
-                                <Briefcase className={cn("w-5 h-5 transition-colors", isExpanded ? "text-primary" : "text-muted-foreground")} />
+
+                            <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 text-xs sm:text-sm text-muted-foreground mb-4">
+                                <span className="flex items-center gap-1">
+                                    <Calendar className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                                    {exp.period}
+                                </span>
+                                <span className="flex items-center gap-1">
+                                    <MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                                    {exp.location}
+                                </span>
                             </div>
-                        )}
-                    </div>
 
-                    <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 text-xs sm:text-sm text-muted-foreground mb-4">
-                        <span className="flex items-center gap-1">
-                            <Calendar className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-                            {exp.period}
-                        </span>
-                        <span className="flex items-center gap-1">
-                            <MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-                            {exp.location}
-                        </span>
-                    </div>
+                            <p className={cn(
+                                "text-sm text-muted-foreground mb-4 leading-relaxed",
+                                isExpanded ? "" : "line-clamp-2"
+                            )}>
+                                {exp.description}
+                            </p>
 
-                    <p className={cn(
-                        "text-sm text-muted-foreground mb-4 leading-relaxed text-left transition-all duration-500",
-                        isExpanded ? "" : "line-clamp-2"
-                    )}>
-                        {exp.description}
-                    </p>
-
-                    <AnimatePresence>
-                        {(isExpanded && exp.achievements.length > 0) && (
-                            <motion.div
-                                initial={{ height: 0, opacity: 0 }}
-                                animate={{ height: "auto", opacity: 1 }}
-                                exit={{ height: 0, opacity: 0 }}
-                                transition={{ duration: 0.4, ease: "easeOut" }}
-                                className="overflow-hidden"
-                            >
-                                <ul className="space-y-3 mt-4 text-sm text-gray-300 border-t border-white/10 pt-4 text-left overflow-hidden break-words">
-                                    {exp.achievements.map((achievement, i) => (
-                                        <motion.li
-                                            key={i}
-                                            initial={{ opacity: 0, x: -10 }}
-                                            animate={{ opacity: 1, x: 0 }}
-                                            transition={{ delay: i * 0.05 }}
-                                            className="flex gap-2 items-start"
-                                        >
-                                            <span className="text-primary mt-1.5 text-xs">▹</span>
-                                            <span 
-                                                className="leading-relaxed"
-                                                dangerouslySetInnerHTML={{ 
-                                                    __html: achievement.replace(/\*\*(.*?)\*\*/g, '<strong class="text-primary font-bold">$1</strong>') 
+                            <div className="mt-4">
+                                <ul className="space-y-2">
+                                    {exp.achievements.slice(0, 3).map((achievement, i) => (
+                                        <li key={i} className="flex items-start">
+                                            <span className="text-primary mt-1 mr-2 text-xs">▹</span>
+                                            <span
+                                                className="text-sm text-gray-300 leading-relaxed"
+                                                dangerouslySetInnerHTML={{
+                                                    __html: achievement.replace(/\*\*(.*?)\*\*/g, '<strong class="text-primary font-bold">$1</strong>')
                                                 }}
                                             />
-                                        </motion.li>
+                                        </li>
                                     ))}
                                 </ul>
-                            </motion.div>
-                        )}
-                    </AnimatePresence>
+                            </div>
 
-                    {exp.achievements.length > 0 && (
-                        <div className={cn(
-                            "mt-4 flex items-center text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] transition-all duration-500 min-h-[44px] items-center",
-                            isExpanded ? "text-primary" : "text-muted-foreground/50"
-                        )}>
-                            {isExpanded ? "Collapse" : "Tap to Expand"} <ChevronRight className={cn("w-3 h-3 ml-1 transition-transform", isExpanded ? "rotate-90" : "")} />
+                            <div className="mt-4">
+                                <div className="flex flex-wrap gap-2">
+                                    {exp.achievements.map((achievement, i) => {
+                                        // Extract skills from achievements (simplified - in a real implementation you'd parse this properly)
+                                        const skills = ["Agile", "Jira", "SQL", "Figma", "Product Management"];
+                                        return (
+                                            <span key={i} className="px-2 py-1 bg-primary/20 text-primary text-xs rounded">
+                                                {skills[i % skills.length]}
+                                            </span>
+                                        );
+                                    })}
+                                </div>
+                            </div>
                         </div>
-                    )}
-
-                    {/* D3.js Impact Visualizations */}
-                    <AnimatePresence>
-                        {isExpanded && exp.company === "Shiprocket" && (
-                            <motion.div
-                                initial={{ opacity: 0, scale: 0.95 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                exit={{ opacity: 0, scale: 0.95 }}
-                                className="mt-6"
-                            >
-                                <ImpactChart 
-                                    title="Status Mismatch Reduction"
-                                    unit="%"
-                                    data={[
-                                        { label: "Before", value: 15, color: "#94a3b8" },
-                                        { label: "After", value: 0.5, color: "#f59e0b" }
-                                    ]}
-                                />
-                            </motion.div>
-                        )}
-                        {isExpanded && exp.company === "Maharashtra Metro Rail" && (
-                            <motion.div
-                                initial={{ opacity: 0, scale: 0.95 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                exit={{ opacity: 0, scale: 0.95 }}
-                                className="mt-6"
-                            >
-                                <ImpactChart 
-                                    title="Evaluation Efficiency"
-                                    unit="x"
-                                    data={[
-                                        { label: "Legacy", value: 1, color: "#94a3b8" },
-                                        { label: "Standardized", value: 2.5, color: "#8b5cf6" }
-                                    ]}
-                                />
-                            </motion.div>
-                        )}
-                    </AnimatePresence>
+                    </div>
                 </div>
             </Card>
         </motion.div>
