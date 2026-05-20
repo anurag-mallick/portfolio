@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { Menu, X, FileText } from "lucide-react";
@@ -23,9 +23,16 @@ export function Navbar() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
     const scrollYRef = React.useRef(0);
 
+    const { scrollYProgress } = useScroll();
+    const scaleX = useSpring(scrollYProgress, {
+        stiffness: 100,
+        damping: 30,
+        restDelta: 0.001
+    });
+
     React.useEffect(() => {
         const handleScroll = () => {
-            setIsScrolled(window.scrollY > 50);
+            setIsScrolled(window.scrollY > 20);
         };
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
@@ -64,14 +71,23 @@ export function Navbar() {
             window.history.pushState(null, '', href);
         }
         setActiveTab(navItems.find(item => item.href === href)?.name || "");
+        if (typeof window !== 'undefined' && window.innerWidth < 768) {
+            setIsMobileMenuOpen(false);
+        }
     };
 
     return (
         <>
+            {/* Reading Progress Bar */}
+            <motion.div
+                className="fixed top-0 left-0 right-0 h-1 bg-primary origin-left z-[60]"
+                style={{ scaleX }}
+            />
+
             <motion.nav
                 className={cn(
-                    "fixed top-0 left-0 right-0 z-50 flex justify-center pt-4 sm:pt-6 transition-all duration-300 pointer-events-none px-2 sm:px-4",
-                    isScrolled ? "pt-2 sm:pt-4" : "pt-4 sm:pt-6"
+                    "fixed top-0 left-0 right-0 z-50 flex justify-center transition-all duration-500 px-2 sm:px-4",
+                    isScrolled ? "pt-2" : "pt-4"
                 )}
                 initial={{ y: -100, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
@@ -79,10 +95,10 @@ export function Navbar() {
             >
                 <div
                     className={cn(
-                        "theme-container flex items-center justify-between rounded-full border transition-all duration-300 pointer-events-auto w-full",
-                        isScrolled || isMobileMenuOpen
-                            ? "glass border-border shadow-lg"
-                            : "border-transparent"
+                        "theme-container flex items-center justify-between rounded-full border transition-all duration-500 pointer-events-auto w-full",
+                        isScrolled
+                            ? "glass border-primary/20 shadow-2xl backdrop-blur-md py-1"
+                            : "border-transparent py-2"
                     )}
                 >
                     <Link
@@ -92,7 +108,7 @@ export function Navbar() {
                         ANURAG MALLICK
                     </Link>
 
-                    <div className="h-6 w-px bg-white/10 mx-1 sm:mx-2 hidden sm:block" />
+                    <div className="h-6 w-px bg-white/10 mx-1 sm:mx-2 hidden md:block" />
 
                     <div className="hidden md:flex items-center gap-1">
                         {navItems.map((item) => (
@@ -114,7 +130,6 @@ export function Navbar() {
                                         transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                                     />
                                 ) : (
-                                    /* Hover Underline Sweep */
                                     <span className="absolute bottom-1 left-3 right-3 h-[2px] rounded-full bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left" />
                                 )}
                                 {item.name}
@@ -145,14 +160,24 @@ export function Navbar() {
                             <FileText size={20} />
                         </button>
 
-                        {/* Mobile Menu Trigger — 44px min touch target */}
+                        {/* Mobile Menu Trigger */}
                         <button
                             onClick={toggleMobileMenu}
                             className="flex items-center justify-center min-w-[44px] min-h-[44px] p-2 text-muted-foreground hover:text-primary transition-colors rounded-full active:bg-white/5"
                             aria-label="Toggle Menu"
                             aria-expanded={isMobileMenuOpen}
                         >
-                            {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+                            <AnimatePresence mode="wait">
+                                <motion.div
+                                    key={isMobileMenuOpen ? "close" : "open"}
+                                    initial={{ opacity: 0, rotate: -90 }}
+                                    animate={{ opacity: 1, rotate: 0 }}
+                                    exit={{ opacity: 0, rotate: 90 }}
+                                    transition={{ duration: 0.2 }}
+                                >
+                                    {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+                                </motion.div>
+                            </AnimatePresence>
                         </button>
                     </div>
                 </div>
@@ -162,10 +187,11 @@ export function Navbar() {
             <AnimatePresence>
                 {isMobileMenuOpen && (
                     <motion.div
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -20 }}
-                        className="fixed inset-0 z-40 bg-black/95 backdrop-blur-xl md:hidden flex flex-col items-center justify-center"
+                        initial={{ opacity: 0, x: "100%" }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: "100%" }}
+                        transition={{ type: "spring", damping: 25, stiffness: 200 }}
+                        className="fixed inset-0 z-40 bg-background/95 backdrop-blur-2xl md:hidden flex flex-col items-center justify-center"
                     >
                         <div className="flex flex-col items-center gap-6 sm:gap-8">
                             {navItems.map((item, index) => (
@@ -182,7 +208,7 @@ export function Navbar() {
                                             setIsMobileMenuOpen(false);
                                         }}
                                         className={cn(
-                                            "text-2xl sm:text-3xl font-bold tracking-tighter transition-colors min-h-[44px] flex items-center",
+                                            "text-3xl sm:text-4xl font-bold tracking-tighter transition-colors min-h-[44px] flex items-center",
                                             activeTab === item.name ? "text-primary" : "text-white/60 hover:text-primary active:text-primary"
                                         )}
                                     >

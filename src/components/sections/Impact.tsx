@@ -1,8 +1,10 @@
 "use client";
 
 import { motion, useInView, useSpring, useTransform } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react
+";
 import { cn } from "@/lib/utils";
+import { Reveal } from "@/components/ui/Reveal";
 
 export const metrics = [
     {
@@ -91,30 +93,22 @@ function Counter({ from, to, prefix = "", suffix = "" }: { from: number; to: num
 
 export function Impact() {
     return (
-        <section id="impact" className="py-24 bg-black relative border-y border-white/10">
-            <div className="container mx-auto px-4 md:px-6 text-center">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
-                    className="text-center mb-16"
-                >
-                    <h2 className="text-3xl md:text-5xl font-bold tracking-tighter text-foreground mb-4">
-                        Measurable <span className="text-primary">Impact</span>
-                    </h2>
-                    <p className="text-muted-foreground">Driving efficiency and growth through systems.</p>
-                </motion.div>
+        <>
+            <div className="w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent mb-16" />
+            <section id="impact" className="py-24 bg-black relative border-y border-white/10">
+                <div className="container mx-auto px-4 md:px-6 text-center">
+                    <Reveal>
+                        <div className="text-center mb-16">
+                        <h2 className="text-3xl md:text-5xl font-bold tracking-tighter text-foreground mb-4">
+                            Measurable <span className="text-primary">Impact</span>
+                        </h2>
+                        <p className="text-muted-foreground">Driving efficiency and growth through systems.</p>
+                    </div>
+                </Reveal>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
                     {metrics.map((metric, index) => (
-                        <motion.div
-                            key={index}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ delay: index * 0.1 }}
-                            viewport={{ once: true }}
-                        >
-                            {/* Replaced original div with a Card-like structure */}
+                        <Reveal key={index} delay={index * 0.1}>
                             <div className="theme-card p-6 rounded-2xl bg-card border border-border hover:border-primary/50 transition-colors w-full flex flex-col items-center text-center">
                                 <div className="mb-4">
                                     <Counter from={0} to={metric.value} prefix={metric.prefix} suffix={metric.suffix} />
@@ -123,10 +117,11 @@ export function Impact() {
                                 <p className="text-sm text-muted-foreground">{metric.description}</p>
                                 <Sparkline delay={index * 0.2} />
                             </div>
-                        </motion.div>
+                        </Reveal>
                     ))}
                 </div>
-            </div>
-        </section>
+            </section>
+            <div className="w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent mt-16" />
+        </>
     );
 }
