@@ -31,7 +31,7 @@ A premium, high-performance portfolio website built with **Next.js 16**, **Tailw
 
 ### 🎨 Theming Engine
 
-- **3 premium themes**: Terminal, Futuristic & Midnight — with real-time CSS variable switching
+- **2 premium themes**: Futuristic & Midnight — with real-time CSS variable switching
 - Smooth theme transitions with `localStorage` persistence
 
 ### 🔒 Security Hardened

@@ -489,7 +489,7 @@ function ExperienceCard({ exp, index, viewMode }: { exp: ExperienceItem, index: 
                                         <li key={i} className="flex items-start">
                                             <span className="text-primary mt-1 mr-2 text-xs">▹</span>
                                             <span
-                                                className="text-sm text-gray-300 leading-relaxed"
+                                                className="text-sm text-muted-foreground leading-relaxed"
                                                 dangerouslySetInnerHTML={{
                                                     __html: achievement.replace(/\*\*(.*?)\*\*/g, '<strong class="text-primary font-bold">$1</strong>')
                                                 }}

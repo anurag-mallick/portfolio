@@ -16,7 +16,6 @@
   --glow-intensity: 0.4;
   --nav-blur: 12px;
   --font-main: var(--font-fira-code), monospace;
-  --layout-align: center;
   --container-max-width: 1000px;
   --section-spacing: 4rem;
   --card-radius: 4px;
@@ -39,7 +38,6 @@
   --glow-intensity: 0.8;
   --nav-blur: 16px;
   --font-main: var(--font-syne), sans-serif;
-  --layout-align: center;
   --container-max-width: 1000px;
   --section-spacing: 4rem;
   --card-radius: 16px;
@@ -62,7 +60,6 @@
     --glow-intensity: 0.6;
     --nav-blur: 20px;
     --font-main: var(--font-syne), sans-serif;
-    --layout-align: center;
     --container-max-width: 1200px;
     --section-spacing: 5rem;
     --card-radius: 16px;
@@ -171,7 +168,6 @@ body.scroll-locked {
   max-width: var(--container-max-width);
   margin: 0 auto;
   padding: 0 1rem;
-  text-align: var(--layout-align);
 }
 
 @media (min-width: 640px) {

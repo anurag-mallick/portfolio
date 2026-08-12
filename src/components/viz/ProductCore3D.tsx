@@ -122,7 +122,14 @@ const Points = () => {
 export function ProductCore3D() {
     return (
         <div className="w-full h-[500px] relative cursor-none group">
-            <Canvas dpr={[1, 2]}>
+            <Canvas
+                dpr={[1, 2]}
+                onCreated={({ gl }) => {
+                    gl.domElement.addEventListener("webglcontextlost", (e) => {
+                        e.preventDefault();
+                    });
+                }}
+            >
                 <PerspectiveCamera makeDefault position={[0, 0, 6]} />
                 <ambientLight intensity={0.2} />
                 <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={1} color="#f59e0b" />

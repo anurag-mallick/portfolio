@@ -2,6 +2,7 @@
 
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/Button";
+import { ErrorBoundary } from "@/components/ui/ErrorBoundary";
 import { ArrowRight, FileText, Linkedin } from "lucide-react";
 import React, { useRef, useState, useEffect, lazy, Suspense } from "react";
 import { useIsMobile } from "@/lib/hooks/useMediaQuery";
@@ -254,12 +255,17 @@ function AIIntelligenceHub() {
 //  Particle (Floating dots)
 // ======================
 function Particle({ index }: { index: number }) {
+    // Deterministic pseudo-randomness derived from index — keeps SSR and
+    // client renders identical and avoids a hydration mismatch.
+    const size = ((index * 29) % 8) + 4;
+    const duration = ((index * 17) % 4) + 6;
+
     return (
         <motion.div
             className="absolute bg-primary/20 rounded-full blur-sm"
             style={{
-                width: Math.random() * 8 + 4,
-                height: Math.random() * 8 + 4,
+                width: size,
+                height: size,
                 top: `${(index * 37) % 100}%`,
                 left: `${(index * 53) % 100}%`,
             }}
@@ -269,7 +275,7 @@ function Particle({ index }: { index: number }) {
                 opacity: [0.2, 0.6, 0.2],
             }}
             transition={{
-                duration: Math.random() * 4 + 6,
+                duration,
                 repeat: Infinity,
                 ease: "easeInOut",
                 delay: index * 0.3,
@@ -346,9 +352,11 @@ export function Hero() {
                     }}
                     className="absolute inset-0 z-0 flex items-center justify-center opacity-30 pointer-events-none"
                 >
-                    <Suspense fallback={null}>
-                        <ProductCore3D />
-                    </Suspense>
+                    <ErrorBoundary>
+                        <Suspense fallback={null}>
+                            <ProductCore3D />
+                        </Suspense>
+                    </ErrorBoundary>
                 </motion.div>
             )}
 
