@@ -1,8 +1,7 @@
 "use client";
 
 import { motion, useInView, useSpring, useTransform } from "framer-motion";
-import { useEffect, useRef } from "react
-";
+import { useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 import { Reveal } from "@/components/ui/Reveal";
 
@@ -119,6 +118,7 @@ export function Impact() {
                             </div>
                         </Reveal>
                     ))}
+                </div>
                 </div>
             </section>
             <div className="w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent mt-16" />

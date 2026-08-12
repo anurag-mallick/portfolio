@@ -1,10 +1,11 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import { Card } from "@/components/ui/Card";
 import { Calendar, MapPin, ChevronRight, GraduationCap, Briefcase, BarChart3, Lightbulb, Zap, Target, Repeat, Milestone, Flag, TrendingUp, Presentation, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { experiences, type ExperienceItem } from "@/lib/data/experience";
 import { ImpactChart } from "@/components/charts/ImpactChart";
 import { Reveal } from "@/components/ui/Reveal";
@@ -59,7 +60,7 @@ function ActionLoop() {
 function StrategicRoadmap() {
     return (
         <div className="w-full h-12 relative items-center mb-8 md:mb-12 hidden md:flex">
-            <div className="absolute w-full h-px bg-white/10" />
+            <div className="absolute w-full h-px bg-border" />
             <motion.div 
                 initial={{ width: 0 }}
                 whileInView={{ width: '80%' }}
@@ -146,7 +147,7 @@ export function Logo({ src, domain, initial, color, className, bgClass = "bg-whi
     const [loaded, setLoaded] = useState(false);
     const [loading, setLoading] = useState(false);
     const imgRef = React.useRef<HTMLImageElement>(null);
-    const retryCountRef = useRef(0);
+    const retryCountRef = React.useRef(0);
 
     // Prioritize direct src, then domain (Clearbit), then fallback
     const logoSource = src || (domain ? `https://logo.clearbit.com/${domain}` : null);
@@ -312,12 +313,12 @@ export function Experience() {
                         </p>
                     </div>
 
-                    <div className="flex items-center gap-2 bg-white/5 rounded-full p-1 border border-white/10 backdrop-blur-sm">
+                    <div className="flex items-center gap-2 bg-muted/50 rounded-full p-1 border border-border backdrop-blur-sm">
                         <button
                             onClick={() => setViewMode('timeline')}
                             className={cn(
                                 "px-3 sm:px-4 py-2 rounded-full text-sm font-medium transition-all min-h-[44px]",
-                                viewMode === 'timeline' ? "bg-primary/20 text-primary shadow-[0_0_10px_rgba(0,243,255,0.2)]" : "text-muted-foreground hover:text-white"
+                                viewMode === 'timeline' ? "bg-primary/20 text-primary shadow-[0_0_10px_rgba(0,243,255,0.2)]" : "text-muted-foreground hover:text-foreground"
                             )}
                         >
                             Timeline
@@ -326,7 +327,7 @@ export function Experience() {
                             onClick={() => setViewMode('grid')}
                             className={cn(
                                 "px-3 sm:px-4 py-2 rounded-full text-sm font-medium transition-all min-h-[44px]",
-                                viewMode === 'grid' ? "bg-primary/20 text-primary shadow-[0_0_10px_rgba(0,243,255,0.2)]" : "text-muted-foreground hover:text-white"
+                                viewMode === 'grid' ? "bg-primary/20 text-primary shadow-[0_0_10px_rgba(0,243,255,0.2)]" : "text-muted-foreground hover:text-foreground"
                             )}
                         >
                             Grid

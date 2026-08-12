@@ -60,7 +60,7 @@ const articles = [
 
 export function Articles() {
     return (
-        <section id="articles" className="py-24 bg-black relative overflow-hidden">
+        <section id="articles" className="py-24 bg-background relative overflow-hidden">
             <ReadingProgress />
             {/* Background elements */}
             <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-[120px] -mr-48 -mt-48" />
@@ -78,7 +78,7 @@ export function Articles() {
                         <BookOpen className="w-4 h-4 mr-2" />
                         Thought Leadership
                     </div>
-                    <h2 className="text-3xl md:text-5xl font-bold tracking-tighter mb-4 text-white">
+                    <h2 className="text-3xl md:text-5xl font-bold tracking-tighter mb-4 text-foreground">
                         STRATEGIC <span className="text-primary">INSIGHTS</span>
                     </h2>
                     <p className="text-muted-foreground max-w-[800px] mx-auto text-lg">
@@ -95,9 +95,9 @@ export function Articles() {
                             whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1 }}
-                            className="group relative bg-zinc-900/40 border border-white/10 rounded-3xl p-8 hover:bg-zinc-900/60 transition-all duration-500 hover:border-primary/30 h-full flex flex-col"
+                            className="group relative bg-card/60 border border-border rounded-3xl p-8 hover:bg-card/90 transition-all duration-500 hover:border-primary/30 h-full flex flex-col"
                         >
-                            <div className="absolute top-8 right-8 text-white/5 group-hover:text-primary/10 transition-colors">
+                            <div className="absolute top-8 right-8 text-foreground/5 group-hover:text-primary/10 transition-colors">
                                 <Quote className="w-16 h-16" />
                             </div>
 
@@ -110,7 +110,7 @@ export function Articles() {
                                 </div>
                             </div>
 
-                            <h3 className="text-2xl font-bold mb-4 text-white group-hover:text-primary transition-colors leading-tight">
+                            <h3 className="text-2xl font-bold mb-4 text-foreground group-hover:text-primary transition-colors leading-tight">
                                 {article.title}
                             </h3>
 
@@ -120,7 +120,7 @@ export function Articles() {
 
                             <div className="flex flex-wrap gap-2 mb-8">
                                 {article.tags.map((tag) => (
-                                    <span key={tag} className="text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-white/5 border border-white/10 text-muted-foreground">
+                                    <span key={tag} className="text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-muted border border-border text-muted-foreground">
                                         {tag}
                                     </span>
                                 ))}
@@ -132,7 +132,7 @@ export function Articles() {
                                 rel="noopener noreferrer"
                                 className="mt-auto"
                             >
-                                <Button className="w-full group/btn bg-white/5 hover:bg-primary hover:text-primary-foreground border-white/10 transition-all duration-300">
+                                <Button className="w-full group/btn bg-muted hover:bg-primary hover:text-primary-foreground border-border transition-all duration-300">
                                     READ ARTICLE
                                     <ExternalLink className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
                                 </Button>

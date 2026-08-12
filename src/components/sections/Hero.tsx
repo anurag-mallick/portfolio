@@ -78,10 +78,10 @@ function TerminalCard({ reducedMotion }: { reducedMotion: boolean }) {
     };
 
     const bootLines = [
-        { prefix: \">\", text: \"initializing: anurag.mallick.portfolio\" },
-        { prefix: \">\", text: \"role: AI Product Architect\" },
-        { prefix: \">\", text: \"stack: fintech | EOR | LLM | global payroll\" },
-        { prefix: \">\", text: \"status: OPEN TO SENIOR PM ROLES █\" },
+        { prefix: ">", text: "initializing: anurag.mallick.portfolio" },
+        { prefix: ">", text: "role: AI Product Architect" },
+        { prefix: ">", text: "stack: fintech | EOR | LLM | global payroll" },
+        { prefix: ">", text: "status: OPEN TO SENIOR PM ROLES █" },
     ];
 
     if (reducedMotion) {

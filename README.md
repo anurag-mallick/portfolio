@@ -31,12 +31,12 @@ A premium, high-performance portfolio website built with **Next.js 16**, **Tailw
 
 ### 🎨 Theming Engine
 
-- **2 premium themes**: Futuristic & Midnight — with real-time CSS variable switching
+- **3 premium themes**: Terminal, Futuristic & Midnight — with real-time CSS variable switching
 - Smooth theme transitions with `localStorage` persistence
 
 ### 🔒 Security Hardened
 
-- Middleware-enforced CSP, HSTS, and XSS protection
+- Static header enforcement (CSP, HSTS, XSS protection) via `public/_headers`
 - Honeypot bot verification & 30s rate limiting on contact form
 
 ### 🧩 Interactive Sections
@@ -47,7 +47,7 @@ A premium, high-performance portfolio website built with **Next.js 16**, **Tailw
 - **Certifications**: 5 industry certifications with icons (Skillsoft, Google, etc.)
 - **Contact**: Web3Forms integration with bot protection
 
-## 🎯 The Lab: 18+ Interactive High-Performance Apps
+## 🎯 The Lab: 40+ Interactive High-Performance Apps (selected highlights)
 
 ### 🤖 AI & Automation
 
@@ -115,7 +115,7 @@ src/
 ├── components/
 │   ├── layout/             # Navbar, Footer, LayoutWrapper
 │   ├── sections/           # Hero, Experience, Skills, Contact, etc.
-│   ├── apps/               # 30+ interactive mini-applications
+│   ├── apps/               # 40+ interactive mini-applications
 │   ├── charts/             # D3.js & Recharts visualizations
 │   └── ui/                 # Button, Card, reusable primitives
 └── lib/

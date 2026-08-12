@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, HTMLMotionProps } from "framer-motion";
+import { motion, HTMLMotionProps, Variants } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { useReducedMotion } from "@/lib/hooks/useReducedMotion";
 import React from "react";
@@ -21,7 +21,7 @@ export function Reveal({
 }: RevealProps) {
   const reducedMotion = useReducedMotion();
 
-  const variants = {
+  const variants: Variants = {
     hidden: {
       opacity: 0,
       y: direction === "up" ? 40 : direction === "down" ? -40 : 0,
@@ -40,7 +40,7 @@ export function Reveal({
   };
 
   if (reducedMotion) {
-    return <div className={className} {...props}>{children}</div>;
+    return <div className={className} {...(props as React.HTMLAttributes<HTMLDivElement>)}>{children}</div>;
   }
 
   return (

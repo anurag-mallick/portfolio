@@ -312,10 +312,11 @@ export function Contact() {
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                           <div className="space-y-2">
-                            <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground ml-1">
+                            <label htmlFor="contact-name" className="text-xs font-bold uppercase tracking-widest text-muted-foreground ml-1">
                               Full Name
                             </label>
                             <input
+                              id="contact-name"
                               type="text"
                               required
                               value={formState.name}
@@ -330,10 +331,11 @@ export function Contact() {
                             />
                           </div>
                           <div className="space-y-2">
-                            <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground ml-1">
+                            <label htmlFor="contact-email" className="text-xs font-bold uppercase tracking-widest text-muted-foreground ml-1">
                               Email Address
                             </label>
                             <input
+                              id="contact-email"
                               type="email"
                               required
                               value={formState.email}
@@ -351,12 +353,13 @@ export function Contact() {
 
                           <div className="space-y-2">
                             <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
-                              <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground ml-1">
+                              <label htmlFor="contact-message" className="text-xs font-bold uppercase tracking-widest text-muted-foreground ml-1">
                                 Message
                               </label>
                               <SentimentAnalyzer message={formState.message} />
                             </div>
                             <textarea
+                              id="contact-message"
                               required
                               value={formState.message}
                               onChange={(e) =>
