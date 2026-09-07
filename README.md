@@ -78,16 +78,6 @@ A premium, high-performance portfolio website built with **Next.js 16**, **Tailw
 - Circuit Breaker Pattern — microservices resilience state machine
 - Auto-Scaling Simulator — horizontal pod autoscaling & cost metrics
 
-## 📜 Certifications
-
-| Certification                               | Issuer                 | Date     |
-| ------------------------------------------- | ---------------------- | -------- |
-| Agile Project Management & Tools for PMs    | Skillsoft              | Jan 2026 |
-| Technical PM: Leadership & Stakeholder Mgmt | Skillsoft              | Dec 2025 |
-| Lean Six Sigma Green Belt                   | Henry Harvin Education | —        |
-| Advanced Google Analytics                   | Google Academy         | —        |
-| Design Thinking                             | Atyaasaa Online        | Mar 2023 |
-
 ## ⚙️ Local Development
 
 ```bash
